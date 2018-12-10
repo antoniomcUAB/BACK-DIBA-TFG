@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D404C487-74CB-BC45-8CEF-4A036CD2AABB" name="EXPEDIENT">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>95230A8B-7D65-4B9A-85B8-0FE453D270B8</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="FF1E87C2-9D69-AE1B-4AF6-19581523C67F">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-03 15:16:02 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="expedient" id="54A38923-7FCD-47A8-34BA-7E4F0322822B">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>BD09F6E8-A821-0370-7AAD-C03254FDCE61</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="professional" id="380A34CE-5792-EB42-E445-197AC12D1080">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>C6858CBE-D263-E838-8C97-448DEC43DF1C</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nom" id="A2C4DCBB-172A-B777-35B9-4222DBF19235">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>A39A6FE7-54AA-AE90-119A-48D57446533D</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data" id="98CA4A60-B644-B400-1C62-4A9D0448CB05">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>A7DE0BCA-F5AB-826C-C6C3-5DF7A8BE8DDC</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="observacions" id="2FFD3B5C-9C4B-3634-CC7D-E744CD23BDA2">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-05 09:22:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A38D3A25-FFDF-185D-A8D8-0C7F403290AE" name="EXPEDIENT_PK">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>8A64ACDC-9E73-A4C1-FB76-B4010D744FEC</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FF1E87C2-9D69-AE1B-4AF6-19581523C67F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="8F23651E-8FD9-A1BF-70F9-2F458083A845" containerWithKeyObject="59728D45-CBAF-3AB9-9699-51737E16947B" localFKIndex="A5615C6B-DDBC-502A-A2A2-6C849371C397" name="ECONOMIA_FACTOR_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-03 16:00:13 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<referredTableLongName>FACTOR</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A8F69827-A6F7-6C6D-003F-710F7D6D0C2E</referredTableID>
+<keyObject>A67974D7-63DA-8B41-A55F-7923D0724909</keyObject>
+<referredKeyID>A67974D7-63DA-8B41-A55F-7923D0724909</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

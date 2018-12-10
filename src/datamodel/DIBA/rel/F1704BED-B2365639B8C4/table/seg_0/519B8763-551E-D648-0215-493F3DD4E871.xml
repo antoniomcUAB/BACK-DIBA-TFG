@@ -1,0 +1,68 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="519B8763-551E-D648-0215-493F3DD4E871" name="CONTEXT_DIAGNOSTIC">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>DD4311CD-5790-EC86-6AEB-BEE64B85354B</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="31B9A2B9-3CD9-3BFF-BA6C-22B95CB6CDC2">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>964A5513-8062-AC00-D25A-653B0EDD476E</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcio" id="531EDE7C-170C-2153-9522-2EC7146E60D0">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>94DC84FA-2C19-A1D2-C076-B9694D2E6895</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ambit" id="680B66CD-7C77-792D-0AF0-A731D8472E07">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>343EBC52-C798-4498-9E1C-0CA2AF476944</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0D133447-1313-CA9A-1844-FDBFEA598682" name="CONTEXT_DIAGNOSTIC_PK">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>9C7BDE40-D231-C3FD-1B64-AD62DC18BEED</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="31B9A2B9-3CD9-3BFF-BA6C-22B95CB6CDC2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

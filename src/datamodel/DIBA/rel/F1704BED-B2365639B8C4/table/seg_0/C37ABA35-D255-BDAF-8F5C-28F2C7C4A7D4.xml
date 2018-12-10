@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C37ABA35-D255-BDAF-8F5C-28F2C7C4A7D4" name="FACTOR_CONTEXT">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>4D4FBD1A-0308-7934-7E72-19C2774D90A4</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="EBB4F2A5-D436-523E-A855-26F0DD09D2BE">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>E7B58DFB-1B19-7830-B61D-3ECD8DC6E62A</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="apl" id="B49B4675-9FB5-68F0-E5EC-37C002FE39AF">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>F51710CE-FA55-F215-D5CD-35F155DC3C2A</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="factor" id="B941E9FC-2E5A-1F29-228F-9E0D818073EF">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-03 15:57:39 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7F7A6AF5-8ED4-2AD8-B8C8-7F4FE92CFF3C" referredColumn="C8ACE017-65B1-A89A-FD8A-B1ABE61B17D7"/>
+</associations>
+</Column>
+<Column name="ambit" id="035D57AC-89D1-6F79-F409-DB5BB3BC4AC7">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-10 12:19:00 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EF57110F-7349-E03A-F82A-84B2A03EE398" referredColumn="2A71001B-1C09-D1F2-1B28-D30F8BF863D7"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EF0451E0-69D5-C089-1884-364E5F0062F4" name="FACTOR_CONTEXT_PK">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-03 15:53:03 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EBB4F2A5-D436-523E-A855-26F0DD09D2BE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3708E625-C688-EF14-2C41-45F106A790B7" name="FACTOR_CONTEXT_FACTOR_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-03 15:57:39 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B941E9FC-2E5A-1F29-228F-9E0D818073EF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="714161F5-E47A-89FE-67F1-DAB15F8BB8C5" name="FACTOR_CONTEXT_AMBIT_FKv1">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-10 12:19:00 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="035D57AC-89D1-6F79-F409-DB5BB3BC4AC7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

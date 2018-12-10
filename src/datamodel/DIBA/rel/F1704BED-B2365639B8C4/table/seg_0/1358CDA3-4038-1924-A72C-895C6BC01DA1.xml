@@ -1,0 +1,155 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1358CDA3-4038-1924-A72C-895C6BC01DA1" name="CONTEXTUALITZACIO">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>117E6EDC-000B-6788-DD42-5D8C1C2EAA23</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="D00C5322-CDA7-3A64-1B43-7B10E098BA07">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-05 09:23:23 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="expedient" id="95A4A394-1260-83B7-7B34-6B90C2413558">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-03 15:16:02 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="22307F32-4A36-0CE4-DB04-4C83591943A3" referredColumn="FF1E87C2-9D69-AE1B-4AF6-19581523C67F"/>
+</associations>
+</Column>
+<Column name="context" id="C32CCE4E-C017-6927-5F09-27901EF6CDE0">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>6B642466-F039-60B9-C33C-FEEB74138C31</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5D24418C-A269-5F9B-EA24-2E3C4BACF275" referredColumn="31B9A2B9-3CD9-3BFF-BA6C-22B95CB6CDC2"/>
+</associations>
+</Column>
+<Column name="membre_unic" id="35762A96-8444-5399-2506-39906FC2A416">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>2AE579ED-D1D2-9236-A994-43F7D5DFCE81</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="questio" id="1E0D02AF-84A5-7905-242A-D49BB92F662D">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>09E1EA9A-9E4E-B521-080A-CA3F99279367</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mes_UC" id="D4B8DF8F-9614-D2CB-9991-9BA34B8C3C22">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>F973EAA0-9929-A9C1-F7DD-1839269EE95A</importedID>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="persona" id="53B476EE-A8CE-5048-C148-EF48C7F736C7">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-07 09:01:08 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7330FBF8-6BDC-06C2-6B6F-7511DF07533A" referredColumn="F8A74EED-25EF-5997-D56A-6F698CE5CD62"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="49586F60-4C00-EDAD-193B-4422FA58950E" name="CONTEXTUALITZACIO_PK">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>942DFD90-D986-C0BC-9509-5286C985BCF5</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D00C5322-CDA7-3A64-1B43-7B10E098BA07"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="03BFFF0D-C4F2-F9F2-CFC4-5A7F5FC207EE" name="CONTX_CONTX_DIAG_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C32CCE4E-C017-6927-5F09-27901EF6CDE0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="203C65ED-EFD3-D872-0361-2DCC73E46647" name="CONTX_EXPEDIENT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-30 09:26:43 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="95A4A394-1260-83B7-7B34-6B90C2413558"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="052403A6-6B4D-6A66-C03A-BA17F76F5576" name="CONTX_TIPUS_PERSONA_FKv1">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-07 09:01:08 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="53B476EE-A8CE-5048-C148-EF48C7F736C7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

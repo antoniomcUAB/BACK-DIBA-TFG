@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="DIBA" id="35FF3221-1ADE-1D60-E3B8-49C9B93B2B4C" version="3.5">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-11-27 16:52:01 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>35FF3221-1ADE-1D60-E3B8-49C9B93B2B4C</designId>
+</OSDM_Design>
