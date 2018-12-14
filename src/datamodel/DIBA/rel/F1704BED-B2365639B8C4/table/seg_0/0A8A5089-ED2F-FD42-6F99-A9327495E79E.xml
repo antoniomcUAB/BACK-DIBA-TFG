@@ -50,11 +50,12 @@
 <colAssociation fkAssociation="6C3866AB-15EA-AAA5-FE4D-0ED35101BFD3" referredColumn="C8ACE017-65B1-A89A-FD8A-B1ABE61B17D7"/>
 </associations>
 </Column>
-<Column name="ambit" id="C3D598A5-CAB0-048F-3ECD-E8F09A4454BB">
+<Column name="entorn" id="1047CAC7-EE79-F893-2CBC-8A2EA14E23F9">
 <createdBy>danielfi</createdBy>
-<createdTime>2018-12-10 13:49:18 UTC</createdTime>
+<createdTime>2018-12-11 14:33:18 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT020</logicalDatatype>
@@ -62,7 +63,7 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="2AD2764C-0127-2DEF-FEE7-6F6F5B402AF2" referredColumn="2A71001B-1C09-D1F2-1B28-D30F8BF863D7"/>
+<colAssociation fkAssociation="1435066D-12ED-ABA1-BA2B-3A0281D3A017" referredColumn="D8BD54DB-568C-E8C7-AF40-64AEBA8ABC2B"/>
 </associations>
 </Column>
 </columns>
@@ -100,15 +101,15 @@
 <colUsage columnID="D6EF8DCE-79BA-DDD4-D4DE-D156306AB18F"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="D28BCF9D-F4C9-7838-FD35-629A47FD0F32" name="FACTOR_GRAVETAT_AMBIT_FK">
+<ind_PK_UK id="B03A786A-EA83-CBB4-EFE1-8D113932A2A1" name="FACTOR_GRAVETAT_ENTORN_FK">
 <createdBy>danielfi</createdBy>
-<createdTime>2018-12-10 13:49:18 UTC</createdTime>
+<createdTime>2018-12-11 14:33:18 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="C3D598A5-CAB0-048F-3ECD-E8F09A4454BB"/>
+<colUsage columnID="1047CAC7-EE79-F893-2CBC-8A2EA14E23F9"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,16 +21,19 @@ import lombok.Data;
 
 @Entity
 @Table (name="FREQUENCIA_GRAVETAT")
-@JsonPropertyOrder({ "ID", "EVIDENCIA", "gravetat","criteri" })
+@JsonPropertyOrder({ "id", "evidencia", "gravetat","Freqüència" })
 public @Data class FrequenciaGravetat implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue 
+	@JsonProperty("id")
 	private long ID;
+	
+	@JsonProperty("evidencia")
 	private String EVIDENCIA;
 	
-	@OneToOne(mappedBy = "gravetat")
+	@OneToOne
 	@JoinColumn(name="gravetat",foreignKey= @ForeignKey(name = "FREQ_GRAVETAT_FK"))
     private Gravetat gravetat;
 	
@@ -42,5 +46,14 @@ public @Data class FrequenciaGravetat implements Serializable {
 	@JsonProperty("Freqüència")
     private List<Criteri> criteri;
 	
+	public FrequenciaGravetat () {
+		
+	}
+
+	public FrequenciaGravetat (SituacioSocial situacioSocial, String EVIDENCIA, Gravetat gravetat) {
+		this.situacioSocial=situacioSocial;
+		this.EVIDENCIA = EVIDENCIA;
+		this.gravetat=gravetat;
+	}
 
 }

@@ -1,16 +1,18 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A8F69827-A6F7-6C6D-003F-710F7D6D0C2E" name="FACTOR">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A65200F4-2D27-B798-B130-D9E69BD5467A" name="FACTOR_ECONOMIC">
 <createdBy>danielfi</createdBy>
-<createdTime>2018-12-03 15:35:49 UTC</createdTime>
+<createdTime>2018-12-14 12:13:57 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
-<ordsAlias>table_14</ordsAlias>
+<ordsAlias>table_22</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id" id="C8ACE017-65B1-A89A-FD8A-B1ABE61B17D7">
+<Column name="id" id="A2C41660-62D4-4732-38B2-FF7A79D7F25B">
 <createdBy>danielfi</createdBy>
-<createdTime>2018-12-03 15:36:42 UTC</createdTime>
+<createdTime>2018-12-14 12:14:33 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -18,29 +20,31 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="descripcio" id="1781D48C-B15E-652E-7BCC-459880A05A3B">
+<Column name="descripcio" id="4660F61B-2BB6-7FDC-8FE3-D35E66D4BF08">
 <createdBy>danielfi</createdBy>
-<createdTime>2018-12-03 15:36:42 UTC</createdTime>
+<createdTime>2018-12-14 12:14:33 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>500</dataTypeSize>
-<ownDataTypeParameters>500,,</ownDataTypeParameters>
+<dataTypeSize>300</dataTypeSize>
+<ownDataTypeParameters>300,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="A67974D7-63DA-8B41-A55F-7923D0724909" name="FACTOR_PK">
+<ind_PK_UK id="B912076B-7BF6-913C-F4FA-5629850E202D" name="FACTOR_ECONOMIC_PK">
 <createdBy>danielfi</createdBy>
-<createdTime>2018-12-03 15:36:42 UTC</createdTime>
+<createdTime>2018-12-14 12:14:33 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="C8ACE017-65B1-A89A-FD8A-B1ABE61B17D7"/>
+<colUsage columnID="A2C41660-62D4-4732-38B2-FF7A79D7F25B"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

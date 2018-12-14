@@ -9,7 +9,18 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_expedient" id="468600B0-5BC0-3148-9797-450A572263AC">
+<Column name="id" id="F1E1EB84-9370-9307-8B66-382ACBA7ABD4">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-12 14:29:25 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="expedient" id="468600B0-5BC0-3148-9797-450A572263AC">
 <createdBy>danielfi</createdBy>
 <createdTime>2018-12-03 15:16:02 UTC</createdTime>
 <ownerDesignName>DIBA</ownerDesignName>
@@ -35,9 +46,10 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="factor" id="BBB83029-C121-F1D1-F2CD-5E02F6D76DE8">
+<Column name="factor" id="96CE9E12-B39F-E92B-7D32-666FC9457E73">
 <createdBy>danielfi</createdBy>
-<createdTime>2018-12-03 16:00:13 UTC</createdTime>
+<createdTime>2018-12-14 12:15:04 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -46,7 +58,7 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="8F23651E-8FD9-A1BF-70F9-2F458083A845" referredColumn="C8ACE017-65B1-A89A-FD8A-B1ABE61B17D7"/>
+<colAssociation fkAssociation="37A942B4-5DEF-333E-5E3A-52A4209995F6" referredColumn="A2C41660-62D4-4732-38B2-FF7A79D7F25B"/>
 </associations>
 </Column>
 </columns>
@@ -61,7 +73,7 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="468600B0-5BC0-3148-9797-450A572263AC"/>
+<colUsage columnID="F1E1EB84-9370-9307-8B66-382ACBA7ABD4"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="89193B9A-208B-0F29-0D91-0C690174BB25" name="ECONOMIA_EXPEDIENT_FK">
@@ -74,14 +86,15 @@
 <colUsage columnID="468600B0-5BC0-3148-9797-450A572263AC"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="A5615C6B-DDBC-502A-A2A2-6C849371C397" name="ECONOMIA_FACTOR_FK">
+<ind_PK_UK id="397A03C1-92FC-1FFA-4F70-729FF51FE01E" name="ECONOMIA_FACTOR_ECONOMIC_FK">
 <createdBy>danielfi</createdBy>
-<createdTime>2018-12-03 16:00:13 UTC</createdTime>
+<createdTime>2018-12-14 12:15:04 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="BBB83029-C121-F1D1-F2CD-5E02F6D76DE8"/>
+<colUsage columnID="96CE9E12-B39F-E92B-7D32-666FC9457E73"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

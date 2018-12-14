@@ -3,6 +3,8 @@ package es.in2.dsdibaapi.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,7 +16,7 @@ public @Data class FactorContext implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue 
 	private long ID;
 	private String DESCRIPCIO;
 

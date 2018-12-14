@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,17 +25,19 @@ public @Data class Criteri implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue 
 	@JsonProperty("id")
 	private long ID;
 	
 	@Column (name="evidencia")
 	private String evidencia;	
 	
-	@OneToOne(mappedBy = "frequencia")
+	@OneToOne
+	@JoinColumn(name = "frequencia",foreignKey= @ForeignKey(name = "CRITERI_FREQUENCIA_FK"))
     private Frequencia frequencia;
 	
-	@OneToOne(mappedBy = "risc")
+	@OneToOne
+	@JoinColumn(name = "risc",foreignKey= @ForeignKey(name = "CRITERI_RISC_FK"))
     private Risc risc;
 	
 	@ManyToOne
@@ -42,4 +45,14 @@ public @Data class Criteri implements Serializable {
 	@JsonIgnore
     private FrequenciaGravetat frequenciaGravetat;
 
+	public Criteri () {
+		
+	}
+
+	public Criteri (String evidencia,Frequencia frequencia,Risc risc,FrequenciaGravetat frequenciaGravetat) {
+		this.evidencia=evidencia;
+		this.frequencia=frequencia;
+		this.risc=risc;
+		this.frequenciaGravetat=frequenciaGravetat;
+	}
 }

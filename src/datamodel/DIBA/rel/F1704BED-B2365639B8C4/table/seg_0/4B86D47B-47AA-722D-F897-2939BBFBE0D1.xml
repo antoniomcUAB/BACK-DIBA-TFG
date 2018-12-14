@@ -63,7 +63,7 @@
 <colAssociation fkAssociation="15011E73-F883-B42A-1A5D-D902266591D9" referredColumn="E0252869-40B3-16E4-F907-62D228B3B2C2"/>
 </associations>
 </Column>
-<Column name="frequenciaGravetat" id="7076EDE3-E03B-54AE-9AE8-D71E49D3FA36">
+<Column name="frequencia_gravetat" id="7076EDE3-E03B-54AE-9AE8-D71E49D3FA36">
 <createdBy>danielfi</createdBy>
 <createdTime>2018-12-10 13:02:24 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>

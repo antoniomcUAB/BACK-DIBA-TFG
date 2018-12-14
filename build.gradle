@@ -52,6 +52,7 @@ dependencies {
     compile("com.querydsl:querydsl-sql-codegen:${querydslVersion}")
     compile("com.querydsl:querydsl-sql-spring:${querydslVersion}")
     compile("com.querydsl:querydsl-jpa:${querydslVersion}")
+     	
     compile('com.oracle:ojdbc6:11.2.0.3.0')
     compile('org.hibernate:hibernate-java8:5.0.0.Final')
     compile('org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final')

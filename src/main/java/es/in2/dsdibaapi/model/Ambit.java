@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,18 +22,21 @@ public @Data class Ambit implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue 
 	private long ID;
 	private String DESCRIPCIO;
 	
 	
 	@OneToMany(mappedBy = "ambit")
 	@JsonProperty("Items")
-    private List<SituacioSocial> situacioSocial;
+    private List<Entorn> entorn;
 	
-	@OneToMany(mappedBy = "ambit")
-	@JsonProperty("Factors_context")
-    private List<FactorGravetat> factorGravetat;
-	
+	public Ambit () {
+		
+	}
+
+	public Ambit (String DESCRIPCIO) {
+		this.DESCRIPCIO=DESCRIPCIO;
+	}
 	
 }

@@ -3,6 +3,8 @@ package es.in2.dsdibaapi.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -18,7 +20,7 @@ public @Data class Gravetat implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue 
 	private long ID;
 	private String DESCRIPCIO;
 	
@@ -28,4 +30,12 @@ public @Data class Gravetat implements Serializable {
     private Gravetat gravetat;
 	
 
+	public Gravetat () {
+		
+	}
+
+	public Gravetat (String DESCRIPCIO) {
+		this.DESCRIPCIO=DESCRIPCIO;
+	}
+	
 }

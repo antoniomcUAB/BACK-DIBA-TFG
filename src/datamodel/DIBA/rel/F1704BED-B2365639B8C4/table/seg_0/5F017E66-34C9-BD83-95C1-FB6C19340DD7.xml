@@ -9,7 +9,18 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id_expedient" id="119E7B92-390A-25AA-14AA-9F05BD8E9272">
+<Column name="id" id="120F3073-D822-EC33-9081-B8CB7A6E004B">
+<createdBy>danielfi</createdBy>
+<createdTime>2018-12-12 14:29:56 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="expedient" id="119E7B92-390A-25AA-14AA-9F05BD8E9272">
 <createdBy>danielfi</createdBy>
 <createdTime>2018-12-03 15:16:02 UTC</createdTime>
 <ownerDesignName>DIBA</ownerDesignName>
@@ -33,7 +44,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>32</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="E4C6EADF-A59E-9297-BD94-06732E1345DE" referredColumn="1B0C7DB1-101F-F614-A288-FDD460694660"/>
@@ -51,7 +62,7 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="119E7B92-390A-25AA-14AA-9F05BD8E9272"/>
+<colUsage columnID="120F3073-D822-EC33-9081-B8CB7A6E004B"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="AC564743-6226-629C-EDB5-8E07C9C04826" name="EX_REFERENCIA_EXPEDIENT_FK">

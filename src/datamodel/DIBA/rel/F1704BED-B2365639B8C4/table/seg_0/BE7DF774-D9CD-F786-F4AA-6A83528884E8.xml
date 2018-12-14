@@ -47,13 +47,13 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>500</dataTypeSize>
-<ownDataTypeParameters>500,,</ownDataTypeParameters>
+<dataTypeSize>600</dataTypeSize>
+<ownDataTypeParameters>600,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="ambit" id="AC5A6C0D-DCBA-0890-53BC-1DF6962F67BA">
+<Column name="entorn" id="7EA54EA3-D688-3EBC-5A4D-D7FF656A37D2">
 <createdBy>danielfi</createdBy>
-<createdTime>2018-12-10 10:52:45 UTC</createdTime>
+<createdTime>2018-12-11 14:33:23 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -63,7 +63,7 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="F4B969D6-AF06-0D52-D088-DEB791177DD0" referredColumn="2A71001B-1C09-D1F2-1B28-D30F8BF863D7"/>
+<colAssociation fkAssociation="CB1E73CF-A911-AB94-31E1-9AB8232A971F" referredColumn="D8BD54DB-568C-E8C7-AF40-64AEBA8ABC2B"/>
 </associations>
 </Column>
 </columns>
@@ -81,15 +81,15 @@
 <colUsage columnID="A734ABDB-A3CD-9380-AD5C-5418004DDF45"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="A5A50BB6-D064-534A-D442-5174680161D1" name="SITUACIO_SOCIAL_AMBIT_FK">
+<ind_PK_UK id="3BB70A20-6C62-700B-BE48-1F1A82500FF3" name="SITUACIO_SOCIAL_ENTORN_FK">
 <createdBy>danielfi</createdBy>
-<createdTime>2018-12-10 10:52:45 UTC</createdTime>
+<createdTime>2018-12-11 14:33:23 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="AC5A6C0D-DCBA-0890-53BC-1DF6962F67BA"/>
+<colUsage columnID="7EA54EA3-D688-3EBC-5A4D-D7FF656A37D2"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

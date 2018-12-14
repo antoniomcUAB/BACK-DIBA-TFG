@@ -19,7 +19,9 @@ public class QExReferencia extends EntityPathBase<ExReferencia> {
 
     public static final QExReferencia exReferencia = new QExReferencia("exReferencia");
 
-    public final NumberPath<Long> ID_EXPEDIENT = createNumber("ID_EXPEDIENT", Long.class);
+    public final StringPath DESCRIPCIO = createString("DESCRIPCIO");
+
+    public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
     public QExReferencia(String variable) {
         super(ExReferencia.class, forVariable(variable));

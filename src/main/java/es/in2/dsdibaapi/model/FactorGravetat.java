@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,18 +21,29 @@ public @Data class FactorGravetat implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id @GeneratedValue 
 	private long ID;
 	
-	@OneToOne(mappedBy = "gravetat")
+	@OneToOne
+	@JoinColumn(name="gravetat",foreignKey= @ForeignKey(name = "FACTOR_GRAVETAT_GRAVETAT_FK"))
     private Gravetat gravetat;
 	
-	@OneToOne(mappedBy = "factor")
+	@OneToOne
+	@JoinColumn(name="factor",foreignKey= @ForeignKey(name = "FACTOR_GRAVETAT_FACTOR_FK"))
     private Factor factor;
 	
 	@ManyToOne
-    @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "FACTOR_GRAVETAT_AMBIT_FK"))
+    @JoinColumn(name="entorn",foreignKey= @ForeignKey(name = "FACTOR_GRAVETAT_ENTORN_FK"))
 	@JsonIgnore
-    private Ambit ambit;
+    private Entorn entorn;
 
+	public FactorGravetat () {
+		
+	}
+
+	public FactorGravetat ( Gravetat gravetat, Factor factor, Entorn entorn) {
+		this.gravetat=gravetat;
+		this.factor=factor;
+		this.entorn=entorn;
+	}
 }
