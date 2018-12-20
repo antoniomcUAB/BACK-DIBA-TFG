@@ -1,6 +1,7 @@
 package es.in2.dsdibaapi;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
@@ -14,21 +15,26 @@ import es.in2.dsdibaapi.model.FactorGravetat;
 import es.in2.dsdibaapi.model.Frequencia;
 import es.in2.dsdibaapi.model.FrequenciaGravetat;
 import es.in2.dsdibaapi.model.Gravetat;
+import es.in2.dsdibaapi.model.Persona;
 import es.in2.dsdibaapi.model.Risc;
 import es.in2.dsdibaapi.model.SituacioSocial;
 import es.in2.dsdibaapi.repository.AmbitRepository;
 import es.in2.dsdibaapi.repository.CriteriRepository;
 import es.in2.dsdibaapi.repository.EntornRepository;
+import es.in2.dsdibaapi.repository.ExpedientRepository;
 import es.in2.dsdibaapi.repository.FactorEconomicRepository;
 import es.in2.dsdibaapi.repository.FactorGravetatRepository;
 import es.in2.dsdibaapi.repository.FactorRepository;
 import es.in2.dsdibaapi.repository.FrequenciaGravetatRepository;
 import es.in2.dsdibaapi.repository.FrequenciaRepository;
 import es.in2.dsdibaapi.repository.GravetatRepository;
+import es.in2.dsdibaapi.repository.PersonaRepository;
 import es.in2.dsdibaapi.repository.RiscRepository;
 import es.in2.dsdibaapi.repository.SituacioSocialRepository;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
+@Slf4j
 @ConditionalOnProperty(name = "api.db-init", havingValue = "true")
 public class DataBaseInit implements CommandLineRunner {
 	
@@ -64,9 +70,20 @@ public class DataBaseInit implements CommandLineRunner {
 	
 	@Autowired
 	private FactorEconomicRepository factorEconomicRepository;
+	
+	@Autowired
+	private PersonaRepository personaRepository;
+	
+	@Autowired
+	private ExpedientRepository expedientRepository;
+	
+	@Value("${add.test}")
+	private Boolean addTest;
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+		
 		
 		Frequencia ocasionalFrequencia=frequenciaRepository.save(new Frequencia("Ocasional"));
 		Frequencia frequentFrequencia=frequenciaRepository.save(new Frequencia("Freqüent"));
@@ -685,7 +702,18 @@ public class DataBaseInit implements CommandLineRunner {
 		factor=factorRepository.save(new Factor ("Composició familiar vulnerable (monoparental, famílies nombroses de categoria especial)"));
 		factorGravetatRepository.save(new FactorGravetat(riscGravetat,factor,entorn));
 		
-			
+		
+		if (addTest) {
+			test();
+		}
+		
 	}
-
+	
+	
+	private void test () {
+		
+		log.info ("===========    ADD TEST    ==========");
+		
+		personaRepository.save(new Persona ("FULANO","APE1","APE2"));
+	}
 }

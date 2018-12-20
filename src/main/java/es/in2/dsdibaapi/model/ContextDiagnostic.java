@@ -23,8 +23,9 @@ public @Data class ContextDiagnostic implements Serializable {
 	private String MEMBRE_UNIC;
 	private String MES_UC;
 	
+	/*
 	@OneToOne(mappedBy = "expedient")
-    private Expedient expedient;
+    private Expedient expedient;*/
 	
 	@OneToOne(mappedBy = "persona")
     private Persona persona;

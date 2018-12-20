@@ -26,6 +26,8 @@ public class QPersona extends EntityPathBase<Persona> {
 
     public final StringPath COGNOM2 = createString("COGNOM2");
 
+    public final QExReferencia exReferencia;
+
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
     public final StringPath NOM = createString("NOM");
@@ -50,6 +52,7 @@ public class QPersona extends EntityPathBase<Persona> {
 
     public QPersona(Class<? extends Persona> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.exReferencia = inits.isInitialized("exReferencia") ? new QExReferencia(forProperty("exReferencia")) : null;
         this.persona = inits.isInitialized("persona") ? new QPersona(forProperty("persona"), inits.get("persona")) : null;
     }
 

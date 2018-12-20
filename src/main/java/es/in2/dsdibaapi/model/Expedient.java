@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -27,9 +26,24 @@ public @Data class Expedient implements Serializable {
 	private String NOM;
 	private String DATA;
 	private String OBSERVACIONS;
-
+	
+	/*
+	@OneToMany(mappedBy = "persona")
+	@JsonProperty("unitatFamiliar")
+    private List<Persona> personaReferencia;
+*/
 	@OneToOne
     @JoinColumn(name = "id")
 	@JsonIgnore
     private Expedient expedient;
+	
+	/*
+	public Expedient () {
+		
+	}
+
+	public Expedient (String EXPEDIENT) {
+		this.DESCRIPCIO=DESCRIPCIO;
+	}*/
+	
 }

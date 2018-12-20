@@ -55,7 +55,6 @@
 <createdTime>2018-12-11 14:33:18 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT020</logicalDatatype>
