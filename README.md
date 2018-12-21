@@ -1,5 +1,5 @@
-# DIPUTACIÓ DE BARCELONA API
-DIPUTACIÓ DE BARCELONA API
+# DIPUTACIï¿½ DE BARCELONA API
+DIPUTACIï¿½ DE BARCELONA API
 
 # JDK version
 1.8
@@ -31,12 +31,26 @@ $ gradlew bootJar -Pprofile={profile}
 ### Initialize DDBB
 api.db-init=true
 
-Inicialización de test
+Inicializaciï¿½n de test
 add.test=[true/false] 
 
 
 # URL REST Services
 http://localhost:<port>/swagger-ui.html
+
+
+# DESARROLLO
+
+### Iniciar aplicaciÃ³n
+java -jar /usr/dsdiba/ds-diba-api-0.0.1-SNAPSHOT.jar
+
+### Iniciar Oracle
+
+/etc/init.d/oracle-xe-18c start/stop
+
+### URL servicio modelo
+
+http://10.14.1.165:8080/model
 
 
 

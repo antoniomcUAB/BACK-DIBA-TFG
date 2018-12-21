@@ -21,7 +21,7 @@ import lombok.Data;
 
 @Entity
 @Table (name="FREQUENCIA_GRAVETAT")
-@JsonPropertyOrder({ "id", "evidencia", "gravetat","Freqüència" })
+@JsonPropertyOrder({ "id", "evidencia", "gravetat","FreqÃ¼encia" })
 public @Data class FrequenciaGravetat implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -43,7 +43,7 @@ public @Data class FrequenciaGravetat implements Serializable {
     private SituacioSocial situacioSocial;
 	
 	@OneToMany(mappedBy = "frequenciaGravetat")
-	@JsonProperty("Freqüència")
+	@JsonProperty("FreqÃ¼encia")
     private List<Criteri> criteri;
 	
 	public FrequenciaGravetat () {

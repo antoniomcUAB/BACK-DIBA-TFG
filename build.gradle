@@ -21,6 +21,7 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 
+// compileJava.options.encoding = 'ISO-8859-1'
 
 processResources {
  	println project.hasProperty('profile')

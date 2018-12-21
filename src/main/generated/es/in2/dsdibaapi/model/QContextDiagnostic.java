@@ -24,8 +24,6 @@ public class QContextDiagnostic extends EntityPathBase<ContextDiagnostic> {
 
     public final StringPath CODI_CONTEXT = createString("CODI_CONTEXT");
 
-    public final QExpedient expedient;
-
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
     public final StringPath MEMBRE_UNIC = createString("MEMBRE_UNIC");
@@ -54,7 +52,6 @@ public class QContextDiagnostic extends EntityPathBase<ContextDiagnostic> {
 
     public QContextDiagnostic(Class<? extends ContextDiagnostic> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.expedient = inits.isInitialized("expedient") ? new QExpedient(forProperty("expedient"), inits.get("expedient")) : null;
         this.persona = inits.isInitialized("persona") ? new QPersona(forProperty("persona"), inits.get("persona")) : null;
         this.questio = inits.isInitialized("questio") ? new QQuestio(forProperty("questio"), inits.get("questio")) : null;
     }
