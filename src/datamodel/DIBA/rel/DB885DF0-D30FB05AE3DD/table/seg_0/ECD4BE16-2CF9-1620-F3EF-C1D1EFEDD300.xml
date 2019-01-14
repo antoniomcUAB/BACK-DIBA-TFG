@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="ECD4BE16-2CF9-1620-F3EF-C1D1EFEDD300" name="FREQUENCIA">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>1E841968-0129-CFE7-D38F-D191D3E28BE2</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="74528FB3-3399-54D3-4B05-AD70AA18EACF">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>5A6CDA2F-665F-106E-70F9-6D2BC9F3BF3C</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcio" id="6E526D6E-9B24-DDA9-A994-0733143EC1DC">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>AB94FE8B-5682-6C88-79CB-9E5E02BE49F4</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>34A6E048-72D3-1EC9-19F8-969DCB4323EB</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FB75DEFE-AC6D-E105-C40E-3365D84B49D5" name="FREQUENCIA_PK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>62392301-D998-E199-A81D-E45BE1A22691</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="74528FB3-3399-54D3-4B05-AD70AA18EACF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="schema" id="DB885DF0-E0F6-32F8-BE82-D30FB05AE3DD" mainViewID="5878B338-5683-0A15-FB71-AAF1CC564A1E">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:25:59 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>32076570-2523-435C-2E92-BF29817DFF70</selectedRDBMSSite>
+<importDDLFileStamps>
+<importDDLFileStamp class="oracle.dbtools.crest.imports.DDLFileStamp">
+<fileName>schema.sql</fileName>
+<pathName>G:\IN2\DIPUTACION_BARCELONA\git\ds-diba-backend\src\main\resources</pathName>
+<dbType>9</dbType>
+</importDDLFileStamp>
+</importDDLFileStamps>
+</relationalModel>

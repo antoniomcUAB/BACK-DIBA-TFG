@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -41,7 +40,7 @@ public @Data class Entorn implements Serializable {
 	
 	@OneToMany (mappedBy = "entorn")
 	@JsonProperty("Factors_context")
-    private List<FactorGravetat> factorGravetat;
+    private List<Factor> factorGravetat;
 	
 	public Entorn () {
 		

@@ -1,12 +1,21 @@
 package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,26 +33,49 @@ public @Data class Expedient implements Serializable {
 	private String EXPEDIENT;
 	private String PROFESSIONAL;
 	private String NOM;
-	private String DATA;
+	private Date DATA;
 	private String OBSERVACIONS;
+	private Long totalFamilia;
 	
-	/*
-	@OneToMany(mappedBy = "persona")
-	@JsonProperty("unitatFamiliar")
-    private List<Persona> personaReferencia;
-*/
-	@OneToOne
-    @JoinColumn(name = "id")
+	
+	@ManyToMany(cascade = { CascadeType.MERGE } )
+   	 @JoinTable(
+        name = "ex_referencia", 
+        joinColumns = { @JoinColumn(name = "expedient",foreignKey = @ForeignKey(name = "EX_REFERENCIA_EXPEDIENT_FK")) },         
+        inverseJoinColumns = { @JoinColumn(name = "persona",foreignKey = @ForeignKey(name = "EX_REFERENCIA_PERSONA_FK")) }
+    )	
+    private Set<Persona> persona = new HashSet<>();
+	
+	@ManyToOne
+    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "EXPEDIENT_VERSIO_MODEL_FK"))
 	@JsonIgnore
-    private Expedient expedient;
+    private VersioModel versioModel;
 	
-	/*
+	@OneToMany(mappedBy = "expedient")	
+    private List<Diagnostic> diagnostic;
+	
+	
 	public Expedient () {
 		
 	}
 
-	public Expedient (String EXPEDIENT) {
-		this.DESCRIPCIO=DESCRIPCIO;
-	}*/
+	public Expedient (String EXPEDIENT, 
+						String PROFESSIONAL, 
+						String NOM, Date DATA, 
+						String OBSERVACIONS, 
+						Set<Persona> personas, 
+						Long totalFamilia,
+						VersioModel versioModel) {
+		this.EXPEDIENT=EXPEDIENT;
+		this.PROFESSIONAL=PROFESSIONAL;
+		this.NOM=NOM;
+		this.persona=personas;
+		this.DATA=DATA;
+		this.OBSERVACIONS=OBSERVACIONS;
+		this.totalFamilia=totalFamilia;
+		this.versioModel=versioModel;
+	}
+
+	
 	
 }

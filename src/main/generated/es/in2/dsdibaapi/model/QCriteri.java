@@ -50,9 +50,9 @@ public class QCriteri extends EntityPathBase<Criteri> {
 
     public QCriteri(Class<? extends Criteri> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.frequencia = inits.isInitialized("frequencia") ? new QFrequencia(forProperty("frequencia"), inits.get("frequencia")) : null;
+        this.frequencia = inits.isInitialized("frequencia") ? new QFrequencia(forProperty("frequencia")) : null;
         this.frequenciaGravetat = inits.isInitialized("frequenciaGravetat") ? new QFrequenciaGravetat(forProperty("frequenciaGravetat"), inits.get("frequenciaGravetat")) : null;
-        this.risc = inits.isInitialized("risc") ? new QRisc(forProperty("risc"), inits.get("risc")) : null;
+        this.risc = inits.isInitialized("risc") ? new QRisc(forProperty("risc")) : null;
     }
 
 }

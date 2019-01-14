@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="B3E60558-2DBF-0CB9-39F9-02DB2B4672A8" containerWithKeyObject="F64582CA-AC83-8904-81F0-16CAB4EFB3EC" localFKIndex="7720F3E6-5AD7-82E9-DE57-BA09F3808C14" name="DIAGNOSTICv1_RISC_FK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>FD7739F4-4AE4-8107-BA47-A36032D361B0</importedID>
+<referredTableLongName>RISC</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>E792E6F9-2057-22D5-7140-F6AA5C883377</referredTableID>
+<keyObject>F7AF5D9E-4B8B-804E-DE5C-13A08848578A</keyObject>
+<referredKeyID>F7AF5D9E-4B8B-804E-DE5C-13A08848578A</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

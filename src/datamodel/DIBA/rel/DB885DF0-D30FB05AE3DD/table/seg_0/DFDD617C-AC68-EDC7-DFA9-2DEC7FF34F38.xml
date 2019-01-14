@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DFDD617C-AC68-EDC7-DFA9-2DEC7FF34F38" name="GRAVETAT">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>55AA5D3E-403E-4FC6-4BB7-5B31E07A79E3</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="C4F48719-A4B9-B5DC-20B4-26E63E494BC7">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>4B64879B-AEF2-AEAA-9486-E5AC4D618653</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcio" id="4FA0B6AA-7B8A-D15B-CA76-A53EB4FD28AE">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>29601D22-6FE1-8B62-D09C-8534845D098C</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>34A6E048-72D3-1EC9-19F8-969DCB4323EB</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4159CA9B-E30B-A856-2CE7-2DCC7823E1CD" name="GRAVETAT_PK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>77E02C4D-BE5F-686F-6441-ABEC6446F5A9</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C4F48719-A4B9-B5DC-20B4-26E63E494BC7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

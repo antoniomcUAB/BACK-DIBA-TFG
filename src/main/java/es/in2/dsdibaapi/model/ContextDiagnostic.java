@@ -25,11 +25,12 @@ public @Data class ContextDiagnostic implements Serializable {
 	
 	/*
 	@OneToOne(mappedBy = "expedient")
-    private Expedient expedient;*/
+    private Expedient expedient;
 	
 	@OneToOne(mappedBy = "persona")
     private Persona persona;
 	
 	@OneToOne(mappedBy = "questio")
     private Questio questio;
+    */
 }

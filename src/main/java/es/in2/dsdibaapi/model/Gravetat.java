@@ -4,13 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -24,12 +19,6 @@ public @Data class Gravetat implements Serializable {
 	private long ID;
 	private String DESCRIPCIO;
 	
-	@OneToOne
-    @JoinColumn(name = "id")
-	@JsonIgnore
-    private Gravetat gravetat;
-	
-
 	public Gravetat () {
 		
 	}

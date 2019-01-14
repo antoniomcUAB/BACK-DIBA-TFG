@@ -26,7 +26,7 @@ public class QEntorn extends EntityPathBase<Entorn> {
 
     public final StringPath DESCRIPCIO = createString("DESCRIPCIO");
 
-    public final ListPath<FactorGravetat, QFactorGravetat> factorGravetat = this.<FactorGravetat, QFactorGravetat>createList("factorGravetat", FactorGravetat.class, QFactorGravetat.class, PathInits.DIRECT2);
+    public final ListPath<Factor, QFactor> factorGravetat = this.<Factor, QFactor>createList("factorGravetat", Factor.class, QFactor.class, PathInits.DIRECT2);
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 

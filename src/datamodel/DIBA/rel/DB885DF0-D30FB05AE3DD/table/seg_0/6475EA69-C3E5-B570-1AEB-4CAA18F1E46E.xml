@@ -1,0 +1,142 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6475EA69-C3E5-B570-1AEB-4CAA18F1E46E" name="CONTEXTUALITZACIO">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>3791C801-6598-3EDE-0303-A5FEE758C619</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="B1335CE4-3431-7023-D09E-38C9BBB1A061">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>EB75573B-5F99-6937-FEEC-81807348769B</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="expedient" id="447C2EA5-2CF5-442F-F485-5297BEAD6315">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>6AE27284-9D71-B1C6-B374-5A70298473D1</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CEA207F3-63D4-0514-5CB2-FA3A896EC8F6" referredColumn="56DD5253-2627-10FE-789F-BE14153A21B9"/>
+</associations>
+</Column>
+<Column name="membre_unic" id="5F5DF7D4-9CC5-21C5-A040-0511B4C6E617">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>2452DB72-0629-DE9A-BD6E-2F73A8AF336F</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<domain>D5FBAF9B-B239-2505-C660-B1EDE95FD650</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mes_UC" id="4E502425-A84D-75C0-99D2-E42E4177AC4E">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>30739145-A533-0B72-0135-AB7BE44C73D5</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<domain>D5FBAF9B-B239-2505-C660-B1EDE95FD650</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="persona" id="FDE44EE4-2BF9-51DE-0E2A-E449038A95A6">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>D349A2F4-D047-090A-4514-1087A6BAEB53</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A906819B-65F0-E6EF-64BE-D8573E203AD4" referredColumn="82D8D1CF-A817-FA58-3778-B1651754E67E"/>
+</associations>
+</Column>
+<Column name="factor" id="321FEF15-0152-5FAD-C927-140371DD355F">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:32:02 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8D68C49F-A5A8-913E-5797-65E8FE323C11" referredColumn="DBA52DEC-5C02-4E62-0C44-1D06705FF4E1"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DD407F63-6C6E-C96F-97DF-05FD931A4162" name="CONTEXTUALITZACIO_PK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>A7311158-CE3D-5F55-FD6B-9C72D1B47E3F</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B1335CE4-3431-7023-D09E-38C9BBB1A061"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EC34276A-EDF7-ABAB-8DC1-A158B27787F6" name="CONTX_EXPEDIENT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="447C2EA5-2CF5-442F-F485-5297BEAD6315"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6713583C-86D1-7BE5-C36F-8EEAF2BCFB2E" name="CONTX_FACTOR_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:32:01 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="321FEF15-0152-5FAD-C927-140371DD355F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7173BA07-47AD-2910-9685-609A12EA3747" name="CONTX_PERSONA_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 10:33:00 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FDE44EE4-2BF9-51DE-0E2A-E449038A95A6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

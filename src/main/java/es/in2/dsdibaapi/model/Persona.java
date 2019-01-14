@@ -1,17 +1,17 @@
 package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -26,16 +26,16 @@ public @Data class Persona implements Serializable {
 	private String NOM;
 	private String COGNOM1;
 	private String COGNOM2;
-/*
-	@ManyToOne
-    @JoinColumn(name="exreferencia",foreignKey= @ForeignKey(name = "ENTORN_AMBIT_FK"))
-	@JsonIgnore
-    private ExReferencia exReferencia;*/
+
+	/*@ManyToMany(cascade = { CascadeType.ALL } )
+    @JoinTable(
+        name = "ex_referencia", 
+        joinColumns = { @JoinColumn(name = "expedient",foreignKey = @ForeignKey(name = "EX_REFERENCIA_EXPEDIENT_FK"),referencedColumnName = "id") },         
+        inverseJoinColumns = { @JoinColumn(name = "persona",foreignKey = @ForeignKey(name = "EX_REFERENCIA_PERSONA_FK"),referencedColumnName = "id") }
+    )
+    Set<Expedient> expedient; // = new HashSet<Expedient>();*/
 	
-	@OneToOne
-    @JoinColumn(name = "id")
-	@JsonIgnore
-    private Persona persona;
+	
 	
 	public Persona () {
 		

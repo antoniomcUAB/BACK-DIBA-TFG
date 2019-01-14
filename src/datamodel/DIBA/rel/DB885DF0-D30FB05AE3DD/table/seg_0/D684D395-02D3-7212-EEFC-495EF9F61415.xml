@@ -1,0 +1,126 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D684D395-02D3-7212-EEFC-495EF9F61415" name="AVALUACIO">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-11 12:40:00 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<ordsAlias>table_18</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="4C8CD8C7-FAAE-28CB-9E26-28851617836D">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-11 12:41:13 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="expedient" id="E6236923-9D05-42E3-2BE0-12642614C676">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-11 12:41:35 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="23BB2661-49A6-C28C-58FF-C52A7B7124DB" referredColumn="56DD5253-2627-10FE-789F-BE14153A21B9"/>
+</associations>
+</Column>
+<Column name="entorn" id="5CC8B05F-6C46-8F9B-A085-680F969032C5">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-11 12:41:59 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="441F276E-57B8-9731-C757-C2F19744AC21" referredColumn="942D7CA4-E26F-0FED-6837-317AA1EDD797"/>
+</associations>
+</Column>
+<Column name="professional" id="9B72C829-6C99-7FF9-B78A-92E131F0DB82">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-11 12:43:07 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="risc" id="6A1153AD-ACFC-ECAD-A5C6-AF469879483A">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-11 12:43:31 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A79A90CB-8085-1F92-2DAF-1CA4C555EBD8" referredColumn="319397B1-76E5-B6B6-FCFC-F01F9992D0F1"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B6066DBB-E4D8-DB0F-F8ED-67CD213CF450" name="AVALUACIO_PK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-11 12:41:30 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4C8CD8C7-FAAE-28CB-9E26-28851617836D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="224E441E-E7F8-700A-A587-F8C473E01AEC" name="AVALUACIO_EXPEDIENT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-11 12:41:35 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E6236923-9D05-42E3-2BE0-12642614C676"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="86763A59-4CBD-6B8E-5ED2-8031CBC6847C" name="AVALUACIO_ENTORN_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-11 12:41:59 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5CC8B05F-6C46-8F9B-A085-680F969032C5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A1D5B803-2E85-FBD5-E0F8-2752D03BEA61" name="AVALUACIO_RISC_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-11 12:43:31 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A1153AD-ACFC-ECAD-A5C6-AF469879483A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

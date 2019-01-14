@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 @SpringBootApplication
 @Slf4j
+//@SpringBootTest(classes = DsDibaApiApplicationTests.class)
 public class DsDibaApiApplication {
 
 	public static void main(String[] args) {

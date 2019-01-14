@@ -1,0 +1,216 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F64582CA-AC83-8904-81F0-16CAB4EFB3EC" name="DIAGNOSTIC">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>AA38E9BA-4A89-6CDC-F102-9EFC36EE0259</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="F9C88265-AF1E-302F-7AC6-23111291D14C">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>A79E913D-C21E-D38C-E782-2F330243DCC3</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="expedient" id="1C48BA4A-88D4-E0B9-6551-E90535648E0E">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>75C24557-5E78-A1D3-08B1-16585AC5FECD</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="48BF369D-E5AE-8EEC-D91F-03F68573628E" referredColumn="56DD5253-2627-10FE-789F-BE14153A21B9"/>
+</associations>
+</Column>
+<Column name="persona" id="5FE778D0-9C4C-6FB1-A789-1E6D7A7CE2D9">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>BC355842-B31A-6BAA-229E-025CC21FE455</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="93864C19-9AA6-CFCA-B508-AA82F494E767" referredColumn="82D8D1CF-A817-FA58-3778-B1651754E67E"/>
+</associations>
+</Column>
+<Column name="risc" id="828894FA-AE30-0890-1227-632D778D1010">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>77599A2D-A135-B5A5-E4CB-F040439DAECB</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B3E60558-2DBF-0CB9-39F9-02DB2B4672A8" referredColumn="319397B1-76E5-B6B6-FCFC-F01F9992D0F1"/>
+</associations>
+</Column>
+<Column name="gravetat" id="6143736B-5803-E1C6-A2AF-8A1B918925D0">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>D5FF6125-E2FD-1F89-DE0D-6775F839D966</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A8043AF4-6CD8-8025-967F-81233B62385D" referredColumn="C4F48719-A4B9-B5DC-20B4-26E63E494BC7"/>
+</associations>
+</Column>
+<Column name="frequencia" id="12D25FE7-BE74-4210-46EF-E49487A28AE7">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>7923D27E-5EE5-3698-2FE3-15FD070648FB</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EDF1E349-ABFC-66CF-B21A-153DD0295F22" referredColumn="74528FB3-3399-54D3-4B05-AD70AA18EACF"/>
+</associations>
+</Column>
+<Column name="situacio_social" id="CA7E8ED2-27E7-AAC3-B473-514E4E7BB86D">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>F9FEB645-C382-1CE7-F7B6-A7892D28DE44</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>B91CCA1C-3D28-EA45-9C29-648C567B06F1</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7E501BAB-5779-7594-A421-937190B55477" referredColumn="5BAB7B25-0BA1-C2D6-D838-FFB59D785B32"/>
+</associations>
+</Column>
+<Column name="entorn" id="E958FA7E-B069-DE37-F486-37F3AAC5367D">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>E83ACE4F-FDC6-54F4-1F9A-67E075E8F339</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5B2E424F-AE87-939F-4CFE-20928916ADA7" referredColumn="942D7CA4-E26F-0FED-6837-317AA1EDD797"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1E14AAC7-82CD-7B0E-9911-CDEAE6B8A0F0" name="DIAGNOSTICv1_PK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>156094C7-123C-A401-3E0B-6814B2D92028</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F9C88265-AF1E-302F-7AC6-23111291D14C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="24903047-1576-F448-F812-58F0073401B8" name="DIAGNOSTIC2_ENTORN_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E958FA7E-B069-DE37-F486-37F3AAC5367D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A0FD6C1E-C565-9BCD-177C-B982B6874814" name="DIAGNOSTIC2_PERSONA_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5FE778D0-9C4C-6FB1-A789-1E6D7A7CE2D9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F56B42C4-E916-5ED9-1076-C363D1F30C25" name="DIAGNOSTIC2_SITUACIO_SOCIAL_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CA7E8ED2-27E7-AAC3-B473-514E4E7BB86D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E031B1B7-2560-63B5-F072-F62F1D5FFFA9" name="DIAGNOSTICv1_EXPEDIENT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1C48BA4A-88D4-E0B9-6551-E90535648E0E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8F6504D3-E9A9-EE2A-B3CC-4D2ACE3010D7" name="DIAGNOSTICv1_FREQUENCIA_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="12D25FE7-BE74-4210-46EF-E49487A28AE7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A9D8CAB6-AB7D-2B65-7CCA-9360CBCFEAEE" name="DIAGNOSTICv1_GRAVETAT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6143736B-5803-E1C6-A2AF-8A1B918925D0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7720F3E6-5AD7-82E9-DE57-BA09F3808C14" name="DIAGNOSTICv1_RISC_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="828894FA-AE30-0890-1227-632D778D1010"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

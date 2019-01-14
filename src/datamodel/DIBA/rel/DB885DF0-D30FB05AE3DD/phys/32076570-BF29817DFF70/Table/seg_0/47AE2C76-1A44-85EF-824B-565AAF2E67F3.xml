@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="ENTORN" directorySegmentName="seg_0" id="47AE2C76-1A44-85EF-824B-565AAF2E67F3">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="descripcio" id="23075EB7-EFD2-22C3-1127-16E88AB03FAC">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ambit" id="5D86A9FE-D644-A470-EE08-EFE0B82776AF">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id" id="942D7CA4-E26F-0FED-6837-317AA1EDD797">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="ENTORN_AMBIT_FK" id="1721810F-598D-9DDA-C612-07A86CD6CE60">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="ENTORN_PK" id="CFAB2B2F-E8C4-446D-C2C4-84D4724201EA">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

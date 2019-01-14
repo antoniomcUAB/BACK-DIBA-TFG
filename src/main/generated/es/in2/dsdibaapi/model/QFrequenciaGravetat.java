@@ -50,7 +50,7 @@ public class QFrequenciaGravetat extends EntityPathBase<FrequenciaGravetat> {
 
     public QFrequenciaGravetat(Class<? extends FrequenciaGravetat> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.gravetat = inits.isInitialized("gravetat") ? new QGravetat(forProperty("gravetat"), inits.get("gravetat")) : null;
+        this.gravetat = inits.isInitialized("gravetat") ? new QGravetat(forProperty("gravetat")) : null;
         this.situacioSocial = inits.isInitialized("situacioSocial") ? new QSituacioSocial(forProperty("situacioSocial"), inits.get("situacioSocial")) : null;
     }
 

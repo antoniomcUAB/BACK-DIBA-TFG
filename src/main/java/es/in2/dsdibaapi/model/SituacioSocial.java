@@ -29,11 +29,19 @@ public @Data class SituacioSocial implements Serializable {
 	private long ID;
 	private String SOCIAL;
 	private String DEFINICIO;
+	private Double vulnerabilitat;
+	private Double risc;
+	private Double altRisc;
 	
 	@ManyToOne
     @JoinColumn(name="entorn",foreignKey= @ForeignKey(name = "SITUACIO_SOCIAL_ENTORN_FK"))
 	@JsonIgnore
     private Entorn entorn;
+	
+	@ManyToOne
+    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "SITUACIO_SOCIAL_VERSIO_FK"))
+	@JsonIgnore
+    private VersioModel versioModel;
 	
 	@OneToMany(mappedBy = "situacioSocial")
 	@JsonProperty("Items")
@@ -43,10 +51,14 @@ public @Data class SituacioSocial implements Serializable {
 		
 	}
 
-	public SituacioSocial (String SOCIAL,String DEFINICIO, Entorn ENTORN) {
+	public SituacioSocial (VersioModel versioModel,String SOCIAL,String DEFINICIO, Entorn ENTORN, Double vulnerabilitat, Double risc, Double altRisc) {
 		this.SOCIAL=SOCIAL;
 		this.DEFINICIO=DEFINICIO;
-		this.entorn = ENTORN;
+		this.entorn = ENTORN;		
+		this.vulnerabilitat=vulnerabilitat;
+		this.risc=risc;
+		this.altRisc=altRisc;
+		this.versioModel=versioModel;
 	}
 	
 }

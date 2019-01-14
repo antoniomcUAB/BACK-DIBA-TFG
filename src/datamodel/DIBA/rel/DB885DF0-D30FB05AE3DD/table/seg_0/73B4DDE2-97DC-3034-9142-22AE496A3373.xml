@@ -1,0 +1,79 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="73B4DDE2-97DC-3034-9142-22AE496A3373" name="EX_REFERENCIA">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>A62DD78A-D95E-50B1-C6A9-78E64DAEFADC</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="expedient" id="622E14D1-D847-3549-C2BC-D866B13CA981">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>66D9F81C-7218-D395-1F2E-44D1C6B7BA6D</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A7816893-7051-1AC3-BE44-4E99FD3533BF" referredColumn="56DD5253-2627-10FE-789F-BE14153A21B9"/>
+</associations>
+</Column>
+<Column name="persona" id="CA77B395-D5A6-6E3B-54B7-3EB8400018D4">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>9A7DAA19-AC19-8CE1-3915-9DDE7618E007</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B0CB81A0-407C-E38F-84D8-91CEBA059038" referredColumn="82D8D1CF-A817-FA58-3778-B1651754E67E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A06445DD-99FD-52DE-4746-CAD70EA90A99" name="EX_REFERENCIA_PK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>01C4D497-5C01-EE96-B4DD-81C0B40FC631</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="622E14D1-D847-3549-C2BC-D866B13CA981"/>
+<colUsage columnID="CA77B395-D5A6-6E3B-54B7-3EB8400018D4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4DFD1724-79B5-7C7A-DCBB-96F9ED062A3F" name="EX_REFERENCIA_EXPEDIENT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="622E14D1-D847-3549-C2BC-D866B13CA981"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="20367C32-56F9-5C2E-A2A6-289DA7495028" name="EX_REFERENCIA_PERSONA_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CA77B395-D5A6-6E3B-54B7-3EB8400018D4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

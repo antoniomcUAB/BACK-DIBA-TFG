@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="FREQUENCIA_GRAVETAT" directorySegmentName="seg_0" id="EED4C4FD-AE0B-D753-4B83-04151041B615">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="id" id="12CED8E7-1D23-594C-54B3-ED4317DD5911">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="evidencia" id="19B2DD92-8B39-9E79-D8E9-D5537B9C32DA">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="gravetat" id="2C3A2E66-3ECF-CADB-9CDD-2EF66FF99DE5">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="situacio_social" id="75951147-BECE-DD9E-B268-F743D0531FE5">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FREQ_GRAVETAT_FK" id="4B6892EE-9DB2-245D-3536-A089DA6EF292">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FREQ_SITUACIO_SOCIAL_FK" id="59971BE2-E946-9277-8DAD-EA5D62025AE5">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="MODEL_PK" id="A24E28ED-67AB-8287-4D08-C61E05CD63D0">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

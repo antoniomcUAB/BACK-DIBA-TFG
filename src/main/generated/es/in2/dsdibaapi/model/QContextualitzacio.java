@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -17,26 +18,43 @@ public class QContextualitzacio extends EntityPathBase<Contextualitzacio> {
 
     private static final long serialVersionUID = -1675443623L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QContextualitzacio contextualitzacio = new QContextualitzacio("contextualitzacio");
 
-    public final StringPath AMBIT = createString("AMBIT");
+    public final QExpedient expedient;
 
-    public final StringPath CODI = createString("CODI");
-
-    public final StringPath DESCRIPCIO = createString("DESCRIPCIO");
+    public final QFactor factor;
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
+    public final BooleanPath membreUnic = createBoolean("membreUnic");
+
+    public final BooleanPath mesUC = createBoolean("mesUC");
+
+    public final QPersona persona;
+
     public QContextualitzacio(String variable) {
-        super(Contextualitzacio.class, forVariable(variable));
+        this(Contextualitzacio.class, forVariable(variable), INITS);
     }
 
     public QContextualitzacio(Path<? extends Contextualitzacio> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QContextualitzacio(PathMetadata metadata) {
-        super(Contextualitzacio.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QContextualitzacio(PathMetadata metadata, PathInits inits) {
+        this(Contextualitzacio.class, metadata, inits);
+    }
+
+    public QContextualitzacio(Class<? extends Contextualitzacio> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.expedient = inits.isInitialized("expedient") ? new QExpedient(forProperty("expedient"), inits.get("expedient")) : null;
+        this.factor = inits.isInitialized("factor") ? new QFactor(forProperty("factor"), inits.get("factor")) : null;
+        this.persona = inits.isInitialized("persona") ? new QPersona(forProperty("persona")) : null;
     }
 
 }

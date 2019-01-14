@@ -22,6 +22,8 @@ public class QSituacioSocial extends EntityPathBase<SituacioSocial> {
 
     public static final QSituacioSocial situacioSocial = new QSituacioSocial("situacioSocial");
 
+    public final NumberPath<Double> altRisc = createNumber("altRisc", Double.class);
+
     public final StringPath DEFINICIO = createString("DEFINICIO");
 
     public final QEntorn entorn;
@@ -30,7 +32,13 @@ public class QSituacioSocial extends EntityPathBase<SituacioSocial> {
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
+    public final NumberPath<Double> risc = createNumber("risc", Double.class);
+
     public final StringPath SOCIAL = createString("SOCIAL");
+
+    public final QVersioModel versioModel;
+
+    public final NumberPath<Double> vulnerabilitat = createNumber("vulnerabilitat", Double.class);
 
     public QSituacioSocial(String variable) {
         this(SituacioSocial.class, forVariable(variable), INITS);
@@ -51,6 +59,7 @@ public class QSituacioSocial extends EntityPathBase<SituacioSocial> {
     public QSituacioSocial(Class<? extends SituacioSocial> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.entorn = inits.isInitialized("entorn") ? new QEntorn(forProperty("entorn"), inits.get("entorn")) : null;
+        this.versioModel = inits.isInitialized("versioModel") ? new QVersioModel(forProperty("versioModel")) : null;
     }
 
 }

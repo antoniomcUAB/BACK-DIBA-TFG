@@ -20,13 +20,13 @@ public class QExpedient extends EntityPathBase<Expedient> {
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QExpedient expedient1 = new QExpedient("expedient1");
+    public static final QExpedient expedient = new QExpedient("expedient");
 
-    public final StringPath DATA = createString("DATA");
+    public final DateTimePath<java.util.Date> DATA = createDateTime("DATA", java.util.Date.class);
+
+    public final ListPath<Diagnostic, QDiagnostic> diagnostic = this.<Diagnostic, QDiagnostic>createList("diagnostic", Diagnostic.class, QDiagnostic.class, PathInits.DIRECT2);
 
     public final StringPath EXPEDIENT = createString("EXPEDIENT");
-
-    public final QExpedient expedient;
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
@@ -34,7 +34,13 @@ public class QExpedient extends EntityPathBase<Expedient> {
 
     public final StringPath OBSERVACIONS = createString("OBSERVACIONS");
 
+    public final SetPath<Persona, QPersona> persona = this.<Persona, QPersona>createSet("persona", Persona.class, QPersona.class, PathInits.DIRECT2);
+
     public final StringPath PROFESSIONAL = createString("PROFESSIONAL");
+
+    public final NumberPath<Long> totalFamilia = createNumber("totalFamilia", Long.class);
+
+    public final QVersioModel versioModel;
 
     public QExpedient(String variable) {
         this(Expedient.class, forVariable(variable), INITS);
@@ -54,7 +60,7 @@ public class QExpedient extends EntityPathBase<Expedient> {
 
     public QExpedient(Class<? extends Expedient> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.expedient = inits.isInitialized("expedient") ? new QExpedient(forProperty("expedient"), inits.get("expedient")) : null;
+        this.versioModel = inits.isInitialized("versioModel") ? new QVersioModel(forProperty("versioModel")) : null;
     }
 
 }

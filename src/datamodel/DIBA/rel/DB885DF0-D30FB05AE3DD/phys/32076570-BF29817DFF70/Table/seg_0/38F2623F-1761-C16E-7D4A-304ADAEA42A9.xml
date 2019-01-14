@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="SITUACIO_SOCIAL" directorySegmentName="seg_0" id="38F2623F-1761-C16E-7D4A-304ADAEA42A9">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="entorn" id="09C5A4DE-29B1-F6E3-BFC8-FD3AC1BAD343">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="definicio" id="3D96A187-1501-D37D-B65D-DAE7F1B2ABAB">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id" id="5BAB7B25-0BA1-C2D6-D838-FFB59D785B32">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="risc" id="608FC30A-9C51-E459-347E-27729131ECAE">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="vulnerabilitat" id="66E969DA-C83D-A617-4B2C-9D98305DC76E">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="alt_risc" id="73C09CD0-EF63-A9A1-A3C5-6C939697A4F1">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="social" id="CCF4A779-7560-9D0A-CB4B-45CB291F084E">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="SITUACIO_SOCIAL_ENTORN_FK" id="3DE6A822-DA86-08C1-60F4-E81D36679DBC">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="SITUACIO_SOCIAL_PK" id="845F5A7D-D71C-F307-08D5-EB451A8ABAF3">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

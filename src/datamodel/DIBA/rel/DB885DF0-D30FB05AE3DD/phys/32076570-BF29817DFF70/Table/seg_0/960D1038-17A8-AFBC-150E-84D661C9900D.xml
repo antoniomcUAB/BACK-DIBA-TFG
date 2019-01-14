@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="CRITERI" directorySegmentName="seg_0" id="960D1038-17A8-AFBC-150E-84D661C9900D">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="risc" id="3D8510A6-DDD8-205F-A247-7D38C72449F5">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="evidencia" id="4F72CB65-CF30-A405-21F7-96BA822A5F20">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id" id="79E8D0EC-B47F-5C9B-A9B4-F724FBE0658E">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="frequencia" id="D1F1BFEF-004A-6A99-F89C-B7E8541CA1A4">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="frequencia_gravetat" id="FFBF20B5-19C8-D50D-A1B5-CE431621F71A">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="CRITERI_RISC_FK" id="16AF3D60-3111-F3C2-F0D1-689C5525B3BC">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="CRITERI_FREQUENCIA_GRAVETAT_FK" id="B1D792BF-E9D4-6A3C-9692-D5898E0B07BB">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="CRITERI_FREQUENCIA_FK" id="B5259F36-1497-9B58-24CA-6BE568E50740">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="CRITERI_PK" id="599ECA1A-59D3-2FF8-E68C-E039AB37618C">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

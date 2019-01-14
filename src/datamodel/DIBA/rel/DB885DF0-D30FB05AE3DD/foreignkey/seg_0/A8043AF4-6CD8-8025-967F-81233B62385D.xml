@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A8043AF4-6CD8-8025-967F-81233B62385D" containerWithKeyObject="F64582CA-AC83-8904-81F0-16CAB4EFB3EC" localFKIndex="A9D8CAB6-AB7D-2B65-7CCA-9360CBCFEAEE" name="DIAGNOSTICv1_GRAVETAT_FK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:26 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>AF620D7C-978E-B91C-1C27-9EB321CE6C6C</importedID>
+<referredTableLongName>GRAVETAT</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>DFDD617C-AC68-EDC7-DFA9-2DEC7FF34F38</referredTableID>
+<keyObject>4159CA9B-E30B-A856-2CE7-2DCC7823E1CD</keyObject>
+<referredKeyID>4159CA9B-E30B-A856-2CE7-2DCC7823E1CD</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

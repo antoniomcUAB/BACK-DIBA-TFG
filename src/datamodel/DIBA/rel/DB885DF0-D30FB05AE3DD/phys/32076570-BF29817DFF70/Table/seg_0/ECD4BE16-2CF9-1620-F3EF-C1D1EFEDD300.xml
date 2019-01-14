@@ -1,0 +1,31 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="FREQUENCIA" directorySegmentName="seg_0" id="ECD4BE16-2CF9-1620-F3EF-C1D1EFEDD300">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="descripcio" id="6E526D6E-9B24-DDA9-A994-0733143EC1DC">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id" id="74528FB3-3399-54D3-4B05-AD70AA18EACF">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="FREQUENCIA_PK" id="FB75DEFE-AC6D-E105-C40E-3365D84B49D5">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-09 09:26:00 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

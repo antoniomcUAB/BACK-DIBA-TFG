@@ -22,19 +22,25 @@ public class QDiagnostic extends EntityPathBase<Diagnostic> {
 
     public static final QDiagnostic diagnostic = new QDiagnostic("diagnostic");
 
+    public final QEntorn entorn;
+
     public final QExpedient expedient;
+
+    public final StringPath factor = createString("factor");
+
+    public final QFrequencia frequencia;
 
     public final QGravetat gravetat;
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
-    public final QModalitatDiagnostic modalitatDiagnostic;
-
-    public final QQuestio questio;
+    public final QPersona persona;
 
     public final QRisc risc;
 
-    public final QTipusPersona tipusPersona;
+    public final QSituacioSocial situacioSocial;
+
+    public final BooleanPath unitatFamiliar = createBoolean("unitatFamiliar");
 
     public QDiagnostic(String variable) {
         this(Diagnostic.class, forVariable(variable), INITS);
@@ -54,12 +60,13 @@ public class QDiagnostic extends EntityPathBase<Diagnostic> {
 
     public QDiagnostic(Class<? extends Diagnostic> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.entorn = inits.isInitialized("entorn") ? new QEntorn(forProperty("entorn"), inits.get("entorn")) : null;
         this.expedient = inits.isInitialized("expedient") ? new QExpedient(forProperty("expedient"), inits.get("expedient")) : null;
-        this.gravetat = inits.isInitialized("gravetat") ? new QGravetat(forProperty("gravetat"), inits.get("gravetat")) : null;
-        this.modalitatDiagnostic = inits.isInitialized("modalitatDiagnostic") ? new QModalitatDiagnostic(forProperty("modalitatDiagnostic"), inits.get("modalitatDiagnostic")) : null;
-        this.questio = inits.isInitialized("questio") ? new QQuestio(forProperty("questio"), inits.get("questio")) : null;
-        this.risc = inits.isInitialized("risc") ? new QRisc(forProperty("risc"), inits.get("risc")) : null;
-        this.tipusPersona = inits.isInitialized("tipusPersona") ? new QTipusPersona(forProperty("tipusPersona"), inits.get("tipusPersona")) : null;
+        this.frequencia = inits.isInitialized("frequencia") ? new QFrequencia(forProperty("frequencia")) : null;
+        this.gravetat = inits.isInitialized("gravetat") ? new QGravetat(forProperty("gravetat")) : null;
+        this.persona = inits.isInitialized("persona") ? new QPersona(forProperty("persona")) : null;
+        this.risc = inits.isInitialized("risc") ? new QRisc(forProperty("risc")) : null;
+        this.situacioSocial = inits.isInitialized("situacioSocial") ? new QSituacioSocial(forProperty("situacioSocial"), inits.get("situacioSocial")) : null;
     }
 
 }

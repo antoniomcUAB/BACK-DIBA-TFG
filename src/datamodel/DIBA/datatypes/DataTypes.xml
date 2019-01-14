@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<DataTypesDesign class="oracle.dbtools.crest.model.design.datatypes.DataTypesDesign" name="DataTypes" id="B5611B0E-7563-CB7C-24FA-43FCE806641B" mainViewID="C188A32E-32CA-5C8D-9618-05293DCD380F">
+<DataTypesDesign class="oracle.dbtools.crest.model.design.datatypes.DataTypesDesign" name="DataTypes" id="3F4F2A98-B523-BA49-0679-FF5881F6159B" mainViewID="24B888B2-F429-1E84-C672-3A86C968D848">
 <createdBy>danielfi</createdBy>
-<createdTime>2018-11-27 16:52:01 UTC</createdTime>
+<createdTime>2019-01-09 09:24:49 UTC</createdTime>
 <ownerDesignName>DIBA</ownerDesignName>
 <shouldBeOpen>false</shouldBeOpen>
 <collectionOfRefsPrefix>array_ref_</collectionOfRefsPrefix>
