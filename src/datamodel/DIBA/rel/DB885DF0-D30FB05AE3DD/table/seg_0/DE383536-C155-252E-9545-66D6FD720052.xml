@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DE383536-C155-252E-9545-66D6FD720052" name="PROFESSIONAL">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-14 16:24:28 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<ordsAlias>table_21</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="1ACF1F6E-CD61-B049-9495-E973521069F8">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-14 16:25:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nom" id="A598B381-7CEA-2F5A-448C-3CB4245A7495">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-14 16:25:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cognom1" id="3F1B7CE6-134E-4D90-F417-E861AB078523">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-14 16:25:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cognom2" id="08225193-A413-7044-6883-E0E18B01D365">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-14 16:25:37 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="municipi" id="5F58B1E2-8667-251C-3299-C5EA69A4A3EA">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-14 16:26:17 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B861B27D-3D05-3E4D-0533-2B87F8C9DB80" referredColumn="BFD8103E-BFC7-5267-0EBE-23A31E1FB3A4"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D8C3C54E-779F-CCB0-753C-5082B8C4973F" name="PROFESSIONAL_PK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-14 16:26:13 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1ACF1F6E-CD61-B049-9495-E973521069F8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7E839AAB-ECB7-5C22-010A-417C8C5DD570" name="PROFESSIONAL_MUNICIPI_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-14 16:26:17 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5F58B1E2-8667-251C-3299-C5EA69A4A3EA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

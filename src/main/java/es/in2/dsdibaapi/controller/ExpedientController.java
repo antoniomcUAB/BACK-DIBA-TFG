@@ -31,7 +31,7 @@ public class ExpedientController {
 	@RequestMapping(value = "/expedient/{id}", method = RequestMethod.GET)
 	@ApiOperation(value = "Consulta d'un expedient", notes = "")
 	  public Expedient getExpedient(@PathVariable Long id) {
-	    return expedientRepository.findOne(id);
+	    return expedientRepository.findById(id).get();
 	  }
 
 	
@@ -41,7 +41,7 @@ public class ExpedientController {
 	@ApiOperation(value = "Consulta/modificació d'un expedient", notes = "")
 	  public Expedient putExpedient(@RequestBody Expedient expedient,@PathVariable Long versio) {	
 		
-		VersioModel versioModel = versionRepository.getOne(versio);
+		VersioModel versioModel = versionRepository.findById(versio).get();
 		
 		expedient.setVersioModel(versioModel);
 		

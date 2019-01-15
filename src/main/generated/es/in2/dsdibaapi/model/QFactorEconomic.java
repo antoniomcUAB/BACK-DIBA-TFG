@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -17,22 +18,35 @@ public class QFactorEconomic extends EntityPathBase<FactorEconomic> {
 
     private static final long serialVersionUID = -16998799L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QFactorEconomic factorEconomic = new QFactorEconomic("factorEconomic");
 
     public final StringPath DESCRIPCIO = createString("DESCRIPCIO");
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
+    public final QVersioModel versioModel;
+
     public QFactorEconomic(String variable) {
-        super(FactorEconomic.class, forVariable(variable));
+        this(FactorEconomic.class, forVariable(variable), INITS);
     }
 
     public QFactorEconomic(Path<? extends FactorEconomic> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QFactorEconomic(PathMetadata metadata) {
-        super(FactorEconomic.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QFactorEconomic(PathMetadata metadata, PathInits inits) {
+        this(FactorEconomic.class, metadata, inits);
+    }
+
+    public QFactorEconomic(Class<? extends FactorEconomic> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.versioModel = inits.isInitialized("versioModel") ? new QVersioModel(forProperty("versioModel")) : null;
     }
 
 }

@@ -31,10 +31,10 @@ public @Data class Expedient implements Serializable {
 	@Id @GeneratedValue 
 	private long ID;
 	private String EXPEDIENT;
-	private String PROFESSIONAL;
 	private String NOM;
 	private Date DATA;
 	private String OBSERVACIONS;
+	private String estat;
 	private Long totalFamilia;
 	
 	
@@ -51,6 +51,11 @@ public @Data class Expedient implements Serializable {
 	@JsonIgnore
     private VersioModel versioModel;
 	
+	@ManyToOne
+    @JoinColumn(name="professional",foreignKey= @ForeignKey(name = "EXPEDIENT_PROFESSIONAL_FK"))
+	@JsonIgnore
+    private Professional professional;
+	
 	@OneToMany(mappedBy = "expedient")	
     private List<Diagnostic> diagnostic;
 	
@@ -60,20 +65,22 @@ public @Data class Expedient implements Serializable {
 	}
 
 	public Expedient (String EXPEDIENT, 
-						String PROFESSIONAL, 
+						Professional professional, 
 						String NOM, Date DATA, 
-						String OBSERVACIONS, 
+						String OBSERVACIONS,
 						Set<Persona> personas, 
 						Long totalFamilia,
-						VersioModel versioModel) {
+						VersioModel versioModel,
+						String estat) {
 		this.EXPEDIENT=EXPEDIENT;
-		this.PROFESSIONAL=PROFESSIONAL;
 		this.NOM=NOM;
 		this.persona=personas;
 		this.DATA=DATA;
 		this.OBSERVACIONS=OBSERVACIONS;
 		this.totalFamilia=totalFamilia;
 		this.versioModel=versioModel;
+		this.professional=professional;
+		this.estat=estat;
 	}
 
 	

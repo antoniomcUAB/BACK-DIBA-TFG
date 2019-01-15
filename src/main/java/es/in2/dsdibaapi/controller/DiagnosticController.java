@@ -47,7 +47,7 @@ public class DiagnosticController {
 	@ApiOperation(value = "Consulta d'un diagnóstic", notes = "")
 	  public Diagnostic getDiagnostic(@PathVariable Long id) {
 	     
-		Diagnostic diagnostic = diagnosticRepository.findOne(id);		
+		Diagnostic diagnostic = diagnosticRepository.findById(id).get();		
 		
 		Evaluation.eval(diagnostic, env);
 	    
@@ -72,9 +72,9 @@ public class DiagnosticController {
 	@ApiOperation(value = "Alta/modificació d'un diagnóstic", notes = "")
 	  public Diagnostic putDiagnostic(@PathVariable Long expedient,@PathVariable Long entorn,@RequestBody Diagnostic diagnostic) {
 		
-		Expedient exp = expedientRepository.findOne(expedient);
+		Expedient exp = expedientRepository.findById(expedient).get();
 		
-		Entorn ent = entornRepository.findOne(entorn);
+		Entorn ent = entornRepository.findById(entorn).get();
 	    
 		diagnostic.setExpedient(exp);
 		diagnostic.setEntorn(ent);

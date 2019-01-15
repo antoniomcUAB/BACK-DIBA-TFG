@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="01581BDB-D599-8014-8FD7-7D5242291FCA" name="PROFESSIONAL_ROL">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-15 14:53:28 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<ordsAlias>table_22</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="professional" id="F415FCCF-4B3A-944A-8A84-85621D3AC242">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-15 14:54:05 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="69D7C07A-4DBA-3E6F-60AE-4A01C877A629" referredColumn="1ACF1F6E-CD61-B049-9495-E973521069F8"/>
+</associations>
+</Column>
+<Column name="rol" id="ABC671B4-4524-CEDD-C22A-2AB1A59851DF">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-15 14:54:10 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6BC8430F-C000-F612-49CB-181A220D7741" referredColumn="ABBE36AA-D998-BFAD-77F1-3E08A4917EBA"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="596F518B-CF4E-300F-01ED-919796DF6C53" name="PROFESSIONAL_ROL_PK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-15 14:53:58 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F415FCCF-4B3A-944A-8A84-85621D3AC242"/>
+<colUsage columnID="ABC671B4-4524-CEDD-C22A-2AB1A59851DF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="18C98E89-8F56-FFFF-59D3-0304887653C2" name="PROFESSIONAL_ROL_PRO_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-15 14:54:05 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F415FCCF-4B3A-944A-8A84-85621D3AC242"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="65A9D139-54EE-329E-41E0-45CC9D5142EE" name="PROFESSIONAL_ROL_ROL_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-15 14:54:10 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ABC671B4-4524-CEDD-C22A-2AB1A59851DF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -127,6 +127,32 @@
 <colAssociation fkAssociation="5B2E424F-AE87-939F-4CFE-20928916ADA7" referredColumn="942D7CA4-E26F-0FED-6837-317AA1EDD797"/>
 </associations>
 </Column>
+<Column name="unitat_familiar" id="926BD2AA-B722-C5C0-5FB4-51F155A0DC71">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-15 16:04:24 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="factor" id="6915B726-EFCA-B420-A784-6A49FA276915">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-15 16:07:28 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="1E14AAC7-82CD-7B0E-9911-CDEAE6B8A0F0" name="DIAGNOSTICv1_PK">

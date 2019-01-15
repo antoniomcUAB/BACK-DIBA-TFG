@@ -44,7 +44,7 @@ public class ContextController {
 	@ApiOperation(value = "Consulta d'un factor de context", notes = "")
 	  public Contextualitzacio getContext(@PathVariable Long id) {
 	     
-		Contextualitzacio contextualitzacio = contextualitzacioRepository.findOne(id);		
+		Contextualitzacio contextualitzacio = contextualitzacioRepository.findById(id).get();		
 	    
 	    return contextualitzacio;
 	  }
@@ -54,9 +54,9 @@ public class ContextController {
 	@ApiOperation(value = "Factors de context per entorn", notes = "")
 	  public Iterable<Contextualitzacio> getContext(@PathVariable Long expedient,@PathVariable Long entorn) {
 		
-		Expedient exp = expedientRepository.findOne(expedient);
+		Expedient exp = expedientRepository.findById(expedient).get();
 		
-		Entorn ent = entornRepository.findOne(entorn);
+		Entorn ent = entornRepository.findById(entorn).get();
 		
 		Predicate predicate = QContextualitzacio.contextualitzacio.factor.entorn.ID.eq(entorn)
 						.and(QContextualitzacio.contextualitzacio.expedient.ID.eq(expedient));
@@ -73,9 +73,9 @@ public class ContextController {
 	@ApiOperation(value = "Alta/modificació d'un factor de context", notes = "")
 	  public Contextualitzacio putContext(@PathVariable Long expedient,@PathVariable Long factor,@RequestBody Contextualitzacio contextualitzacio) {
 		
-		Expedient exp = expedientRepository.findOne(expedient);
+		Expedient exp = expedientRepository.findById(expedient).get();
 		
-		Factor f = factorRepository.findOne(factor);
+		Factor f = factorRepository.findById(factor).get();
 	    
 		contextualitzacio.setExpedient(exp);
 		contextualitzacio.setFactor(f);

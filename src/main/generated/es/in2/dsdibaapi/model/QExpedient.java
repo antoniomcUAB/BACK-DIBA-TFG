@@ -26,6 +26,8 @@ public class QExpedient extends EntityPathBase<Expedient> {
 
     public final ListPath<Diagnostic, QDiagnostic> diagnostic = this.<Diagnostic, QDiagnostic>createList("diagnostic", Diagnostic.class, QDiagnostic.class, PathInits.DIRECT2);
 
+    public final StringPath estat = createString("estat");
+
     public final StringPath EXPEDIENT = createString("EXPEDIENT");
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
@@ -36,7 +38,7 @@ public class QExpedient extends EntityPathBase<Expedient> {
 
     public final SetPath<Persona, QPersona> persona = this.<Persona, QPersona>createSet("persona", Persona.class, QPersona.class, PathInits.DIRECT2);
 
-    public final StringPath PROFESSIONAL = createString("PROFESSIONAL");
+    public final QProfessional professional;
 
     public final NumberPath<Long> totalFamilia = createNumber("totalFamilia", Long.class);
 
@@ -60,6 +62,7 @@ public class QExpedient extends EntityPathBase<Expedient> {
 
     public QExpedient(Class<? extends Expedient> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.professional = inits.isInitialized("professional") ? new QProfessional(forProperty("professional"), inits.get("professional")) : null;
         this.versioModel = inits.isInitialized("versioModel") ? new QVersioModel(forProperty("versioModel")) : null;
     }
 

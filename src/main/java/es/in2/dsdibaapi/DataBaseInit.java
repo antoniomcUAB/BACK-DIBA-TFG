@@ -18,7 +18,9 @@ import es.in2.dsdibaapi.model.FactorEconomic;
 import es.in2.dsdibaapi.model.Frequencia;
 import es.in2.dsdibaapi.model.FrequenciaGravetat;
 import es.in2.dsdibaapi.model.Gravetat;
+import es.in2.dsdibaapi.model.Municipi;
 import es.in2.dsdibaapi.model.Risc;
+import es.in2.dsdibaapi.model.Rol;
 import es.in2.dsdibaapi.model.SituacioSocial;
 import es.in2.dsdibaapi.model.VersioModel;
 import es.in2.dsdibaapi.repository.AmbitRepository;
@@ -29,7 +31,9 @@ import es.in2.dsdibaapi.repository.FactorRepository;
 import es.in2.dsdibaapi.repository.FrequenciaGravetatRepository;
 import es.in2.dsdibaapi.repository.FrequenciaRepository;
 import es.in2.dsdibaapi.repository.GravetatRepository;
+import es.in2.dsdibaapi.repository.MunicipiRepository;
 import es.in2.dsdibaapi.repository.RiscRepository;
+import es.in2.dsdibaapi.repository.RolRepository;
 import es.in2.dsdibaapi.repository.SituacioSocialRepository;
 import es.in2.dsdibaapi.repository.VersioModelRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -71,13 +75,13 @@ public class DataBaseInit implements CommandLineRunner {
 	@Autowired
 	private FactorEconomicRepository factorEconomicRepository;
 	
-	/*@Autowired
-	private PersonaRepository personaRepository;
+	@Autowired
+	private RolRepository rolRepository;
 	
 	@Autowired
-	private ExpedientRepository expedientRepository;
+	private MunicipiRepository municipiRepository;
 	
-	
+/*	
 	@Autowired
 	private DiagnosticRepository diagnosticRepository;
 	
@@ -111,6 +115,13 @@ public class DataBaseInit implements CommandLineRunner {
 		Gravetat  altaGravetat=gravetatRepository.save(new Gravetat("Alta"));
 		Gravetat proteccioGravetat=gravetatRepository.save(new Gravetat("Protecció"));
 		Gravetat riscGravetat=gravetatRepository.save(new Gravetat("Risc"));
+		
+		rolRepository.save(new Rol ("Gerent"));
+		rolRepository.save(new Rol ("Tècnic"));
+		
+		municipiRepository.save(new Municipi("Barcelona"));
+		municipiRepository.save(new Municipi("Tarrgona"));
+		municipiRepository.save(new Municipi("LLeida"));
 		
 		Ambit ambit = ambitRepository.save(new Ambit ("Autonomia"));
 		
@@ -665,15 +676,15 @@ public class DataBaseInit implements CommandLineRunner {
 		
 		
 
-		factorEconomicRepository.save(new FactorEconomic("Pagar les factures d'habitatge o serveis públics."));
-		factorEconomicRepository.save(new FactorEconomic("Mantenir la llar adequadament calenta."));
-		factorEconomicRepository.save(new FactorEconomic("Assumir despeses inesperades."));
-		factorEconomicRepository.save(new FactorEconomic("Menjar carn o les proteénes de forma regular."));
-		factorEconomicRepository.save(new FactorEconomic("Anar de vacances."));
-		factorEconomicRepository.save(new FactorEconomic("Disposar de cotxe."));
-		factorEconomicRepository.save(new FactorEconomic("Disposar de rentadora."));
-		factorEconomicRepository.save(new FactorEconomic("Disposar de connexió a internet."));
-		factorEconomicRepository.save(new FactorEconomic("Disposar de teléfon móbil"));
+		factorEconomicRepository.save(new FactorEconomic(versio,"Pagar les factures d'habitatge o serveis públics."));
+		factorEconomicRepository.save(new FactorEconomic(versio,"Mantenir la llar adequadament calenta."));
+		factorEconomicRepository.save(new FactorEconomic(versio,"Assumir despeses inesperades."));
+		factorEconomicRepository.save(new FactorEconomic(versio,"Menjar carn o les proteénes de forma regular."));
+		factorEconomicRepository.save(new FactorEconomic(versio,"Anar de vacances."));
+		factorEconomicRepository.save(new FactorEconomic(versio,"Disposar de cotxe."));
+		factorEconomicRepository.save(new FactorEconomic(versio,"Disposar de rentadora."));
+		factorEconomicRepository.save(new FactorEconomic(versio,"Disposar de connexió a internet."));
+		factorEconomicRepository.save(new FactorEconomic(versio,"Disposar de teléfon móbil"));
 		
 		ambit = ambitRepository.save(new Ambit ("Globalitat del cas"));
 		

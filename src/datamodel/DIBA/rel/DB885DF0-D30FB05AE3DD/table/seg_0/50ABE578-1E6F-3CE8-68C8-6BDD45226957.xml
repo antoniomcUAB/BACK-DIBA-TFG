@@ -34,19 +34,6 @@
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="professional" id="CD70EF33-B834-4C7B-185D-7A6FF6072316">
-<sourceDDLFile>schema.sql</sourceDDLFile>
-<createdBy>danielfi</createdBy>
-<createdTime>2019-01-09 09:26:26 UTC</createdTime>
-<ownerDesignName>DIBA</ownerDesignName>
-<importedID>BA30D1BD-962F-1538-57D3-5894C95C2DFA</importedID>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<domain>34A6E048-72D3-1EC9-19F8-969DCB4323EB</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="nom" id="2DEBA79D-4FA4-80E8-CA56-09D9C4F28D8C">
 <sourceDDLFile>schema.sql</sourceDDLFile>
 <createdBy>danielfi</createdBy>
@@ -113,6 +100,33 @@
 <colAssociation fkAssociation="B660D11F-66B7-7E77-E8C6-3460E641A82A" referredColumn="3631ECE8-C8CC-DE94-A8F5-66CE07B78265"/>
 </associations>
 </Column>
+<Column name="professional" id="16A31736-E934-007E-59F5-86103E9847C8">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-14 16:27:06 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="16D44C60-9BB1-6FAA-A0C1-7F3C6DEA09BA" referredColumn="1ACF1F6E-CD61-B049-9495-E973521069F8"/>
+</associations>
+</Column>
+<Column name="estat" id="33DF71C0-D4C4-E650-A966-55C76BE480FC">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-15 11:31:27 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="4178DE1C-BCCF-AE72-EBEE-E4CAFAE021EC" name="EXPEDIENT_PK">
@@ -137,6 +151,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="EC24521C-212B-35F8-D2DA-87AC7AC39B32"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="91C82925-100B-9E4A-C7DF-1E03A6C65787" name="EXPEDIENT_PROFESSIONAL_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-14 16:27:06 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="16A31736-E934-007E-59F5-86103E9847C8"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

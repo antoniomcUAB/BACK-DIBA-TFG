@@ -14,8 +14,12 @@
    <object objectType="Table" objectID="ECD4BE16-2CF9-1620-F3EF-C1D1EFEDD300" name="FREQUENCIA" seqName="seg_0"/>
    <object objectType="Table" objectID="EED4C4FD-AE0B-D753-4B83-04151041B615" name="FREQUENCIA_GRAVETAT" seqName="seg_0"/>
    <object objectType="Table" objectID="DFDD617C-AC68-EDC7-DFA9-2DEC7FF34F38" name="GRAVETAT" seqName="seg_0"/>
+   <object objectType="Table" objectID="30D213F4-C1B9-27D7-F0F3-AC1D5A2B1CBD" name="MUNICIPI" seqName="seg_0"/>
    <object objectType="Table" objectID="FCD14D94-5D63-88AC-726C-C507D0EA5E84" name="PERSONA" seqName="seg_0"/>
+   <object objectType="Table" objectID="DE383536-C155-252E-9545-66D6FD720052" name="PROFESSIONAL" seqName="seg_0"/>
+   <object objectType="Table" objectID="01581BDB-D599-8014-8FD7-7D5242291FCA" name="PROFESSIONAL_ROL" seqName="seg_0"/>
    <object objectType="Table" objectID="E792E6F9-2057-22D5-7140-F6AA5C883377" name="RISC" seqName="seg_0"/>
+   <object objectType="Table" objectID="29404BB8-D9D2-F45D-9503-93E0F80AAD0F" name="ROL" seqName="seg_0"/>
    <object objectType="Table" objectID="38F2623F-1761-C16E-7D4A-304ADAEA42A9" name="SITUACIO_SOCIAL" seqName="seg_0"/>
    <object objectType="Table" objectID="257FB9EC-98DE-3A28-9004-B4C207BDE1B1" name="VERSIO_MODEL" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="441F276E-57B8-9731-C757-C2F19744AC21" name="AVALUACIO_ENTORN_FK" seqName="seg_0" containerID="D684D395-02D3-7212-EEFC-495EF9F61415" refContainerID="47AE2C76-1A44-85EF-824B-565AAF2E67F3"/>
@@ -37,13 +41,18 @@
    <object objectType="FKIndexAssociation" objectID="9CE73804-522D-6570-D2EB-B35921923D18" name="ECONOMIA_EXPEDIENT_FK" seqName="seg_0" containerID="BA842EF1-A873-3BD7-F512-27DECD1E421C" refContainerID="50ABE578-1E6F-3CE8-68C8-6BDD45226957"/>
    <object objectType="FKIndexAssociation" objectID="4D241D8C-F371-6B63-ED1E-7BB559031392" name="ECONOMIA_FACTOR_ECONOMIC_FK" seqName="seg_0" containerID="BA842EF1-A873-3BD7-F512-27DECD1E421C" refContainerID="0B1C88EB-DDB5-632B-3BD1-FE828527812E"/>
    <object objectType="FKIndexAssociation" objectID="C7082F9C-E3D7-49DC-5998-811A6FC61A64" name="ENTORN_AMBIT_FK" seqName="seg_0" containerID="47AE2C76-1A44-85EF-824B-565AAF2E67F3" refContainerID="C18EBE97-01F1-9361-BCA2-C2F04756B556"/>
+   <object objectType="FKIndexAssociation" objectID="16D44C60-9BB1-6FAA-A0C1-7F3C6DEA09BA" name="EXPEDIENT_PROFESSIONAL_FK" seqName="seg_0" containerID="50ABE578-1E6F-3CE8-68C8-6BDD45226957" refContainerID="DE383536-C155-252E-9545-66D6FD720052"/>
+   <object objectType="FKIndexAssociation" objectID="B660D11F-66B7-7E77-E8C6-3460E641A82A" name="EXPEDIENT_VERSIO_MODEL_FK" seqName="seg_0" containerID="50ABE578-1E6F-3CE8-68C8-6BDD45226957" refContainerID="257FB9EC-98DE-3A28-9004-B4C207BDE1B1"/>
    <object objectType="FKIndexAssociation" objectID="A7816893-7051-1AC3-BE44-4E99FD3533BF" name="EX_REFERENCIA_EXPEDIENT_FK" seqName="seg_0" containerID="73B4DDE2-97DC-3034-9142-22AE496A3373" refContainerID="50ABE578-1E6F-3CE8-68C8-6BDD45226957"/>
    <object objectType="FKIndexAssociation" objectID="B0CB81A0-407C-E38F-84D8-91CEBA059038" name="EX_REFERENCIA_PERSONA_FK" seqName="seg_0" containerID="73B4DDE2-97DC-3034-9142-22AE496A3373" refContainerID="FCD14D94-5D63-88AC-726C-C507D0EA5E84"/>
+   <object objectType="FKIndexAssociation" objectID="97F8D22D-95B7-C7F5-5937-6E14A9D50082" name="FACTOR_ECONOMIC_VERSIO_FK" seqName="seg_0" containerID="0B1C88EB-DDB5-632B-3BD1-FE828527812E" refContainerID="257FB9EC-98DE-3A28-9004-B4C207BDE1B1"/>
    <object objectType="FKIndexAssociation" objectID="B4D381E5-E1CC-4B2A-2EC8-5F7682A0A280" name="FACTOR_ENTORN_FK" seqName="seg_0" containerID="0DEBD9E6-EB0E-CA9F-D252-AAD8F9C400A4" refContainerID="47AE2C76-1A44-85EF-824B-565AAF2E67F3"/>
    <object objectType="FKIndexAssociation" objectID="CB0EC2D8-5FA5-F618-B541-EFE0750F456D" name="FACTOR_GRAVETAT_FK" seqName="seg_0" containerID="0DEBD9E6-EB0E-CA9F-D252-AAD8F9C400A4" refContainerID="DFDD617C-AC68-EDC7-DFA9-2DEC7FF34F38"/>
-   <object objectType="FKIndexAssociation" objectID="B660D11F-66B7-7E77-E8C6-3460E641A82A" name="EXPEDIENT_VERSIO_MODEL_FK" seqName="seg_0" containerID="50ABE578-1E6F-3CE8-68C8-6BDD45226957" refContainerID="257FB9EC-98DE-3A28-9004-B4C207BDE1B1"/>
+   <object objectType="FKIndexAssociation" objectID="6BC8430F-C000-F612-49CB-181A220D7741" name="PROFESSIONAL_ROL_ROL_FK" seqName="seg_0" containerID="01581BDB-D599-8014-8FD7-7D5242291FCA" refContainerID="29404BB8-D9D2-F45D-9503-93E0F80AAD0F"/>
    <object objectType="FKIndexAssociation" objectID="361875C0-96FE-059B-799C-09E3DABDD42E" name="FREQ_GRAVETAT_FK" seqName="seg_0" containerID="EED4C4FD-AE0B-D753-4B83-04151041B615" refContainerID="DFDD617C-AC68-EDC7-DFA9-2DEC7FF34F38"/>
    <object objectType="FKIndexAssociation" objectID="B953E975-F61D-9F2A-9E8C-E4E87F0EA804" name="FREQ_SITUACIO_SOCIAL_FK" seqName="seg_0" containerID="EED4C4FD-AE0B-D753-4B83-04151041B615" refContainerID="38F2623F-1761-C16E-7D4A-304ADAEA42A9"/>
+   <object objectType="FKIndexAssociation" objectID="B861B27D-3D05-3E4D-0533-2B87F8C9DB80" name="PROFESSIONAL_MUNICIPI_FK" seqName="seg_0" containerID="DE383536-C155-252E-9545-66D6FD720052" refContainerID="30D213F4-C1B9-27D7-F0F3-AC1D5A2B1CBD"/>
+   <object objectType="FKIndexAssociation" objectID="69D7C07A-4DBA-3E6F-60AE-4A01C877A629" name="PROFESSIONAL_ROL_PRO_FK" seqName="seg_0" containerID="01581BDB-D599-8014-8FD7-7D5242291FCA" refContainerID="DE383536-C155-252E-9545-66D6FD720052"/>
    <object objectType="FKIndexAssociation" objectID="8566CDC6-ACD7-1117-333C-DC06813960EF" name="SITUACIO_SOCIAL_ENTORN_FK" seqName="seg_0" containerID="38F2623F-1761-C16E-7D4A-304ADAEA42A9" refContainerID="47AE2C76-1A44-85EF-824B-565AAF2E67F3"/>
    <object objectType="FKIndexAssociation" objectID="E2BC1BDF-F96C-858D-DA1B-B650AAD048E7" name="SITUACIO_SOCIAL_VERSIO_FK" seqName="seg_0" containerID="38F2623F-1761-C16E-7D4A-304ADAEA42A9" refContainerID="257FB9EC-98DE-3A28-9004-B4C207BDE1B1"/>
 </oracle.dbtools.crest.model.design.relational.RelationalDesign>

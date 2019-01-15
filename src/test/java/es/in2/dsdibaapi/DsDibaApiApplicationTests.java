@@ -15,7 +15,6 @@ import es.in2.dsdibaapi.model.Entorn;
 import es.in2.dsdibaapi.model.Expedient;
 import es.in2.dsdibaapi.model.Frequencia;
 import es.in2.dsdibaapi.model.Gravetat;
-import es.in2.dsdibaapi.model.Persona;
 import es.in2.dsdibaapi.model.Risc;
 import es.in2.dsdibaapi.model.SituacioSocial;
 import es.in2.dsdibaapi.model.VersioModel;
@@ -25,8 +24,11 @@ import es.in2.dsdibaapi.repository.EntornRepository;
 import es.in2.dsdibaapi.repository.ExpedientRepository;
 import es.in2.dsdibaapi.repository.FrequenciaRepository;
 import es.in2.dsdibaapi.repository.GravetatRepository;
+import es.in2.dsdibaapi.repository.MunicipiRepository;
 import es.in2.dsdibaapi.repository.PersonaRepository;
+import es.in2.dsdibaapi.repository.ProfessionalRepository;
 import es.in2.dsdibaapi.repository.RiscRepository;
+import es.in2.dsdibaapi.repository.RolRepository;
 import es.in2.dsdibaapi.repository.SituacioSocialRepository;
 import es.in2.dsdibaapi.repository.VersioModelRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -70,23 +72,32 @@ public class DsDibaApiApplicationTests {
 	private VersioModelRepository versioModelRepository;
 	
 	@Autowired
+	private ProfessionalRepository professionalRepository;
+	
+	@Autowired
+	private RolRepository rolRepository;
+	
+	@Autowired
+	private MunicipiRepository municipiRepository;
+	
+	@Autowired
 	private Environment env;
 	
-	Long gravetatBaixa=48548l;
-	Long gravetatModerada=48549l;
-	Long gravetaAlta =48550l;
-	Long gravetaProteccio=48551l;
-	Long gravetaRisc=48552l;
+	Long gravetatBaixa=54519l;
+	Long gravetatModerada=54520l;
+	Long gravetaAlta =54521l;
+	Long gravetaProteccio=54522l;
+	Long gravetaRisc=54523l;
 	
-	Long riscVulnerabilitat =48545l;
-	Long riscRisc=48546l;
-	Long riscAltRisc=48547l;
+	Long riscVulnerabilitat =54516l;
+	Long riscRisc=54517l;
+	Long riscAltRisc=54518l;
 	
-	Long freqOcasional =  48540l;
-	Long freqFrequent = 48541l;
-	Long freqContinua = 48542l;
-	Long freqPuntual = 48543l;
-	Long freqSense = 48544l;
+	Long freqOcasional =  54511l;
+	Long freqFrequent = 54512l;
+	Long freqContinua = 54513l;
+	Long freqPuntual = 54514l;
+	Long freqSense = 54515l;
 	
 	VersioModel versio;
 	
@@ -98,53 +109,67 @@ public class DsDibaApiApplicationTests {
 	@Test
 	public void contextLoads() {
 		
-		
+		/*
 		
 		Persona persona1 = personaRepository.save(new Persona ("Persona1","APE1","APE2"));
 		Persona persona2 = personaRepository.save(new Persona ("Persona2","APE1","APE2"));
 		
-		versio = versioModelRepository.findOne(48539l);
+		Set<Rol> rols = new HashSet<Rol> ();
 		
-		/*Expedient exp =expedientRepository.save(new Expedient ("11/AAAA/99", "Professional", "Test1", new Date (),"ddfd",new HashSet<Persona>() {{
+		
+		rols.add(rolRepository.findById(54525l).get());
+		
+		Municipi municipi = municipiRepository.findById(54526l).get();
+		
+		Professional professional = professionalRepository.save(new Professional ("Professional1","APE1","APE2",municipi,rols));
+		*/
+		/*
+		Professional professional = professionalRepository.findById(54858l).get();
+		Persona persona1 = personaRepository.findById(54856l).get();
+		Persona persona2 = personaRepository.findById(54857l).get();
+				
+		versio = versioModelRepository.findById(54510l).get();
+		
+		Expedient exp =expedientRepository.save(new Expedient ("11/AAAA/99", professional, "Test1", new Date (),"ddfd",new HashSet<Persona>() {{
             add(persona1);
             add(persona2);
-        }},2l,versio));*/
+        }},2l,versio,"BORRADOR"));*/
 		
-		exp =expedientRepository.findOne(48882l);
+		exp =expedientRepository.findById(54861L).get();
 		
-		//Entorn entorn = entornRepository.findOne(48554l);
+		//Entorn entorn = entornRepository.findById(48554l);
 		
-		SituacioSocial situacioSocial = situacioSocialRepository.findOne(48555l);
+		SituacioSocial situacioSocial = situacioSocialRepository.findById(54531l).get();
 		
-		Frequencia frequencia =frequenciaRepository.findOne(freqOcasional);
+		Frequencia frequencia =frequenciaRepository.findById(freqOcasional).get();
 		
-		Risc risc = riscRepository.findOne(riscVulnerabilitat);
+		Risc risc = riscRepository.findById(riscVulnerabilitat).get();
 		
-		Gravetat gravetat = gravetatRepository.findOne(gravetatBaixa);
+		Gravetat gravetat = gravetatRepository.findById(gravetatBaixa).get();
 		
 		
 		
 		Diagnostic d = new Diagnostic (exp,entorn,situacioSocial,risc,frequencia,gravetat,true);		
 	
 		
-		diagnosticController.putDiagnostic(exp.getID(), 48554l, d);
+		diagnosticController.putDiagnostic(exp.getID(), 54530l, d);
 		
 		
 		assertTrue(d.getFactor().equalsIgnoreCase("Vulnerabilitat"));
 		
-		gravetat = gravetatRepository.findOne(gravetatModerada);
+		gravetat = gravetatRepository.findById(gravetatModerada).get();
 		
 		d.setGravetat(gravetat);
 		
-		diagnosticController.putDiagnostic(exp.getID(), 48554l, d);
+		diagnosticController.putDiagnostic(exp.getID(), 54530l, d);
 		
 		assertTrue(d.getFactor().equalsIgnoreCase("Risc"));
 		
-		frequencia =frequenciaRepository.findOne(freqContinua);
+		frequencia =frequenciaRepository.findById(freqContinua).get();
 		
 		d.setFrequencia(frequencia);
 		
-		diagnosticController.putDiagnostic(exp.getID(), 48554l, d);
+		diagnosticController.putDiagnostic(exp.getID(), 54530l, d);
 		
 		assertTrue(d.getFactor().equalsIgnoreCase("Alt Risc"));
 		
