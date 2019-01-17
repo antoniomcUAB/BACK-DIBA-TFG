@@ -30,7 +30,7 @@ public class QContextualitzacio extends EntityPathBase<Contextualitzacio> {
 
     public final BooleanPath membreUnic = createBoolean("membreUnic");
 
-    public final BooleanPath mesUC = createBoolean("mesUC");
+    public final BooleanPath mesUc = createBoolean("mesUc");
 
     public final QPersona persona;
 

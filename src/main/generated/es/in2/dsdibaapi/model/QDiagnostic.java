@@ -26,7 +26,7 @@ public class QDiagnostic extends EntityPathBase<Diagnostic> {
 
     public final QExpedient expedient;
 
-    public final StringPath factor = createString("factor");
+    public final QRisc factor;
 
     public final QFrequencia frequencia;
 
@@ -62,6 +62,7 @@ public class QDiagnostic extends EntityPathBase<Diagnostic> {
         super(type, metadata, inits);
         this.entorn = inits.isInitialized("entorn") ? new QEntorn(forProperty("entorn"), inits.get("entorn")) : null;
         this.expedient = inits.isInitialized("expedient") ? new QExpedient(forProperty("expedient"), inits.get("expedient")) : null;
+        this.factor = inits.isInitialized("factor") ? new QRisc(forProperty("factor")) : null;
         this.frequencia = inits.isInitialized("frequencia") ? new QFrequencia(forProperty("frequencia")) : null;
         this.gravetat = inits.isInitialized("gravetat") ? new QGravetat(forProperty("gravetat")) : null;
         this.persona = inits.isInitialized("persona") ? new QPersona(forProperty("persona")) : null;

@@ -1,23 +1,14 @@
 package es.in2.dsdibaapi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.querydsl.core.types.Predicate;
-
-import es.in2.dsdibaapi.core.Evaluation;
 import es.in2.dsdibaapi.model.Diagnostic;
-import es.in2.dsdibaapi.model.Entorn;
-import es.in2.dsdibaapi.model.Expedient;
-import es.in2.dsdibaapi.model.QDiagnostic;
-import es.in2.dsdibaapi.repository.DiagnosticRepository;
-import es.in2.dsdibaapi.repository.EntornRepository;
-import es.in2.dsdibaapi.repository.ExpedientRepository;
+import es.in2.dsdibaapi.service.DiagnosticService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -28,18 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DiagnosticController {
 	
 	@Autowired
-	private DiagnosticRepository diagnosticRepository;
-	
-	@Autowired
-	private ExpedientRepository expedientRepository;
-	
-	@Autowired
-	private EntornRepository entornRepository;
-	
-	
-		
-	@Autowired
-	private Environment env;
+	private DiagnosticService diagnosticService;
 	
 	
 	
@@ -47,44 +27,21 @@ public class DiagnosticController {
 	@ApiOperation(value = "Consulta d'un diagnóstic", notes = "")
 	  public Diagnostic getDiagnostic(@PathVariable Long id) {
 	     
-		Diagnostic diagnostic = diagnosticRepository.findById(id).get();		
-		
-		Evaluation.eval(diagnostic, env);
-	    
-	    return diagnostic;
+		return diagnosticService.findById(id);
 	  }
 
 	
 	@RequestMapping(value = "/diagnostics/{expedient}/{entorn}", method = RequestMethod.GET)
 	@ApiOperation(value = "Diagnóstics per entorn", notes = "")
 	  public Iterable<Diagnostic> getDiagnostic(@PathVariable Long expedient,@PathVariable Long entorn) {
-		
-	
-		Predicate predicate = QDiagnostic.diagnostic.expedient.ID.eq(expedient)
-							.and(QDiagnostic.diagnostic.entorn.ID.eq(entorn));
-
-		
-	    return diagnosticRepository.findAll(predicate);
+		return diagnosticService.findByExpedientEntorn(expedient,entorn);
 	  }
 	
 	
 	@RequestMapping(value = "/diagnostic/{expedient}/{entorn}", method = RequestMethod.PUT)
 	@ApiOperation(value = "Alta/modificació d'un diagnóstic", notes = "")
 	  public Diagnostic putDiagnostic(@PathVariable Long expedient,@PathVariable Long entorn,@RequestBody Diagnostic diagnostic) {
-		
-		Expedient exp = expedientRepository.findById(expedient).get();
-		
-		Entorn ent = entornRepository.findById(entorn).get();
-	    
-		diagnostic.setExpedient(exp);
-		diagnostic.setEntorn(ent);
-		
-		Evaluation.eval(diagnostic, env);
-		
-		
-		Diagnostic newDiagnostic = diagnosticRepository.save(diagnostic);
-		
-		return newDiagnostic;
+		return diagnosticService.save(diagnostic,expedient,entorn);
 	  }
 	
 }

@@ -15,10 +15,16 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table (name="PROFESSIONAL")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public @Data class Professional implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -43,15 +49,4 @@ public @Data class Professional implements Serializable {
     private Municipi municipi;
 
 	
-	public Professional () {
-		
-	}
-
-	public Professional (String nom,String cognom1,String cognom2,Municipi municipi,Set<Rol> rol) {
-		this.nom=nom;
-		this.cognom1=cognom1;
-		this.cognom2=cognom2;
-		this.municipi=municipi;
-		this.rol=rol;
-	}
 }

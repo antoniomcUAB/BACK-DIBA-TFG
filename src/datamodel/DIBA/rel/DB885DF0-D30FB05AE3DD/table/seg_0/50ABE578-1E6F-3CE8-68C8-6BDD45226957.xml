@@ -127,6 +127,34 @@
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="total" id="AAD101EF-552E-BF6F-BE08-82EA39AE72C9">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-16 08:12:11 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="valoracio" id="B115512A-6922-CB6D-A9A5-400BC40097E3">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-17 15:35:11 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="243B0D3E-A169-7BBA-6757-051AB295C598" referredColumn="A92DF9A7-C5BC-464D-C9D5-60B26553EA4B"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="4178DE1C-BCCF-AE72-EBEE-E4CAFAE021EC" name="EXPEDIENT_PK">
@@ -162,6 +190,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="16A31736-E934-007E-59F5-86103E9847C8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E3AEB856-AD92-BA15-A117-65D72DC3EDEF" name="EXPEDIENT_VALORACIO_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-17 15:35:11 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B115512A-6922-CB6D-A9A5-400BC40097E3"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

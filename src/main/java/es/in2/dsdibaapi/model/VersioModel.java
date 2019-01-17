@@ -8,10 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table (name="VERSIO_MODEL")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public @Data class VersioModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,13 +30,5 @@ public @Data class VersioModel implements Serializable {
 	private Date data;
 	
 	
-	public VersioModel () {
-		
-	}
-
-	public VersioModel (String versio, Date data) {
-		this.versio=versio;
-		this.data=data;
-	}
 
 }

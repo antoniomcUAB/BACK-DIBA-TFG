@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.in2.dsdibaapi.model.Risc;
-import es.in2.dsdibaapi.repository.RiscRepository;
+import es.in2.dsdibaapi.service.RiscService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -19,13 +19,13 @@ import lombok.extern.slf4j.Slf4j;
 public class RiscController {
 	
 	@Autowired
-	private RiscRepository riscRepository;
+	private RiscService riscService;
 		
 	@RequestMapping(value = "/risc/", method = RequestMethod.GET)
 	@ApiOperation(value = "LLista de riscs", notes = "")
 	  public List<Risc> getRisc() {
 	     
-		return riscRepository.findAll();
+		return riscService.findAll();
 	  }
 	
 	

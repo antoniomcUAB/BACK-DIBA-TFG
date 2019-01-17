@@ -2,12 +2,12 @@ package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,14 +16,24 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table (name="EXPEDIENT")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public @Data class Expedient implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -44,7 +54,7 @@ public @Data class Expedient implements Serializable {
         joinColumns = { @JoinColumn(name = "expedient",foreignKey = @ForeignKey(name = "EX_REFERENCIA_EXPEDIENT_FK")) },         
         inverseJoinColumns = { @JoinColumn(name = "persona",foreignKey = @ForeignKey(name = "EX_REFERENCIA_PERSONA_FK")) }
     )	
-    private Set<Persona> persona = new HashSet<>();
+    private Set<Persona> persona;
 	
 	@ManyToOne
     @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "EXPEDIENT_VERSIO_MODEL_FK"))
@@ -55,34 +65,18 @@ public @Data class Expedient implements Serializable {
     @JoinColumn(name="professional",foreignKey= @ForeignKey(name = "EXPEDIENT_PROFESSIONAL_FK"))
 	@JsonIgnore
     private Professional professional;
-	
-	@OneToMany(mappedBy = "expedient")	
+		
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "expedient", fetch = FetchType.EAGER)	
+	@Fetch(value = FetchMode.SUBSELECT)
     private List<Diagnostic> diagnostic;
 	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "expedient", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+    private List<Contextualitzacio> contextualitzacio;
 	
-	public Expedient () {
-		
-	}
-
-	public Expedient (String EXPEDIENT, 
-						Professional professional, 
-						String NOM, Date DATA, 
-						String OBSERVACIONS,
-						Set<Persona> personas, 
-						Long totalFamilia,
-						VersioModel versioModel,
-						String estat) {
-		this.EXPEDIENT=EXPEDIENT;
-		this.NOM=NOM;
-		this.persona=personas;
-		this.DATA=DATA;
-		this.OBSERVACIONS=OBSERVACIONS;
-		this.totalFamilia=totalFamilia;
-		this.versioModel=versioModel;
-		this.professional=professional;
-		this.estat=estat;
-	}
-
-	
+	@OneToOne
+    @JoinColumn(name="valoracio",foreignKey= @ForeignKey(name = "EXPEDIENT_VALORACIO_FK"))
+	@JsonIgnore
+    private Valoracio valoracio;
 	
 }

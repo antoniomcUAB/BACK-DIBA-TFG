@@ -7,10 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table (name="GRAVETAT")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public @Data class Gravetat implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,12 +25,5 @@ public @Data class Gravetat implements Serializable {
 	private long ID;
 	private String DESCRIPCIO;
 	
-	public Gravetat () {
-		
-	}
-
-	public Gravetat (String DESCRIPCIO) {
-		this.DESCRIPCIO=DESCRIPCIO;
-	}
 	
 }

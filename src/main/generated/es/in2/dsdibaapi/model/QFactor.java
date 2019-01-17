@@ -26,6 +26,10 @@ public class QFactor extends EntityPathBase<Factor> {
 
     public final QEntorn entorn;
 
+    public final NumberPath<Double> fc1m = createNumber("fc1m", Double.class);
+
+    public final NumberPath<Double> fctots = createNumber("fctots", Double.class);
+
     public final QGravetat gravetat;
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);

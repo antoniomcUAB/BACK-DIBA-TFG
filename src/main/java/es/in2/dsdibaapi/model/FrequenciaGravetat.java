@@ -22,6 +22,9 @@ import lombok.Data;
 @Entity
 @Table (name="FREQUENCIA_GRAVETAT")
 @JsonPropertyOrder({ "id", "evidencia", "gravetat","Freqüencia" })
+/*@AllArgsConstructor
+@NoArgsConstructor
+@Builder*/
 public @Data class FrequenciaGravetat implements Serializable {
 
 	private static final long serialVersionUID = 1L;

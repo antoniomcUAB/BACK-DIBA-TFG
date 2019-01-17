@@ -69,6 +69,7 @@
 <ownerDesignName>DIBA</ownerDesignName>
 <importedID>C8149107-F71D-86B0-B4A9-EFDB77EFD28A</importedID>
 <nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
 <use>0</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
@@ -82,6 +83,7 @@
 <ownerDesignName>DIBA</ownerDesignName>
 <importedID>48F11508-A953-E79E-8ABA-E2162D6E23A0</importedID>
 <nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
 <use>0</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
@@ -95,6 +97,7 @@
 <ownerDesignName>DIBA</ownerDesignName>
 <importedID>51AF221E-F278-650D-0D22-0466B03DCCF1</importedID>
 <nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
 <use>0</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
@@ -131,7 +134,7 @@
 <colUsage columnID="5BAB7B25-0BA1-C2D6-D838-FFB59D785B32"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="3DE6A822-DA86-08C1-60F4-E81D36679DBC" name="SITUACIO_SOCIAL_ENTORN_FK">
+<ind_PK_UK id="3DE6A822-DA86-08C1-60F4-E81D36679DBC" name="SITUACIO_SOCIAL_ARISC_FK">
 <createdBy>danielfi</createdBy>
 <createdTime>2019-01-09 09:26:26 UTC</createdTime>
 <ownerDesignName>DIBA</ownerDesignName>
@@ -141,7 +144,7 @@
 <colUsage columnID="09C5A4DE-29B1-F6E3-BFC8-FD3AC1BAD343"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="B4058462-6999-DFC8-39B0-BCEE38DC0B5A" name="SITUACIO_SOCIAL_VERSIO_FK">
+<ind_PK_UK id="B4058462-6999-DFC8-39B0-BCEE38DC0B5A" name="SITUACIO_SOCIAL_RISC_FK">
 <createdBy>danielfi</createdBy>
 <createdTime>2019-01-11 12:46:52 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>

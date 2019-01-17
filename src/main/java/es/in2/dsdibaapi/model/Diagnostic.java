@@ -13,18 +13,22 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table (name="DIAGNOSTIC")
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public @Data class Diagnostic implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
-	private long ID;
-	private String factor;
+	private Long ID;
 	private Boolean unitatFamiliar;	
 	
 	@ManyToOne
@@ -58,21 +62,12 @@ public @Data class Diagnostic implements Serializable {
     @JoinColumn(name="persona",foreignKey= @ForeignKey(name = "DIAGNOSTIC2_PERSONA_FK"))	
     private Persona persona;
 	
+	@ManyToOne
+    @JoinColumn(name="factor",foreignKey= @ForeignKey(name = "DIAGNOSTIC_FACTOR_FK"))
+	private Risc factor;
 	
-	
-	public Diagnostic () {
+	public Diagnostic (Diagnostic d) {
 		
 	}
-	
-	public Diagnostic (Expedient expedient,Entorn entorn,SituacioSocial situacioSocial,Risc risc,Frequencia frequencia,Gravetat gravetat,Boolean unitatFamiliar) {
-		this.expedient = expedient;
-		this.entorn = entorn;
-		this.situacioSocial = situacioSocial;
-		this.frequencia = frequencia;
-		this.gravetat = gravetat;
-		this.risc = risc;
-		this.unitatFamiliar = unitatFamiliar;
-	}
-	
 	
 }

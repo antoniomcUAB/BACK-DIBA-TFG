@@ -11,12 +11,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table (name="CONTEXTUALITZACIO")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public @Data class Contextualitzacio implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,7 +29,7 @@ public @Data class Contextualitzacio implements Serializable {
 	@Id @GeneratedValue 
 	private long ID;
 	private Boolean membreUnic;
-	private Boolean mesUC;
+	private Boolean mesUc;
 	
 	@ManyToOne
     @JoinColumn(name="factor",foreignKey= @ForeignKey(name = "CONTX_FACTOR_FK"))	
@@ -39,16 +44,5 @@ public @Data class Contextualitzacio implements Serializable {
 	@JsonIgnore
     private Expedient expedient;
 	
-	public Contextualitzacio () {
-		
-	}
-	
-	public Contextualitzacio (Boolean membreUnic,Boolean mesUC,Factor factor,Persona persona,Expedient expedient) {
-		this.factor = factor;
-		this.membreUnic = membreUnic;
-		this.mesUC = mesUC;
-		this.persona = persona;
-		this.expedient = expedient;
-	}
 
 }

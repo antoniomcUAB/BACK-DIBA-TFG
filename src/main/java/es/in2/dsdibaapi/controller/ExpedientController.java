@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.in2.dsdibaapi.model.Expedient;
-import es.in2.dsdibaapi.model.VersioModel;
-import es.in2.dsdibaapi.repository.ExpedientRepository;
-import es.in2.dsdibaapi.repository.VersioModelRepository;
+import es.in2.dsdibaapi.service.ExpedientService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -22,30 +20,23 @@ public class ExpedientController {
 	
 	
 	@Autowired
-	private ExpedientRepository expedientRepository;
+	private ExpedientService expedientService;
 	
-	@Autowired
-	private VersioModelRepository versionRepository;
+	
 	
 	
 	@RequestMapping(value = "/expedient/{id}", method = RequestMethod.GET)
 	@ApiOperation(value = "Consulta d'un expedient", notes = "")
 	  public Expedient getExpedient(@PathVariable Long id) {
-	    return expedientRepository.findById(id).get();
+	    return expedientService.findById(id);
 	  }
 
-	
 	
 	
 	@RequestMapping(value = "/expedient/{versio}", method = RequestMethod.PUT)
 	@ApiOperation(value = "Consulta/modificació d'un expedient", notes = "")
 	  public Expedient putExpedient(@RequestBody Expedient expedient,@PathVariable Long versio) {	
-		
-		VersioModel versioModel = versionRepository.findById(versio).get();
-		
-		expedient.setVersioModel(versioModel);
-		
-		return expedientRepository.save(expedient);
+		return expedientService.save(expedient, versio);
 	  }
 	
 }

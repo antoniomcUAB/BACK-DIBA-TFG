@@ -21,12 +21,13 @@ import lombok.Data;
 @Entity
 @Table (name="SITUACIO_SOCIAL")
 @JsonPropertyOrder({ "ID", "SOCIAL", "DEFINICIO","items" })
+
 public @Data class SituacioSocial implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
-	private long ID;
+	private Long ID;
 	private String SOCIAL;
 	private String DEFINICIO;
 	private Double vulnerabilitat;

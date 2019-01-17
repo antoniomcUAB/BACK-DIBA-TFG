@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.in2.dsdibaapi.model.Gravetat;
-import es.in2.dsdibaapi.repository.GravetatRepository;
+import es.in2.dsdibaapi.service.GravetatService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -19,13 +19,13 @@ import lombok.extern.slf4j.Slf4j;
 public class GravetatController {
 	
 	@Autowired
-	private GravetatRepository gravetatRepository;
+	private GravetatService gravetatService;
 		
 	@RequestMapping(value = "/gravetat/", method = RequestMethod.GET)
 	@ApiOperation(value = "Llista de gravetats", notes = "")
 	  public List<Gravetat> getGravetat() {
 	     
-		return gravetatRepository.findAll();
+		return gravetatService.findAll();
 	  }
 	
 	

@@ -23,6 +23,8 @@ public class QRisc extends EntityPathBase<Risc> {
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
+    public final NumberPath<Integer> value = createNumber("value", Integer.class);
+
     public QRisc(String variable) {
         super(Risc.class, forVariable(variable));
     }

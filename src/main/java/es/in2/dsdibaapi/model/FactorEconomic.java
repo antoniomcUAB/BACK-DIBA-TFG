@@ -12,10 +12,16 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table (name="FACTOR_ECONOMIC")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public @Data class FactorEconomic implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -30,9 +36,6 @@ public @Data class FactorEconomic implements Serializable {
 	@JsonIgnore
     private VersioModel versioModel;
 	
-	public FactorEconomic () {
-		
-	}
 
 	public FactorEconomic (VersioModel versioModel,String DESCRIPCIO) {
 		this.DESCRIPCIO=DESCRIPCIO;

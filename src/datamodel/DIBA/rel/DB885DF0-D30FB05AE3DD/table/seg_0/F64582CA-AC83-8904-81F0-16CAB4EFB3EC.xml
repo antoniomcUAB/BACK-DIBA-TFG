@@ -147,11 +147,14 @@
 <ownerDesignName>DIBA</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E0A0C9BE-3405-0552-1BC3-1F612E1AC3BB" referredColumn="319397B1-76E5-B6B6-FCFC-F01F9992D0F1"/>
+</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -236,6 +239,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="828894FA-AE30-0890-1227-632D778D1010"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="821F8F48-DB87-EB5D-4C5C-FCF3591D8AA9" name="DIAGNOSTIC_FACTOR_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-16 09:56:07 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6915B726-EFCA-B420-A784-6A49FA276915"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

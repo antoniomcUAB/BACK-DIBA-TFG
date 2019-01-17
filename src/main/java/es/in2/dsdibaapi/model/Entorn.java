@@ -16,11 +16,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table (name="ENTORN")
 @JsonPropertyOrder({ "ID", "DESCRIPCIO", "items" })
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public @Data class Entorn implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -28,6 +34,7 @@ public @Data class Entorn implements Serializable {
 	@Id @GeneratedValue 
 	private long ID;
 	private String DESCRIPCIO;
+	
 	
 	@ManyToOne
     @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "ENTORN_AMBIT_FK"))
@@ -42,12 +49,4 @@ public @Data class Entorn implements Serializable {
 	@JsonProperty("Factors_context")
     private List<Factor> factorGravetat;
 	
-	public Entorn () {
-		
-	}
-
-	public Entorn (String DESCRIPCIO, Ambit AMBIT) {
-		this.DESCRIPCIO=DESCRIPCIO;
-		this.ambit = AMBIT;
-	}
 }

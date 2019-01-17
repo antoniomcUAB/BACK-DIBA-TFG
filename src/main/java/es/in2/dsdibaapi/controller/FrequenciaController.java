@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.in2.dsdibaapi.model.Frequencia;
-import es.in2.dsdibaapi.repository.FrequenciaRepository;
+import es.in2.dsdibaapi.service.FrequenciaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -19,13 +19,13 @@ import lombok.extern.slf4j.Slf4j;
 public class FrequenciaController {
 	
 	@Autowired
-	private FrequenciaRepository frequenciaRepository;
+	private FrequenciaService frequenciaService;
 		
 	@RequestMapping(value = "/frequencia/", method = RequestMethod.GET)
 	@ApiOperation(value = "Llista de frequències", notes = "")
 	  public List<Frequencia> getFrequencia() {
 	     
-		return frequenciaRepository.findAll();
+		return frequenciaService.findAll();
 	  }
 	
 	

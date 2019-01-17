@@ -26,6 +26,16 @@ public class QAmbit extends EntityPathBase<Ambit> {
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
+    public final NumberPath<Double> risc = createNumber("risc", Double.class);
+
+    public final NumberPath<Double> valAltrisc = createNumber("valAltrisc", Double.class);
+
+    public final NumberPath<Double> valRisc = createNumber("valRisc", Double.class);
+
+    public final NumberPath<Double> valVulnerabilitat = createNumber("valVulnerabilitat", Double.class);
+
+    public final NumberPath<Double> vulnerabilitat = createNumber("vulnerabilitat", Double.class);
+
     public QAmbit(String variable) {
         super(Ambit.class, forVariable(variable));
     }

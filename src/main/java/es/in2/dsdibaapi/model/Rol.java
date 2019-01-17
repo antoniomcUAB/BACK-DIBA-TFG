@@ -7,10 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table (name="ROL")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public @Data class Rol implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,12 +28,5 @@ public @Data class Rol implements Serializable {
 	private String DESCRIPCIO;
 	
 	
-	public Rol () {
-		
-	}
-
-	public Rol (String DESCRIPCIO) {
-		this.DESCRIPCIO=DESCRIPCIO;
-	}
 
 }

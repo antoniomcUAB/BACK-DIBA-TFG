@@ -21,6 +21,7 @@ import lombok.Data;
 @Entity
 @Table (name="CRITERI")
 @JsonPropertyOrder({ "id", "evidencia", "frequencia","risc"})
+
 public @Data class Criteri implements Serializable {
 
 	private static final long serialVersionUID = 1L;

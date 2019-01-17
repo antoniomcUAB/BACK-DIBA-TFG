@@ -7,10 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table (name="PERSONA")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public @Data class Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,13 +28,4 @@ public @Data class Persona implements Serializable {
 	private String COGNOM2;
 
 	
-	public Persona () {
-		
-	}
-
-	public Persona (String NOM,String COGNOM1,String COGNOM2) {
-		this.NOM=NOM;
-		this.COGNOM1=COGNOM1;
-		this.COGNOM2=COGNOM2;
-	}
 }

@@ -12,10 +12,16 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table (name="FACTOR")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public @Data class Factor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -23,6 +29,8 @@ public @Data class Factor implements Serializable {
 	@Id @GeneratedValue 
 	private long ID;
 	private String descripcio;
+	private Double fc1m;
+	private Double fctots;
 	
 	@ManyToOne
 	@JoinColumn(name="gravetat",foreignKey= @ForeignKey(name = "FACTOR_GRAVETAT_FK"))
@@ -33,9 +41,6 @@ public @Data class Factor implements Serializable {
 	@JsonIgnore
     private Entorn entorn;
 
-	public Factor () {
-		
-	}
 
 	public Factor (String descripcio, Gravetat gravetat, Entorn entorn) {
 		this.descripcio=descripcio;

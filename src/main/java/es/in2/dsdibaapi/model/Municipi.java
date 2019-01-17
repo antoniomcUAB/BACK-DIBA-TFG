@@ -7,10 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table (name="MUNICIPI")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public @Data class Municipi implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,12 +28,5 @@ public @Data class Municipi implements Serializable {
 	private String DESCRIPCIO;
 	
 	
-	public Municipi () {
-		
-	}
-
-	public Municipi (String DESCRIPCIO) {
-		this.DESCRIPCIO=DESCRIPCIO;
-	}
 
 }

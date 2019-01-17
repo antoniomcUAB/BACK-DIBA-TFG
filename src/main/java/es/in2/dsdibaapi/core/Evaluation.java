@@ -3,23 +3,23 @@ package es.in2.dsdibaapi.core;
 import org.springframework.core.env.Environment;
 
 import es.in2.dsdibaapi.model.Diagnostic;
+import es.in2.dsdibaapi.service.RiscService;
 
 public class Evaluation {
-	
-	
-	
-	public static Diagnostic eval (Diagnostic d, Environment env) {
+	/*
+	public static RiscService.Tipus evalRisc (Diagnostic d, Environment env) {	
+		
 		
 		if ( d.getGravetat() == null || d.getFrequencia() == null ||
 				(d.getFrequencia().getDESCRIPCIO().equalsIgnoreCase("sense valoració") &&
 						d.getGravetat().getDESCRIPCIO().equalsIgnoreCase("alta"))) {
-			d.setFactor("Alt Risc");
+			return RiscService.Tipus.ALT_RISC;
 		}
 		else if (d.getFrequencia().getDESCRIPCIO().equalsIgnoreCase("sense valoració")) {
 			if(d.getGravetat().getDESCRIPCIO().equalsIgnoreCase("moderada")) {
-				d.setFactor("Risc");
+				return RiscService.Tipus.RISC;
 			} else {
-				d.setFactor("Vulnerabilitat");
+				return RiscService.Tipus.VULNERABILITAT;
 			}
 		}
 		else {
@@ -27,17 +27,16 @@ public class Evaluation {
 			int frequencia = Integer.valueOf(env.getProperty("eval.frequencia."+d.getFrequencia().getDESCRIPCIO().toLowerCase()));
 			
 			if ((gravetat*frequencia) <= 1) {
-				d.setFactor("Vulnerabilitat");
+				return RiscService.Tipus.VULNERABILITAT;
 			}
 			else if ((gravetat*frequencia) <= 3) {
-				d.setFactor("Risc");
-			}
-			else {
-				d.setFactor("Alt Risc");
-			}
+				return RiscService.Tipus.RISC;
+			}			
 		}	
 		
-		return d;
+		return RiscService.Tipus.ALT_RISC;
 	}
+	*/
+	
 	
 }
