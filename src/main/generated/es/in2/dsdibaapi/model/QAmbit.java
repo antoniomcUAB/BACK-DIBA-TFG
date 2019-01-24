@@ -24,6 +24,8 @@ public class QAmbit extends EntityPathBase<Ambit> {
 
     public final ListPath<Entorn, QEntorn> entorn = this.<Entorn, QEntorn>createList("entorn", Entorn.class, QEntorn.class, PathInits.DIRECT2);
 
+    public final ListPath<Factor, QFactor> factorGravetat = this.<Factor, QFactor>createList("factorGravetat", Factor.class, QFactor.class, PathInits.DIRECT2);
+
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
     public final NumberPath<Double> risc = createNumber("risc", Double.class);

@@ -20,7 +20,7 @@ public class QExpedient extends EntityPathBase<Expedient> {
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QExpedient expedient = new QExpedient("expedient");
+    public static final QExpedient expedient1 = new QExpedient("expedient1");
 
     public final ListPath<Contextualitzacio, QContextualitzacio> contextualitzacio = this.<Contextualitzacio, QContextualitzacio>createList("contextualitzacio", Contextualitzacio.class, QContextualitzacio.class, PathInits.DIRECT2);
 
@@ -28,9 +28,11 @@ public class QExpedient extends EntityPathBase<Expedient> {
 
     public final ListPath<Diagnostic, QDiagnostic> diagnostic = this.<Diagnostic, QDiagnostic>createList("diagnostic", Diagnostic.class, QDiagnostic.class, PathInits.DIRECT2);
 
+    public final NumberPath<Long> diagnosticEconomic = createNumber("diagnosticEconomic", Long.class);
+
     public final StringPath estat = createString("estat");
 
-    public final StringPath EXPEDIENT = createString("EXPEDIENT");
+    public final StringPath expedient = createString("expedient");
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 

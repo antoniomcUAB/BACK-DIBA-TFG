@@ -10,7 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +21,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@DynamicUpdate
 @Table (name="AVALUACIO")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,7 +35,8 @@ public @Data class Avaluacio implements Serializable {
 	private long ID;
 	
 	@ManyToOne
-    @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "AVALUACIO_ENTORN_FK"))	
+    @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "AVALUACIO_ENTORN_FK"))
+	@JsonIgnoreProperties(value = { "vulnerabilitat", "risc", "valVulnerabilitat", "valRisc", "valAltrisc", "Items"})
     private Ambit ambit;
 	
 	
@@ -42,6 +47,7 @@ public @Data class Avaluacio implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="risc",foreignKey= @ForeignKey(name = "AVALUACIO_RISC_FK"))
+	@JsonIgnoreProperties(value = { "value"})
     private Risc risc;
 	
 	@ManyToOne

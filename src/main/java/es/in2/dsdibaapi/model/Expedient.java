@@ -19,10 +19,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,6 +29,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@DynamicUpdate
 @Table (name="EXPEDIENT")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,13 +40,13 @@ public @Data class Expedient implements Serializable {
 
 	@Id @GeneratedValue 
 	private long ID;
-	private String EXPEDIENT;
+	private String expedient;
 	private String NOM;
 	private Date DATA;
 	private String OBSERVACIONS;
 	private String estat;
 	private Long totalFamilia;
-	
+	private Long diagnosticEconomic;
 	
 	@ManyToMany(cascade = { CascadeType.MERGE } )
    	 @JoinTable(
@@ -57,26 +57,25 @@ public @Data class Expedient implements Serializable {
     private Set<Persona> persona;
 	
 	@ManyToOne
-    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "EXPEDIENT_VERSIO_MODEL_FK"))
-	@JsonIgnore
+    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "EXPEDIENT_VERSIO_MODEL_FK"))	
     private VersioModel versioModel;
 	
-	@ManyToOne
-    @JoinColumn(name="professional",foreignKey= @ForeignKey(name = "EXPEDIENT_PROFESSIONAL_FK"))
-	@JsonIgnore
+	@ManyToOne (cascade=CascadeType.ALL)
+    @JoinColumn(name="professional",foreignKey= @ForeignKey(name = "EXPEDIENT_PROFESSIONAL_FK"))	
     private Professional professional;
 		
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "expedient", fetch = FetchType.EAGER)	
 	@Fetch(value = FetchMode.SUBSELECT)
     private List<Diagnostic> diagnostic;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy = "expedient", fetch = FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "expedient", fetch = FetchType.EAGER)	
 	@Fetch(value = FetchMode.SUBSELECT)
     private List<Contextualitzacio> contextualitzacio;
 	
+	
+	
 	@OneToOne
-    @JoinColumn(name="valoracio",foreignKey= @ForeignKey(name = "EXPEDIENT_VALORACIO_FK"))
-	@JsonIgnore
+    @JoinColumn(name="valoracio",foreignKey= @ForeignKey(name = "EXPEDIENT_VALORACIO_FK"))	
     private Valoracio valoracio;
 	
 }

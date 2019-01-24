@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -18,6 +20,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@DynamicUpdate
 @Table (name="FACTOR")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,20 +34,16 @@ public @Data class Factor implements Serializable {
 	private String descripcio;
 	private Double fc1m;
 	private Double fctots;
+	@Builder.Default private Boolean infants = false;
 	
 	@ManyToOne
 	@JoinColumn(name="gravetat",foreignKey= @ForeignKey(name = "FACTOR_GRAVETAT_FK"))
     private Gravetat gravetat;
 		
 	@ManyToOne
-    @JoinColumn(name="entorn",foreignKey= @ForeignKey(name = "FACTOR_ENTORN_FK"))
+    @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "FACTOR_AMBIT_FK"))
 	@JsonIgnore
-    private Entorn entorn;
+    private Ambit ambit;
 
 
-	public Factor (String descripcio, Gravetat gravetat, Entorn entorn) {
-		this.descripcio=descripcio;
-		this.gravetat=gravetat;
-		this.entorn=entorn;
-	}
 }

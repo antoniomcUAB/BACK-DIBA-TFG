@@ -5,13 +5,11 @@
 <createdTime>2019-01-09 09:26:26 UTC</createdTime>
 <ownerDesignName>DIBA</ownerDesignName>
 <importedID>FD7739F4-4AE4-8107-BA47-A36032D361B0</importedID>
-<referredTableLongName>RISC</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>E792E6F9-2057-22D5-7140-F6AA5C883377</referredTableID>
 <keyObject>F7AF5D9E-4B8B-804E-DE5C-13A08848578A</keyObject>
 <referredKeyID>F7AF5D9E-4B8B-804E-DE5C-13A08848578A</referredKeyID>
-<mandatory>true</mandatory>
-<refColNames>id</refColNames>
+<mandatory>false</mandatory>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

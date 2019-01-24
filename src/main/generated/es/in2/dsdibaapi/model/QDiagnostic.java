@@ -28,6 +28,8 @@ public class QDiagnostic extends EntityPathBase<Diagnostic> {
 
     public final QRisc factor;
 
+    public final SetPath<FactorEconomic, QFactorEconomic> factorEconomic = this.<FactorEconomic, QFactorEconomic>createSet("factorEconomic", FactorEconomic.class, QFactorEconomic.class, PathInits.DIRECT2);
+
     public final QFrequencia frequencia;
 
     public final QGravetat gravetat;
@@ -65,7 +67,7 @@ public class QDiagnostic extends EntityPathBase<Diagnostic> {
         this.factor = inits.isInitialized("factor") ? new QRisc(forProperty("factor")) : null;
         this.frequencia = inits.isInitialized("frequencia") ? new QFrequencia(forProperty("frequencia")) : null;
         this.gravetat = inits.isInitialized("gravetat") ? new QGravetat(forProperty("gravetat")) : null;
-        this.persona = inits.isInitialized("persona") ? new QPersona(forProperty("persona")) : null;
+        this.persona = inits.isInitialized("persona") ? new QPersona(forProperty("persona"), inits.get("persona")) : null;
         this.risc = inits.isInitialized("risc") ? new QRisc(forProperty("risc")) : null;
         this.situacioSocial = inits.isInitialized("situacioSocial") ? new QSituacioSocial(forProperty("situacioSocial"), inits.get("situacioSocial")) : null;
     }

@@ -21,48 +21,88 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="nom" id="85AF85B2-6653-DBAA-DBAC-CA9B8C38FC72">
-<sourceDDLFile>schema.sql</sourceDDLFile>
-<createdBy>danielfi</createdBy>
-<createdTime>2019-01-09 09:26:26 UTC</createdTime>
-<ownerDesignName>DIBA</ownerDesignName>
-<importedID>C843025C-350B-F01C-F0A9-48952C5E9237</importedID>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<domain>B3BA39A7-3A3F-5AA3-F473-C1F68656BDAB</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="cognom1" id="A7522ABE-D7A7-AD2D-485A-C04B4729E494">
+<Column name="sexe" id="A7522ABE-D7A7-AD2D-485A-C04B4729E494">
 <sourceDDLFile>schema.sql</sourceDDLFile>
 <createdBy>danielfi</createdBy>
 <createdTime>2019-01-09 09:26:26 UTC</createdTime>
 <ownerDesignName>DIBA</ownerDesignName>
 <importedID>CC9AB5BA-4CBB-8E6B-7785-6CF2ACE7EECF</importedID>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<domain>B3BA39A7-3A3F-5AA3-F473-C1F68656BDAB</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="cognom2" id="19AB4DCA-0B4B-0734-84FA-EA14DBE6DDEF">
+<Column name="data_naixement" id="19AB4DCA-0B4B-0734-84FA-EA14DBE6DDEF">
 <sourceDDLFile>schema.sql</sourceDDLFile>
 <createdBy>danielfi</createdBy>
 <createdTime>2019-01-09 09:26:26 UTC</createdTime>
 <ownerDesignName>DIBA</ownerDesignName>
 <importedID>B5FAB5E5-722B-492C-51BC-452B4093FC1C</importedID>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<domain>B3BA39A7-3A3F-5AA3-F473-C1F68656BDAB</domain>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipus_persona" id="3BE50A3C-058E-C3D9-B138-CE30DD7F3AFC">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-23 14:27:23 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EEB016AD-76E5-950B-B1AA-306BE3C069A0" referredColumn="A5A22E44-231D-F71F-26C9-FB4F139A4048"/>
+</associations>
+</Column>
+<Column name="referencia" id="BC25921A-8975-BD01-EDBD-380088D574E7">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-24 11:05:16 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_alta" id="5DB21AC8-0FB3-E63F-3662-9E26C313B0D2">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-24 11:34:18 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_baixa" id="D14F4DFC-A144-71B6-3697-F15387CEFBC5">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-24 11:34:18 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="BF75E5B1-9749-2CFF-A4A0-23057313379D" name="PERSONA_PK">
+<ind_PK_UK id="BF75E5B1-9749-2CFF-A4A0-23057313379D" name="tipus_persona">
 <sourceDDLFile>schema.sql</sourceDDLFile>
 <createdBy>danielfi</createdBy>
 <createdTime>2019-01-09 09:26:26 UTC</createdTime>
@@ -73,6 +113,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="82D8D1CF-A817-FA58-3778-B1651754E67E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="86BA2AD7-7F20-9B3A-7BE2-45241AAC8F9D" name="PERSONA_TIPUS_PERSONA_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-23 14:27:23 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3BE50A3C-058E-C3D9-B138-CE30DD7F3AFC"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

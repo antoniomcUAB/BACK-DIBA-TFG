@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -17,26 +18,43 @@ public class QPersona extends EntityPathBase<Persona> {
 
     private static final long serialVersionUID = -1639787457L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QPersona persona = new QPersona("persona");
 
-    public final StringPath COGNOM1 = createString("COGNOM1");
+    public final DateTimePath<java.util.Date> dataAlta = createDateTime("dataAlta", java.util.Date.class);
 
-    public final StringPath COGNOM2 = createString("COGNOM2");
+    public final DateTimePath<java.util.Date> dataBaixa = createDateTime("dataBaixa", java.util.Date.class);
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final DateTimePath<java.util.Date> dataNaixement = createDateTime("dataNaixement", java.util.Date.class);
 
-    public final StringPath NOM = createString("NOM");
+    public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    public final BooleanPath referencia = createBoolean("referencia");
+
+    public final StringPath sexe = createString("sexe");
+
+    public final QTipusPersona tipusPersona;
 
     public QPersona(String variable) {
-        super(Persona.class, forVariable(variable));
+        this(Persona.class, forVariable(variable), INITS);
     }
 
     public QPersona(Path<? extends Persona> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QPersona(PathMetadata metadata) {
-        super(Persona.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QPersona(PathMetadata metadata, PathInits inits) {
+        this(Persona.class, metadata, inits);
+    }
+
+    public QPersona(Class<? extends Persona> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.tipusPersona = inits.isInitialized("tipusPersona") ? new QTipusPersona(forProperty("tipusPersona")) : null;
     }
 
 }

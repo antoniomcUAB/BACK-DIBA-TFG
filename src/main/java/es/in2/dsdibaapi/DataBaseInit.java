@@ -22,8 +22,8 @@ import es.in2.dsdibaapi.model.Municipi;
 import es.in2.dsdibaapi.model.Risc;
 import es.in2.dsdibaapi.model.Rol;
 import es.in2.dsdibaapi.model.SituacioSocial;
+import es.in2.dsdibaapi.model.TipusPersona;
 import es.in2.dsdibaapi.model.VersioModel;
-import es.in2.dsdibaapi.service.AmbitService;
 import es.in2.dsdibaapi.service.CriteriService;
 import es.in2.dsdibaapi.service.EntornService;
 import es.in2.dsdibaapi.service.FactorEconomicService;
@@ -35,7 +35,9 @@ import es.in2.dsdibaapi.service.MunicipiService;
 import es.in2.dsdibaapi.service.RiscService;
 import es.in2.dsdibaapi.service.RolService;
 import es.in2.dsdibaapi.service.SituacioSocialService;
+import es.in2.dsdibaapi.service.TipusPersonaService;
 import es.in2.dsdibaapi.service.VersioModelService;
+import es.in2.dsdibaapi.service.impl.AmbitServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -46,7 +48,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DataBaseInit implements CommandLineRunner {
 	
 	@Autowired
-	private AmbitService ambitService; 
+	private AmbitServiceImpl ambitService; 
 	
 	@Autowired
 	private RiscService riscService;
@@ -86,8 +88,8 @@ public class DataBaseInit implements CommandLineRunner {
 	private VersioModelService versioModelService;
 	
 	
-	/*@Value("${add.test}")
-	private Boolean addTest;*/
+	@Autowired
+	private TipusPersonaService tipusPersonaService;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -118,7 +120,11 @@ public class DataBaseInit implements CommandLineRunner {
 		municipiService.save(Municipi.builder().DESCRIPCIO("Tarragona").build());
 		municipiService.save(Municipi.builder().DESCRIPCIO("LLeida").build());
 		
-		Ambit ambit = ambitService.save (Ambit.builder().DESCRIPCIO("Autonomia").vulnerabilitat(4d).risc(7d).build());
+		
+		
+		Ambit ambit = ambitService.save (Ambit.builder().DESCRIPCIO("Autonomia").vulnerabilitat(4d).risc(7d).valVulnerabilitat(1d).valRisc(2.1d).valAltrisc(5d).build());
+		
+		Ambit ambitAutonomia = ambit;
 		
 		Entorn entornAutonomia = entornService.save (Entorn.builder().DESCRIPCIO("Autonomia").ambit(ambit).build());
 		
@@ -177,7 +183,9 @@ public class DataBaseInit implements CommandLineRunner {
 		criteriService.save(new Criteri ("Crónica, sense possiblitats de millora",puntualFrequencia,alttRisc,frequenciaGravetat));						
 		
 		
-		ambit = ambitService.save(Ambit.builder().DESCRIPCIO("MATERIAL I INSTRUMENTAL").vulnerabilitat(3d).risc(7d).build());				
+		ambit = ambitService.save(Ambit.builder().DESCRIPCIO("MATERIAL I INSTRUMENTAL").vulnerabilitat(3d).risc(7d).valVulnerabilitat(0.5d).valRisc(1d).valAltrisc(2.5d).build());
+		
+		Ambit ambitMaterial = ambit;
 				
 		Entorn entornHabitatge = entornService.save (Entorn.builder().DESCRIPCIO("Entorn habitatge").ambit(ambit).build());
 								
@@ -322,7 +330,8 @@ public class DataBaseInit implements CommandLineRunner {
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,riscRisc,frequenciaGravetat));	
 											
 											
-		ambit = ambitService.save(Ambit.builder().DESCRIPCIO("RELACIONAL").build());						
+		ambit = ambitService.save(Ambit.builder().DESCRIPCIO("RELACIONAL").vulnerabilitat(3d).risc(7d).valVulnerabilitat(1d).valRisc(2.1d).valAltrisc(5d).build());
+		Ambit ambitRelacional = ambit;
 											
 		Entorn entornEscolar = entornService.save (Entorn.builder().DESCRIPCIO("Entorn Escolar").ambit(ambit).build());
 											
@@ -590,84 +599,258 @@ public class DataBaseInit implements CommandLineRunner {
 
 		
 		
-		// Proteccio
+		// Autonomia
 		
-		factorService.save(new Factor("La malaltia causa del déficit d'autonomia esté diagnosticada i en tractament",proteccioGravetat,entornAutonomia));
-		factorService.save(new Factor("La persona té reconeguts el grau de discapacitat i / o dependéncia",proteccioGravetat,entornAutonomia));
-		factorService.save(new Factor("La persona és usuéria d'un servei, recurs o prestacié  en funcié de la seva malaltia, discapacitat o situació de dependéncia",proteccioGravetat,entornAutonomia));
-		factorService.save(new Factor("Hi ha una xarxa familiar i / o social de suport implicada en la cura",proteccioGravetat,entornAutonomia));
-		factorService.save(new Factor("La persona segueix amb regularitat el tractament médic i/o té un hébits saludables per la seva situació de salut",proteccioGravetat,entornAutonomia));
-
+		// Protecció
+		
+		factorService.save(Factor.builder().descripcio("La malaltia causa del dèficit d'autonomia està diagnosticada i en tractament")
+									.gravetat(proteccioGravetat)
+									.ambit(ambitAutonomia)
+									.fc1m(-0.25d)
+									.fctots(-0.5d)
+									.build());
+		factorService.save(Factor.builder().descripcio("La persona té reconeguts el grau de discapacitat i / o dependència")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(-0.4d)
+				.fctots(-0.8d)
+				.build());
+		factorService.save(Factor.builder().descripcio("La persona és usuària d'un servei especialitzat en funció de la seva malaltia, discapacitat o situació de dependència")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(-0.5d)
+				.fctots(-1d)
+				.build());
+		factorService.save(Factor.builder().descripcio("La persona té uns hàbits saludables (alimentació, salut etc.) per a la situació de la seva salut ")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(-0.25d)
+				.fctots(-0.5d)
+				.build());
+		
+		
 		// Risc
 		
-		factorService.save(new Factor("Es preveu que el déficit d'autonomia de la persona séagreugi en un curt termini (durant l'any)",riscGravetat,entornAutonomia));
-		factorService.save(new Factor("La malaltia causa del déficit d'autonomia no esté diagnosticada i en tractament",riscGravetat,entornAutonomia));
-		factorService.save(new Factor("La persona no segueix amb regularitat el tractament médic prescrit i/o no té uns hébits saludables per la seva situació de salut",riscGravetat,entornAutonomia));
-		factorService.save(new Factor("No existeix una xarxa familiar i / o social que séimpliqui en la cura",riscGravetat,entornAutonomia));
-		factorService.save(new Factor("Cuidador / a habitual en risc o en situació de claudicacié",riscGravetat,entornAutonomia));
-		factorService.save(new Factor("La situació i/o caracteréstiques del domicili agreugen el déficit d'autonomia  de les persones que hi viuen",riscGravetat,entornAutonomia));
-		factorService.save(new Factor("La persona amb déficit d'autonomia té responsabilitats/carregues familiars",riscGravetat,entornAutonomia));
+		factorService.save(Factor.builder().descripcio("Es preveu que el dèficit d’autonomia de la persona s’agreugi en el curt termini (durant l’any) ")
+				.gravetat(riscGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(0.25d)
+				.fctots(0.5d)
+				.build());
+
+		
+		factorService.save(Factor.builder().descripcio("La malaltia causa del dèficit d'autonomia no està diagnosticada i en tractament")
+				.gravetat(riscGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(0.25d)
+				.fctots(0.5d)
+				.build());
+		factorService.save(Factor.builder().descripcio("La persona no segueix amb regularitat el tractament mèdic prescrit")
+				.gravetat(riscGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(0.4d)
+				.fctots(0.8d)
+				.build());
+		
+		factorService.save(Factor.builder().descripcio("No existeix una xarxa familiar i / o social o no s'impliquen en la cura")
+				.gravetat(riscGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(0.5d)
+				.build());
+		
+		factorService.save(Factor.builder().descripcio("Cuidador / a habitual en risc o en situació de claudicació")
+				.gravetat(riscGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(0.5d)
+				.build());
+		
+		factorService.save(Factor.builder().descripcio("La situació i/o característiques del domicili agreugen el dèficit d’autonomia de les persones que hi viuen")
+				.gravetat(riscGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(0.5d)
+				.build());
+		
+		factorService.save(Factor.builder().descripcio("La persona amb dèficit d’autonomia té responsabilitats/càrregues familiars")
+				.gravetat(riscGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(0.5d)
+				.build());
 		
 		
-		// Proteccio
-		factorService.save(new Factor("Una o més persones de la familia disposa d'ingressos estables (pensions, prestacions, rendes, etc.).",proteccioGravetat,entornHabitatge));
-		factorService.save(new Factor("Una o més persones de la familia disposa d'ingressos estables (pensions, prestacions, rendes, etc.).",proteccioGravetat,entornEconomic));
-		factorService.save(new Factor("Una o més persones de la familia disposa d'estalvis",proteccioGravetat,entornHabitatge));
-		factorService.save(new Factor("Una o més persones de la familia disposa d'estalvis",proteccioGravetat,entornEconomic));
-		factorService.save(new Factor("Una o més persones de la familia disposa de patrimoni a part de la primera residéncia",proteccioGravetat,entornHabitatge));
-		factorService.save(new Factor("Una o més persones de la familia disposa de patrimoni a part de la primera residéncia",proteccioGravetat,entornEconomic));
-		factorService.save(new Factor("Una o més persones de la familia disposa de treball estable.",proteccioGravetat,entornHabitatge));
-		factorService.save(new Factor("Una o més persones de la familia disposa de treball estable.",proteccioGravetat,entornEconomic));
-		factorService.save(new Factor("Existeix xarxa familiar o relacional disposada a oferir suport econémic",proteccioGravetat,entornHabitatge));
-		factorService.save(new Factor("Existeix xarxa familiar o relacional disposada a oferir suport econémic",proteccioGravetat,entornEconomic));
-		factorService.save(new Factor("En cas de separacié o divorci hi ha conveni regulador i es compleixen els seus termes",proteccioGravetat,entornHabitatge));
-		factorService.save(new Factor("En cas de separacié o divorci hi ha conveni regulador i es compleixen els seus termes",proteccioGravetat,entornEconomic));
-		factorService.save(new Factor("La persona té una bona predisposicié per formar-se i/o treballar",proteccioGravetat,entornHabitatge));
-		factorService.save(new Factor("La persona té una bona predisposicié per formar-se i/o treballar",proteccioGravetat,entornEconomic));
-		factorService.save(new Factor("Es disposa déun habitatge habitual pel qual no séha déassumir cap despesa o és un habitatge social",proteccioGravetat,entornHabitatge));
-		factorService.save(new Factor("Es disposa déun habitatge habitual pel qual no séha déassumir cap despesa o és un habitatge social",proteccioGravetat,entornEconomic));
+		
+		
+		
+		
+		
+		// Material
+		
+		// Protecció
+		
+		factorService.save(Factor.builder().descripcio("Una o més persones de la família disposa de treball estable.")
+									.gravetat(proteccioGravetat)
+									.ambit(ambitMaterial)
+									.fc1m(-0.25d)
+									.fctots(-0.5d)
+									.build());
+		factorService.save(Factor.builder().descripcio("Una o més persones de la família disposa d'ingressos estables (pensions, prestacions, rendes, etc.).")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(-0.25d)
+				.fctots(-0.5d)
+				.build());
+		factorService.save(Factor.builder().descripcio("Una o més persones de la família disposa d'estalvis")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(-0.25d)
+				.fctots(-0.5d)
+				.build());
+		factorService.save(Factor.builder().descripcio("Una o més persones de la família disposa de patrimoni a part de la primera residència")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(-0.25d)
+				.fctots(-0.5d)
+				.build());
+		
+		
+		factorService.save(Factor.builder().descripcio("La persona/família disposa d'una xarxa familiar/social diposada a donar suport econòmic")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(-0.5d)
+				.build());
 
-
+		
+		factorService.save(Factor.builder().descripcio("En cas de separació o divorci hi ha conveni regulador i es compleixen els seus termes")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(-0.5d)
+				.build());
+		factorService.save(Factor.builder().descripcio("Es disposa d’habitatge social o d’un habitatge habitual en propietat i sense hipoteca pendent de pagament")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(-0.5d)
+				.build());
+		
 		// Risc
-		factorService.save(new Factor("Existeix un impagament de pensions de manutencié i la corresponent demanda judicial",riscGravetat,entornHabitatge));
-		factorService.save(new Factor("Existeix un impagament de pensions de manutencié i la corresponent demanda judicial",riscGravetat,entornEconomic));
-		factorService.save(new Factor("Existeixen responsabilitats i cérregues familiars que agreugen la manca de recursos materials/instrumentals",riscGravetat,entornHabitatge));
-		factorService.save(new Factor("Existeixen responsabilitats i cérregues familiars que agreugen la manca de recursos materials/instrumentals",riscGravetat,entornEconomic));
-		factorService.save(new Factor("Hi ha un endeutament creixent i inassolible amb els recursos disponibles",riscGravetat,entornHabitatge));
-		factorService.save(new Factor("Hi ha un endeutament creixent i inassolible amb els recursos disponibles",riscGravetat,entornEconomic));
+		
+		factorService.save(Factor.builder().descripcio("Existeix un impagament de pensions de manutenció i la corresponent demanda judicial")
+				.gravetat(riscGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(0.5d)
+				.fctots(0.5d)
+				.build());
+		
+		factorService.save(Factor.builder().descripcio("Existeixen responsabilitats i càrregues familiars que agreugen la manca de recur4sos materials/instrumentals")
+				.gravetat(riscGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(0.25d)
+				.build());
+		
+		factorService.save(Factor.builder().descripcio("Hi ha un endeutament creixent i inassolible amb els recursos disponibles")
+				.gravetat(riscGravetat)
+				.ambit(ambitAutonomia)
+				.fc1m(0.25d)
+				.build());
 		
 		
-		// Proteccio
-		factorService.save(new Factor("La persona mostra una vinculacié relacional positiva amb la familia extensa o les seves xarxes déamics i relacions",proteccioGravetat,entornEscolar));
-		factorService.save(new Factor("La persona mostra una vinculacié relacional positiva amb la familia extensa o les seves xarxes déamics i relacions",proteccioGravetat,entornFamiliar));
-		factorService.save(new Factor("La persona esté vinculada i participa activament amb la comunitat, entitats o associacions del seu entorn",proteccioGravetat,entornEscolar));
-		factorService.save(new Factor("La persona esté vinculada i participa activament amb la comunitat, entitats o associacions del seu entorn",proteccioGravetat,entornFamiliar));
-		factorService.save(new Factor("Existeix xarxa familiar o relacional disposada a oferir suport i acompanyament",proteccioGravetat,entornEscolar));
-		factorService.save(new Factor("Existeix xarxa familiar o relacional disposada a oferir suport i acompanyament",proteccioGravetat,entornFamiliar));
-		factorService.save(new Factor("En el cas d'inféncia que el nen / a manté relacié afectiva amb els adults de referéncia i iguals",proteccioGravetat,entornEscolar));
-		factorService.save(new Factor("En el cas d'inféncia que el nen / a manté relacié afectiva amb els adults de referéncia i iguals",proteccioGravetat,entornFamiliar));
-		factorService.save(new Factor("En el cas d'inféncia que el nen / a mostra una autonomia personal adequada per a la seva edat",proteccioGravetat,entornEscolar));
-		factorService.save(new Factor("En el cas d'inféncia que el nen / a mostra una autonomia personal adequada per a la seva edat",proteccioGravetat,entornFamiliar));
-		factorService.save(new Factor("En el cas d'inféncia que el nen / a participa en activitats fora de l'entorn familiar o escolar",proteccioGravetat,entornEscolar));
-		factorService.save(new Factor("En el cas d'inféncia que el nen / a participa en activitats fora de l'entorn familiar o escolar",proteccioGravetat,entornFamiliar));
-		factorService.save(new Factor("La persona/familia és usuéria de recursos/serveis adreéats a cobrir la necessitat en l'àmbit relacional (escolar, familiar o comunitari) ",proteccioGravetat,entornEscolar));
-		factorService.save(new Factor("La persona/familia és usuéria de recursos/serveis adreéats a cobrir la necessitat en l'àmbit relacional (escolar, familiar o comunitari) ",proteccioGravetat,entornFamiliar));
-
-
+		// Relacional
+		
+		// Protecció
+		
+		factorService.save(Factor.builder().descripcio("La persona mostra una vinculació relacional positiva amb la família extensa o les seves xarxes d’amics i relacions")
+									.gravetat(proteccioGravetat)
+									.ambit(ambitRelacional)
+									.fc1m(-0.1d)
+									.fctots(-0.2d)
+									.build());
+		factorService.save(Factor.builder().descripcio("La persona i / o família està vinculada i participa activament a la comunitat, entitats o associacions dels seu entorn")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(-0.1d)
+				.fctots(-0.2d)
+				.build());
+		factorService.save(Factor.builder().descripcio("Existeix una xarxa familiar o relacional positiva disposada a oferir suport i acompanyament")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(-0.5d)
+				.build());
+		factorService.save(Factor.builder().descripcio("La persona/família és usuària de recursos/serveis adreçats a cobrir la necessitat en l’àmbit relacional (escolar, familiar o comunitari)")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(-0.25d)
+				.fctots(-0.5d)
+				.build());
 		// Risc
-		factorService.save(new Factor("Existeix una xarxa social (veéns, amics, familia extensa..) que exerceix una influéncia negativa",riscGravetat,entornEscolar));
-		factorService.save(new Factor("Existeix una xarxa social (veéns, amics, familia extensa..) que exerceix una influéncia negativa",riscGravetat,entornFamiliar));
-		factorService.save(new Factor("Sospita o malaltia mental diagnosticada que agreugen la situació ",riscGravetat,entornEscolar));
-		factorService.save(new Factor("Sospita o malaltia mental diagnosticada que agreugen la situació ",riscGravetat,entornFamiliar));
-		factorService.save(new Factor("Existeix una problemética de salut no diagnosticada que agreuja la situació",riscGravetat,entornEscolar));
-		factorService.save(new Factor("Existeix una problemética de salut no diagnosticada que agreuja la situació",riscGravetat,entornFamiliar));
-		factorService.save(new Factor("En el cas d'inféncia que el nen / a no manté relacié afectiva amb els adults de referéncia i iguals",riscGravetat,entornEscolar));
-		factorService.save(new Factor("En el cas d'inféncia que el nen / a no manté relacié afectiva amb els adults de referéncia i iguals",riscGravetat,entornFamiliar));
-		factorService.save(new Factor("En el cas d'inféncia que el nen / a no mostra una autonomia personal adequada per a la seva edat",riscGravetat,entornEscolar));
-		factorService.save(new Factor("En el cas d'inféncia que el nen / a no mostra una autonomia personal adequada per a la seva edat",riscGravetat,entornFamiliar));
-		factorService.save(new Factor("En el cas d'inféncia que el nen / a no participa en activitats fora de l'entorn familiar o escolar",riscGravetat,entornEscolar));
-		factorService.save(new Factor("En el cas d'inféncia que el nen / a no participa en activitats fora de l'entorn familiar o escolar",riscGravetat,entornFamiliar));
 		
+		factorService.save(Factor.builder().descripcio("Sospita o malaltia mental diagnosticada que agreuja la situació")
+				.gravetat(riscGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(0.25d)
+				.fctots(0.5d)
+				.build());
+	
+		
+		factorService.save(Factor.builder().descripcio("Existeix una xarxa social (veïns, amics, família extensa..) que exerceix una influència negativa ")
+				.gravetat(riscGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(0.5d)
+				.build());
+		factorService.save(Factor.builder().descripcio("Els progenitors no poden acomplir les seves obligacions i responsabilitats envers a persones vulnerables (menors, gent gran) per causa d'addicions")
+				.gravetat(riscGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(0.5d)
+				.build());
+		
+		// Infants
+		
+		// Protecció
+		
+		factorService.save(Factor.builder().descripcio("En el cas d'infància que el nen / a manté relació afectiva amb els adults de referència i iguals")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(-0.25d)
+				.fctots(-0.5d)
+				.infants(true)
+				.build());
+		factorService.save(Factor.builder().descripcio("En el cas d'infància que el nen / a mostra una autonomia personal adequada per a la seva edat")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(-0.25d)
+				.fctots(-0.5d)
+				.infants(true)
+				.build());
+		factorService.save(Factor.builder().descripcio("En el cas d'infància que el nen / a participa en activitats fora de l'entorn familiar o escolar")
+				.gravetat(proteccioGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(-0.25d)
+				.fctots(-0.5d)
+				.infants(true)
+				.build());
+		
+		// Risc
+		
+		factorService.save(Factor.builder().descripcio("En el cas d’infància que el nen/a no manté una relació afectiva amb els iguals i els adults de referència")
+				.gravetat(riscGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(0.25d)
+				.fctots(0.5d)
+				.infants(true)
+				.build());
+	
+		
+		factorService.save(Factor.builder().descripcio("En el cas d’infància que el nen/a no mostra una autonomia i desenvolupament adequats a la seva edat")
+				.gravetat(riscGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(0.25d)
+				.fctots(0.5d)
+				.infants(true)
+				.build());
+		factorService.save(Factor.builder().descripcio("En el cas d’infància que el nen/a no participa en activitats fora de l’entorn escolar")
+				.gravetat(riscGravetat)
+				.ambit(ambitMaterial)
+				.fc1m(0.25d)
+				.fctots(0.5d)
+				.infants(true)
+				.build());
 		
 
 		factorEconomicService.save(new FactorEconomic(versio,"Pagar les factures d'habitatge o serveis públics."));
@@ -680,50 +863,70 @@ public class DataBaseInit implements CommandLineRunner {
 		factorEconomicService.save(new FactorEconomic(versio,"Disposar de connexió a internet."));
 		factorEconomicService.save(new FactorEconomic(versio,"Disposar de teléfon móbil"));
 		
+		factorEconomicService.save(new FactorEconomic(versio,"Existeix una xarxa familiar/relacional disposada a oferir suport econòmic?"));
+		factorEconomicService.save(new FactorEconomic(versio,"Les dificultats en l'àmbit econòmic són contïnuades i sense possiblitat de canvi o millora en el curt termini?"));
+		
 		ambit = ambitService.save(Ambit.builder().DESCRIPCIO("Globalitat del cas").build());
 		
 		Entorn entorn = entornService.save (Entorn.builder().DESCRIPCIO("Globalitat del cas").ambit(ambit).build());
 		
-		factorService.save(new Factor("La persona i / o familia té consciencia i accepta  les dificultats / malaltia causants de la seva situació",proteccioGravetat,entorn));
-		factorService.save(new Factor("La persona i / o familia accepta el suport i l'orientació professional",proteccioGravetat,entorn));
-		factorService.save(new Factor("La persona coneix i té una actitud proactiva i participativa envers el sistema i les xarxes de protecció",proteccioGravetat,entorn));
-		factorService.save(new Factor("La persona i / o familia no té consciencia i/o no accepta  les dificultats/malaltia causants de la seva situació",riscGravetat,entorn));
-		factorService.save(new Factor("La persona i / o familia no accepta el suport i l'orientació professional",riscGravetat,entorn));
-		factorService.save(new Factor("La persona no té una actitud activa i ni participativa envers el sistema i les xarxes de protecció i/o té una posicionament victimista respecte els sistemes de protecció",riscGravetat,entorn));
-		factorService.save(new Factor("Composicié familiar vulnerable (monoparental, families nombroses de categoria especial)",riscGravetat,entorn));
 		
-		/*
-		log.info("PROVA ACCENTS: áéíó");
+		// Protecció
 		
-		log.info("Default Locale:   " + Locale.getDefault());
-	      log.info("Default Charset:  " + Charset.defaultCharset());
-	      log.info("file.encoding;    " + System.getProperty("file.encoding"));
-	      log.info("sun.jnu.encoding: " + System.getProperty("sun.jnu.encoding"));
-	      log.info("Default Encoding: " + getEncoding());
-		*/
-	/*	if (addTest) {
-			log.info ("===========    ADD TEST    ==========");
-			
-			Persona persona1 = personaRepository.save(new Persona ("Persona1","APE1","APE2"));
-			Persona persona2 = personaRepository.save(new Persona ("Persona2","APE1","APE2"));
-			
-			Expedient exp =expedientRepository.save(new Expedient (11111l, "Professional", "Test1", new Date (),"ddfd",new HashSet<Persona>() {{
-	            add(persona1);
-	            add(persona2);
-	        }},2l));
-			
-			
-			
-			Diagnostic d = new Diagnostic (exp,entornAutonomia,situacioSocial,vulnerabilitatRisc,ocasionalFrequencia,baixaGravetat,true);		
-			d=diagnosticRepository.save(d);
-			
-			d = new Diagnostic (exp,entornAutonomia,situacioSocial,vulnerabilitatRisc,ocasionalFrequencia,baixaGravetat,false);
-			d.setPersona(persona1);
-			d=diagnosticRepository.save(d);
-			
-			contextualitzacioRepository.save(new Contextualitzacio(true,false,factorTest,persona1,exp));
-			contextualitzacioRepository.save(new Contextualitzacio(false,false,factorTest2,persona2,exp));
-		}*/
+		factorService.save(Factor.builder().descripcio("La persona i / o familia té consciencia i accepta  les dificultats / malaltia causants de la seva situació")
+				.gravetat(proteccioGravetat)
+				.ambit(ambit)
+				.fc1m(-0.1d)
+				.build());
+		factorService.save(Factor.builder().descripcio("La persona i / o familia accepta el suport i l'orientació professional")
+				.gravetat(proteccioGravetat)
+				.ambit(ambit)
+				.fc1m(-0.1d)
+				.build());
+		factorService.save(Factor.builder().descripcio("La persona coneix i té una actitud proactiva i participativa envers el sistema i les xarxes de protecció")
+				.gravetat(proteccioGravetat)
+				.ambit(ambit)
+				.fc1m(-0.1d)
+				.build());
+		
+		// Risc
+		
+		factorService.save(Factor.builder().descripcio("La persona i / o familia no té consciencia i/o no accepta  les dificultats/malaltia causants de la seva situació")
+				.gravetat(riscGravetat)
+				.ambit(ambit)
+				.fc1m(0.1d)
+				.build());
+		
+		factorService.save(Factor.builder().descripcio("La persona i / o familia no accepta el suport i l'orientació professional")
+				.gravetat(riscGravetat)
+				.ambit(ambit)
+				.fc1m(0.1d)
+				.build());
+	
+		
+		factorService.save(Factor.builder().descripcio("La persona no té una actitud activa i ni participativa envers el sistema i les xarxes de protecció i/o té una posicionament victimista respecte els sistemes de protecció")
+				.gravetat(riscGravetat)
+				.ambit(ambit)
+				.fc1m(0.1d)
+				.build());
+		factorService.save(Factor.builder().descripcio("Composicié familiar vulnerable (monoparental, families nombroses de categoria especial)")
+				.gravetat(riscGravetat)
+				.ambit(ambit)
+				.fc1m(0.1d)
+				.build());
+		
+		// Tipus de persones
+		
+		tipusPersonaService.save(TipusPersona.builder().descripcio("Altres").build());
+		tipusPersonaService.save(TipusPersona.builder().descripcio("Avi/àvia,nét/a").build());
+		tipusPersonaService.save(TipusPersona.builder().descripcio("Espòs/osa,company/a").build());
+		tipusPersonaService.save(TipusPersona.builder().descripcio("Fill/a").build());
+		tipusPersonaService.save(TipusPersona.builder().descripcio("Gendre/nora,sogre/a").build());
+		tipusPersonaService.save(TipusPersona.builder().descripcio("Germà/ana,cunyat/ada").build());
+		tipusPersonaService.save(TipusPersona.builder().descripcio("Nebot/da,cos/ina").build());
+		tipusPersonaService.save(TipusPersona.builder().descripcio("Pare/mare").build());
+		tipusPersonaService.save(TipusPersona.builder().descripcio("Persona principal").build());
+		tipusPersonaService.save(TipusPersona.builder().descripcio("Tiet/a").build());
 		
 	}
 	

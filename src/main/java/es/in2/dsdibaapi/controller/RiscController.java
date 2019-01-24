@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @Slf4j
 @Api(value = "Servei Risc")
-public class RiscController {
+public class RiscController extends BaseController {
 	
 	@Autowired
 	private RiscService riscService;

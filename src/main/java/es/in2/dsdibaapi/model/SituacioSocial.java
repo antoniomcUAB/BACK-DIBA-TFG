@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -19,9 +21,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
 
 @Entity
+@DynamicUpdate
 @Table (name="SITUACIO_SOCIAL")
 @JsonPropertyOrder({ "ID", "SOCIAL", "DEFINICIO","items" })
-
 public @Data class SituacioSocial implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -33,6 +35,7 @@ public @Data class SituacioSocial implements Serializable {
 	private Double vulnerabilitat;
 	private Double risc;
 	private Double altRisc;
+	
 	
 	@ManyToOne
     @JoinColumn(name="entorn",foreignKey= @ForeignKey(name = "SITUACIO_SOCIAL_ENTORN_FK"))

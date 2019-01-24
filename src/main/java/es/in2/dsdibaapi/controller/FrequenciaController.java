@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @Slf4j
 @Api(value = "Servei Frequència")
-public class FrequenciaController {
+public class FrequenciaController extends BaseController {
 	
 	@Autowired
 	private FrequenciaService frequenciaService;

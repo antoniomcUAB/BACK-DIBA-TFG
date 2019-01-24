@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @Slf4j
 @Api(value = "Servei Gravetat")
-public class GravetatController {
+public class GravetatController extends BaseController{
 	
 	@Autowired
 	private GravetatService gravetatService;

@@ -5,13 +5,11 @@
 <createdTime>2019-01-09 09:26:26 UTC</createdTime>
 <ownerDesignName>DIBA</ownerDesignName>
 <importedID>AF620D7C-978E-B91C-1C27-9EB321CE6C6C</importedID>
-<referredTableLongName>GRAVETAT</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>DFDD617C-AC68-EDC7-DFA9-2DEC7FF34F38</referredTableID>
 <keyObject>4159CA9B-E30B-A856-2CE7-2DCC7823E1CD</keyObject>
 <referredKeyID>4159CA9B-E30B-A856-2CE7-2DCC7823E1CD</referredKeyID>
-<mandatory>true</mandatory>
-<refColNames>id</refColNames>
+<mandatory>false</mandatory>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

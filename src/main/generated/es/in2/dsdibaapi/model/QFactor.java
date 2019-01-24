@@ -22,9 +22,9 @@ public class QFactor extends EntityPathBase<Factor> {
 
     public static final QFactor factor = new QFactor("factor");
 
-    public final StringPath descripcio = createString("descripcio");
+    public final QAmbit ambit;
 
-    public final QEntorn entorn;
+    public final StringPath descripcio = createString("descripcio");
 
     public final NumberPath<Double> fc1m = createNumber("fc1m", Double.class);
 
@@ -33,6 +33,8 @@ public class QFactor extends EntityPathBase<Factor> {
     public final QGravetat gravetat;
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
+
+    public final BooleanPath infants = createBoolean("infants");
 
     public QFactor(String variable) {
         this(Factor.class, forVariable(variable), INITS);
@@ -52,7 +54,7 @@ public class QFactor extends EntityPathBase<Factor> {
 
     public QFactor(Class<? extends Factor> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.entorn = inits.isInitialized("entorn") ? new QEntorn(forProperty("entorn"), inits.get("entorn")) : null;
+        this.ambit = inits.isInitialized("ambit") ? new QAmbit(forProperty("ambit")) : null;
         this.gravetat = inits.isInitialized("gravetat") ? new QGravetat(forProperty("gravetat")) : null;
     }
 

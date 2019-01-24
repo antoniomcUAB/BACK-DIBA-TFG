@@ -5,13 +5,11 @@
 <createdTime>2019-01-09 09:26:26 UTC</createdTime>
 <ownerDesignName>DIBA</ownerDesignName>
 <importedID>23A45BA2-B66C-9BFF-83FC-0AC27D523493</importedID>
-<referredTableLongName>FREQUENCIA</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>ECD4BE16-2CF9-1620-F3EF-C1D1EFEDD300</referredTableID>
 <keyObject>FB75DEFE-AC6D-E105-C40E-3365D84B49D5</keyObject>
 <referredKeyID>FB75DEFE-AC6D-E105-C40E-3365D84B49D5</referredKeyID>
-<mandatory>true</mandatory>
-<refColNames>id</refColNames>
+<mandatory>false</mandatory>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

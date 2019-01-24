@@ -1,14 +1,25 @@
 package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -19,6 +30,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@DynamicUpdate
 @Table (name="DIAGNOSTIC")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -48,6 +60,7 @@ public @Data class Diagnostic implements Serializable {
 	
 	@ManyToOne
     @JoinColumn(name="risc",foreignKey= @ForeignKey(name = "DIAGNOSTICv1_RISC_FK"))
+	@JsonIgnoreProperties(value = { "value"})
 	private Risc risc;
 	
 	@ManyToOne
@@ -63,8 +76,20 @@ public @Data class Diagnostic implements Serializable {
     private Persona persona;
 	
 	@ManyToOne
-    @JoinColumn(name="factor",foreignKey= @ForeignKey(name = "DIAGNOSTIC_FACTOR_FK"))
+    @JoinColumn(name="factor",foreignKey= @ForeignKey(name = "DIAGNOSTIC_FACTOR_FK"))	
 	private Risc factor;
+	
+	/*
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "diagnostic", fetch = FetchType.EAGER)	
+	@Fetch(value = FetchMode.SUBSELECT)
+    private List<Economia> economia;*/
+	@ManyToMany(cascade = { CascadeType.MERGE } )
+  	 @JoinTable(
+       name = "economia", 
+       joinColumns = { @JoinColumn(name = "diagnostic",foreignKey = @ForeignKey(name = "ECONOMIA_DIAGNOSTIC_FK")) },         
+       inverseJoinColumns = { @JoinColumn(name = "factor",foreignKey = @ForeignKey(name = "ECONOMIA_FACTOR_ECONOMIC_FK")) }
+   )	
+   private Set<FactorEconomic> factorEconomic;
 	
 	public Diagnostic (Diagnostic d) {
 		

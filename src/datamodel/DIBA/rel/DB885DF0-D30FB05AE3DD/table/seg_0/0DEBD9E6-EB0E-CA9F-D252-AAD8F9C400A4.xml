@@ -37,21 +37,6 @@
 <colAssociation fkAssociation="CB0EC2D8-5FA5-F618-B541-EFE0750F456D" referredColumn="C4F48719-A4B9-B5DC-20B4-26E63E494BC7"/>
 </associations>
 </Column>
-<Column name="entorn" id="971488EE-AE1B-2A81-61E1-9777B84202E7">
-<sourceDDLFile>schema.sql</sourceDDLFile>
-<createdBy>danielfi</createdBy>
-<createdTime>2019-01-09 09:26:26 UTC</createdTime>
-<ownerDesignName>DIBA</ownerDesignName>
-<importedID>E4DD8F45-4F31-16E3-B84C-4FB83517FEAC</importedID>
-<use>0</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="B4D381E5-E1CC-4B2A-2EC8-5F7682A0A280" referredColumn="942D7CA4-E26F-0FED-6837-317AA1EDD797"/>
-</associations>
-</Column>
 <Column name="descripcio" id="936CEA23-4A18-8F5B-8F2F-67CE74C9F42A">
 <createdBy>danielfi</createdBy>
 <createdTime>2019-01-09 10:34:38 UTC</createdTime>
@@ -89,6 +74,34 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="ambit" id="F1C8A648-E002-3870-7235-BFB6CF99FD4F">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-23 16:26:55 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1AF54416-5AEA-576E-EB67-893196C86674" referredColumn="9F02B216-0069-5336-193C-2432BD4753CC"/>
+</associations>
+</Column>
+<Column name="infants" id="80E0C28C-5753-FE10-DC50-8A342B2A083A">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-23 16:55:29 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="15C429B7-12EC-3DA1-78CD-642084F35055" name="FACTOR_PKv2">
@@ -104,16 +117,6 @@
 <colUsage columnID="DBA52DEC-5C02-4E62-0C44-1D06705FF4E1"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="84279B6B-1303-30CB-3EFA-D10DC2175EB3" name="FACTOR_ENTORN_FK">
-<createdBy>danielfi</createdBy>
-<createdTime>2019-01-09 09:26:26 UTC</createdTime>
-<ownerDesignName>DIBA</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="971488EE-AE1B-2A81-61E1-9777B84202E7"/>
-</indexColumnUsage>
-</ind_PK_UK>
 <ind_PK_UK id="750FFFA6-7FA6-C80A-F835-ACD3E17F9F42" name="FACTOR_GRAVETAT_FK">
 <createdBy>danielfi</createdBy>
 <createdTime>2019-01-09 09:26:26 UTC</createdTime>
@@ -122,6 +125,16 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="31FB224F-EEC2-6C4A-66CA-0630FD6FFC65"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7F145DA9-1DDF-2E08-3D8F-A587CFAED015" name="FACTOR_AMBIT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-01-23 16:26:55 UTC</createdTime>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F1C8A648-E002-3870-7235-BFB6CF99FD4F"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

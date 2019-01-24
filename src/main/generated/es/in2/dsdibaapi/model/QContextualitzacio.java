@@ -54,7 +54,7 @@ public class QContextualitzacio extends EntityPathBase<Contextualitzacio> {
         super(type, metadata, inits);
         this.expedient = inits.isInitialized("expedient") ? new QExpedient(forProperty("expedient"), inits.get("expedient")) : null;
         this.factor = inits.isInitialized("factor") ? new QFactor(forProperty("factor"), inits.get("factor")) : null;
-        this.persona = inits.isInitialized("persona") ? new QPersona(forProperty("persona")) : null;
+        this.persona = inits.isInitialized("persona") ? new QPersona(forProperty("persona"), inits.get("persona")) : null;
     }
 
 }

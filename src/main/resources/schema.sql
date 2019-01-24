@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 4.1.0.881
---   en:        2019-01-17 16:54:39 CET
+--   en:        2019-01-24 12:37:01 CET
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -48,16 +48,21 @@ DROP TABLE ROL CASCADE CONSTRAINTS ;
 
 DROP TABLE SITUACIO_SOCIAL CASCADE CONSTRAINTS ;
 
+DROP TABLE TIPUS_PERSONA CASCADE CONSTRAINTS ;
+
 DROP TABLE VALORACIO CASCADE CONSTRAINTS ;
 
 DROP TABLE VERSIO_MODEL CASCADE CONSTRAINTS ;
 
 CREATE TABLE AMBIT
   (
-    id             NUMBER NOT NULL ,
-    descripcio     VARCHAR2 (150) ,
-    vulnerabilitat NUMBER ,
-    risc           NUMBER
+    id                 NUMBER NOT NULL ,
+    descripcio         VARCHAR2 (150) ,
+    vulnerabilitat     NUMBER ,
+    risc               NUMBER ,
+    val_vulnerabilitat NUMBER ,
+    val_risc           NUMBER ,
+    val_altrisc        NUMBER
   ) ;
 ALTER TABLE AMBIT ADD CONSTRAINT AMBIT_PK PRIMARY KEY ( id ) ;
 
@@ -97,9 +102,9 @@ CREATE TABLE DIAGNOSTIC
     id              NUMBER NOT NULL ,
     expedient       NUMBER NOT NULL ,
     persona         NUMBER ,
-    risc            NUMBER NOT NULL ,
-    gravetat        NUMBER NOT NULL ,
-    frequencia      NUMBER NOT NULL ,
+    risc            NUMBER ,
+    gravetat        NUMBER ,
+    frequencia      NUMBER ,
     situacio_social VARCHAR2 (32) NOT NULL ,
     entorn          NUMBER NOT NULL ,
     unitat_familiar CHAR (1) ,
@@ -109,10 +114,9 @@ ALTER TABLE DIAGNOSTIC ADD CONSTRAINT DIAGNOSTICv1_PK PRIMARY KEY ( id ) ;
 
 CREATE TABLE ECONOMIA
   (
-    id        NUMBER NOT NULL ,
-    expedient NUMBER NOT NULL ,
-    valor     CHAR (1) ,
-    factor    NUMBER NOT NULL
+    id         NUMBER NOT NULL ,
+    factor     NUMBER NOT NULL ,
+    diagnostic NUMBER NOT NULL
   ) ;
 ALTER TABLE ECONOMIA ADD CONSTRAINT ECONOMIA_PK PRIMARY KEY ( id ) ;
 
@@ -126,17 +130,18 @@ ALTER TABLE ENTORN ADD CONSTRAINT ENTORN_PK PRIMARY KEY ( id ) ;
 
 CREATE TABLE EXPEDIENT
   (
-    id            NUMBER NOT NULL ,
-    expedient     VARCHAR2 (50) NOT NULL ,
-    nom           VARCHAR2 (100) ,
-    data          TIMESTAMP WITH LOCAL TIME ZONE ,
-    observacions  VARCHAR2 (250) ,
-    total_familia NUMBER ,
-    versio_model  NUMBER NOT NULL ,
-    professional  NUMBER NOT NULL ,
-    estat         VARCHAR2 (20) NOT NULL ,
-    total         NUMBER ,
-    valoracio     NUMBER
+    id                  NUMBER NOT NULL ,
+    expedient           VARCHAR2 (50) NOT NULL ,
+    nom                 VARCHAR2 (100) ,
+    data                TIMESTAMP WITH LOCAL TIME ZONE ,
+    observacions        VARCHAR2 (250) ,
+    total_familia       NUMBER ,
+    versio_model        NUMBER NOT NULL ,
+    professional        NUMBER NOT NULL ,
+    estat               VARCHAR2 (20) NOT NULL ,
+    total               NUMBER ,
+    valoracio           NUMBER ,
+    diagnostic_economic NUMBER
   ) ;
 ALTER TABLE EXPEDIENT ADD CONSTRAINT EXPEDIENT_PK PRIMARY KEY ( id ) ;
 
@@ -151,10 +156,11 @@ CREATE TABLE FACTOR
   (
     id         NUMBER NOT NULL ,
     gravetat   NUMBER NOT NULL ,
-    entorn     NUMBER NOT NULL ,
     descripcio VARCHAR2 (300) ,
     fc1m       NUMBER ,
-    fctots     NUMBER
+    fctots     NUMBER ,
+    ambit      NUMBER NOT NULL ,
+    infants    CHAR (1)
   ) ;
 ALTER TABLE FACTOR ADD CONSTRAINT FACTOR_PKv2 PRIMARY KEY ( id ) ;
 
@@ -192,12 +198,15 @@ ALTER TABLE MUNICIPI ADD CONSTRAINT MUNICIPI_PK PRIMARY KEY ( id ) ;
 
 CREATE TABLE PERSONA
   (
-    id      NUMBER NOT NULL ,
-    nom     VARCHAR2 (50) ,
-    cognom1 VARCHAR2 (50) ,
-    cognom2 VARCHAR2 (50)
+    id             NUMBER NOT NULL ,
+    sexe           VARCHAR2 (10) ,
+    data_naixement TIMESTAMP WITH LOCAL TIME ZONE ,
+    tipus_persona  NUMBER NOT NULL ,
+    referencia     CHAR (1) ,
+    data_alta      TIMESTAMP WITH LOCAL TIME ZONE ,
+    data_baixa     TIMESTAMP WITH LOCAL TIME ZONE
   ) ;
-ALTER TABLE PERSONA ADD CONSTRAINT PERSONA_PK PRIMARY KEY ( id ) ;
+ALTER TABLE PERSONA ADD CONSTRAINT tipus_persona PRIMARY KEY ( id ) ;
 
 CREATE TABLE PROFESSIONAL
   (
@@ -242,11 +251,17 @@ CREATE TABLE SITUACIO_SOCIAL
   ) ;
 ALTER TABLE SITUACIO_SOCIAL ADD CONSTRAINT SITUACIO_SOCIAL_PK PRIMARY KEY ( id ) ;
 
+CREATE TABLE TIPUS_PERSONA
+  ( id NUMBER NOT NULL , descripcio VARCHAR2 (50)
+  ) ;
+ALTER TABLE TIPUS_PERSONA ADD CONSTRAINT TIPUS_PERSONA_PK PRIMARY KEY ( id ) ;
+
 CREATE TABLE VALORACIO
   (
     id      NUMBER NOT NULL ,
     total   NUMBER ,
-    factors NUMBER
+    factors NUMBER ,
+    data    TIMESTAMP WITH LOCAL TIME ZONE
   ) ;
 ALTER TABLE VALORACIO ADD CONSTRAINT VALORACIO_PK PRIMARY KEY ( id ) ;
 
@@ -294,7 +309,7 @@ ALTER TABLE DIAGNOSTIC ADD CONSTRAINT DIAGNOSTICv1_GRAVETAT_FK FOREIGN KEY ( gra
 
 ALTER TABLE DIAGNOSTIC ADD CONSTRAINT DIAGNOSTICv1_RISC_FK FOREIGN KEY ( risc ) REFERENCES RISC ( id ) ;
 
-ALTER TABLE ECONOMIA ADD CONSTRAINT ECONOMIA_EXPEDIENT_FK FOREIGN KEY ( expedient ) REFERENCES EXPEDIENT ( id ) ;
+ALTER TABLE ECONOMIA ADD CONSTRAINT ECONOMIA_DIAGNOSTIC_FK FOREIGN KEY ( diagnostic ) REFERENCES DIAGNOSTIC ( id ) ;
 
 ALTER TABLE ECONOMIA ADD CONSTRAINT ECONOMIA_FACTOR_ECONOMIC_FK FOREIGN KEY ( factor ) REFERENCES FACTOR_ECONOMIC ( id ) ;
 
@@ -310,15 +325,17 @@ ALTER TABLE EX_REFERENCIA ADD CONSTRAINT EX_REFERENCIA_EXPEDIENT_FK FOREIGN KEY 
 
 ALTER TABLE EX_REFERENCIA ADD CONSTRAINT EX_REFERENCIA_PERSONA_FK FOREIGN KEY ( persona ) REFERENCES PERSONA ( id ) ;
 
-ALTER TABLE FACTOR_ECONOMIC ADD CONSTRAINT FACTOR_ECONOMIC_VERSIO_FK FOREIGN KEY ( versio_model ) REFERENCES VERSIO_MODEL ( id ) ;
+ALTER TABLE FACTOR ADD CONSTRAINT FACTOR_AMBIT_FK FOREIGN KEY ( ambit ) REFERENCES AMBIT ( id ) ;
 
-ALTER TABLE FACTOR ADD CONSTRAINT FACTOR_ENTORN_FK FOREIGN KEY ( entorn ) REFERENCES ENTORN ( id ) ;
+ALTER TABLE FACTOR_ECONOMIC ADD CONSTRAINT FACTOR_ECONOMIC_VERSIO_FK FOREIGN KEY ( versio_model ) REFERENCES VERSIO_MODEL ( id ) ;
 
 ALTER TABLE FACTOR ADD CONSTRAINT FACTOR_GRAVETAT_FK FOREIGN KEY ( gravetat ) REFERENCES GRAVETAT ( id ) ;
 
 ALTER TABLE FREQUENCIA_GRAVETAT ADD CONSTRAINT FREQ_GRAVETAT_FK FOREIGN KEY ( gravetat ) REFERENCES GRAVETAT ( id ) ;
 
 ALTER TABLE FREQUENCIA_GRAVETAT ADD CONSTRAINT FREQ_SITUACIO_SOCIAL_FK FOREIGN KEY ( situacio_social ) REFERENCES SITUACIO_SOCIAL ( id ) ;
+
+ALTER TABLE PERSONA ADD CONSTRAINT PERSONA_TIPUS_PERSONA_FK FOREIGN KEY ( tipus_persona ) REFERENCES TIPUS_PERSONA ( id ) ;
 
 ALTER TABLE PROFESSIONAL ADD CONSTRAINT PROFESSIONAL_MUNICIPI_FK FOREIGN KEY ( municipi ) REFERENCES MUNICIPI ( id ) ;
 
@@ -333,9 +350,9 @@ ALTER TABLE SITUACIO_SOCIAL ADD CONSTRAINT SITUACIO_SOCIAL_RISC_FK FOREIGN KEY (
 
 -- Informe de Resumen de Oracle SQL Developer Data Modeler: 
 -- 
--- CREATE TABLE                            23
+-- CREATE TABLE                            24
 -- CREATE INDEX                             0
--- ALTER TABLE                             59
+-- ALTER TABLE                             61
 -- CREATE VIEW                              0
 -- ALTER VIEW                               0
 -- CREATE PACKAGE                           0

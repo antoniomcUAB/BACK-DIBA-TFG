@@ -3,7 +3,6 @@
   <groupId>es.in2</groupId>
   <artifactId>ds-diba-api</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
   <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -51,7 +50,18 @@
 		          </dependency>
 		        </dependencies>
             </plugin>
-       
+       		<plugin>
+		         <groupId>org.apache.maven.plugins</groupId>
+		         <artifactId>maven-war-plugin</artifactId>
+		         <configuration>
+		            <failOnMissingWebXml>false</failOnMissingWebXml>
+		            <archive>
+		               <manifest>
+		                  <addDefaultImplementationEntries>false</addDefaultImplementationEntries>
+		               </manifest>
+		            </archive>
+		         </configuration>
+		      </plugin>
        <!-- 
       <plugin>
 		    <groupId>com.mysema.maven</groupId>
@@ -80,13 +90,27 @@
   		<groupId>org.springframework.boot</groupId>
   		<artifactId>spring-boot-starter-data-jpa</artifactId>
   	</dependency>
+  	
   	<dependency>
   		<groupId>org.springframework.boot</groupId>
   		<artifactId>spring-boot-starter-web</artifactId>
+  		
+  		<exclusions>
+                <exclusion>
+                    <artifactId>tomcat-embed-websocket</artifactId>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                </exclusion>
+            </exclusions>  
   	</dependency>
   	<dependency>
   		<groupId>org.springframework.boot</groupId>
   		<artifactId>spring-boot-starter-data-rest</artifactId>
+  		<exclusions>
+                <exclusion>
+                    <artifactId>tomcat-embed-websocket</artifactId>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                </exclusion>
+            </exclusions>  
   	</dependency>
   	<dependency>
   		<groupId>org.springframework.boot</groupId>
@@ -189,4 +213,5 @@
 		    </properties>
 		</profile>
   </profiles>
+  <packaging>war</packaging>
 </project>

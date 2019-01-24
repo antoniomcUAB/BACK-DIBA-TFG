@@ -2,45 +2,22 @@ package es.in2.dsdibaapi.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Service;
-
-import com.querydsl.core.types.Predicate;
-
 import es.in2.dsdibaapi.model.Gravetat;
-import es.in2.dsdibaapi.model.QGravetat;
-import es.in2.dsdibaapi.repository.GravetatRepository;
 
-@Service
-public class GravetatService {
+public interface GravetatService {
 	
-	@Autowired
-	GravetatService() {}
+	public enum Tipus {
+	    BAIXA,
+	    MODERADA, 
+	    ALTA
+	}
 	
-	@Autowired
-	GravetatRepository gravetatRepository;
+    public Gravetat findById(Long id) ;
 	
-	@Cacheable("gravetat")
-    public Gravetat findById(Long id) {
-		return gravetatRepository.findById(id).get();
-    }
-	
-	@Cacheable("gravetat")
-    public List<Gravetat> findAll() {
-		return gravetatRepository.findAll();
-    }
+    public List<Gravetat> findAll();
 
-	@Cacheable("gravetat")
-    public Gravetat findByDescription(String description) {
-		
-		Predicate predicate = QGravetat.gravetat.DESCRIPCIO.equalsIgnoreCase(description);
-		
-		return gravetatRepository.findOne(predicate).get();
-    }
+    public Gravetat findByDescription(String description);
 	
-	public Gravetat save(Gravetat gravetat) {
-		return gravetatRepository.save(gravetat);
-    }
+	public Gravetat save(Gravetat gravetat) ;
 
 }

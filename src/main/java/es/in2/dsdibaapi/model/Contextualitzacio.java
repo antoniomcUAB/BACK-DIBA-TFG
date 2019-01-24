@@ -10,7 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +21,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@DynamicUpdate
 @Table (name="CONTEXTUALITZACIO")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,14 +36,15 @@ public @Data class Contextualitzacio implements Serializable {
 	private Boolean mesUc;
 	
 	@ManyToOne
-    @JoinColumn(name="factor",foreignKey= @ForeignKey(name = "CONTX_FACTOR_FK"))	
+    @JoinColumn(name="factor",foreignKey= @ForeignKey(name = "CONTX_FACTOR_FK"))
+	@JsonIgnoreProperties(value = { "fc1m", "fctots", "gravetat"})
     private Factor factor;
 	
 	@ManyToOne
     @JoinColumn(name="persona",foreignKey= @ForeignKey(name = "CONTX_PERSONA_FK"))	
     private Persona persona;
 	
-	@ManyToOne
+	@ManyToOne 
     @JoinColumn(name="expedient",foreignKey= @ForeignKey(name = "CONTX_EXPEDIENT_FK"))
 	@JsonIgnore
     private Expedient expedient;
