@@ -1,5 +1,7 @@
 package es.in2.dsdibaapi;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,10 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import es.in2.dsdibaapi.controller.DiagnosticController;
+import es.in2.dsdibaapi.controller.PreguntaController;
+import es.in2.dsdibaapi.model.Contextualitzacio;
 import es.in2.dsdibaapi.model.Diagnostic;
 import es.in2.dsdibaapi.model.Entorn;
 import es.in2.dsdibaapi.model.Expedient;
+import es.in2.dsdibaapi.model.Factor;
+import es.in2.dsdibaapi.model.FactorEconomic;
+import es.in2.dsdibaapi.model.Frequencia;
+import es.in2.dsdibaapi.model.Gravetat;
 import es.in2.dsdibaapi.model.Municipi;
 import es.in2.dsdibaapi.model.Persona;
 import es.in2.dsdibaapi.model.Professional;
@@ -47,7 +54,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DsDibaApiApplicationTests {
 	
 	@Autowired
-	private DiagnosticController diagnosticController;
+	private PreguntaController diagnosticController;
 	
 	@Autowired
 	private PersonaService personaService;
@@ -178,7 +185,6 @@ public class DsDibaApiApplicationTests {
 				.DATA(new Date())
 				.estat("BORRADOR")
 				.versioModel(versio)
-				.diagnosticEconomic(ssEco)
 				.OBSERVACIONS("adads")
 				.professional(professional)
 				.totalFamilia(2l)
@@ -193,7 +199,6 @@ public class DsDibaApiApplicationTests {
 				.estat("BORRADOR")
 				.versioModel(versio)
 				.OBSERVACIONS("adads")
-				.diagnosticEconomic(ssEco)
 				.professional(professional)
 				.totalFamilia(2l)
 				.NOM("Test 1.2")
@@ -208,7 +213,6 @@ public class DsDibaApiApplicationTests {
 				.estat("BORRADOR")
 				.versioModel(versio)
 				.OBSERVACIONS("adads")
-				.diagnosticEconomic(ssEco)
 				.professional(professional)
 				.totalFamilia(2l)
 				.NOM("Test 2")
@@ -238,14 +242,14 @@ public class DsDibaApiApplicationTests {
 	public void addDiagnostics() {
 		
 		VersioModel versio = versioModelService.findById(versioId);
-		exp =expedientService.findById(62548l);
+		exp =expedientService.findById(62638l);
 		entorn = entornService.findById(entornAutonomia);
-		
+	/*	
 		Diagnostic d;
 		
 		SituacioSocial situacioSocial;
 	
-	/*	situacioSocial = situacioSocialService.findById(ssA1);
+		situacioSocial = situacioSocialService.findById(ssA1);
 		
 		Frequencia frequencia =frequenciaService.findById(freqOcasional);
 		
@@ -256,7 +260,7 @@ public class DsDibaApiApplicationTests {
 		
 		d = Diagnostic.builder().entorn(entorn).expedient(exp).situacioSocial(situacioSocial).risc(risc).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
-		diagnosticController.putDiagnostic(exp.getID(), entornAutonomia, d);
+		d=diagnosticController.putDiagnostic(exp.getID(), entornAutonomia, d);
 		
 		
 		assertTrue(d.getFactor().getDESCRIPCIO().equalsIgnoreCase("Vulnerabilitat"));
@@ -265,7 +269,7 @@ public class DsDibaApiApplicationTests {
 		
 		d.setGravetat(gravetat);
 		
-		diagnosticController.putDiagnostic(exp.getID(), entornAutonomia, d);
+		d=diagnosticController.putDiagnostic(exp.getID(), entornAutonomia, d);
 		
 		assertTrue(d.getFactor().getDESCRIPCIO().equalsIgnoreCase("Risc"));
 		
@@ -273,14 +277,14 @@ public class DsDibaApiApplicationTests {
 		
 		d.setFrequencia(frequencia);
 		
-		diagnosticController.putDiagnostic(exp.getID(), entornAutonomia, d);
+		d=diagnosticController.putDiagnostic(exp.getID(), entornAutonomia, d);
 		
 		assertTrue(d.getFactor().getDESCRIPCIO().equalsIgnoreCase("Alt Risc"));
 		
 		situacioSocial = situacioSocialService.findById(ssA2);
 		d = Diagnostic.builder().entorn(entorn).expedient(exp).situacioSocial(situacioSocial).risc(risc).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
-		diagnosticController.putDiagnostic(exp.getID(), entornAutonomia, d);
+		d=diagnosticController.putDiagnostic(exp.getID(), entornAutonomia, d);
 		
 		gravetat = gravetatService.findById(gravetatBaixa);
 		frequencia =frequenciaService.findById(freqOcasional);
@@ -303,32 +307,15 @@ public class DsDibaApiApplicationTests {
 		factor = factorService.findById(factor2);
 		
 		contextualitzacioService.save(Contextualitzacio.builder().expedient(exp).mesUc(true).factor(factor).build());
-	*/
+	
 		
-	/*	Set<FactorEconomic> factors = new HashSet<FactorEconomic> ();
+		Set<FactorEconomic> factors = new HashSet<FactorEconomic> ();
 		
 		factors.add(factorEconomicService.findById(factorEconomic1));
 		factors.add(factorEconomicService.findById(factorEconomic2));
 		
-		Diagnostic dEco=diagnosticController.putDiagnosticEconomia(exp.getID(), entorn.getID(), factors);*/
+		Diagnostic dEco=diagnosticController.putDiagnosticEconomia(exp.getID(), entorn.getID(), factors);
 		
-		/*entorn = entornService.findById(entornEconomic);
-		situacioSocial = situacioSocialService.findById(ssEco);
-		d = Diagnostic.builder().entorn(entorn).expedient(exp).situacioSocial(situacioSocial).build();
-		
-		
-		
-		FactorEconomic f = factorEconomicService.findById(factorEconomic1);
-		
-		//Factor sense = factorService.findById(gra)
-		
-		d=diagnosticController.putDiagnostic(exp.getID(), entornEconomic, d);
-		
-		economiaService.save(Economia.builder().diagnostic(d).factor(f).build());
-		f = factorEconomicService.findById(factorEconomic2);
-		economiaService.save(Economia.builder().diagnostic(d).factor(f).build());
-		
-		d=diagnosticController.putDiagnostic(exp.getID(), entornEconomic, d);
 		*/
 		Expedient newexp=expedientService.avaluar(exp.getID());
 		

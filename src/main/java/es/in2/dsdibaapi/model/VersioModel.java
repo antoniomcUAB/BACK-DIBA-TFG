@@ -31,6 +31,7 @@ public @Data class VersioModel implements Serializable {
 	
 	private String versio;
 	private Date data;
+	private Long preguntaEconomica;
 	
 	
 

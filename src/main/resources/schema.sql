@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 4.1.0.881
---   en:        2019-01-24 12:37:01 CET
+--   en:        2019-01-25 13:31:18 CET
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -114,11 +114,10 @@ ALTER TABLE DIAGNOSTIC ADD CONSTRAINT DIAGNOSTICv1_PK PRIMARY KEY ( id ) ;
 
 CREATE TABLE ECONOMIA
   (
-    id         NUMBER NOT NULL ,
     factor     NUMBER NOT NULL ,
     diagnostic NUMBER NOT NULL
   ) ;
-ALTER TABLE ECONOMIA ADD CONSTRAINT ECONOMIA_PK PRIMARY KEY ( id ) ;
+ALTER TABLE ECONOMIA ADD CONSTRAINT ECONOMIA_PK PRIMARY KEY ( factor, diagnostic ) ;
 
 CREATE TABLE ENTORN
   (
@@ -130,18 +129,17 @@ ALTER TABLE ENTORN ADD CONSTRAINT ENTORN_PK PRIMARY KEY ( id ) ;
 
 CREATE TABLE EXPEDIENT
   (
-    id                  NUMBER NOT NULL ,
-    expedient           VARCHAR2 (50) NOT NULL ,
-    nom                 VARCHAR2 (100) ,
-    data                TIMESTAMP WITH LOCAL TIME ZONE ,
-    observacions        VARCHAR2 (250) ,
-    total_familia       NUMBER ,
-    versio_model        NUMBER NOT NULL ,
-    professional        NUMBER NOT NULL ,
-    estat               VARCHAR2 (20) NOT NULL ,
-    total               NUMBER ,
-    valoracio           NUMBER ,
-    diagnostic_economic NUMBER
+    id            NUMBER NOT NULL ,
+    expedient     VARCHAR2 (50) NOT NULL ,
+    nom           VARCHAR2 (100) ,
+    data          TIMESTAMP WITH LOCAL TIME ZONE ,
+    observacions  VARCHAR2 (250) ,
+    total_familia NUMBER ,
+    versio_model  NUMBER NOT NULL ,
+    professional  NUMBER NOT NULL ,
+    estat         VARCHAR2 (20) NOT NULL ,
+    total         NUMBER ,
+    valoracio     NUMBER
   ) ;
 ALTER TABLE EXPEDIENT ADD CONSTRAINT EXPEDIENT_PK PRIMARY KEY ( id ) ;
 
@@ -267,9 +265,10 @@ ALTER TABLE VALORACIO ADD CONSTRAINT VALORACIO_PK PRIMARY KEY ( id ) ;
 
 CREATE TABLE VERSIO_MODEL
   (
-    id     NUMBER NOT NULL ,
-    versio VARCHAR2 (20) ,
-    data   TIMESTAMP WITH LOCAL TIME ZONE
+    id                 NUMBER NOT NULL ,
+    versio             VARCHAR2 (20) ,
+    data               TIMESTAMP WITH LOCAL TIME ZONE ,
+    pregunta_economica NUMBER
   ) ;
 ALTER TABLE VERSIO_MODEL ADD CONSTRAINT VERSIO_MODEL_PK PRIMARY KEY ( id ) ;
 

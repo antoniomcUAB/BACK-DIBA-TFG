@@ -9,18 +9,6 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id" id="3B441CA8-F794-9BB9-3AFA-34FF5EB67269">
-<sourceDDLFile>schema.sql</sourceDDLFile>
-<createdBy>danielfi</createdBy>
-<createdTime>2019-01-09 09:26:26 UTC</createdTime>
-<ownerDesignName>DIBA</ownerDesignName>
-<importedID>119826E0-1889-EF8D-ABC7-5ECC91F895F2</importedID>
-<use>0</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="factor" id="371C5AD0-AA1D-D12A-1F60-68521DD7496C">
 <sourceDDLFile>schema.sql</sourceDDLFile>
 <createdBy>danielfi</createdBy>
@@ -63,7 +51,8 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="3B441CA8-F794-9BB9-3AFA-34FF5EB67269"/>
+<colUsage columnID="371C5AD0-AA1D-D12A-1F60-68521DD7496C"/>
+<colUsage columnID="330E154F-E7B9-23CE-9005-B905C398D986"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="C02B37B4-3D3E-7BBC-61F6-5A04C3B94EC9" name="ECONOMIA_FACTOR_ECONOMIC_FK">

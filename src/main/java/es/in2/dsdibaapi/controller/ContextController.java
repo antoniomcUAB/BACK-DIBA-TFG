@@ -17,11 +17,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
-@RestController
+//@RestController
 @Slf4j
-@Api(value = "Servei Factors de Context")
+//@Api(value = "Servei Factors de Context")
 public class ContextController extends BaseController {
-	
+	/*
 	@Autowired
 	private ContextualitzacioService contextualitzacioService;
 	
@@ -56,6 +56,6 @@ public class ContextController extends BaseController {
 	  public Contextualitzacio putContext(@PathVariable Long expedient,@PathVariable Long factor,@RequestBody Contextualitzacio contextualitzacio) {
 		return contextualitzacioService.save(contextualitzacio, expedient, factor);
 	  }
-	
+	*/
 	
 }

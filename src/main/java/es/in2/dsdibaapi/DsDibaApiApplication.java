@@ -34,7 +34,7 @@ public class DsDibaApiApplication extends SpringBootServletInitializer implement
 	
 	 @Override
 	    public void addCorsMappings(CorsRegistry registry) {
-	        registry.addMapping("/**");
+	        registry.addMapping("/**").allowedMethods("PUT", "DELETE", "GET");
 	    }
 	 
 	 @Override

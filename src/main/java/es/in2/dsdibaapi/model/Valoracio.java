@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -43,6 +44,7 @@ public @Data class Valoracio implements Serializable {
     private Expedient expedient;*/
 	
 	@OneToMany (mappedBy = "valoracio")
+	@JsonIgnoreProperties(value = { "value"})
 	@JsonProperty("evaluacions")
     private List<Avaluacio> avaluacio;
 	

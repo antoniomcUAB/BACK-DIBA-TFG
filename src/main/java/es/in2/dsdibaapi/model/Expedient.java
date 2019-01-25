@@ -23,6 +23,9 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -46,7 +49,6 @@ public @Data class Expedient implements Serializable {
 	private String OBSERVACIONS;
 	private String estat;
 	private Long totalFamilia;
-	private Long diagnosticEconomic;
 	
 	@ManyToMany(cascade = { CascadeType.MERGE } )
    	 @JoinTable(
@@ -60,15 +62,16 @@ public @Data class Expedient implements Serializable {
     @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "EXPEDIENT_VERSIO_MODEL_FK"))	
     private VersioModel versioModel;
 	
-	@ManyToOne (cascade=CascadeType.ALL)
+	@ManyToOne (cascade=CascadeType.MERGE)
     @JoinColumn(name="professional",foreignKey= @ForeignKey(name = "EXPEDIENT_PROFESSIONAL_FK"))	
     private Professional professional;
 		
-	@OneToMany(cascade=CascadeType.ALL, mappedBy = "expedient", fetch = FetchType.EAGER)	
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, mappedBy = "expedient", fetch = FetchType.EAGER)	
 	@Fetch(value = FetchMode.SUBSELECT)
+	@JsonProperty("preguntes")
     private List<Diagnostic> diagnostic;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy = "expedient", fetch = FetchType.EAGER)	
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, mappedBy = "expedient", fetch = FetchType.EAGER)	
 	@Fetch(value = FetchMode.SUBSELECT)
     private List<Contextualitzacio> contextualitzacio;
 	

@@ -94,7 +94,9 @@ public class DataBaseInit implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		VersioModel versio = versioModelService.save(VersioModel.builder().versio("111/AAAA/00").data(new Date()).build());
+		VersioModel versio = versioModelService.save(VersioModel.builder()
+											.versio("111AAAA00")
+											.data(new Date()).build());
 		
 		Frequencia ocasionalFrequencia= frequenciaService.save(Frequencia.builder().DESCRIPCIO("Ocasional").build());
 		Frequencia frequentFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Freqüent").build());
@@ -274,6 +276,9 @@ public class DataBaseInit implements CommandLineRunner {
 							
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Ingressos insuficients (E.2)","Unitats familiars que malgrat tenir uns ingressos tenen dificultats per cobrir determinades necessitats  dels seus integrants."
 												,entornEconomic,1d,2d,3d));
+		
+		versio.setPreguntaEconomica(situacioSocial.getID());
+		versioModelService.save(versio);
 								
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"3-4 étems del qüestionari privacié econémica i amb xarxa/recursos de suport econémic",baixaGravetat));	
 									

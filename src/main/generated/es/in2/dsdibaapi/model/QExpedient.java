@@ -28,8 +28,6 @@ public class QExpedient extends EntityPathBase<Expedient> {
 
     public final ListPath<Diagnostic, QDiagnostic> diagnostic = this.<Diagnostic, QDiagnostic>createList("diagnostic", Diagnostic.class, QDiagnostic.class, PathInits.DIRECT2);
 
-    public final NumberPath<Long> diagnosticEconomic = createNumber("diagnosticEconomic", Long.class);
-
     public final StringPath estat = createString("estat");
 
     public final StringPath expedient = createString("expedient");

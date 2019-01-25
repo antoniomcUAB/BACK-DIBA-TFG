@@ -5,6 +5,11 @@ import es.in2.dsdibaapi.model.Expedient;
 
 public interface ExpedientService {
 	
+	public enum Estat {
+	    BORRADOR,
+	    VALIDAT 
+	}
+	
 	public Expedient findById(Long id);	
 	
 	public Iterable<Expedient> findByExpedient(String expedient);

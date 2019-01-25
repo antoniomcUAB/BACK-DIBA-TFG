@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.querydsl.core.types.Predicate;
@@ -68,13 +69,14 @@ public class ExpedientServiceImpl implements ExpedientService{
 	public Iterable<Expedient> findByMunicipi(Long municipi) {
 		Predicate predicate = QExpedient.expedient1.professional.municipi.ID.eq(municipi);
 		
-		return expedientRepository.findAll(predicate);
+		return expedientRepository.findAll(predicate,new Sort(Sort.Direction.ASC, "expedient", "DATA"));
     }
 	
 	public Expedient save(Expedient expedient, Long versio) {
 		VersioModel v = versioModelService.findById(versio);
 		
 		expedient.setVersioModel(v);
+		expedient.setEstat(Estat.BORRADOR.toString());
 		
 		return expedientRepository.save(expedient);
     }
@@ -136,7 +138,7 @@ public class ExpedientServiceImpl implements ExpedientService{
 		valoracio.setTotal(total);
 		valoracio.setData(new Date());
 		exp.setValoracio(valoracio);
-		exp.setEstat("VALIDAT");
+		exp.setEstat(Estat.VALIDAT.toString());
 		valoracioService.save(valoracio);
 		exp=save (exp);
 		

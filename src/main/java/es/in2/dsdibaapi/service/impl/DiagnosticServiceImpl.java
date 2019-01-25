@@ -84,9 +84,12 @@ public class DiagnosticServiceImpl implements DiagnosticService{
     	
 		predicate = QDiagnostic.diagnostic.expedient.ID.eq(expedient)
 				.and(QDiagnostic.diagnostic.situacioSocial.ID.eq(situacioSocial));
-    	 
+    	
+		if (diagnosticRepository.findOne(predicate).isPresent()) {		
+			return diagnosticRepository.findOne(predicate).get();
+		}
 		
-		return diagnosticRepository.findOne(predicate).get();
+		return null;
     }
     
    
@@ -99,7 +102,7 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		diagnostic.setExpedient(exp);
 		diagnostic.setEntorn(ent);
 		
-		if (exp.getDiagnosticEconomic().equals(diagnostic.getSituacioSocial().getID())) {
+		if (exp.getVersioModel().getPreguntaEconomica().equals(diagnostic.getSituacioSocial().getID())) {
 			avaluacioEconomica (diagnostic);
 		} 
 		
