@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicUpdate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -41,6 +42,7 @@ public @Data class FrequenciaGravetat implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name="gravetat",foreignKey= @ForeignKey(name = "FREQ_GRAVETAT_FK"))
+	@JsonIgnoreProperties(value = { "value"} )
     private Gravetat gravetat;
 	
 	@ManyToOne

@@ -44,7 +44,7 @@ public class PreguntaController extends BaseController {
 	private SituacioSocialService situacioSocialService;
 	
 	@RequestMapping(value = "/pregunta/{id}", method = RequestMethod.GET)
-	@ApiOperation(value = "Consulta d'un diagnóstic", notes = "")
+	@ApiOperation(value = "Consulta d'una preguntes", notes = "")
 	  public Diagnostic getDiagnostic(@PathVariable Long id) {
 	     try {
 	    	 return diagnosticService.findById(id);
@@ -55,14 +55,14 @@ public class PreguntaController extends BaseController {
 	  }
 
 	
-	@RequestMapping(value = {"/preguntas/{expedient}", "/preguntas/{expedient}/{entorn}"}, method = RequestMethod.GET)
-	@ApiOperation(value = "Diagnóstics per entorn", notes = "")
-	  public Iterable<Diagnostic> getDiagnostic(@PathVariable Long expedient,@PathVariable (required=false) Long entorn) {
+	@RequestMapping(value = {"/preguntas/{diagnostic}", "/preguntas/{diagnostic}/{entorn}"}, method = RequestMethod.GET)
+	@ApiOperation(value = "Preguntes per entorn", notes = "")
+	  public Iterable<Diagnostic> getDiagnostic(@PathVariable Long diagnostic,@PathVariable (required=false) Long entorn) {
 		try {
-			return diagnosticService.findByExpedientEntorn(expedient,entorn);
+			return diagnosticService.findByExpedientEntorn(diagnostic,entorn);
 		} catch (NoSuchElementException ex) {
 			throw new ResponseStatusException(
-			          HttpStatus.NOT_FOUND,getErrorNotFound(this.getClass(),expedient), ex);
+			          HttpStatus.NOT_FOUND,getErrorNotFound(this.getClass(),diagnostic), ex);
 		}
 	  }
 	
@@ -75,9 +75,9 @@ public class PreguntaController extends BaseController {
 	
 	
 	@RequestMapping(value = "/pregunta/{expedient}/{entorn}", method = RequestMethod.PUT)
-	@ApiOperation(value = "Alta/modificació d'un diagnóstic", notes = "")
-	  public Diagnostic putDiagnostic(@PathVariable Long expedient,@PathVariable Long entorn,@RequestBody Diagnostic diagnostic) {
-		return diagnosticService.save(diagnostic,expedient,entorn);
+	@ApiOperation(value = "Alta/modificació d'una pregunta", notes = "")
+	  public Diagnostic putDiagnostic(@PathVariable Long expedient,@RequestBody Diagnostic diagnostic) {
+		return diagnosticService.save(diagnostic,expedient);
 	  }
 	
 	@RequestMapping(value = "/pregunta/economia/{diagnostic}", method = RequestMethod.PUT)
@@ -93,11 +93,11 @@ public class PreguntaController extends BaseController {
 		SituacioSocial situacioSocial = situacioSocialService.findById(exp.getVersioModel().getPreguntaEconomica());
 		
 		if (d == null) {
-			d = diagnosticService.save(Diagnostic.builder().factorEconomic(factors).situacioSocial(situacioSocial).build(),diagnostic,situacioSocial.getEntorn().getID());
+			d = diagnosticService.save(Diagnostic.builder().factorEconomic(factors).situacioSocial(situacioSocial).build(),diagnostic);
 		}
 		else {
 			d.setFactorEconomic(factors);
-			d = diagnosticService.save(d,diagnostic,situacioSocial.getEntorn().getID());
+			d = diagnosticService.save(d,diagnostic);
 		}
 		
 		return diagnosticService.findById(d.getID());

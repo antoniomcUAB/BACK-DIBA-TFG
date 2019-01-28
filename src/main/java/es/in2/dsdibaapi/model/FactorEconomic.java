@@ -35,7 +35,7 @@ public @Data class FactorEconomic implements Serializable {
 	
 
 	@ManyToOne
-    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "FACTOR_ECONOMIC_VERSIO_FK"))
+    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "FACTOR_ECONOMIC_VERSIO_FK"),updatable=false)
 	@JsonIgnore
     private VersioModel versioModel;
 	

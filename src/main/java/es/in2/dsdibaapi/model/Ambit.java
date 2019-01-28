@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -40,10 +42,12 @@ public @Data class Ambit implements Serializable {
 	private Double valAltrisc;
 	
 	@OneToMany(mappedBy = "ambit")
+	@OrderBy("ID ASC")
 	@JsonProperty("Items")
     private List<Entorn> entorn;
 	
 	@OneToMany (mappedBy = "ambit")
+	@JsonIgnoreProperties(value = { "fc1m", "fctots"})
 	@JsonProperty("Factors_context")
     private List<Factor> factorGravetat;
 	

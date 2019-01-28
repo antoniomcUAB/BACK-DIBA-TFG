@@ -111,7 +111,8 @@ public class ExpedientServiceImpl implements ExpedientService{
 		
 		for (Ambit a:ambits) {
 			
-			if (a.getVulnerabilitat() != null) {
+			if (a.getVulnerabilitat() != null && 
+					(exp.getContextualitzacio()!=null || exp.getDiagnostic()!=null) ) {
 				avaluacio = Avaluacio.builder()
 							.ambit(a)
 							.valoracio(valoracio)
@@ -155,31 +156,40 @@ public class ExpedientServiceImpl implements ExpedientService{
 					      () -> new TreeSet<Diagnostic>((p1, p2) -> p1.getSituacioSocial().getID().compareTo(p2.getSituacioSocial().getID())) 
 					));
 		
+		TreeSet<Contextualitzacio> ctx = exp.getContextualitzacio().stream().filter(x -> x.getFactor().getAmbit().getID()==a.getID())				
+				.collect(Collectors.toCollection(
+					      () -> new TreeSet<Contextualitzacio>((p1, p2) -> Long.valueOf(p1.getFactor().getID()).compareTo(Long.valueOf(p2.getFactor().getID()))) 
+					));
+		
 		Double count = 0d;
 		
-		Risc vulnerabilitat = riscService.findByDescription(RiscService.Tipus.VULNERABILITAT);
-		Risc risc = riscService.findByDescription(RiscService.Tipus.RISC);	
+		if (t.size() > 0) {
 		
-		// Avaluacio de Factors de context
-		for (Contextualitzacio c:exp.getContextualitzacio()) {
-			if (c.getMesUc()!=null && c.getMesUc()) {
-				count += c.getFactor().getFctots();
+			Risc vulnerabilitat = riscService.findByDescription(RiscService.Tipus.VULNERABILITAT);
+			Risc risc = riscService.findByDescription(RiscService.Tipus.RISC);	
+			
+			// Avaluacio de Factors de context
+			for (Contextualitzacio c:ctx) {
+				if (c.getMesUc()!=null && c.getMesUc()) {
+					count += c.getFactor().getFctots();
+				}
+				else {
+					count += c.getFactor().getFc1m();
+				}
 			}
-			else {
-				count += c.getFactor().getFc1m();
+			
+			for (Diagnostic d:t) {
+				if (d.getFactor().equals(vulnerabilitat)) {
+					count += d.getSituacioSocial().getVulnerabilitat();
+				}
+				else if (d.getFactor().equals(risc)) {
+					count += d.getSituacioSocial().getRisc();
+				} 
+				else {
+					count += d.getSituacioSocial().getAltRisc();
+				}
 			}
-		}
 		
-		for (Diagnostic d:t) {
-			if (d.getFactor().equals(vulnerabilitat)) {
-				count += d.getSituacioSocial().getVulnerabilitat();
-			}
-			else if (d.getFactor().equals(risc)) {
-				count += d.getSituacioSocial().getRisc();
-			} 
-			else {
-				count += d.getSituacioSocial().getAltRisc();
-			}
 		}
 		
 		if ( count == 0d) {

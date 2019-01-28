@@ -2,6 +2,7 @@ package es.in2.dsdibaapi.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.querydsl.core.types.Predicate;
@@ -35,7 +36,7 @@ public class ModelServiceImpl implements ModelService{
 		predicateFactor = QFactorEconomic.factorEconomic.versioModel.ID.eq(versio);		
 		
 	    Model model = new Model();
-	    model.setAmbits(ambitRepository.findAll(predicateAmbit));
+	    model.setAmbits(ambitRepository.findAll(predicateAmbit,new Sort(Sort.Direction.ASC, "DESCRIPCIO")));
 	    model.setFactorEconomic(factorEconomicRepository.findAll(predicateFactor));  
 	    
 	    

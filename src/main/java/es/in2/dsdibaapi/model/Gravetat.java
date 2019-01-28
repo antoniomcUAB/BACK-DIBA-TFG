@@ -27,6 +27,7 @@ public @Data class Gravetat implements Serializable {
 	@Id @GeneratedValue 
 	private long ID;
 	private String DESCRIPCIO;
+	private Integer value;
 	
 	
 }

@@ -12,7 +12,7 @@ public interface DiagnosticService {
     
     public Boolean existsById(Long id);
 	
-	public Diagnostic save (Diagnostic diagnostic, Long expedient, Long entorn) ;
+	public Diagnostic save (Diagnostic diagnostic, Long expedient) ;
 	
 }
 

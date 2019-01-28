@@ -18,7 +18,7 @@ public @Data class ExpedientGlobal implements Serializable {
 	    COMPLET 
 	}
 	
-	private String codi;
+	private String expedient;
 	private Date dataCreacio;
 	private Date dataValidacio;
 	private ExpedientGlobal.Estat estat;

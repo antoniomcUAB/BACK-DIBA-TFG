@@ -23,6 +23,8 @@ public class QGravetat extends EntityPathBase<Gravetat> {
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
+    public final NumberPath<Integer> value = createNumber("value", Integer.class);
+
     public QGravetat(String variable) {
         super(Gravetat.class, forVariable(variable));
     }

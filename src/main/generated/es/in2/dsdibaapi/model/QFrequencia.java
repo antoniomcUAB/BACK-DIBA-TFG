@@ -23,6 +23,8 @@ public class QFrequencia extends EntityPathBase<Frequencia> {
 
     public final NumberPath<Long> ID = createNumber("ID", Long.class);
 
+    public final NumberPath<Integer> value = createNumber("value", Integer.class);
+
     public QFrequencia(String variable) {
         super(Frequencia.class, forVariable(variable));
     }

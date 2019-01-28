@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicUpdate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,6 +39,7 @@ public @Data class Factor implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="gravetat",foreignKey= @ForeignKey(name = "FACTOR_GRAVETAT_FK"))
+	@JsonIgnoreProperties(value = { "value"} )
     private Gravetat gravetat;
 		
 	@ManyToOne

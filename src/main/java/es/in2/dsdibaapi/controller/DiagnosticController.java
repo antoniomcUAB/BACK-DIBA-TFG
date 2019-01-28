@@ -1,6 +1,6 @@
 package es.in2.dsdibaapi.controller;
 
-import java.util.List;
+import java.util.Date;
 import java.util.NoSuchElementException;
 
 import org.slf4j.Logger;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.util.UriUtils;
 
 import es.in2.dsdibaapi.model.Expedient;
-import es.in2.dsdibaapi.model.FactorEconomic;
 import es.in2.dsdibaapi.service.ExpedientService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -28,8 +28,9 @@ public class DiagnosticController
   @Autowired
   private ExpedientService expedientService;
   
+  /*
   @RequestMapping(value={"/diagnostic/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
-  @ApiOperation(value="Consulta d'un expedient", notes="")
+  @ApiOperation(value="Consulta d'un diagnòstic", notes="")
   public Expedient getExpedient(@PathVariable Long id)
   {
     try
@@ -41,16 +42,16 @@ public class DiagnosticController
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, getErrorNotFound(getClass(), id), ex);
     }
   }
-  
+  */
   
   
   @RequestMapping(value={"/diagnostic/llista/{expedient}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
-  @ApiOperation(value="Consulta de expedients", notes="")
+  @ApiOperation(value="Consulta de diagnòstic", notes="")
   public Iterable<Expedient> getExpedient(@PathVariable String expedient)
   {
     try
-    {
-      return this.expedientService.findByExpedient(expedient);
+    {    	
+      return this.expedientService.findByExpedient(UriUtils.decode(expedient, "UTF-8"));
     }
     catch (NoSuchElementException ex)
     {
@@ -60,23 +61,24 @@ public class DiagnosticController
   
   
   @RequestMapping(value={"/diagnostic/valorar/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
-  @ApiOperation(value="Valoraci� d'un expedient", notes="")
+  @ApiOperation(value="Valoració d'un diagnòstic", notes="")
   public Expedient getValoracio(@PathVariable Long id)
   {
     return this.expedientService.avaluar(id);
   }
   
   @RequestMapping(value={"/diagnostic/{versio}"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
-  @ApiOperation(value="Consulta/modificaci� d'un expedient", notes="")
-  public Expedient putExpedient(@RequestBody Expedient expedient, @PathVariable Long versio)
+  @ApiOperation(value="Nou diagnòstic", notes="")
+  public Expedient putExpedient(@RequestBody Expedient expedient, @PathVariable Long versio)  
   {
+	  expedient.setDATA(new Date ());
     return this.expedientService.save(expedient, versio);
   }
   
   
   
   @RequestMapping(value={"/diagnostic/"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
-  @ApiOperation(value="Consulta/modificaci� d'un expedient", notes="")
+  @ApiOperation(value="Modificació d'un diagnòstic", notes="")
   public Expedient putExpedient(@RequestBody Expedient expedient)
   {
     return this.expedientService.save(expedient);

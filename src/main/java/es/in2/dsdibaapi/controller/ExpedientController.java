@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -24,6 +25,12 @@ public class ExpedientController extends BaseController {
 	@Autowired
 	private ExpedientService expedientService;
 	
+	@RequestMapping(value={"/expedient/{versio}"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
+	  @ApiOperation(value="Consulta/modificació d'un expedient", notes="")
+	  public Expedient putExpedient(@RequestBody Expedient expedient, @PathVariable Long versio)
+	  {
+	    return this.expedientService.save(expedient, versio);
+	  }
 	
 	
 	  
@@ -43,17 +50,17 @@ public class ExpedientController extends BaseController {
 	    		if (current == null) {
 	    			
 	    			current = ExpedientGlobal.builder()
-	    							.codi(e.getExpedient())
+	    							.expedient(e.getExpedient())
 	    							.estat(ExpedientGlobal.Estat.COMPLET)
 	    							.professional(e.getProfessional())
 	    							.dataCreacio(e.getDATA()).build();
 	    			
 	    			resultat.add(current);
 	    		}
-	    		else if (!current.getCodi().equalsIgnoreCase(e.getExpedient())) {	    			
+	    		else if (!current.getExpedient().equalsIgnoreCase(e.getExpedient())) {	    			
 	    			   			
 	    			current = ExpedientGlobal.builder()
-							.codi(e.getExpedient())
+							.expedient(e.getExpedient())
 							.professional(e.getProfessional())
 							.dataCreacio(e.getDATA()).build();
 	    			

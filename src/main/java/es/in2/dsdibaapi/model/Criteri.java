@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicUpdate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -38,10 +39,12 @@ public @Data class Criteri implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name = "frequencia",foreignKey= @ForeignKey(name = "CRITERI_FREQUENCIA_FK"))
+	@JsonIgnoreProperties(value = { "value"} )
     private Frequencia frequencia;
 	
 	@OneToOne
 	@JoinColumn(name = "risc",foreignKey= @ForeignKey(name = "CRITERI_RISC_FK"))
+	@JsonIgnoreProperties(value = { "value"} )
     private Risc risc;
 	
 	@ManyToOne

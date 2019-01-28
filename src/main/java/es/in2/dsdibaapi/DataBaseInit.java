@@ -98,22 +98,22 @@ public class DataBaseInit implements CommandLineRunner {
 											.versio("111AAAA00")
 											.data(new Date()).build());
 		
-		Frequencia ocasionalFrequencia= frequenciaService.save(Frequencia.builder().DESCRIPCIO("Ocasional").build());
-		Frequencia frequentFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Freqüent").build());
-		Frequencia continuaFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Continua").build());
-		Frequencia puntualFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Puntual").build());
-		Frequencia senseFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Sense valoració").build());		
+		Frequencia ocasionalFrequencia= frequenciaService.save(Frequencia.builder().DESCRIPCIO("Ocasional").value(1).build());
+		Frequencia frequentFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Freqüent").value(2).build());
+		Frequencia continuaFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Continua").value(3).build());
+		Frequencia puntualFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Puntual").value(0).build());
+		Frequencia senseFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Sense valoració").value(0).build());		
 		
 		Risc senseRisc = riscService.save(Risc.builder().DESCRIPCIO("Sense Valoració").value(0).build());
 		Risc vulnerabilitatRisc = riscService.save(Risc.builder().DESCRIPCIO("Vulnerabilitat").value(1).build());
 		Risc riscRisc = riscService.save(Risc.builder().DESCRIPCIO("Risc").value(2).build());
 		Risc alttRisc = riscService.save(Risc.builder().DESCRIPCIO("Alt Risc").value(3).build());
 		
-		Gravetat baixaGravetat = gravetatService.save(Gravetat.builder().DESCRIPCIO("Baixa").build());		
-		Gravetat moderadaGravetat= gravetatService.save(Gravetat.builder().DESCRIPCIO("Moderada").build());
-		Gravetat  altaGravetat=gravetatService.save(Gravetat.builder().DESCRIPCIO("Alta").build());
-		Gravetat proteccioGravetat=gravetatService.save(Gravetat.builder().DESCRIPCIO("Protecció").build());
-		Gravetat riscGravetat=gravetatService.save(Gravetat.builder().DESCRIPCIO("Risc").build());
+		Gravetat baixaGravetat = gravetatService.save(Gravetat.builder().DESCRIPCIO("Baixa").value(1).build());		
+		Gravetat moderadaGravetat= gravetatService.save(Gravetat.builder().DESCRIPCIO("Moderada").value(2).build());
+		Gravetat  altaGravetat=gravetatService.save(Gravetat.builder().DESCRIPCIO("Alta").value(3).build());
+		Gravetat proteccioGravetat=gravetatService.save(Gravetat.builder().DESCRIPCIO("Protecció").value(0).build());
+		Gravetat riscGravetat=gravetatService.save(Gravetat.builder().DESCRIPCIO("Risc").value(0).build());
 		
 		rolService.save(Rol.builder().DESCRIPCIO("Gerent").build());
 		rolService.save(Rol.builder().DESCRIPCIO("Tècnic").build());

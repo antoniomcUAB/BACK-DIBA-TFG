@@ -1,12 +1,10 @@
 package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,12 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -43,14 +38,14 @@ public @Data class Diagnostic implements Serializable {
 	private Long ID;
 	private Boolean unitatFamiliar;	
 	
-	@ManyToOne
-	@JoinColumn(name="expedient",foreignKey= @ForeignKey(name = "DIAGNOSTICv1_EXPEDIENT_FK"))
-	@JsonIgnore
+	@ManyToOne ()
+	@JoinColumn(name="expedient", foreignKey= @ForeignKey(name = "DIAGNOSTICv1_EXPEDIENT_FK"),updatable=false)	
+	@JsonIgnore	
     private Expedient expedient;
 	
 	@ManyToOne
-    @JoinColumn(name="entorn",foreignKey= @ForeignKey(name = "DIAGNOSTIC2_ENTORN_FK"))
-	@JsonIgnore
+    @JoinColumn(name="entorn",foreignKey= @ForeignKey(name = "DIAGNOSTIC2_ENTORN_FK"),updatable=false)
+	@JsonIgnoreProperties(value = { "Items"})
 	private Entorn entorn;
 	
 	@ManyToOne

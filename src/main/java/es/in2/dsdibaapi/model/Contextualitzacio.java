@@ -45,7 +45,7 @@ public @Data class Contextualitzacio implements Serializable {
     private Persona persona;
 	
 	@ManyToOne 
-    @JoinColumn(name="expedient",foreignKey= @ForeignKey(name = "CONTX_EXPEDIENT_FK"))
+    @JoinColumn(name="expedient",foreignKey= @ForeignKey(name = "CONTX_EXPEDIENT_FK"),updatable=false)
 	@JsonIgnore
     private Expedient expedient;
 	

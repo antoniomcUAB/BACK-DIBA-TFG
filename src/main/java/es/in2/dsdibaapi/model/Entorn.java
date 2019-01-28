@@ -10,11 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -45,6 +47,8 @@ public @Data class Entorn implements Serializable {
     private Ambit ambit;
 	
 	@OneToMany (mappedBy = "entorn")
+	@JsonIgnoreProperties(value = { "vulnerabilitat", "risc", "altRisc"})
+	@OrderBy("ID ASC")
 	@JsonProperty("Items")
     private List<SituacioSocial> situacioSocial;
 	

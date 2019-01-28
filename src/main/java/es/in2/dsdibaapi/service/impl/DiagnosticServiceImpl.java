@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import com.querydsl.core.types.Predicate;
 
 import es.in2.dsdibaapi.model.Diagnostic;
-import es.in2.dsdibaapi.model.Economia;
-import es.in2.dsdibaapi.model.Entorn;
 import es.in2.dsdibaapi.model.Expedient;
 import es.in2.dsdibaapi.model.FactorEconomic;
 import es.in2.dsdibaapi.model.QDiagnostic;
@@ -94,13 +92,11 @@ public class DiagnosticServiceImpl implements DiagnosticService{
     
    
 	
-	public Diagnostic save (Diagnostic diagnostic, Long expedient, Long entorn) {
+	public Diagnostic save (Diagnostic diagnostic, Long expedient) {
 		Expedient exp = expedientService.findById(expedient);
-		
-		Entorn ent = entornService.findById(entorn);
-		
+				
 		diagnostic.setExpedient(exp);
-		diagnostic.setEntorn(ent);
+		diagnostic.setEntorn(diagnostic.getSituacioSocial().getEntorn());
 		
 		if (exp.getVersioModel().getPreguntaEconomica().equals(diagnostic.getSituacioSocial().getID())) {
 			avaluacioEconomica (diagnostic);
@@ -126,13 +122,11 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 			}
 		}
 		else {
-			int gravetat = Integer.valueOf(env.getProperty("eval.gravetat."+d.getGravetat().getDESCRIPCIO().toLowerCase()));
-			int frequencia = Integer.valueOf(env.getProperty("eval.frequencia."+d.getFrequencia().getDESCRIPCIO().toLowerCase()));
-			
-			if ((gravetat*frequencia) <= 1) {
+			int res = d.getGravetat().getValue()*d.getFrequencia().getValue();
+			if (res <= 1) {
 				return RiscService.Tipus.VULNERABILITAT;
 			}
-			else if ((gravetat*frequencia) <= 3) {
+			else if (res <= 3) {
 				return RiscService.Tipus.RISC;
 			}			
 		}	
