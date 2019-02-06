@@ -1,0 +1,153 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4A135AF7-3D18-42D6-8557-8334266A582C" name="FACTOR">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>AE20C1F3-CBB9-FF48-8DF8-3C9E1919105D</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="140CB93E-7465-A4B8-B94E-ACE1348E5157">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>C0250A23-EF52-27B3-00CA-701238BD5721</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="gravetat" id="49FE31CC-706B-1789-5730-A3CB04746A35">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>157D2339-C055-C0B9-297B-BBA390532F42</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="19899587-DC91-09D8-BAEA-B232477C18F3" referredColumn="8619840F-41F1-4C89-4B8F-32CD76BB5270"/>
+</associations>
+</Column>
+<Column name="descripcio" id="A22E45AA-C38E-9A89-63D9-8AFE8EDB4583">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>76ECBEB7-7431-9384-FFA6-BC0D3E5A6883</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>D04EE6C2-C518-3D24-0091-E034D83AB474</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fc1m" id="87C97A5E-FD43-EA9D-1DBD-D53B80F3FA48">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>C82D2A11-0128-8A1B-B36B-FD1AD2054215</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fctots" id="2E84CF33-51E8-FDE0-E81F-E1B4C71891BB">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>063FAB1A-9FE7-C086-8038-37CAE9D8085A</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ambit" id="FDABFA12-C004-C7A3-92D9-88BB7CC06109">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>ADEC751F-210C-FE69-1675-134E9AE7144E</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7B0A4248-1D87-11D7-CA05-AC07A96BA89C" referredColumn="4FE213D5-2108-F51A-6A0F-E7172EA74D46"/>
+</associations>
+</Column>
+<Column name="infants" id="8AB77E2A-0F4C-FA14-2DC1-3E260FDADB7F">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>77981303-F2AA-B2BD-F597-577106560DFF</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<domain>D5FBAF9B-B239-2505-C660-B1EDE95FD650</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5F4C6334-BEDA-5048-7E5A-B6591726F0E5" name="FACTOR_PKv2">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>7D21A843-06F8-6564-4498-885657629C68</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="140CB93E-7465-A4B8-B94E-ACE1348E5157"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="41D92F30-9EC2-6418-F3B5-1660A196F9E0" name="FACTOR_AMBIT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FDABFA12-C004-C7A3-92D9-88BB7CC06109"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1DC8DAFD-3513-A815-1107-E4F42A53AC22" name="FACTOR_GRAVETAT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49FE31CC-706B-1789-5730-A3CB04746A35"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

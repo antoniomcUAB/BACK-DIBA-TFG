@@ -26,7 +26,9 @@ public class QProfessional extends EntityPathBase<Professional> {
 
     public final StringPath cognom2 = createString("cognom2");
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final ListPath<Expedient, QExpedient> expedient = this.<Expedient, QExpedient>createList("expedient", Expedient.class, QExpedient.class, PathInits.DIRECT2);
+
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final QMunicipi municipi;
 

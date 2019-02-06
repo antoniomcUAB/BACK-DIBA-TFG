@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FD99C5B3-F6F9-0BD2-2AAF-3A9D0DD636BC" name="FREQUENCIA">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>A68DD7DF-9CD3-C6EB-1C1D-528908563C89</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="C9D0F59C-C72F-59CA-9A5F-6D444FB89710">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>EC02C5BF-E7A5-ADC8-B993-13E01A8FB031</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcio" id="41C1485B-E58C-5BF7-9C4C-4A25B01A02F5">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>76375FAD-3132-B59B-5D44-61DA7651334D</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>34A6E048-72D3-1EC9-19F8-969DCB4323EB</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="value" id="DBF514C6-3B2B-9896-9EC0-32CB4A667D25">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>D252139E-EEDA-D0E4-8DD0-C45BE5A8BD15</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>B50EA0E0-356A-1BBD-DF2B-254379510385</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E5DDE645-5EBB-D773-A275-315AD93B0A73" name="FREQUENCIA_PK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>281DCBAF-FF9D-AC20-AF26-00BF81C30242</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C9D0F59C-C72F-59CA-9A5F-6D444FB89710"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

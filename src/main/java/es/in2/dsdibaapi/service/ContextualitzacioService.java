@@ -9,7 +9,7 @@ public interface ContextualitzacioService {
     public Contextualitzacio findById(Long id) ;
 
 	
-    public Iterable<Contextualitzacio> findByExpedientAmbit(Long expedient,Long ambit);
+    public Iterable<Contextualitzacio> findByDiagnosticAmbit(Long expedient,Long ambit);
 	
 	public Contextualitzacio save (Contextualitzacio contextualitzacio, Long expedient, Long factor);
 	

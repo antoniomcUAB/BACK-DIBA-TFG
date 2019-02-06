@@ -1,0 +1,138 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6DEF5919-AE92-AECD-B1BF-D22BAB5293A4" name="CRITERI">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>D17BE2AB-954C-96F4-E004-2F9824A86C51</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="0118228C-FF68-AACE-5CCD-5B57F485FDC8">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>99892BA3-F7D6-413A-C03D-E3A7299E9BB8</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="evidencia" id="DB8BB78A-00B0-085D-366F-60F2B7CBE7AD">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>F740ECE5-3C8F-2CBA-AD9B-B6A5F42F7D54</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>ABEF0A1E-6A97-B8E5-0CDC-5BAF1288E99C</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="frequencia" id="3B255788-359C-4441-4E1A-1C87C416636A">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>68BA944B-73F6-EA56-E819-31C874CA99DF</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="794C6462-954B-D282-DC3D-FB46C17150E3" referredColumn="C9D0F59C-C72F-59CA-9A5F-6D444FB89710"/>
+</associations>
+</Column>
+<Column name="risc" id="7428959F-2618-AC85-9108-C000B629AF57">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>0C34645A-9DA8-3A8E-E61C-3B0CD5AF2BE8</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="366F8FD5-6CB1-4BD9-E15B-1ABAB197987F" referredColumn="50955319-BBCD-CAE5-DC06-FAD2AD679ECD"/>
+</associations>
+</Column>
+<Column name="frequencia_gravetat" id="0C699EDA-4DA7-3AE8-EE60-71D067486B72">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>139DCB45-FB6F-A4DA-B29E-BAAB847672A4</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>B91CCA1C-3D28-EA45-9C29-648C567B06F1</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="98C33DA5-F2CE-4050-1117-B88CAC9C59ED" referredColumn="5B68D5A8-D380-F902-39C6-78C1766CF1DA"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="62D348A7-6BC5-BAC3-6892-1C26B436B01B" name="CRITERI_PK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>6C026289-4E49-4DEB-D158-05EB84D5B068</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0118228C-FF68-AACE-5CCD-5B57F485FDC8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="10C7AF61-9056-C0FF-2369-91BA598BEAA5" name="CRITERI_FREQUENCIA_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3B255788-359C-4441-4E1A-1C87C416636A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="62AA73E5-DF4D-17C6-341B-D58CA64E9BFF" name="CRITERI_FREQUENCIA_GRAVETAT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0C699EDA-4DA7-3AE8-EE60-71D067486B72"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="812195AD-C022-640E-0129-81A8237D733B" name="CRITERI_RISC_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7428959F-2618-AC85-9108-C000B629AF57"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

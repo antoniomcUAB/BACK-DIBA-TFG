@@ -27,12 +27,12 @@ public class VersioModelServiceImpl implements VersioModelService{
 	
 	@Cacheable("versio")
     public VersioModel findCurrent() {		
-		return versioRepository.findAll(new Sort(Sort.Direction.DESC, "ID")).get(0);
+		return versioRepository.findAll(new Sort(Sort.Direction.DESC, "id")).get(0);
     }
 	
 	@Cacheable("versions")
     public List<VersioModel> findAll() {
-		return versioRepository.findAll(new Sort(Sort.Direction.DESC, "ID"));
+		return versioRepository.findAll(new Sort(Sort.Direction.DESC, "id"));
     }
 	
 

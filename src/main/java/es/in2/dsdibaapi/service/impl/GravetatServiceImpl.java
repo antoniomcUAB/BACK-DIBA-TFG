@@ -35,7 +35,7 @@ public class GravetatServiceImpl implements GravetatService {
 	@Cacheable("gravetat")
     public Gravetat findByDescription(String description) {
 		
-		Predicate predicate = QGravetat.gravetat.DESCRIPCIO.equalsIgnoreCase(description);
+		Predicate predicate = QGravetat.gravetat.descripcio.equalsIgnoreCase(description);
 		
 		return gravetatRepository.findOne(predicate).get();
     }

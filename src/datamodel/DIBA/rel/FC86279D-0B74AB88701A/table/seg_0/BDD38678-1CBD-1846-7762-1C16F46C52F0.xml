@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BDD38678-1CBD-1846-7762-1C16F46C52F0" name="ECONOMIA">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>F15D3502-C63D-F860-6B07-C8AC70622AA4</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="factor" id="85B70C98-AA14-90F1-CCFC-C4955FC41646">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>25FFB02D-0B4E-686A-556D-5FFC30D37759</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B8FA4FF5-5AB4-CDD7-556A-3441DFAA3F56" referredColumn="78B7B2B2-983B-C90A-E8A1-0182F7987FFF"/>
+</associations>
+</Column>
+<Column name="pregunta" id="05FDB8BE-A174-F1E5-4111-EE8AFF8257DD">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>CBEF6F31-AD5E-0E7F-3EA5-776C15854796</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4975C742-BBC5-D407-2FDA-4C797DC20769" referredColumn="9DC224CE-28D8-397B-73C1-584BA65D50CB"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="60B52D22-3AA6-D34F-5A9B-DC2E2BD770DB" name="ECONOMIA_PK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>F427F70C-C8D4-9F0B-816E-3F4CCCD56AB7</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="85B70C98-AA14-90F1-CCFC-C4955FC41646"/>
+<colUsage columnID="05FDB8BE-A174-F1E5-4111-EE8AFF8257DD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="25679C4D-ACDA-9FF1-FA43-966CC53CD429" name="ECONOMIA_FACTOR_ECONOMIC_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="85B70C98-AA14-90F1-CCFC-C4955FC41646"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0A09EA41-4D4D-5A81-E751-D64304CC5B57" name="ECONOMIA_PREGUNTA_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="05FDB8BE-A174-F1E5-4111-EE8AFF8257DD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

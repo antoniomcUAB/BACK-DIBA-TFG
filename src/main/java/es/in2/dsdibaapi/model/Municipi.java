@@ -26,9 +26,9 @@ public @Data class Municipi implements Serializable {
 
 	@Id 
 	@GeneratedValue
-	private long ID;
+	private long id;
 	
-	private String DESCRIPCIO;
+	private String descripcio;
 	
 	
 

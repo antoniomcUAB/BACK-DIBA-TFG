@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -24,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @DynamicUpdate
 @Table (name="AMBIT")
-@JsonPropertyOrder({ "ID", "DESCRIPCIO", "items" })
+@JsonPropertyOrder({ "id", "descripcio", "entorns" })
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -33,8 +34,8 @@ public @Data class Ambit implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
-	private long ID;
-	private String DESCRIPCIO;
+	private long id;
+	private String descripcio;
 	private Double vulnerabilitat;
 	private Double risc;
 	private Double valVulnerabilitat;
@@ -42,14 +43,18 @@ public @Data class Ambit implements Serializable {
 	private Double valAltrisc;
 	
 	@OneToMany(mappedBy = "ambit")
-	@OrderBy("ID ASC")
-	@JsonProperty("Items")
+	@OrderBy("id ASC")
+	@JsonProperty("entorns")
     private List<Entorn> entorn;
 	
 	@OneToMany (mappedBy = "ambit")
 	@JsonIgnoreProperties(value = { "fc1m", "fctots"})
-	@JsonProperty("Factors_context")
+	@JsonProperty("factors_context")	
     private List<Factor> factorGravetat;
 	
+	
+	
+	@Transient	
+	private Iterable<Contextualitzacio> contextualitzacio;
 	
 }

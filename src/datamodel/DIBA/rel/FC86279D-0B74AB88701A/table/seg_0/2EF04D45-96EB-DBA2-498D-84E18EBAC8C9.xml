@@ -1,0 +1,168 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2EF04D45-96EB-DBA2-498D-84E18EBAC8C9" name="PERSONA">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>431CA2E8-6D0F-A72E-455E-7B7800FF504D</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="F85EFA16-4C74-D9C1-AA5B-3BF4DB53F5A9">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>B816A2C2-A349-5D94-8E0E-A2DDA8C42576</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="sexe" id="EA89B171-C6CC-A2A1-6921-FE6151F2D84C">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>C10A593E-6A07-73FB-E82E-ED4011EC1B9C</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>9A72D7D2-4AE7-19E2-6D8E-9C6E9E6F2B64</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_naixement" id="F4A535E0-87D9-6858-B74E-080EB930CF6C">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>FC42F39D-AFF0-BD4A-33BD-7EB8B5071AAE</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
+<domain>1783CCA9-2DB0-E2CD-4A2B-6FB7B4D52F60</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipus_persona" id="1B0C73ED-FC70-C0B7-3444-D323A5E9CB5E">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>6B324695-4238-FB89-ADF7-0B1C9985B943</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E3BD78E5-4102-CAF0-8264-6B1C95E80B5D" referredColumn="F70C1AE9-4AC1-7739-C1AE-33F637C94BA8"/>
+</associations>
+</Column>
+<Column name="referencia" id="D7130503-EDED-55C8-6DE1-B7C4D136DACA">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>CA81A3AD-ED82-7832-F7D3-EF22C92C927E</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<domain>D5FBAF9B-B239-2505-C660-B1EDE95FD650</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_alta" id="B74ECEFC-5B10-3596-CFF9-6475182C818C">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>E13DCF2B-92FC-8B30-28A1-DD7CC788CB16</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
+<domain>1783CCA9-2DB0-E2CD-4A2B-6FB7B4D52F60</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="data_baixa" id="38DAB855-8DC0-8FB6-F09A-7842AABD2730">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>CAB77C43-2A18-66E2-98D4-6FFA176EB043</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT047</logicalDatatype>
+<domain>1783CCA9-2DB0-E2CD-4A2B-6FB7B4D52F60</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="expedient" id="CE357921-D597-B06F-1A2D-269010E1E0E1">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 11:10:46 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8B8FC8AB-23E2-099C-B029-9F65745B42D6" referredColumn="A4F6C5C6-6342-1C5E-AFE7-2AE1CE1889AB"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F65F2E59-455C-5A09-05BA-C89DEAC5249F" name="tipus_persona">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>B8E979AF-491C-5CFE-0931-7373087950E1</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F85EFA16-4C74-D9C1-AA5B-3BF4DB53F5A9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4C02F1DD-C7DD-D523-E108-CE6004DA6114" name="PERSONA_TIPUS_PERSONA_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1B0C73ED-FC70-C0B7-3444-D323A5E9CB5E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0B44C9D7-435B-1FBD-80A1-41D9EC6A0B0E" name="PERSONA_EXPEDIENT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 11:10:46 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CE357921-D597-B06F-1A2D-269010E1E0E1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -32,7 +32,7 @@ public class QFactor extends EntityPathBase<Factor> {
 
     public final QGravetat gravetat;
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final BooleanPath infants = createBoolean("infants");
 

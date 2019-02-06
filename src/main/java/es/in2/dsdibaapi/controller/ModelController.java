@@ -42,8 +42,8 @@ public class ModelController extends BaseController {
 			if (versio.isPresent()) {
 				model = modelService.findByVersion(versio.get());
 			} else {
-				List<VersioModel> versions = versionRepository.findAll(new Sort(Sort.Direction.DESC, "ID"));
-				model = modelService.findByVersion(versions.get(0).getID());
+				List<VersioModel> versions = versionRepository.findAll(new Sort(Sort.Direction.DESC, "id"));
+				model = modelService.findByVersion(versions.get(0).getId());
 			}
 		} catch (NoSuchElementException ex) {
 			throw new ResponseStatusException(

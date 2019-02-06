@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -28,7 +29,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @DynamicUpdate
 @Table (name="ENTORN")
-@JsonPropertyOrder({ "ID", "DESCRIPCIO", "items" })
+@JsonPropertyOrder({ "id", "descripcio", "preguntes" })
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -37,8 +38,8 @@ public @Data class Entorn implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
-	private long ID;
-	private String DESCRIPCIO;
+	private long id;
+	private String descripcio;
 	
 	
 	@ManyToOne
@@ -48,9 +49,14 @@ public @Data class Entorn implements Serializable {
 	
 	@OneToMany (mappedBy = "entorn")
 	@JsonIgnoreProperties(value = { "vulnerabilitat", "risc", "altRisc"})
-	@OrderBy("ID ASC")
-	@JsonProperty("Items")
+	@OrderBy("id ASC")
+	@JsonProperty("preguntes")
     private List<SituacioSocial> situacioSocial;
+	
+	
+	@Transient
+	@JsonIgnoreProperties(value = { "entorn"})
+	private Iterable<Pregunta> pregunta;
 	
 	
 	

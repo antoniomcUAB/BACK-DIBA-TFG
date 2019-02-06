@@ -22,9 +22,9 @@ public class QFactorEconomic extends EntityPathBase<FactorEconomic> {
 
     public static final QFactorEconomic factorEconomic = new QFactorEconomic("factorEconomic");
 
-    public final StringPath DESCRIPCIO = createString("DESCRIPCIO");
+    public final StringPath descripcio = createString("descripcio");
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final QVersioModel versioModel;
 

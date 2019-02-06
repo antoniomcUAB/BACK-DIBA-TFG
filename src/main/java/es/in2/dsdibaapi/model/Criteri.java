@@ -32,7 +32,7 @@ public @Data class Criteri implements Serializable {
 
 	@Id @GeneratedValue 
 	@JsonProperty("id")
-	private long ID;
+	private long id;
 	
 	@Column (name="evidencia")
 	private String evidencia;	

@@ -20,13 +20,13 @@ public class QAmbit extends EntityPathBase<Ambit> {
 
     public static final QAmbit ambit = new QAmbit("ambit");
 
-    public final StringPath DESCRIPCIO = createString("DESCRIPCIO");
+    public final StringPath descripcio = createString("descripcio");
 
     public final ListPath<Entorn, QEntorn> entorn = this.<Entorn, QEntorn>createList("entorn", Entorn.class, QEntorn.class, PathInits.DIRECT2);
 
     public final ListPath<Factor, QFactor> factorGravetat = this.<Factor, QFactor>createList("factorGravetat", Factor.class, QFactor.class, PathInits.DIRECT2);
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final NumberPath<Double> risc = createNumber("risc", Double.class);
 

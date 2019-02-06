@@ -54,6 +54,18 @@
          <fileName>schema_Domains</fileName>
          <logicalDatatype>LOGDT024</logicalDatatype>
       </Domain>
+      <Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_20" id="6EFFC0A9-7F5A-6A56-C1FD-50E1BE5C8BD6">
+         <createdBy>danielfi</createdBy>
+         <createdTime>2019-02-04 08:41:54 UTC</createdTime>
+         <generatorID>Generado por el Usuario</generatorID>
+         <ownerDesignName>DIBA</ownerDesignName>
+         <avTSortOrder>0</avTSortOrder>
+         <dataTypePrecision>0</dataTypePrecision>
+         <dataTypeScale>0</dataTypeScale>
+         <dataTypeSize>20</dataTypeSize>
+         <fileName>schema_Domains</fileName>
+         <logicalDatatype>LOGDT024</logicalDatatype>
+      </Domain>
       <Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_0_0_0" id="6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC">
          <createdBy>danielfi</createdBy>
          <createdTime>2019-01-09 09:26:26 UTC</createdTime>
@@ -70,6 +82,30 @@
          <dataTypePrecision>0</dataTypePrecision>
          <dataTypeScale>0</dataTypeScale>
          <dataTypeSize>600</dataTypeSize>
+         <fileName>schema_Domains</fileName>
+         <logicalDatatype>LOGDT024</logicalDatatype>
+      </Domain>
+      <Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_30" id="96AC0FE4-D4E0-F21A-D73A-7D6E7EB77379">
+         <createdBy>danielfi</createdBy>
+         <createdTime>2019-02-04 08:41:54 UTC</createdTime>
+         <generatorID>Generado por el Usuario</generatorID>
+         <ownerDesignName>DIBA</ownerDesignName>
+         <avTSortOrder>0</avTSortOrder>
+         <dataTypePrecision>0</dataTypePrecision>
+         <dataTypeScale>0</dataTypeScale>
+         <dataTypeSize>30</dataTypeSize>
+         <fileName>schema_Domains</fileName>
+         <logicalDatatype>LOGDT024</logicalDatatype>
+      </Domain>
+      <Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_10" id="9A72D7D2-4AE7-19E2-6D8E-9C6E9E6F2B64">
+         <createdBy>danielfi</createdBy>
+         <createdTime>2019-02-04 08:41:54 UTC</createdTime>
+         <generatorID>Generado por el Usuario</generatorID>
+         <ownerDesignName>DIBA</ownerDesignName>
+         <avTSortOrder>0</avTSortOrder>
+         <dataTypePrecision>0</dataTypePrecision>
+         <dataTypeScale>0</dataTypeScale>
+         <dataTypeSize>10</dataTypeSize>
          <fileName>schema_Domains</fileName>
          <logicalDatatype>LOGDT024</logicalDatatype>
       </Domain>
@@ -94,6 +130,15 @@
          <dataTypeSize>50</dataTypeSize>
          <fileName>schema_Domains</fileName>
          <logicalDatatype>LOGDT024</logicalDatatype>
+      </Domain>
+      <Domain class="oracle.dbtools.crest.model.design.Domain" name="Integer_0_0_0" id="B50EA0E0-356A-1BBD-DF2B-254379510385">
+         <createdBy>danielfi</createdBy>
+         <createdTime>2019-02-04 08:41:54 UTC</createdTime>
+         <generatorID>Generado por el Usuario</generatorID>
+         <ownerDesignName>DIBA</ownerDesignName>
+         <avTSortOrder>0</avTSortOrder>
+         <fileName>schema_Domains</fileName>
+         <logicalDatatype>LOGDT011</logicalDatatype>
       </Domain>
       <Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_32" id="B91CCA1C-3D28-EA45-9C29-648C567B06F1">
          <createdBy>danielfi</createdBy>

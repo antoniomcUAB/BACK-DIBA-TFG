@@ -38,7 +38,7 @@ public class RiscServiceImpl implements RiscService{
 	@Cacheable("risc")
     public Risc findByDescription(Tipus tipus) {
 		
-		Predicate predicate = QRisc.risc.DESCRIPCIO.equalsIgnoreCase(tipus.toString());
+		Predicate predicate = QRisc.risc.descripcio.equalsIgnoreCase(tipus.toString());
 		
 		return riscRepository.findOne(predicate).get();
     }

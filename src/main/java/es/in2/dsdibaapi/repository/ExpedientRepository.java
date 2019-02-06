@@ -6,5 +6,5 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import es.in2.dsdibaapi.model.Expedient;
 
 public interface ExpedientRepository extends JpaRepository<Expedient, Long> , QuerydslPredicateExecutor<Expedient> {
-	
-}	
+
+}

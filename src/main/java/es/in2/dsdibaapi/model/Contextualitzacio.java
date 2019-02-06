@@ -31,7 +31,7 @@ public @Data class Contextualitzacio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
-	private long ID;
+	private long id;
 	private Boolean membreUnic;
 	private Boolean mesUc;
 	
@@ -45,9 +45,9 @@ public @Data class Contextualitzacio implements Serializable {
     private Persona persona;
 	
 	@ManyToOne 
-    @JoinColumn(name="expedient",foreignKey= @ForeignKey(name = "CONTX_EXPEDIENT_FK"),updatable=false)
+    @JoinColumn(name="diagnostic",foreignKey= @ForeignKey(name = "CONTX_DIAGNOSTIC_FK"),updatable=false)
 	@JsonIgnore
-    private Expedient expedient;
+    private Diagnostic diagnostic;
 	
 
 }

@@ -1,7 +1,6 @@
 package es.in2.dsdibaapi.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import es.in2.dsdibaapi.model.Expedient;
-import es.in2.dsdibaapi.model.ExpedientGlobal;
+import es.in2.dsdibaapi.model.Professional;
+import es.in2.dsdibaapi.service.EstatService;
 import es.in2.dsdibaapi.service.ExpedientService;
+import es.in2.dsdibaapi.service.ProfessionalService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -25,65 +26,81 @@ public class ExpedientController extends BaseController {
 	@Autowired
 	private ExpedientService expedientService;
 	
-	@RequestMapping(value={"/expedient/{versio}"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
-	  @ApiOperation(value="Consulta/modificació d'un expedient", notes="")
-	  public Expedient putExpedient(@RequestBody Expedient expedient, @PathVariable Long versio)
+	@Autowired
+	private ProfessionalService professionalService;
+	
+	
+	@Autowired
+	private EstatService estatService;
+	
+	@RequestMapping(value={"/expedient"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
+	  @ApiOperation(value="Alta/Modificació d'un expedient", notes="")
+	  public Expedient modExpedient(@RequestBody Expedient expedient)
 	  {
-	    return this.expedientService.save(expedient, versio);
+		expedient.setDataCreacio(new Date());
+		
+		if (expedient.getEstat() == null) {
+			expedient.setEstat(estatService.findByDescripcio(ExpedientService.Estat.INCOMPLET.toString()));
+		}
+	    return this.expedientService.save(expedient);
 	  }
 	
+	/*
+	@RequestMapping(value={"/expedient/{professional}"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
+	  @ApiOperation(value="Alta d'un expedient", notes="")
+	  public Expedient modExpedient(@RequestBody Expedient expedient,@PathVariable Long professional)
+	  {
+		
+		expedient.setDataCreacio(new Date());
+		expedient.setEstat(estatService.findByDescripcio(ExpedientService.Estat.INCOMPLET.toString()));
+		
+		Professional p = professionalService.findById(professional);
+		
+		expedient.setProfessional(p);
+		
+		
+		
+		return expedientService.save(expedient);
+	  }
+	
+	*/
 	
 	  
-	  @RequestMapping(value={"/expedient/{municipi}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
-	  @ApiOperation(value="Consulta de expedients d'un municipi", notes="")
-	  public List<ExpedientGlobal> getExpedientMunicipi(@PathVariable Long municipi)
+	  @RequestMapping(value={"/expedient/llista/{municipi}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	  @ApiOperation(value="Consulta d'expedients d'un municipi", notes="")
+	  public Iterable<Expedient> getExpedientMunicipi(@PathVariable Long municipi)
 	  {
 		  
-		  List<ExpedientGlobal> resultat = new ArrayList<ExpedientGlobal> ();
+		  Iterable<Expedient> resultat = null;
 	    try
 	    {
+	    	resultat = this.expedientService.findByMunicipi(municipi);
 	    	
-	    	Iterable<Expedient> expedients = this.expedientService.findByMunicipi(municipi);
-	    	ExpedientGlobal current = null;
-	    	
-	    	for (Expedient e:expedients) {
-	    		if (current == null) {
-	    			
-	    			current = ExpedientGlobal.builder()
-	    							.expedient(e.getExpedient())
-	    							.estat(ExpedientGlobal.Estat.COMPLET)
-	    							.professional(e.getProfessional())
-	    							.dataCreacio(e.getDATA()).build();
-	    			
-	    			resultat.add(current);
-	    		}
-	    		else if (!current.getExpedient().equalsIgnoreCase(e.getExpedient())) {	    			
-	    			   			
-	    			current = ExpedientGlobal.builder()
-							.expedient(e.getExpedient())
-							.professional(e.getProfessional())
-							.dataCreacio(e.getDATA()).build();
-	    			
-	    			resultat.add(current);
-	    		}
-	    		
-	    		if (e.getValoracio() != null 
-	    				&& ExpedientService.Estat.VALIDAT.toString().equals(e.getEstat())
-	    				&& ExpedientGlobal.Estat.COMPLET.equals(current.getEstat())) {
-	    			current.setDataValidacio(e.getValoracio().getData());
-	    		} 
-	    		else {
-	    			current.setEstat(ExpedientGlobal.Estat.INCOMPLET);
-	    			
-	    			if (e.getValoracio() != null) {
-	    				current.setDataValidacio(e.getValoracio().getData());
-	    			}
-	    		}	    		
-	    	}	      
 	    }
 	    catch (NoSuchElementException ex)
 	    {
 	      throw new ResponseStatusException(HttpStatus.NOT_FOUND, getErrorNotFound(getClass(), municipi), ex);
+	    }
+	    
+	    return resultat;
+	  }
+	  
+	  
+	  
+	  @RequestMapping(value={"/expedient/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	  @ApiOperation(value="Consulta d'un expedient", notes="")
+	  public Expedient getExpedient(@PathVariable Long id)
+	  {
+		  
+		  Expedient resultat = null;
+	    try
+	    {
+	    	resultat = this.expedientService.findById(id);
+	    	
+	    }
+	    catch (NoSuchElementException ex)
+	    {
+	      throw new ResponseStatusException(HttpStatus.NOT_FOUND, getErrorNotFound(getClass(), id), ex);
 	    }
 	    
 	    return resultat;

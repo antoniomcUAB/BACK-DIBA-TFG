@@ -22,27 +22,23 @@ public class QDiagnostic extends EntityPathBase<Diagnostic> {
 
     public static final QDiagnostic diagnostic = new QDiagnostic("diagnostic");
 
-    public final QEntorn entorn;
+    public final ListPath<Contextualitzacio, QContextualitzacio> contextualitzacio = this.<Contextualitzacio, QContextualitzacio>createList("contextualitzacio", Contextualitzacio.class, QContextualitzacio.class, PathInits.DIRECT2);
+
+    public final DateTimePath<java.util.Date> data = createDateTime("data", java.util.Date.class);
+
+    public final QEstat estat;
 
     public final QExpedient expedient;
 
-    public final QRisc factor;
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final SetPath<FactorEconomic, QFactorEconomic> factorEconomic = this.<FactorEconomic, QFactorEconomic>createSet("factorEconomic", FactorEconomic.class, QFactorEconomic.class, PathInits.DIRECT2);
+    public final StringPath observacions = createString("observacions");
 
-    public final QFrequencia frequencia;
+    public final ListPath<Pregunta, QPregunta> pregunta = this.<Pregunta, QPregunta>createList("pregunta", Pregunta.class, QPregunta.class, PathInits.DIRECT2);
 
-    public final QGravetat gravetat;
+    public final QValoracio valoracio;
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
-
-    public final QPersona persona;
-
-    public final QRisc risc;
-
-    public final QSituacioSocial situacioSocial;
-
-    public final BooleanPath unitatFamiliar = createBoolean("unitatFamiliar");
+    public final QVersioModel versioModel;
 
     public QDiagnostic(String variable) {
         this(Diagnostic.class, forVariable(variable), INITS);
@@ -62,14 +58,10 @@ public class QDiagnostic extends EntityPathBase<Diagnostic> {
 
     public QDiagnostic(Class<? extends Diagnostic> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.entorn = inits.isInitialized("entorn") ? new QEntorn(forProperty("entorn"), inits.get("entorn")) : null;
+        this.estat = inits.isInitialized("estat") ? new QEstat(forProperty("estat")) : null;
         this.expedient = inits.isInitialized("expedient") ? new QExpedient(forProperty("expedient"), inits.get("expedient")) : null;
-        this.factor = inits.isInitialized("factor") ? new QRisc(forProperty("factor")) : null;
-        this.frequencia = inits.isInitialized("frequencia") ? new QFrequencia(forProperty("frequencia")) : null;
-        this.gravetat = inits.isInitialized("gravetat") ? new QGravetat(forProperty("gravetat")) : null;
-        this.persona = inits.isInitialized("persona") ? new QPersona(forProperty("persona"), inits.get("persona")) : null;
-        this.risc = inits.isInitialized("risc") ? new QRisc(forProperty("risc")) : null;
-        this.situacioSocial = inits.isInitialized("situacioSocial") ? new QSituacioSocial(forProperty("situacioSocial"), inits.get("situacioSocial")) : null;
+        this.valoracio = inits.isInitialized("valoracio") ? new QValoracio(forProperty("valoracio")) : null;
+        this.versioModel = inits.isInitialized("versioModel") ? new QVersioModel(forProperty("versioModel")) : null;
     }
 
 }

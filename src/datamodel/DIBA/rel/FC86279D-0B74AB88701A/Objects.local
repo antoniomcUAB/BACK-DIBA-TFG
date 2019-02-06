@@ -1,0 +1,67 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="Table" objectID="94891600-8795-BAAA-746D-7744D135693C" name="AMBIT" seqName="seg_0"/>
+   <object objectType="Table" objectID="7D9B9EBB-9F5C-88D7-D01F-7F55D3AEA90B" name="AVALUACIO" seqName="seg_0"/>
+   <object objectType="Table" objectID="F2D23BC0-D10A-CDC1-53F3-9F5B2EF0CA47" name="CONTEXTUALITZACIO" seqName="seg_0"/>
+   <object objectType="Table" objectID="6DEF5919-AE92-AECD-B1BF-D22BAB5293A4" name="CRITERI" seqName="seg_0"/>
+   <object objectType="Table" objectID="FDDDE344-C450-DF50-FFE9-CCEA40563574" name="DIAGNOSTIC" seqName="seg_0"/>
+   <object objectType="Table" objectID="BDD38678-1CBD-1846-7762-1C16F46C52F0" name="ECONOMIA" seqName="seg_0"/>
+   <object objectType="Table" objectID="45FA6156-E3A6-42E9-0FAB-107515C3EA62" name="ENTORN" seqName="seg_0"/>
+   <object objectType="Table" objectID="C1EC5FF3-E4EA-3A0A-63B8-3966997AD49B" name="ESTAT" seqName="seg_0"/>
+   <object objectType="Table" objectID="46F8CB9C-D30E-592B-2021-7E849492056A" name="EXPEDIENT" seqName="seg_0"/>
+   <object objectType="Table" objectID="4A135AF7-3D18-42D6-8557-8334266A582C" name="FACTOR" seqName="seg_0"/>
+   <object objectType="Table" objectID="E36BB782-772F-9FE1-99AE-B527E661C92F" name="FACTOR_ECONOMIC" seqName="seg_0"/>
+   <object objectType="Table" objectID="FD99C5B3-F6F9-0BD2-2AAF-3A9D0DD636BC" name="FREQUENCIA" seqName="seg_0"/>
+   <object objectType="Table" objectID="C8FA2FC6-69A4-DE39-36EC-67BEF38685FD" name="FREQUENCIA_GRAVETAT" seqName="seg_0"/>
+   <object objectType="Table" objectID="2084EE63-B714-198A-F05B-0730F45CF0DB" name="GRAVETAT" seqName="seg_0"/>
+   <object objectType="Table" objectID="4257A78A-BA24-E60C-7D7A-39C0F20B9463" name="MUNICIPI" seqName="seg_0"/>
+   <object objectType="Table" objectID="2EF04D45-96EB-DBA2-498D-84E18EBAC8C9" name="PERSONA" seqName="seg_0"/>
+   <object objectType="Table" objectID="9047A7F1-CF50-D8A6-24E3-3C0AA97C9E78" name="PREGUNTA" seqName="seg_0"/>
+   <object objectType="Table" objectID="54B36E96-A0AD-25BB-6CCF-EB8E05FD24E2" name="PROFESSIONAL" seqName="seg_0"/>
+   <object objectType="Table" objectID="B3557221-AAEE-6BF5-1467-325EA6B1AA0D" name="PROFESSIONAL_ROL" seqName="seg_0"/>
+   <object objectType="Table" objectID="6ED0994E-E7F0-E797-0057-8AB28094006E" name="RISC" seqName="seg_0"/>
+   <object objectType="Table" objectID="9A199955-8873-7827-5FFE-3D11610FAA4D" name="ROL" seqName="seg_0"/>
+   <object objectType="Table" objectID="D3D1F8CD-AA56-398D-5A4D-09B990CA419D" name="SITUACIO_SOCIAL" seqName="seg_0"/>
+   <object objectType="Table" objectID="8413E9FC-2400-F0C4-5250-B8BC51CB7429" name="TIPUS_PERSONA" seqName="seg_0"/>
+   <object objectType="Table" objectID="777756FB-2A09-507A-BA16-5F96A0523417" name="VALORACIO" seqName="seg_0"/>
+   <object objectType="Table" objectID="2C500216-9625-780A-D343-FB5A8EC5244D" name="VERSIO_MODEL" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="7566CEC6-2B21-FEA4-FBAF-D99A42D565EB" name="AVALUACIO_AMBIT_FK" seqName="seg_0" containerID="7D9B9EBB-9F5C-88D7-D01F-7F55D3AEA90B" refContainerID="94891600-8795-BAAA-746D-7744D135693C"/>
+   <object objectType="FKIndexAssociation" objectID="9A100A3D-7F14-093B-4730-A37643C56772" name="AVALUACIO_RISC_FK" seqName="seg_0" containerID="7D9B9EBB-9F5C-88D7-D01F-7F55D3AEA90B" refContainerID="6ED0994E-E7F0-E797-0057-8AB28094006E"/>
+   <object objectType="FKIndexAssociation" objectID="A74646C8-C9FC-126D-4E76-D3966B5C2171" name="AVALUACIO_RISC_PROF_FK" seqName="seg_0" containerID="7D9B9EBB-9F5C-88D7-D01F-7F55D3AEA90B" refContainerID="6ED0994E-E7F0-E797-0057-8AB28094006E"/>
+   <object objectType="FKIndexAssociation" objectID="7EC97CA8-2B39-84A9-0EC0-7B1D10EB7644" name="AVALUACIO_VALORACIO_FK" seqName="seg_0" containerID="7D9B9EBB-9F5C-88D7-D01F-7F55D3AEA90B" refContainerID="777756FB-2A09-507A-BA16-5F96A0523417"/>
+   <object objectType="FKIndexAssociation" objectID="11F2CB94-F284-8310-1E5B-34BF624D1A2E" name="CONTX_DIAGNOSTIC_FK" seqName="seg_0" containerID="F2D23BC0-D10A-CDC1-53F3-9F5B2EF0CA47" refContainerID="FDDDE344-C450-DF50-FFE9-CCEA40563574"/>
+   <object objectType="FKIndexAssociation" objectID="6DC0D1A1-674C-82AC-4D5E-45BA30314484" name="CONTX_FACTOR_FK" seqName="seg_0" containerID="F2D23BC0-D10A-CDC1-53F3-9F5B2EF0CA47" refContainerID="4A135AF7-3D18-42D6-8557-8334266A582C"/>
+   <object objectType="FKIndexAssociation" objectID="572BD49A-66DB-3171-B231-7A36627BDF5E" name="CONTX_PERSONA_FK" seqName="seg_0" containerID="F2D23BC0-D10A-CDC1-53F3-9F5B2EF0CA47" refContainerID="2EF04D45-96EB-DBA2-498D-84E18EBAC8C9"/>
+   <object objectType="FKIndexAssociation" objectID="794C6462-954B-D282-DC3D-FB46C17150E3" name="CRITERI_FREQUENCIA_FK" seqName="seg_0" containerID="6DEF5919-AE92-AECD-B1BF-D22BAB5293A4" refContainerID="FD99C5B3-F6F9-0BD2-2AAF-3A9D0DD636BC"/>
+   <object objectType="FKIndexAssociation" objectID="98C33DA5-F2CE-4050-1117-B88CAC9C59ED" name="CRITERI_FREQUENCIA_GRAVETAT_FK" seqName="seg_0" containerID="6DEF5919-AE92-AECD-B1BF-D22BAB5293A4" refContainerID="C8FA2FC6-69A4-DE39-36EC-67BEF38685FD"/>
+   <object objectType="FKIndexAssociation" objectID="366F8FD5-6CB1-4BD9-E15B-1ABAB197987F" name="CRITERI_RISC_FK" seqName="seg_0" containerID="6DEF5919-AE92-AECD-B1BF-D22BAB5293A4" refContainerID="6ED0994E-E7F0-E797-0057-8AB28094006E"/>
+   <object objectType="FKIndexAssociation" objectID="8F726F4F-2121-4D71-4E62-853A7590F593" name="DIAGNOSTIC_ESTAT_FK" seqName="seg_0" containerID="FDDDE344-C450-DF50-FFE9-CCEA40563574" refContainerID="C1EC5FF3-E4EA-3A0A-63B8-3966997AD49B"/>
+   <object objectType="FKIndexAssociation" objectID="1D009AD4-0E00-C544-FFB5-CA5AC5CA3704" name="DIAGNOSTIC_EXPEDIENT_FK" seqName="seg_0" containerID="FDDDE344-C450-DF50-FFE9-CCEA40563574" refContainerID="46F8CB9C-D30E-592B-2021-7E849492056A"/>
+   <object objectType="FKIndexAssociation" objectID="FE94E708-61A3-BB89-1E8E-83FD9FB182BE" name="DIAGNOSTIC_VALORACIO_FK" seqName="seg_0" containerID="FDDDE344-C450-DF50-FFE9-CCEA40563574" refContainerID="777756FB-2A09-507A-BA16-5F96A0523417"/>
+   <object objectType="FKIndexAssociation" objectID="D84AF45A-D93E-405A-5027-91A0E3532115" name="DIAGNOSTIC_VERSIO_MODEL_FK" seqName="seg_0" containerID="FDDDE344-C450-DF50-FFE9-CCEA40563574" refContainerID="2C500216-9625-780A-D343-FB5A8EC5244D"/>
+   <object objectType="FKIndexAssociation" objectID="B8FA4FF5-5AB4-CDD7-556A-3441DFAA3F56" name="ECONOMIA_FACTOR_ECONOMIC_FK" seqName="seg_0" containerID="BDD38678-1CBD-1846-7762-1C16F46C52F0" refContainerID="E36BB782-772F-9FE1-99AE-B527E661C92F"/>
+   <object objectType="FKIndexAssociation" objectID="4975C742-BBC5-D407-2FDA-4C797DC20769" name="ECONOMIA_PREGUNTA_FK" seqName="seg_0" containerID="BDD38678-1CBD-1846-7762-1C16F46C52F0" refContainerID="9047A7F1-CF50-D8A6-24E3-3C0AA97C9E78"/>
+   <object objectType="FKIndexAssociation" objectID="00B2D6A2-22F9-3278-3D54-E3E3540D488E" name="ENTORN_AMBIT_FK" seqName="seg_0" containerID="45FA6156-E3A6-42E9-0FAB-107515C3EA62" refContainerID="94891600-8795-BAAA-746D-7744D135693C"/>
+   <object objectType="FKIndexAssociation" objectID="5BE006BA-FE10-369F-F0AE-6E5717694246" name="EXPEDIENT_ESTAT_FK" seqName="seg_0" containerID="46F8CB9C-D30E-592B-2021-7E849492056A" refContainerID="C1EC5FF3-E4EA-3A0A-63B8-3966997AD49B"/>
+   <object objectType="FKIndexAssociation" objectID="E6318A7B-7036-849E-1FA4-2D20201B1113" name="EXPEDIENT_PROFESSIONAL_FKv2" seqName="seg_0" containerID="46F8CB9C-D30E-592B-2021-7E849492056A" refContainerID="54B36E96-A0AD-25BB-6CCF-EB8E05FD24E2"/>
+   <object objectType="FKIndexAssociation" objectID="7B0A4248-1D87-11D7-CA05-AC07A96BA89C" name="FACTOR_AMBIT_FK" seqName="seg_0" containerID="4A135AF7-3D18-42D6-8557-8334266A582C" refContainerID="94891600-8795-BAAA-746D-7744D135693C"/>
+   <object objectType="FKIndexAssociation" objectID="DCF15B59-D614-82AA-E769-FDB6DA708B7A" name="FACTOR_ECONOMIC_VERSIO_FK" seqName="seg_0" containerID="E36BB782-772F-9FE1-99AE-B527E661C92F" refContainerID="2C500216-9625-780A-D343-FB5A8EC5244D"/>
+   <object objectType="FKIndexAssociation" objectID="19899587-DC91-09D8-BAEA-B232477C18F3" name="FACTOR_GRAVETAT_FK" seqName="seg_0" containerID="4A135AF7-3D18-42D6-8557-8334266A582C" refContainerID="2084EE63-B714-198A-F05B-0730F45CF0DB"/>
+   <object objectType="FKIndexAssociation" objectID="B67F0EC7-E08F-2761-9D42-EBDF5052F08A" name="FREQ_GRAVETAT_FK" seqName="seg_0" containerID="C8FA2FC6-69A4-DE39-36EC-67BEF38685FD" refContainerID="2084EE63-B714-198A-F05B-0730F45CF0DB"/>
+   <object objectType="FKIndexAssociation" objectID="C72D7F71-B792-9DCC-2721-F351D9D4B5C7" name="FREQ_SITUACIO_SOCIAL_FK" seqName="seg_0" containerID="C8FA2FC6-69A4-DE39-36EC-67BEF38685FD" refContainerID="D3D1F8CD-AA56-398D-5A4D-09B990CA419D"/>
+   <object objectType="FKIndexAssociation" objectID="8B8FC8AB-23E2-099C-B029-9F65745B42D6" name="PERSONA_EXPEDIENT_FK" seqName="seg_0" containerID="2EF04D45-96EB-DBA2-498D-84E18EBAC8C9" refContainerID="46F8CB9C-D30E-592B-2021-7E849492056A"/>
+   <object objectType="FKIndexAssociation" objectID="E3BD78E5-4102-CAF0-8264-6B1C95E80B5D" name="PERSONA_TIPUS_PERSONA_FK" seqName="seg_0" containerID="2EF04D45-96EB-DBA2-498D-84E18EBAC8C9" refContainerID="8413E9FC-2400-F0C4-5250-B8BC51CB7429"/>
+   <object objectType="FKIndexAssociation" objectID="7E04C20B-ED62-5484-76CD-8AB82012132C" name="PREGUNTA_DIAGNOSTIC_FK" seqName="seg_0" containerID="9047A7F1-CF50-D8A6-24E3-3C0AA97C9E78" refContainerID="FDDDE344-C450-DF50-FFE9-CCEA40563574"/>
+   <object objectType="FKIndexAssociation" objectID="8BCFBA45-A200-DB8F-84D0-FD99E4265CA7" name="PREGUNTA_ENTORN_FK" seqName="seg_0" containerID="9047A7F1-CF50-D8A6-24E3-3C0AA97C9E78" refContainerID="45FA6156-E3A6-42E9-0FAB-107515C3EA62"/>
+   <object objectType="FKIndexAssociation" objectID="E52D51A3-0296-04C4-C6F6-398B760E33C2" name="PREGUNTA_FACTOR_FK" seqName="seg_0" containerID="9047A7F1-CF50-D8A6-24E3-3C0AA97C9E78" refContainerID="6ED0994E-E7F0-E797-0057-8AB28094006E"/>
+   <object objectType="FKIndexAssociation" objectID="03EB1192-FB53-C70D-3B36-E787CF5AD085" name="PREGUNTA_FREQUENCIA_FK" seqName="seg_0" containerID="9047A7F1-CF50-D8A6-24E3-3C0AA97C9E78" refContainerID="FD99C5B3-F6F9-0BD2-2AAF-3A9D0DD636BC"/>
+   <object objectType="FKIndexAssociation" objectID="8C4C60E8-2361-25F7-3162-16EC28644308" name="PREGUNTA_GRAVETAT_FK" seqName="seg_0" containerID="9047A7F1-CF50-D8A6-24E3-3C0AA97C9E78" refContainerID="2084EE63-B714-198A-F05B-0730F45CF0DB"/>
+   <object objectType="FKIndexAssociation" objectID="4E6E334C-956A-F799-4184-72720A1E03BF" name="PREGUNTA_PERSONA_FK" seqName="seg_0" containerID="9047A7F1-CF50-D8A6-24E3-3C0AA97C9E78" refContainerID="2EF04D45-96EB-DBA2-498D-84E18EBAC8C9"/>
+   <object objectType="FKIndexAssociation" objectID="53B7ABDE-8202-191A-A659-ADEEE3229BB7" name="PREGUNTA_RISC_FK" seqName="seg_0" containerID="9047A7F1-CF50-D8A6-24E3-3C0AA97C9E78" refContainerID="6ED0994E-E7F0-E797-0057-8AB28094006E"/>
+   <object objectType="FKIndexAssociation" objectID="ACFB1154-1FB1-06F0-8924-2FAC3DB57526" name="PREGUNTA_SITUACIO_SOCIAL_FK" seqName="seg_0" containerID="9047A7F1-CF50-D8A6-24E3-3C0AA97C9E78" refContainerID="D3D1F8CD-AA56-398D-5A4D-09B990CA419D"/>
+   <object objectType="FKIndexAssociation" objectID="4AAAF21A-CEC9-0E4E-6603-8156B037F19B" name="PROFESSIONAL_MUNICIPI_FK" seqName="seg_0" containerID="54B36E96-A0AD-25BB-6CCF-EB8E05FD24E2" refContainerID="4257A78A-BA24-E60C-7D7A-39C0F20B9463"/>
+   <object objectType="FKIndexAssociation" objectID="7BA7AE60-A1C8-7448-CA5A-78861893364C" name="PROFESSIONAL_ROL_PRO_FK" seqName="seg_0" containerID="B3557221-AAEE-6BF5-1467-325EA6B1AA0D" refContainerID="54B36E96-A0AD-25BB-6CCF-EB8E05FD24E2"/>
+   <object objectType="FKIndexAssociation" objectID="3A6CA908-E767-5AC5-999D-8DB1412013C8" name="PROFESSIONAL_ROL_ROL_FK" seqName="seg_0" containerID="B3557221-AAEE-6BF5-1467-325EA6B1AA0D" refContainerID="9A199955-8873-7827-5FFE-3D11610FAA4D"/>
+   <object objectType="FKIndexAssociation" objectID="87881BA4-DF51-5065-EDB7-FDA98267A158" name="SITUACIO_SOCIAL_ARISC_FK" seqName="seg_0" containerID="D3D1F8CD-AA56-398D-5A4D-09B990CA419D" refContainerID="45FA6156-E3A6-42E9-0FAB-107515C3EA62"/>
+   <object objectType="FKIndexAssociation" objectID="98D496A7-0B25-E14A-AFB4-B7B7BD8AAA05" name="SITUACIO_SOCIAL_RISC_FK" seqName="seg_0" containerID="D3D1F8CD-AA56-398D-5A4D-09B990CA419D" refContainerID="2C500216-9625-780A-D343-FB5A8EC5244D"/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>

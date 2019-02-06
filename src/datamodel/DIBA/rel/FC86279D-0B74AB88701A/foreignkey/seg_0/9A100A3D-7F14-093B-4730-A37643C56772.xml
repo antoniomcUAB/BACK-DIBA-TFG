@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="9A100A3D-7F14-093B-4730-A37643C56772" containerWithKeyObject="7D9B9EBB-9F5C-88D7-D01F-7F55D3AEA90B" localFKIndex="D7E76EB1-54BA-4A52-4219-E3B461928599" name="AVALUACIO_RISC_FK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>465AAA78-353E-58C9-AAB8-E0F44332C6A2</importedID>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>6ED0994E-E7F0-E797-0057-8AB28094006E</referredTableID>
+<keyObject>E8EE1FD1-648E-AFD5-EA4C-26C764591855</keyObject>
+<referredKeyID>E8EE1FD1-648E-AFD5-EA4C-26C764591855</referredKeyID>
+<mandatory>false</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -26,7 +26,7 @@ public class QValoracio extends EntityPathBase<Valoracio> {
 
     public final NumberPath<Long> factors = createNumber("factors", Long.class);
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final NumberPath<Double> total = createNumber("total", Double.class);
 

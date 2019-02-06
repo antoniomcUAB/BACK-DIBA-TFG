@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="8C4C60E8-2361-25F7-3162-16EC28644308" containerWithKeyObject="9047A7F1-CF50-D8A6-24E3-3C0AA97C9E78" localFKIndex="A5101F9F-26A1-92D4-E3FA-03003471C626" name="PREGUNTA_GRAVETAT_FK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>2CFE7124-E8E4-55AF-8620-875EC0CB4279</importedID>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>2084EE63-B714-198A-F05B-0730F45CF0DB</referredTableID>
+<keyObject>AFBDD24C-6CA1-4BD9-8CE7-7B73B5FEE79C</keyObject>
+<referredKeyID>AFBDD24C-6CA1-4BD9-8CE7-7B73B5FEE79C</referredKeyID>
+<mandatory>false</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

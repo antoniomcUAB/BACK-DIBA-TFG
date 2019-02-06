@@ -25,8 +25,8 @@ public @Data class Frequencia implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
-	private long ID;
-	private String DESCRIPCIO;
+	private long id;
+	private String descripcio;
 	private Integer value;
 	
 	

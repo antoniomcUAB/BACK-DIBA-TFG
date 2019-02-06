@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import es.in2.dsdibaapi.model.Economia;
 import es.in2.dsdibaapi.repository.EconomiaRepository;
-import es.in2.dsdibaapi.service.DiagnosticService;
+import es.in2.dsdibaapi.service.PreguntaService;
 import es.in2.dsdibaapi.service.EconomiaService;
 
 @Service
@@ -21,7 +21,7 @@ public class EconomiaServiceImpl implements EconomiaService	{
 	EconomiaRepository economiaRepository;
 	
 	@Autowired
-	DiagnosticService diagnosticService;
+	PreguntaService diagnosticService;
 	
 	@Cacheable("economia")
     public Economia findById(Long id) {

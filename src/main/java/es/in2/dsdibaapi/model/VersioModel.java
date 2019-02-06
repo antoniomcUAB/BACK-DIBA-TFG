@@ -27,7 +27,7 @@ public @Data class VersioModel implements Serializable {
 
 	@Id 
 	@GeneratedValue
-	private long ID;
+	private long id;
 	
 	private String versio;
 	private Date data;

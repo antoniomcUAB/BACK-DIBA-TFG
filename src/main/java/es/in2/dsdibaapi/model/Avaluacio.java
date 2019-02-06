@@ -2,6 +2,7 @@ package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -32,15 +33,15 @@ public @Data class Avaluacio implements Serializable {
 
 	@Id 
 	@GeneratedValue
-	private long ID;
+	private long id;
 	
 	@ManyToOne
     @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "AVALUACIO_ENTORN_FK"))
-	@JsonIgnoreProperties(value = { "vulnerabilitat", "risc", "valVulnerabilitat", "valRisc", "valAltrisc", "Items", "Factors_context"})
+	@JsonIgnoreProperties(value = { "vulnerabilitat", "risc", "valVulnerabilitat", "valRisc", "valAltrisc", "entorns", "factors_context"})
     private Ambit ambit;
 	
 	
-	@ManyToOne
+	@ManyToOne 
 	@JoinColumn(name="valoracio",foreignKey= @ForeignKey(name = "AVALUACIO_VALORACIO_FK"))
 	@JsonIgnore
     private Valoracio valoracio;

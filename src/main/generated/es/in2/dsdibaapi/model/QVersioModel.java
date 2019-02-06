@@ -21,7 +21,7 @@ public class QVersioModel extends EntityPathBase<VersioModel> {
 
     public final DateTimePath<java.util.Date> data = createDateTime("data", java.util.Date.class);
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final NumberPath<Long> preguntaEconomica = createNumber("preguntaEconomica", Long.class);
 

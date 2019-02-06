@@ -19,9 +19,9 @@ public class QGravetat extends EntityPathBase<Gravetat> {
 
     public static final QGravetat gravetat = new QGravetat("gravetat");
 
-    public final StringPath DESCRIPCIO = createString("DESCRIPCIO");
+    public final StringPath descripcio = createString("descripcio");
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final NumberPath<Integer> value = createNumber("value", Integer.class);
 

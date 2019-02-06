@@ -19,9 +19,9 @@ public class QRisc extends EntityPathBase<Risc> {
 
     public static final QRisc risc = new QRisc("risc");
 
-    public final StringPath DESCRIPCIO = createString("DESCRIPCIO");
+    public final StringPath descripcio = createString("descripcio");
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final NumberPath<Integer> value = createNumber("value", Integer.class);
 

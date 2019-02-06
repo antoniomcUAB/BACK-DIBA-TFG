@@ -5,7 +5,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import es.in2.dsdibaapi.model.Valoracio;
-import es.in2.dsdibaapi.repository.ExpedientRepository;
+import es.in2.dsdibaapi.repository.DiagnosticRepository;
 import es.in2.dsdibaapi.repository.ValoracioRepository;
 import es.in2.dsdibaapi.service.ValoracioService;
 
@@ -19,7 +19,7 @@ public class ValoracioServiceImpl implements ValoracioService{
 	ValoracioRepository valoracioRepository;
 	
 	@Autowired
-	ExpedientRepository expedientRepository;
+	DiagnosticRepository expedientRepository;
 	
 	@Cacheable("valoracio")
     public Valoracio findById(Long id) {

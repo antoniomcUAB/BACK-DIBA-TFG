@@ -30,8 +30,8 @@ public @Data class FactorEconomic implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
-	private long ID;
-	private String DESCRIPCIO;
+	private long id;
+	private String descripcio;
 	
 
 	@ManyToOne
@@ -39,9 +39,10 @@ public @Data class FactorEconomic implements Serializable {
 	@JsonIgnore
     private VersioModel versioModel;
 	
+	/*
 
-	public FactorEconomic (VersioModel versioModel,String DESCRIPCIO) {
-		this.DESCRIPCIO=DESCRIPCIO;
+	public FactorEconomic (VersioModel versioModel,String descripcio) {
+		this.descripcio=descripcio;
 		this.versioModel=versioModel;
-	}
+	}*/
 }

@@ -25,7 +25,7 @@ import lombok.Data;
 @Entity
 @DynamicUpdate
 @Table (name="FREQUENCIA_GRAVETAT")
-@JsonPropertyOrder({ "id", "evidencia", "gravetat","Freqüencia" })
+@JsonPropertyOrder({ "id", "evidencia", "gravetat","frequencia" })
 /*@AllArgsConstructor
 @NoArgsConstructor
 @Builder*/
@@ -35,10 +35,10 @@ public @Data class FrequenciaGravetat implements Serializable {
 
 	@Id @GeneratedValue 
 	@JsonProperty("id")
-	private long ID;
+	private long id;
 	
 	@JsonProperty("evidencia")
-	private String EVIDENCIA;
+	private String evidencia;
 	
 	@OneToOne
 	@JoinColumn(name="gravetat",foreignKey= @ForeignKey(name = "FREQ_GRAVETAT_FK"))
@@ -51,16 +51,16 @@ public @Data class FrequenciaGravetat implements Serializable {
     private SituacioSocial situacioSocial;
 	
 	@OneToMany(mappedBy = "frequenciaGravetat")
-	@JsonProperty("Freqüencia")
+	@JsonProperty("frequencia")
     private List<Criteri> criteri;
 	
 	public FrequenciaGravetat () {
 		
 	}
 
-	public FrequenciaGravetat (SituacioSocial situacioSocial, String EVIDENCIA, Gravetat gravetat) {
+	public FrequenciaGravetat (SituacioSocial situacioSocial, String evidencia, Gravetat gravetat) {
 		this.situacioSocial=situacioSocial;
-		this.EVIDENCIA = EVIDENCIA;
+		this.evidencia = evidencia;
 		this.gravetat=gravetat;
 	}
 

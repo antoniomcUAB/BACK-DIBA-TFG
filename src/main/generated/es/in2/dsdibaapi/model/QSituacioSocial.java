@@ -24,17 +24,17 @@ public class QSituacioSocial extends EntityPathBase<SituacioSocial> {
 
     public final NumberPath<Double> altRisc = createNumber("altRisc", Double.class);
 
-    public final StringPath DEFINICIO = createString("DEFINICIO");
+    public final StringPath definicio = createString("definicio");
 
     public final QEntorn entorn;
 
     public final ListPath<FrequenciaGravetat, QFrequenciaGravetat> frequenciaGravetat = this.<FrequenciaGravetat, QFrequenciaGravetat>createList("frequenciaGravetat", FrequenciaGravetat.class, QFrequenciaGravetat.class, PathInits.DIRECT2);
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final NumberPath<Double> risc = createNumber("risc", Double.class);
 
-    public final StringPath SOCIAL = createString("SOCIAL");
+    public final StringPath social = createString("social");
 
     public final QVersioModel versioModel;
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import es.in2.dsdibaapi.model.Valoracio;
-import es.in2.dsdibaapi.service.ExpedientService;
+import es.in2.dsdibaapi.service.DiagnosticService;
 import es.in2.dsdibaapi.service.ValoracioService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,7 +27,7 @@ public class ValoracioController extends BaseController {
 	private ValoracioService valoracioService;
 	
 	@Autowired
-	private ExpedientService expedientService;
+	private DiagnosticService expedientService;
 	
 	
 	

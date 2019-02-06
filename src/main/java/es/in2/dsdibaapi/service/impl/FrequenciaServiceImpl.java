@@ -35,7 +35,7 @@ public class FrequenciaServiceImpl implements FrequenciaService {
 	@Cacheable("frequencia")
 	public Frequencia findByDescription(String description) {
 
-		Predicate predicate = QFrequencia.frequencia.DESCRIPCIO.equalsIgnoreCase(description);
+		Predicate predicate = QFrequencia.frequencia.descripcio.equalsIgnoreCase(description);
 		
 		return frequenciaRepository.findOne(predicate).get();
 	}

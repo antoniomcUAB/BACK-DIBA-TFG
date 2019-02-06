@@ -1,8 +1,10 @@
 package es.in2.dsdibaapi.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +28,16 @@ public class PersonaController extends BaseController{
 	  public List<Persona> getPersona() {
 	     
 		return personaService.findAll();
+	  }
+	
+	@RequestMapping(value = "/persona/{id}", method = RequestMethod.DELETE)
+	@ApiOperation(value = "Donar de baixa una persona", notes = "")
+	  public Persona deletePersona(@PathVariable Long id) {
+	     Persona persona = personaService.findById(id);
+	     
+	     persona.setDataBaixa(new Date ());
+	     
+		return personaService.save(persona);
 	  }
 	
 	

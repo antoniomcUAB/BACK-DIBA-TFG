@@ -22,11 +22,11 @@ public class QEconomia extends EntityPathBase<Economia> {
 
     public static final QEconomia economia = new QEconomia("economia");
 
-    public final QDiagnostic diagnostic;
-
     public final QFactorEconomic factor;
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    public final QPregunta pregunta;
 
     public QEconomia(String variable) {
         this(Economia.class, forVariable(variable), INITS);
@@ -46,8 +46,8 @@ public class QEconomia extends EntityPathBase<Economia> {
 
     public QEconomia(Class<? extends Economia> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.diagnostic = inits.isInitialized("diagnostic") ? new QDiagnostic(forProperty("diagnostic"), inits.get("diagnostic")) : null;
         this.factor = inits.isInitialized("factor") ? new QFactorEconomic(forProperty("factor"), inits.get("factor")) : null;
+        this.pregunta = inits.isInitialized("pregunta") ? new QPregunta(forProperty("pregunta"), inits.get("pregunta")) : null;
     }
 
 }

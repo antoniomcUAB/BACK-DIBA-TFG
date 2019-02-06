@@ -28,7 +28,7 @@ public class QCriteri extends EntityPathBase<Criteri> {
 
     public final QFrequenciaGravetat frequenciaGravetat;
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final QRisc risc;
 

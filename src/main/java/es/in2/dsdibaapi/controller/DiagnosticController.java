@@ -14,8 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriUtils;
 
+import es.in2.dsdibaapi.model.Diagnostic;
 import es.in2.dsdibaapi.model.Expedient;
+import es.in2.dsdibaapi.model.VersioModel;
+import es.in2.dsdibaapi.service.DiagnosticService;
+import es.in2.dsdibaapi.service.DiagnosticService.Estat;
+import es.in2.dsdibaapi.service.EstatService;
 import es.in2.dsdibaapi.service.ExpedientService;
+import es.in2.dsdibaapi.service.VersioModelService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -26,32 +32,41 @@ public class DiagnosticController
 {
   private static final Logger log = LoggerFactory.getLogger(DiagnosticController.class);
   @Autowired
+  private DiagnosticService diagnosticService;
+  
+  @Autowired
   private ExpedientService expedientService;
   
-  /*
+  @Autowired
+	private EstatService estatService;	
+
+  @Autowired
+  private VersioModelService versioModelService;
+  
+  
   @RequestMapping(value={"/diagnostic/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
   @ApiOperation(value="Consulta d'un diagnòstic", notes="")
-  public Expedient getExpedient(@PathVariable Long id)
+  public Diagnostic getExpedient(@PathVariable Long id)
   {
     try
     {
-      return this.expedientService.findById(id);
+      return this.diagnosticService.findById(id);
     }
     catch (NoSuchElementException ex)
     {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, getErrorNotFound(getClass(), id), ex);
     }
   }
-  */
+  
   
   
   @RequestMapping(value={"/diagnostic/llista/{expedient}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
-  @ApiOperation(value="Consulta de diagnòstic", notes="")
-  public Iterable<Expedient> getExpedient(@PathVariable String expedient)
+  @ApiOperation(value="Diagnostic d'un expedient", notes="")
+  public Iterable<Diagnostic> getExpedient(@PathVariable String expedient)
   {
     try
     {    	
-      return this.expedientService.findByExpedient(UriUtils.decode(expedient, "UTF-8"));
+      return this.diagnosticService.findByExpedient(UriUtils.decode(expedient, "UTF-8"));
     }
     catch (NoSuchElementException ex)
     {
@@ -62,25 +77,39 @@ public class DiagnosticController
   
   @RequestMapping(value={"/diagnostic/valorar/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
   @ApiOperation(value="Valoració d'un diagnòstic", notes="")
-  public Expedient getValoracio(@PathVariable Long id)
+  public Diagnostic getValoracio(@PathVariable Long id)
   {
-    return this.expedientService.avaluar(id);
+    return this.diagnosticService.avaluar(id);
   }
   
-  @RequestMapping(value={"/diagnostic/{versio}"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
+  
+  @RequestMapping(value={"/expedient/{expedient}/diagnostic/{versio}"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
   @ApiOperation(value="Nou diagnòstic", notes="")
-  public Expedient putExpedient(@RequestBody Expedient expedient, @PathVariable Long versio)  
+  public Diagnostic putExpedient(@RequestBody Diagnostic diagnostic,@PathVariable Long expedient, @PathVariable Long versio)  
   {
-	  expedient.setDATA(new Date ());
-    return this.expedientService.save(expedient, versio);
+	  diagnostic.setData(new Date ());
+	  VersioModel v = versioModelService.findById(versio);
+		
+	  diagnostic.setVersioModel(v);
+	  diagnostic.setEstat(estatService.findByDescripcio(Estat.BORRADOR.toString()));
+	  Expedient e = expedientService.findById(expedient);
+	  
+	  e.getDiagnostic().add(diagnostic);
+	  
+    return this.expedientService.save(e).getDiagnostic().get(this.expedientService.save(e).getDiagnostic().size()-1);
   }
   
   
   
-  @RequestMapping(value={"/diagnostic/"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
+  @RequestMapping(value={"/expedient/{expedient}/diagnostic/"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
   @ApiOperation(value="Modificació d'un diagnòstic", notes="")
-  public Expedient putExpedient(@RequestBody Expedient expedient)
+  public Diagnostic putExpedient(@RequestBody Diagnostic diagnostic,@PathVariable Long expedient)
   {
-    return this.expedientService.save(expedient);
+	  
+	  Expedient e = expedientService.findById(expedient);
+	  
+	  diagnostic.setExpedient(e);
+	  
+    return this.diagnosticService.save(diagnostic);
   }
 }

@@ -26,9 +26,9 @@ public @Data class Risc implements Serializable {
 
 	@Id 
 	@GeneratedValue
-	private long ID;
+	private long id;
 	private Integer value;
-	private String DESCRIPCIO;
+	private String descripcio;
 	
 	
 

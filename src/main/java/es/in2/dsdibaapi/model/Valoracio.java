@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,7 +34,7 @@ public @Data class Valoracio implements Serializable {
 
 	@Id 
 	@GeneratedValue
-	private long ID;
+	private long id;
 	
 	private Double total;
 	private long factors;
@@ -43,7 +45,10 @@ public @Data class Valoracio implements Serializable {
 	@JsonIgnore
     private Expedient expedient;*/
 	
-	@OneToMany (mappedBy = "valoracio")
+	/*@OneToMany (cascade=CascadeType.ALL,mappedBy = "valoracio", orphanRemoval = true, fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)*/
+	@OneToMany (cascade= {CascadeType.ALL}, orphanRemoval = true)
+	@JoinColumn(name="valoracio",referencedColumnName="id")
 	@JsonIgnoreProperties(value = { "value"})
 	@JsonProperty("evaluacions")
     private List<Avaluacio> avaluacio;

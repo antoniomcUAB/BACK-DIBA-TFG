@@ -19,9 +19,9 @@ public class QRol extends EntityPathBase<Rol> {
 
     public static final QRol rol = new QRol("rol");
 
-    public final StringPath DESCRIPCIO = createString("DESCRIPCIO");
+    public final StringPath descripcio = createString("descripcio");
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public QRol(String variable) {
         super(Rol.class, forVariable(variable));

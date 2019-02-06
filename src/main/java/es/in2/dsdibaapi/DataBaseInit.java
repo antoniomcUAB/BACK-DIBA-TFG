@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import es.in2.dsdibaapi.model.Ambit;
 import es.in2.dsdibaapi.model.Criteri;
 import es.in2.dsdibaapi.model.Entorn;
+import es.in2.dsdibaapi.model.Estat;
 import es.in2.dsdibaapi.model.Factor;
 import es.in2.dsdibaapi.model.FactorEconomic;
 import es.in2.dsdibaapi.model.Frequencia;
@@ -25,7 +26,10 @@ import es.in2.dsdibaapi.model.SituacioSocial;
 import es.in2.dsdibaapi.model.TipusPersona;
 import es.in2.dsdibaapi.model.VersioModel;
 import es.in2.dsdibaapi.service.CriteriService;
+import es.in2.dsdibaapi.service.DiagnosticService;
 import es.in2.dsdibaapi.service.EntornService;
+import es.in2.dsdibaapi.service.EstatService;
+import es.in2.dsdibaapi.service.ExpedientService;
 import es.in2.dsdibaapi.service.FactorEconomicService;
 import es.in2.dsdibaapi.service.FactorService;
 import es.in2.dsdibaapi.service.FrequenciaGravetatService;
@@ -87,6 +91,8 @@ public class DataBaseInit implements CommandLineRunner {
 	@Autowired
 	private VersioModelService versioModelService;
 	
+	@Autowired
+	private EstatService estatService;
 	
 	@Autowired
 	private TipusPersonaService tipusPersonaService;
@@ -98,37 +104,42 @@ public class DataBaseInit implements CommandLineRunner {
 											.versio("111AAAA00")
 											.data(new Date()).build());
 		
-		Frequencia ocasionalFrequencia= frequenciaService.save(Frequencia.builder().DESCRIPCIO("Ocasional").value(1).build());
-		Frequencia frequentFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Freqüent").value(2).build());
-		Frequencia continuaFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Continua").value(3).build());
-		Frequencia puntualFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Puntual").value(0).build());
-		Frequencia senseFrequencia=frequenciaService.save(Frequencia.builder().DESCRIPCIO("Sense valoració").value(0).build());		
+		Frequencia ocasionalFrequencia= frequenciaService.save(Frequencia.builder().descripcio("Ocasional").value(1).build());
+		Frequencia frequentFrequencia=frequenciaService.save(Frequencia.builder().descripcio("Freqüent").value(2).build());
+		Frequencia continuaFrequencia=frequenciaService.save(Frequencia.builder().descripcio("Continua").value(3).build());
+		Frequencia puntualFrequencia=frequenciaService.save(Frequencia.builder().descripcio("Puntual").value(0).build());
+		Frequencia senseFrequencia=frequenciaService.save(Frequencia.builder().descripcio("Sense valoració").value(0).build());		
 		
-		Risc senseRisc = riscService.save(Risc.builder().DESCRIPCIO("Sense Valoració").value(0).build());
-		Risc vulnerabilitatRisc = riscService.save(Risc.builder().DESCRIPCIO("Vulnerabilitat").value(1).build());
-		Risc riscRisc = riscService.save(Risc.builder().DESCRIPCIO("Risc").value(2).build());
-		Risc alttRisc = riscService.save(Risc.builder().DESCRIPCIO("Alt Risc").value(3).build());
+		Risc senseRisc = riscService.save(Risc.builder().descripcio("Sense Valoració").value(0).build());
+		Risc vulnerabilitatRisc = riscService.save(Risc.builder().descripcio("Vulnerabilitat").value(1).build());
+		Risc riscRisc = riscService.save(Risc.builder().descripcio("Risc").value(2).build());
+		Risc alttRisc = riscService.save(Risc.builder().descripcio("Alt Risc").value(3).build());
 		
-		Gravetat baixaGravetat = gravetatService.save(Gravetat.builder().DESCRIPCIO("Baixa").value(1).build());		
-		Gravetat moderadaGravetat= gravetatService.save(Gravetat.builder().DESCRIPCIO("Moderada").value(2).build());
-		Gravetat  altaGravetat=gravetatService.save(Gravetat.builder().DESCRIPCIO("Alta").value(3).build());
-		Gravetat proteccioGravetat=gravetatService.save(Gravetat.builder().DESCRIPCIO("Protecció").value(0).build());
-		Gravetat riscGravetat=gravetatService.save(Gravetat.builder().DESCRIPCIO("Risc").value(0).build());
+		Gravetat baixaGravetat = gravetatService.save(Gravetat.builder().descripcio("Baixa").value(1).build());		
+		Gravetat moderadaGravetat= gravetatService.save(Gravetat.builder().descripcio("Moderada").value(2).build());
+		Gravetat  altaGravetat=gravetatService.save(Gravetat.builder().descripcio("Alta").value(3).build());
+		Gravetat proteccioGravetat=gravetatService.save(Gravetat.builder().descripcio("Protecció").value(0).build());
+		Gravetat riscGravetat=gravetatService.save(Gravetat.builder().descripcio("Risc").value(0).build());
 		
-		rolService.save(Rol.builder().DESCRIPCIO("Gerent").build());
-		rolService.save(Rol.builder().DESCRIPCIO("Tècnic").build());
+		estatService.save(Estat.builder().descripcio(DiagnosticService.Estat.BORRADOR.toString()).build());
+		estatService.save(Estat.builder().descripcio(DiagnosticService.Estat.VALIDAT.toString()).build());
+		estatService.save(Estat.builder().descripcio(ExpedientService.Estat.INCOMPLET.toString()).build());
+		estatService.save(Estat.builder().descripcio(ExpedientService.Estat.COMPLET.toString()).build());
 		
-		municipiService.save(Municipi.builder().DESCRIPCIO("Barcelona").build());
-		municipiService.save(Municipi.builder().DESCRIPCIO("Tarragona").build());
-		municipiService.save(Municipi.builder().DESCRIPCIO("LLeida").build());
+		rolService.save(Rol.builder().descripcio("Gerent").build());
+		rolService.save(Rol.builder().descripcio("Tècnic").build());
+		
+		municipiService.save(Municipi.builder().descripcio("Barcelona").build());
+		municipiService.save(Municipi.builder().descripcio("Tarragona").build());
+		municipiService.save(Municipi.builder().descripcio("LLeida").build());
 		
 		
 		
-		Ambit ambit = ambitService.save (Ambit.builder().DESCRIPCIO("Autonomia").vulnerabilitat(4d).risc(7d).valVulnerabilitat(1d).valRisc(2.1d).valAltrisc(5d).build());
+		Ambit ambit = ambitService.save (Ambit.builder().descripcio("Autonomia").vulnerabilitat(4d).risc(7d).valVulnerabilitat(1d).valRisc(2.1d).valAltrisc(5d).build());
 		
 		Ambit ambitAutonomia = ambit;
 		
-		Entorn entornAutonomia = entornService.save (Entorn.builder().DESCRIPCIO("Autonomia").ambit(ambit).build());
+		Entorn entornAutonomia = entornService.save (Entorn.builder().descripcio("Autonomia").ambit(ambit).build());
 		
 		
 		
@@ -185,11 +196,11 @@ public class DataBaseInit implements CommandLineRunner {
 		criteriService.save(new Criteri ("Crónica, sense possiblitats de millora",puntualFrequencia,alttRisc,frequenciaGravetat));						
 		
 		
-		ambit = ambitService.save(Ambit.builder().DESCRIPCIO("MATERIAL I INSTRUMENTAL").vulnerabilitat(3d).risc(7d).valVulnerabilitat(0.5d).valRisc(1d).valAltrisc(2.5d).build());
+		ambit = ambitService.save(Ambit.builder().descripcio("MATERIAL I INSTRUMENTAL").vulnerabilitat(3d).risc(7d).valVulnerabilitat(0.5d).valRisc(1d).valAltrisc(2.5d).build());
 		
 		Ambit ambitMaterial = ambit;
 				
-		Entorn entornHabitatge = entornService.save (Entorn.builder().DESCRIPCIO("Entorn habitatge").ambit(ambit).build());
+		Entorn entornHabitatge = entornService.save (Entorn.builder().descripcio("Entorn habitatge").ambit(ambit).build());
 								
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Manca d'habitatge (H.1)","Situacions de manca d'un habitatge estable on fixar la residéncia. Inclou persones en situacions de sense sostre o sense llar de les categories ETHOS i inclou persones acollides temporalment en una institucié a través de xarxa o en domicilis de familiars o amics persones que perden l'acolliment al domicili on vivien o que fixen el seu domicili en habitacles que no es consideren un habitatge (per exemple un cotxe)."
 														,entornHabitatge,1d,2d,7d));
@@ -262,7 +273,7 @@ public class DataBaseInit implements CommandLineRunner {
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,alttRisc,frequenciaGravetat));
 
 		
-		Entorn entornEconomic = entornService.save (Entorn.builder().DESCRIPCIO("Entorn Económic").ambit(ambit).build());
+		Entorn entornEconomic = entornService.save (Entorn.builder().descripcio("Entorn Económic").ambit(ambit).build());
 
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Sense ingressos (E.1)","Unitats familiars que no tenen ingressos o que no els acrediten de forma estable o regular. Es proposa Comptabilitzar en aquesta categoria aquelles unitats familiars on séhan identificat més de 6 étems dels qüestionari."
 												,entornEconomic,1d,2d,3d));
@@ -277,7 +288,7 @@ public class DataBaseInit implements CommandLineRunner {
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Ingressos insuficients (E.2)","Unitats familiars que malgrat tenir uns ingressos tenen dificultats per cobrir determinades necessitats  dels seus integrants."
 												,entornEconomic,1d,2d,3d));
 		
-		versio.setPreguntaEconomica(situacioSocial.getID());
+		versio.setPreguntaEconomica(situacioSocial.getId());
 		versioModelService.save(versio);
 								
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"3-4 étems del qüestionari privacié econémica i amb xarxa/recursos de suport econémic",baixaGravetat));	
@@ -308,7 +319,7 @@ public class DataBaseInit implements CommandLineRunner {
 									
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,alttRisc,frequenciaGravetat));	
 										
-		Entorn entornLaboral = entornService.save (Entorn.builder().DESCRIPCIO("Entorn Laboral").ambit(ambit).build());
+		Entorn entornLaboral = entornService.save (Entorn.builder().descripcio("Entorn Laboral").ambit(ambit).build());
 											
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Manca de qualificacié i/o d'orientació laboral  (L.1)","La persona té dificultats per trobar una feina estable perqué desconeix els mecanismes per accedir al mercat laboral i no disposa de la formacié i qualificacié suficient per trobar una feina estable. En conseqééncia, entra i surt del mercat laboral, realitza treballs que no donen continuétat a la seva progressié professional o resta llargues temporades a l'atur.  Addicionalment, la persona pot tenir dificultats personals o legals que dificulten l'accés al mercat de treball o el manteniment d'una  feina."
 												,entornLaboral,0.5d,1d,1.5d));		
@@ -335,10 +346,10 @@ public class DataBaseInit implements CommandLineRunner {
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,riscRisc,frequenciaGravetat));	
 											
 											
-		ambit = ambitService.save(Ambit.builder().DESCRIPCIO("RELACIONAL").vulnerabilitat(3d).risc(7d).valVulnerabilitat(1d).valRisc(2.1d).valAltrisc(5d).build());
+		ambit = ambitService.save(Ambit.builder().descripcio("RELACIONAL").vulnerabilitat(3d).risc(7d).valVulnerabilitat(1d).valRisc(2.1d).valAltrisc(5d).build());
 		Ambit ambitRelacional = ambit;
 											
-		Entorn entornEscolar = entornService.save (Entorn.builder().DESCRIPCIO("Entorn Escolar").ambit(ambit).build());
+		Entorn entornEscolar = entornService.save (Entorn.builder().descripcio("Entorn Escolar").ambit(ambit).build());
 											
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Dificultats d'aprenentatge escolar (ES.1)","Infant o adolescent que presenta dificultats en el seguiment educatiu que li correspon com procés evolutiu, com a conseqééncia de dinémiques familiars adverses (inclouen desvinculacié del centre educatiu, manca de recolzament, etc.)."
 												,entornEscolar,0.75d,1.5d,3d));		
@@ -418,7 +429,7 @@ public class DataBaseInit implements CommandLineRunner {
 		criteriService.save(new Criteri ("Es repeteix durant tot un trimestre",continuaFrequencia,riscRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("De forma reiterada i en més d'un trimestre",puntualFrequencia,alttRisc,frequenciaGravetat));
 											
-		Entorn entornFamiliar = entornService.save (Entorn.builder().DESCRIPCIO("Entorn Familiar").ambit(ambit).build());
+		Entorn entornFamiliar = entornService.save (Entorn.builder().descripcio("Entorn Familiar").ambit(ambit).build());
 				
 											
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Maltractament (F.1)","Situacions de maltractament que rep un menor d'edat,  adult o  persona gran, inclou vexacions de carécter fésic, psicolégic o emocional, aixé com les situacions de violéncia de génere. Inclou la sospita per part del professional o bé l'evidéncia que el maltractament s'esté produint.(Es consideren incloses en quest indicador totes les categories de maltractament relacionades al RUDEL)"
@@ -546,7 +557,7 @@ public class DataBaseInit implements CommandLineRunner {
 																
 													
 		
-		Entorn entornSocial = entornService.save (Entorn.builder().DESCRIPCIO("Entorn Social").ambit(ambit).build());
+		Entorn entornSocial = entornService.save (Entorn.builder().descripcio("Entorn Social").ambit(ambit).build());
 											
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Dificultats en les relacions socials i a la participacié a la comunitat (S.1)","Persona amb dificultats per adaptar-se al seu medi social (aéllament, no respecta els límits normatius ni socials del seu entorn).",entornSocial,0.2d,0.5d,1.5d));		
 														
@@ -858,22 +869,34 @@ public class DataBaseInit implements CommandLineRunner {
 				.build());
 		
 
-		factorEconomicService.save(new FactorEconomic(versio,"Pagar les factures d'habitatge o serveis públics."));
-		factorEconomicService.save(new FactorEconomic(versio,"Mantenir la llar adequadament calenta."));
-		factorEconomicService.save(new FactorEconomic(versio,"Assumir despeses inesperades."));
-		factorEconomicService.save(new FactorEconomic(versio,"Menjar carn o les proteénes de forma regular."));
-		factorEconomicService.save(new FactorEconomic(versio,"Anar de vacances."));
-		factorEconomicService.save(new FactorEconomic(versio,"Disposar de cotxe."));
-		factorEconomicService.save(new FactorEconomic(versio,"Disposar de rentadora."));
-		factorEconomicService.save(new FactorEconomic(versio,"Disposar de connexió a internet."));
-		factorEconomicService.save(new FactorEconomic(versio,"Disposar de teléfon móbil"));
+		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
+				.descripcio("Pagar les factures d'habitatge o serveis públics.").build());
+		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
+				.descripcio("Mantenir la llar adequadament calenta.").build());
+		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
+				.descripcio("Assumir despeses inesperades.").build());
+		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
+				.descripcio("Menjar carn o les proteénes de forma regular.").build());
+		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
+				.descripcio("Anar de vacances.").build());
+		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
+				.descripcio("Disposar de cotxe.").build());
+		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
+				.descripcio("Disposar de rentadora.").build());
+		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
+				.descripcio("Disposar de connexió a internet.").build());
+		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
+				.descripcio("Disposar de teléfon móbil").build());
 		
-		factorEconomicService.save(new FactorEconomic(versio,"Existeix una xarxa familiar/relacional disposada a oferir suport econòmic?"));
-		factorEconomicService.save(new FactorEconomic(versio,"Les dificultats en l'àmbit econòmic són contïnuades i sense possiblitat de canvi o millora en el curt termini?"));
 		
-		ambit = ambitService.save(Ambit.builder().DESCRIPCIO("Globalitat del cas").build());
+		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
+				.descripcio("Existeix una xarxa familiar/relacional disposada a oferir suport econòmic?").build());
+		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
+				.descripcio("Les dificultats en l'àmbit econòmic són contïnuades i sense possiblitat de canvi o millora en el curt termini?").build());
 		
-		Entorn entorn = entornService.save (Entorn.builder().DESCRIPCIO("Globalitat del cas").ambit(ambit).build());
+		ambit = ambitService.save(Ambit.builder().descripcio("Globalitat del cas").build());
+		
+		Entorn entorn = entornService.save (Entorn.builder().descripcio("Globalitat del cas").ambit(ambit).build());
 		
 		
 		// Protecció

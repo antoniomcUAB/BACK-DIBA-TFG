@@ -1,23 +1,32 @@
 package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,59 +44,45 @@ public @Data class Diagnostic implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
-	private Long ID;
-	private Boolean unitatFamiliar;	
+	private long id;	
+	private Date data;
+	private String observacions;
 	
-	@ManyToOne ()
-	@JoinColumn(name="expedient", foreignKey= @ForeignKey(name = "DIAGNOSTICv1_EXPEDIENT_FK"),updatable=false)	
-	@JsonIgnore	
+	
+	
+	/*@ManyToOne
+    @JoinColumn(name="expedient",foreignKey= @ForeignKey(name = "DIAGNOSTIC_EXPEDIENT_FK"))	
+	@JsonIgnoreProperties(value = { "diagnostic", "professional", "persona"} )*/
+	@ManyToOne
+    @JoinColumn(name="expedient",foreignKey= @ForeignKey(name = "DIAGNOSTIC_EXPEDIENT_FK"))	
+	@JsonIgnore
     private Expedient expedient;
 	
 	@ManyToOne
-    @JoinColumn(name="entorn",foreignKey= @ForeignKey(name = "DIAGNOSTIC2_ENTORN_FK"),updatable=false)
-	@JsonIgnoreProperties(value = { "Items"})
-	private Entorn entorn;
+    @JoinColumn(name="estat",foreignKey= @ForeignKey(name = "DIAGNOSTIC_ESTAT_FK"))	
+    private Estat estat;
 	
 	@ManyToOne
-    @JoinColumn(name="situacio_social",foreignKey= @ForeignKey(name = "DIAGNOSTIC2_SITUACIO_SOCIAL_FK"))
-	@JsonIgnoreProperties(value = { "definicio", "Items", "vulnerabilitat", "risc", "altRisc" })
-	private SituacioSocial situacioSocial;
+    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "DIAGNOSTIC_VERSIO_MODEL_FK"))	
+    private VersioModel versioModel;
 	
-	@ManyToOne
-    @JoinColumn(name="risc",foreignKey= @ForeignKey(name = "DIAGNOSTICv1_RISC_FK"))
-	@JsonIgnoreProperties(value = { "value"})
-	private Risc risc;
-	
-	@ManyToOne
-    @JoinColumn(name="gravetat",foreignKey= @ForeignKey(name = "DIAGNOSTICv1_GRAVETAT_FK"))
-    private Gravetat gravetat;
-	
-	@ManyToOne
-    @JoinColumn(name="frequencia",foreignKey= @ForeignKey(name = "DIAGNOSTICv1_FREQUENCIA_FK"))	
-    private Frequencia frequencia;
-	
-	@ManyToOne
-    @JoinColumn(name="persona",foreignKey= @ForeignKey(name = "DIAGNOSTIC2_PERSONA_FK"))	
-    private Persona persona;
-	
-	@ManyToOne
-    @JoinColumn(name="factor",foreignKey= @ForeignKey(name = "DIAGNOSTIC_FACTOR_FK"))	
-	private Risc factor;
-	
-	/*
-	@OneToMany(cascade=CascadeType.ALL, mappedBy = "diagnostic", fetch = FetchType.EAGER)	
-	@Fetch(value = FetchMode.SUBSELECT)
-    private List<Economia> economia;*/
-	@ManyToMany(cascade = { CascadeType.MERGE } )
-  	 @JoinTable(
-       name = "economia", 
-       joinColumns = { @JoinColumn(name = "diagnostic",foreignKey = @ForeignKey(name = "ECONOMIA_DIAGNOSTIC_FK")) },         
-       inverseJoinColumns = { @JoinColumn(name = "factor",foreignKey = @ForeignKey(name = "ECONOMIA_FACTOR_ECONOMIC_FK")) }
-   )	
-   private Set<FactorEconomic> factorEconomic;
-	
-	public Diagnostic (Diagnostic d) {
 		
-	}
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)	
+	@JoinColumn (name="diagnostic",referencedColumnName="id")
+	@JsonProperty("preguntes")	
+    private List<Pregunta> pregunta;
+	
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, mappedBy = "diagnostic", fetch = FetchType.EAGER)	
+	@Fetch(value = FetchMode.SUBSELECT)
+    private List<Contextualitzacio> contextualitzacio;
+	
+	
+	@Transient
+	private List<es.in2.dsdibaapi.json.Ambit> ambit;
+	
+	
+	@OneToOne (cascade= {CascadeType.MERGE, CascadeType.PERSIST},orphanRemoval = true)
+    @JoinColumn(name="valoracio",foreignKey= @ForeignKey(name = "DIAGNOSTIC_VALORACIO_FK"))	
+    private Valoracio valoracio;
 	
 }

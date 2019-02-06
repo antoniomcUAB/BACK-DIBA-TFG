@@ -33,9 +33,9 @@ public @Data class Economia implements Serializable {
 	private long id;
 	
 	@ManyToOne
-	@JoinColumn(name="diagnostic",foreignKey= @ForeignKey(name = "ECONOMIA_DIAGNOSTIC_FK"))
+	@JoinColumn(name="pregunta",foreignKey= @ForeignKey(name = "ECONOMIA_PREGUNTA_FK"))
 	@JsonIgnore
-    private Diagnostic diagnostic;
+    private Pregunta pregunta;
 	
 	@ManyToOne
     @JoinColumn(name="factor",foreignKey= @ForeignKey(name = "ECONOMIA_FACTOR_ECONOMIC_FK"))	

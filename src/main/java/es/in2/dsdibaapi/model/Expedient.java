@@ -12,18 +12,13 @@ import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -38,47 +33,41 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public @Data class Expedient implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
+	
+	
 	@Id @GeneratedValue 
-	private long ID;
-	private String expedient;
-	private String NOM;
-	private Date DATA;
-	private String OBSERVACIONS;
-	private String estat;
+	private long id;
+	private String codi;
+	private Date dataCreacio;
+	private Date dataValidacio;
+	private String nom;
 	private Long totalFamilia;
 	
-	@ManyToMany(cascade = { CascadeType.MERGE } )
-   	 @JoinTable(
-        name = "ex_referencia", 
-        joinColumns = { @JoinColumn(name = "expedient",foreignKey = @ForeignKey(name = "EX_REFERENCIA_EXPEDIENT_FK")) },         
-        inverseJoinColumns = { @JoinColumn(name = "persona",foreignKey = @ForeignKey(name = "EX_REFERENCIA_PERSONA_FK")) }
-    )	
-    private Set<Persona> persona;
+	/*
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)	
+	@Fetch(value = FetchMode.SUBSELECT)
+	@JsonProperty("persona")*/
+	@OneToMany(cascade= {CascadeType.ALL})
+	@JoinColumn(name="expedient",referencedColumnName="id")
+	@JsonProperty("persona")
+	private Set<Persona> persona;
 	
 	@ManyToOne
-    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "EXPEDIENT_VERSIO_MODEL_FK"))	
-    private VersioModel versioModel;
+    @JoinColumn(name="estat",foreignKey= @ForeignKey(name = "EXPEDIENT_ESTAT_FK"))	
+    private Estat estat;
 	
-	@ManyToOne (cascade=CascadeType.MERGE)
-    @JoinColumn(name="professional",foreignKey= @ForeignKey(name = "EXPEDIENT_PROFESSIONAL_FK"))	
+
+	@ManyToOne
+    @JoinColumn(name="professional",foreignKey= @ForeignKey(name = "EXPEDIENT_PROFESSIONAL_FKv2"))	
+	//@JsonIgnore
     private Professional professional;
-		
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, mappedBy = "expedient", fetch = FetchType.EAGER)	
+	
+	/*@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, mappedBy = "expedient", fetch = FetchType.EAGER)	
 	@Fetch(value = FetchMode.SUBSELECT)
-	@JsonProperty("preguntes")
+	@JsonIgnoreProperties(value = { "expedient"} )
+	@JsonProperty("diagnostic")*/
+	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name="expedient",referencedColumnName="id")
     private List<Diagnostic> diagnostic;
-	
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, mappedBy = "expedient", fetch = FetchType.EAGER)	
-	@Fetch(value = FetchMode.SUBSELECT)
-    private List<Contextualitzacio> contextualitzacio;
-	
-	
-	
-	@OneToOne
-    @JoinColumn(name="valoracio",foreignKey= @ForeignKey(name = "EXPEDIENT_VALORACIO_FK"))	
-    private Valoracio valoracio;
 	
 }

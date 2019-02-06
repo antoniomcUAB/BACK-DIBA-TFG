@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -39,6 +41,12 @@ public @Data class Persona implements Serializable {
 	@ManyToOne
     @JoinColumn(name="tipusPersona",foreignKey= @ForeignKey(name = "PERSONA_TIPUS_PERSONA_FK"))	
     private TipusPersona tipusPersona;
+	
+	/*@ManyToOne 
+    @JoinColumn(name="expedient",foreignKey= @ForeignKey(name = "PERSONA_EXPEDIENT_FK"))	
+	@JsonIgnore	
+    private Expedient expedient;*/
+	
 
 	
 }

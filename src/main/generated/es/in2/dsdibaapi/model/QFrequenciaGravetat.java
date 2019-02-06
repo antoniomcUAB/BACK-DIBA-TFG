@@ -24,11 +24,11 @@ public class QFrequenciaGravetat extends EntityPathBase<FrequenciaGravetat> {
 
     public final ListPath<Criteri, QCriteri> criteri = this.<Criteri, QCriteri>createList("criteri", Criteri.class, QCriteri.class, PathInits.DIRECT2);
 
-    public final StringPath EVIDENCIA = createString("EVIDENCIA");
+    public final StringPath evidencia = createString("evidencia");
 
     public final QGravetat gravetat;
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final QSituacioSocial situacioSocial;
 

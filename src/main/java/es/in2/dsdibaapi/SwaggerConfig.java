@@ -1,5 +1,6 @@
 package es.in2.dsdibaapi;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig   {
 	
+	@Value( "${swagger.host}" )
+	private String swaggerHost;
+	
+	@Value( "${swagger.path}" )
+	private String swaggerPath;
+	
 	@Bean
 	public Docket postsApi() {
 		return new Docket(DocumentationType.SWAGGER_2)
@@ -23,7 +30,9 @@ public class SwaggerConfig   {
 				.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
 				.paths(PathSelectors.any())
 				.build()
-				.apiInfo(apiInfo());
+				.apiInfo(apiInfo())
+				.host(swaggerHost)
+				.pathMapping(swaggerPath);
 	}
 
 	private ApiInfo apiInfo() {

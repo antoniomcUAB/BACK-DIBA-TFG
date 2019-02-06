@@ -318,6 +318,14 @@
 			<naming_option class_name="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" max_name_length="30" case_type="2" valid_characters="" all_valid="true" />
 			<naming_option class_name="oracle.dbtools.crest.model.design.relational.Index" max_name_length="30" case_type="2" valid_characters="" all_valid="true" />
 		</model_options>
+		<model_options objectid="FC86279D-6136-529B-E5C6-0B74AB88701A">
+			<naming_option class_name="oracle.dbtools.crest.model.design.relational.Table" max_name_length="30" case_type="2" valid_characters="" all_valid="true" />
+			<naming_option class_name="oracle.dbtools.crest.model.design.relational.Column" max_name_length="30" case_type="2" valid_characters="" all_valid="true" />
+			<naming_option class_name="oracle.dbtools.crest.model.design.relational.TableView" max_name_length="30" case_type="2" valid_characters="" all_valid="true" />
+			<naming_option class_name="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint" max_name_length="30" case_type="2" valid_characters="" all_valid="true" />
+			<naming_option class_name="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" max_name_length="30" case_type="2" valid_characters="" all_valid="true" />
+			<naming_option class_name="oracle.dbtools.crest.model.design.relational.Index" max_name_length="30" case_type="2" valid_characters="" all_valid="true" />
+		</model_options>
 		<model_options objectid="825B8E0C-13FE-C331-809F-A39B687351E8">
 			<naming_option class_name="oracle.dbtools.crest.model.design.logical.Entity" max_name_length="254" case_type="2" valid_characters="" all_valid="true" />
 			<naming_option class_name="oracle.dbtools.crest.model.design.logical.Attribute" max_name_length="254" case_type="2" valid_characters="" all_valid="true" />
@@ -349,8 +357,17 @@
 				<schemas value="70"/>
 				<subviews value="70"/>
 				<arcs value="70"/>
+			</relational_model_0_estimates>
+			<relational_model_1_estimates>
+				<relational_model_name value="schema(2)"/>
+				<tables value="70"/>
+				<views value="70"/>
+				<foreign_keys value="70"/>
+				<schemas value="70"/>
+				<subviews value="70"/>
+				<arcs value="70"/>
 				<physical_models_estimates>
-							<physical_model_DB885DF0-E0F6-32F8-BE82-D30FB05AE3DD_Oracle_Database_11g>
+							<physical_model_FC86279D-6136-529B-E5C6-0B74AB88701A_Oracle_Database_11g>
 								<physical_model_name value="Oracle Database 11g"/>
 								<clusters value="70"/>
 								<contexts value="70"/>
@@ -377,9 +394,9 @@
 								<users value="70"/>
 								<views value="70"/>
 								<triggers value="70"/>
-							</physical_model_DB885DF0-E0F6-32F8-BE82-D30FB05AE3DD_Oracle_Database_11g>
+							</physical_model_FC86279D-6136-529B-E5C6-0B74AB88701A_Oracle_Database_11g>
 				</physical_models_estimates>
-			</relational_model_0_estimates>
+			</relational_model_1_estimates>
 		</relational_model_estimates>
 	</design_estimates>
 </settings>

@@ -22,11 +22,11 @@ public class QContextualitzacio extends EntityPathBase<Contextualitzacio> {
 
     public static final QContextualitzacio contextualitzacio = new QContextualitzacio("contextualitzacio");
 
-    public final QExpedient expedient;
+    public final QDiagnostic diagnostic;
 
     public final QFactor factor;
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final BooleanPath membreUnic = createBoolean("membreUnic");
 
@@ -52,7 +52,7 @@ public class QContextualitzacio extends EntityPathBase<Contextualitzacio> {
 
     public QContextualitzacio(Class<? extends Contextualitzacio> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.expedient = inits.isInitialized("expedient") ? new QExpedient(forProperty("expedient"), inits.get("expedient")) : null;
+        this.diagnostic = inits.isInitialized("diagnostic") ? new QDiagnostic(forProperty("diagnostic"), inits.get("diagnostic")) : null;
         this.factor = inits.isInitialized("factor") ? new QFactor(forProperty("factor"), inits.get("factor")) : null;
         this.persona = inits.isInitialized("persona") ? new QPersona(forProperty("persona"), inits.get("persona")) : null;
     }

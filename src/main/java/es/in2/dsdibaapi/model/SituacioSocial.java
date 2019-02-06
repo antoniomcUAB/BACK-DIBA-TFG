@@ -23,15 +23,15 @@ import lombok.Data;
 @Entity
 @DynamicUpdate
 @Table (name="SITUACIO_SOCIAL")
-@JsonPropertyOrder({ "ID", "SOCIAL", "DEFINICIO","items" })
+@JsonPropertyOrder({ "id", "social", "definicio","selectors" })
 public @Data class SituacioSocial implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
-	private Long ID;
-	private String SOCIAL;
-	private String DEFINICIO;
+	private Long id;
+	private String social;
+	private String definicio;
 	private Double vulnerabilitat;
 	private Double risc;
 	private Double altRisc;
@@ -48,17 +48,17 @@ public @Data class SituacioSocial implements Serializable {
     private VersioModel versioModel;
 	
 	@OneToMany(mappedBy = "situacioSocial")
-	@JsonProperty("Items")
+	@JsonProperty("selectors")
     private List<FrequenciaGravetat> frequenciaGravetat;
 	
 	public SituacioSocial () {
 		
 	}
 
-	public SituacioSocial (VersioModel versioModel,String SOCIAL,String DEFINICIO, Entorn ENTORN, Double vulnerabilitat, Double risc, Double altRisc) {
-		this.SOCIAL=SOCIAL;
-		this.DEFINICIO=DEFINICIO;
-		this.entorn = ENTORN;		
+	public SituacioSocial (VersioModel versioModel,String social,String definicio, Entorn entorn, Double vulnerabilitat, Double risc, Double altRisc) {
+		this.social=social;
+		this.definicio=definicio;
+		this.entorn = entorn;		
 		this.vulnerabilitat=vulnerabilitat;
 		this.risc=risc;
 		this.altRisc=altRisc;

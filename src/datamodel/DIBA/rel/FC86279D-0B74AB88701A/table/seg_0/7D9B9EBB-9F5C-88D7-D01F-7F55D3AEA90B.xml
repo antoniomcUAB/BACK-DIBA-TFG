@@ -1,0 +1,155 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7D9B9EBB-9F5C-88D7-D01F-7F55D3AEA90B" name="AVALUACIO">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>C1AF25C2-3CBF-BC0F-7348-8BF721AFB2A8</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="CC7C9BA3-CD7F-6914-25DE-618AA17231CC">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>97B21F95-37FA-924E-A33B-A83F3E932B90</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="risc_professional" id="A6AF3BBA-9013-F806-A094-41301A0A51C2">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>AFAD3071-6DB1-3F6A-FC85-B8524BCCE295</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A74646C8-C9FC-126D-4E76-D3966B5C2171" referredColumn="50955319-BBCD-CAE5-DC06-FAD2AD679ECD"/>
+</associations>
+</Column>
+<Column name="risc" id="7D5FF51C-5E1F-CDE2-F3D2-46942FC60003">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>C0A2835B-F07C-A99B-40C8-0E5149EEFABE</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9A100A3D-7F14-093B-4730-A37643C56772" referredColumn="50955319-BBCD-CAE5-DC06-FAD2AD679ECD"/>
+</associations>
+</Column>
+<Column name="valoracio" id="ED85A2FB-F6EB-8C0A-6489-7F430E681C96">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>6611E8DC-D79D-134B-8CDF-54119B1E337F</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7EC97CA8-2B39-84A9-0EC0-7B1D10EB7644" referredColumn="A1A5D232-A39B-CF0F-5D21-B0F8C2897E3E"/>
+</associations>
+</Column>
+<Column name="ambit" id="91F4C277-8117-38D8-17D5-EDA6F09FC4CD">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>9C9B377A-FCC8-112B-89B2-AE5C2352250D</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7566CEC6-2B21-FEA4-FBAF-D99A42D565EB" referredColumn="4FE213D5-2108-F51A-6A0F-E7172EA74D46"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C59F5977-B4B7-45D2-C868-25398A0B65D1" name="AVALUACIO_PK">
+<sourceDDLFile>schema.sql</sourceDDLFile>
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<importedID>80E53C2F-53DC-B03C-19EF-DD66F7BBD977</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CC7C9BA3-CD7F-6914-25DE-618AA17231CC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="184F479F-509D-B458-F886-FA9F70DF150A" name="AVALUACIO_AMBIT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="91F4C277-8117-38D8-17D5-EDA6F09FC4CD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D7E76EB1-54BA-4A52-4219-E3B461928599" name="AVALUACIO_RISC_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7D5FF51C-5E1F-CDE2-F3D2-46942FC60003"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="029783A2-4977-2154-3E99-518AA5A151B3" name="AVALUACIO_RISC_PROF_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A6AF3BBA-9013-F806-A094-41301A0A51C2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BC66EF8A-E31D-91CD-6D8A-C2E316C6914C" name="AVALUACIO_VALORACIO_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ED85A2FB-F6EB-8C0A-6489-7F430E681C96"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

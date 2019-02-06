@@ -32,11 +32,11 @@ public class ModelServiceImpl implements ModelService{
 		Predicate predicateFactor = null;
 		
 		
-		predicateAmbit = QAmbit.ambit.entorn.any().situacioSocial.any().versioModel.ID.eq(versio);
-		predicateFactor = QFactorEconomic.factorEconomic.versioModel.ID.eq(versio);		
+		predicateAmbit = QAmbit.ambit.entorn.any().situacioSocial.any().versioModel.id.eq(versio);
+		predicateFactor = QFactorEconomic.factorEconomic.versioModel.id.eq(versio);		
 		
 	    Model model = new Model();
-	    model.setAmbits(ambitRepository.findAll(predicateAmbit,new Sort(Sort.Direction.ASC, "DESCRIPCIO")));
+	    model.setAmbits(ambitRepository.findAll(predicateAmbit,new Sort(Sort.Direction.ASC, "descripcio")));
 	    model.setFactorEconomic(factorEconomicRepository.findAll(predicateFactor));  
 	    
 	    

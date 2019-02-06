@@ -9,5 +9,8 @@
 <designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="CE434E8D-19D6-EE19-C16C-76F83AB7D78C">
 <designStoragePath>G:\schema</designStoragePath>
 </designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="A9D56279-7FF5-150C-2B4D-6FA20DDD98DB">
+<designStoragePath>C:\schema</designStoragePath>
+</designDescr>
 </usedDesignStorageDescriptors>
 </OSDM_Design>

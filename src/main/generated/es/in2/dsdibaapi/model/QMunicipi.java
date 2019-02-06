@@ -19,9 +19,9 @@ public class QMunicipi extends EntityPathBase<Municipi> {
 
     public static final QMunicipi municipi = new QMunicipi("municipi");
 
-    public final StringPath DESCRIPCIO = createString("DESCRIPCIO");
+    public final StringPath descripcio = createString("descripcio");
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public QMunicipi(String variable) {
         super(Municipi.class, forVariable(variable));

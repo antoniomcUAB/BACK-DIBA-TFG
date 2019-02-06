@@ -31,7 +31,7 @@ public @Data class Factor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
-	private long ID;
+	private long id;
 	private String descripcio;
 	private Double fc1m;
 	private Double fctots;
@@ -43,8 +43,9 @@ public @Data class Factor implements Serializable {
     private Gravetat gravetat;
 		
 	@ManyToOne
-    @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "FACTOR_AMBIT_FK"))
-	@JsonIgnore
+    @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "FACTOR_AMBIT_FK"))	
+	@JsonIgnoreProperties(value = { "entorns", "factors_context", "vulnerabilitat", "risc", "valVulnerabilitat", "valRisc", "valAltrisc"} )
+	//@JsonIgnore
     private Ambit ambit;
 
 

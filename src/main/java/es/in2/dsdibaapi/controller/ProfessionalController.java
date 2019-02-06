@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,15 @@ public class ProfessionalController extends BaseController{
 	  public Professional getProfessional(@PathVariable Long id) {
 	     
 		return professionalService.findById(id);
+	  }
+	
+	
+	@RequestMapping(value={"/professional/"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
+	  @ApiOperation(value="Alta/Modificació d'un professional", notes="")
+	  public Professional modExpedient(@RequestBody Professional professional)
+	  {
+		
+	    return professionalService.save(professional);
 	  }
 	
 }

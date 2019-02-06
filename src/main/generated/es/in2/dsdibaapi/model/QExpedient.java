@@ -20,33 +20,27 @@ public class QExpedient extends EntityPathBase<Expedient> {
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QExpedient expedient1 = new QExpedient("expedient1");
+    public static final QExpedient expedient = new QExpedient("expedient");
 
-    public final ListPath<Contextualitzacio, QContextualitzacio> contextualitzacio = this.<Contextualitzacio, QContextualitzacio>createList("contextualitzacio", Contextualitzacio.class, QContextualitzacio.class, PathInits.DIRECT2);
+    public final StringPath codi = createString("codi");
 
-    public final DateTimePath<java.util.Date> DATA = createDateTime("DATA", java.util.Date.class);
+    public final DateTimePath<java.util.Date> dataCreacio = createDateTime("dataCreacio", java.util.Date.class);
+
+    public final DateTimePath<java.util.Date> dataValidacio = createDateTime("dataValidacio", java.util.Date.class);
 
     public final ListPath<Diagnostic, QDiagnostic> diagnostic = this.<Diagnostic, QDiagnostic>createList("diagnostic", Diagnostic.class, QDiagnostic.class, PathInits.DIRECT2);
 
-    public final StringPath estat = createString("estat");
+    public final QEstat estat;
 
-    public final StringPath expedient = createString("expedient");
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
-
-    public final StringPath NOM = createString("NOM");
-
-    public final StringPath OBSERVACIONS = createString("OBSERVACIONS");
+    public final StringPath nom = createString("nom");
 
     public final SetPath<Persona, QPersona> persona = this.<Persona, QPersona>createSet("persona", Persona.class, QPersona.class, PathInits.DIRECT2);
 
     public final QProfessional professional;
 
     public final NumberPath<Long> totalFamilia = createNumber("totalFamilia", Long.class);
-
-    public final QValoracio valoracio;
-
-    public final QVersioModel versioModel;
 
     public QExpedient(String variable) {
         this(Expedient.class, forVariable(variable), INITS);
@@ -66,9 +60,8 @@ public class QExpedient extends EntityPathBase<Expedient> {
 
     public QExpedient(Class<? extends Expedient> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.estat = inits.isInitialized("estat") ? new QEstat(forProperty("estat")) : null;
         this.professional = inits.isInitialized("professional") ? new QProfessional(forProperty("professional"), inits.get("professional")) : null;
-        this.valoracio = inits.isInitialized("valoracio") ? new QValoracio(forProperty("valoracio")) : null;
-        this.versioModel = inits.isInitialized("versioModel") ? new QVersioModel(forProperty("versioModel")) : null;
     }
 
 }

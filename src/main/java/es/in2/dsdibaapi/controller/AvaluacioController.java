@@ -30,7 +30,7 @@ public class AvaluacioController extends BaseController {
 	@Autowired
 	private ValoracioService valoracioService;
 	
-	
+	/*
 	@RequestMapping(value = "/avaluacio/{valoracio}", method = RequestMethod.PUT)
 	@ApiOperation(value = "Modificació d'una avaluacio", notes = "")
 	  public Avaluacio putAvaluacio(@PathVariable Long valoracio, @RequestBody Avaluacio avaluacio) {
@@ -45,6 +45,6 @@ public class AvaluacioController extends BaseController {
 			          HttpStatus.NOT_FOUND,getErrorNotFound(this.getClass(),valoracio), ex);
 		}
 	  }
-	
+	*/
 	
 }

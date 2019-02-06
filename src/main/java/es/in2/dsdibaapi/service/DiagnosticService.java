@@ -1,18 +1,25 @@
 package es.in2.dsdibaapi.service;
 
+import es.in2.dsdibaapi.model.Ambit;
 import es.in2.dsdibaapi.model.Diagnostic;
 
 public interface DiagnosticService {
 	
-    public Diagnostic findById(Long id) ;
-
-    public Diagnostic findByExpedientSituacioSocial(Long expedient,Long situacioSocial);
+	public enum Estat {
+	    BORRADOR,
+	    VALIDAT 
+	}
 	
-    public Iterable<Diagnostic> findByExpedientEntorn(Long expedient,Long entorn) ;
-    
-    public Boolean existsById(Long id);
+	public Diagnostic findById(Long id);	
 	
-	public Diagnostic save (Diagnostic diagnostic, Long expedient) ;
+	public Iterable<Diagnostic> findByExpedient(String expedient);
+	
+	public Diagnostic save(Diagnostic expedient, Long versio);
+	
+	public Diagnostic save(Diagnostic expedient);
+	
+	public Diagnostic avaluar (Long expedient);
+	
+	public RiscService.Tipus avaluar (Diagnostic exp, Ambit a);
 	
 }
-

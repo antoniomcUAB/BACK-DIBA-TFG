@@ -2,6 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>es.in2</groupId>
   <artifactId>ds-diba-api</artifactId>
+  
   <version>0.0.1-SNAPSHOT</version>
   <parent>
         <groupId>org.springframework.boot</groupId>
@@ -189,6 +190,13 @@
 	    <groupId>commons-lang</groupId>
 	    <artifactId>commons-lang</artifactId>
 	    <version>2.6</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>io.rest-assured</groupId>
+	    <artifactId>rest-assured</artifactId>
+	    <version>3.0.6</version>
+	    <scope>test</scope>
 	</dependency>
 	
 	<dependency>

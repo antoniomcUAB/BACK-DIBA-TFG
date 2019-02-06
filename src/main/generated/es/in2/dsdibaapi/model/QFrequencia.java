@@ -19,9 +19,9 @@ public class QFrequencia extends EntityPathBase<Frequencia> {
 
     public static final QFrequencia frequencia = new QFrequencia("frequencia");
 
-    public final StringPath DESCRIPCIO = createString("DESCRIPCIO");
+    public final StringPath descripcio = createString("descripcio");
 
-    public final NumberPath<Long> ID = createNumber("ID", Long.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final NumberPath<Integer> value = createNumber("value", Integer.class);
 
