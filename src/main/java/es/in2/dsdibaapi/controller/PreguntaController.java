@@ -1,5 +1,6 @@
 package es.in2.dsdibaapi.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -17,6 +18,7 @@ import es.in2.dsdibaapi.model.Pregunta;
 import es.in2.dsdibaapi.model.Economia;
 import es.in2.dsdibaapi.model.Diagnostic;
 import es.in2.dsdibaapi.model.FactorEconomic;
+import es.in2.dsdibaapi.model.Persona;
 import es.in2.dsdibaapi.model.SituacioSocial;
 import es.in2.dsdibaapi.service.PreguntaService;
 import es.in2.dsdibaapi.service.EconomiaService;
@@ -42,6 +44,12 @@ public class PreguntaController extends BaseController {
 	
 	@Autowired
 	private SituacioSocialService situacioSocialService;
+	
+	@RequestMapping(value = "/pregunta/{id}", method = RequestMethod.DELETE)
+	@ApiOperation(value = "Esborrar una pregunta", notes = "")
+	  public void deletePregunta(@PathVariable Long id) {		
+	     preguntaService.delete(id);
+	  }
 	
 	@RequestMapping(value = "/pregunta/{id}", method = RequestMethod.GET)
 	@ApiOperation(value = "Consulta d'una preguntes", notes = "")

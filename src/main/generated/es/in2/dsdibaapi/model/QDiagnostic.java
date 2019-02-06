@@ -22,8 +22,6 @@ public class QDiagnostic extends EntityPathBase<Diagnostic> {
 
     public static final QDiagnostic diagnostic = new QDiagnostic("diagnostic");
 
-    public final ListPath<Contextualitzacio, QContextualitzacio> contextualitzacio = this.<Contextualitzacio, QContextualitzacio>createList("contextualitzacio", Contextualitzacio.class, QContextualitzacio.class, PathInits.DIRECT2);
-
     public final DateTimePath<java.util.Date> data = createDateTime("data", java.util.Date.class);
 
     public final QEstat estat;
@@ -34,7 +32,7 @@ public class QDiagnostic extends EntityPathBase<Diagnostic> {
 
     public final StringPath observacions = createString("observacions");
 
-    public final ListPath<Pregunta, QPregunta> pregunta = this.<Pregunta, QPregunta>createList("pregunta", Pregunta.class, QPregunta.class, PathInits.DIRECT2);
+    public final QProfessional professional;
 
     public final QValoracio valoracio;
 
@@ -60,6 +58,7 @@ public class QDiagnostic extends EntityPathBase<Diagnostic> {
         super(type, metadata, inits);
         this.estat = inits.isInitialized("estat") ? new QEstat(forProperty("estat")) : null;
         this.expedient = inits.isInitialized("expedient") ? new QExpedient(forProperty("expedient"), inits.get("expedient")) : null;
+        this.professional = inits.isInitialized("professional") ? new QProfessional(forProperty("professional"), inits.get("professional")) : null;
         this.valoracio = inits.isInitialized("valoracio") ? new QValoracio(forProperty("valoracio")) : null;
         this.versioModel = inits.isInitialized("versioModel") ? new QVersioModel(forProperty("versioModel")) : null;
     }

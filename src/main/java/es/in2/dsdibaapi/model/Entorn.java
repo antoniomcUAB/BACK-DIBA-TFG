@@ -54,9 +54,6 @@ public @Data class Entorn implements Serializable {
     private List<SituacioSocial> situacioSocial;
 	
 	
-	@Transient
-	@JsonIgnoreProperties(value = { "entorn"})
-	private Iterable<Pregunta> pregunta;
 	
 	
 	

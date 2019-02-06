@@ -24,8 +24,6 @@ public class QPregunta extends EntityPathBase<Pregunta> {
 
     public final QDiagnostic diagnostic;
 
-    public final QEntorn entorn;
-
     public final QRisc factor;
 
     public final SetPath<FactorEconomic, QFactorEconomic> factorEconomic = this.<FactorEconomic, QFactorEconomic>createSet("factorEconomic", FactorEconomic.class, QFactorEconomic.class, PathInits.DIRECT2);
@@ -37,8 +35,6 @@ public class QPregunta extends EntityPathBase<Pregunta> {
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final QPersona persona;
-
-    public final QRisc risc;
 
     public final QSituacioSocial situacioSocial;
 
@@ -63,12 +59,10 @@ public class QPregunta extends EntityPathBase<Pregunta> {
     public QPregunta(Class<? extends Pregunta> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.diagnostic = inits.isInitialized("diagnostic") ? new QDiagnostic(forProperty("diagnostic"), inits.get("diagnostic")) : null;
-        this.entorn = inits.isInitialized("entorn") ? new QEntorn(forProperty("entorn"), inits.get("entorn")) : null;
         this.factor = inits.isInitialized("factor") ? new QRisc(forProperty("factor")) : null;
         this.frequencia = inits.isInitialized("frequencia") ? new QFrequencia(forProperty("frequencia")) : null;
         this.gravetat = inits.isInitialized("gravetat") ? new QGravetat(forProperty("gravetat")) : null;
         this.persona = inits.isInitialized("persona") ? new QPersona(forProperty("persona"), inits.get("persona")) : null;
-        this.risc = inits.isInitialized("risc") ? new QRisc(forProperty("risc")) : null;
         this.situacioSocial = inits.isInitialized("situacioSocial") ? new QSituacioSocial(forProperty("situacioSocial"), inits.get("situacioSocial")) : null;
     }
 

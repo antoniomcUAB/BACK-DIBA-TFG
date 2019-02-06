@@ -43,20 +43,23 @@ public @Data class Pregunta implements Serializable {
 	@JsonIgnore	
     private Diagnostic diagnostic;
 	
+	/*
 	@ManyToOne
     @JoinColumn(name="entorn",foreignKey= @ForeignKey(name = "PREGUNTA_ENTORN_FK"),updatable=false)
 	@JsonIgnoreProperties(value = { "preguntes"})
 	private Entorn entorn;
+	*/
 	
 	@ManyToOne
     @JoinColumn(name="situacio_social",foreignKey= @ForeignKey(name = "PREGUNTA_SITUACIO_SOCIAL_FK"))
 	@JsonIgnoreProperties(value = { "definicio", "selectors", "vulnerabilitat", "risc", "altRisc" })
 	private SituacioSocial situacioSocial;
 	
+	/*
 	@ManyToOne
     @JoinColumn(name="risc",foreignKey= @ForeignKey(name = "PREGUNTA_RISC_FK"))
-	@JsonIgnoreProperties(value = { "value"})
-	private Risc risc;
+	@JsonIgnore
+	private Risc risc;*/
 	
 	@ManyToOne
     @JoinColumn(name="gravetat",foreignKey= @ForeignKey(name = "PREGUNTA_GRAVETAT_FK"))
@@ -79,7 +82,7 @@ public @Data class Pregunta implements Serializable {
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "diagnostic", fetch = FetchType.EAGER)	
 	@Fetch(value = FetchMode.SUBSELECT)
     private List<Economia> economia;*/
-	@ManyToMany(cascade = { CascadeType.MERGE } )
+	@ManyToMany(cascade = { CascadeType.MERGE} )
   	 @JoinTable(
        name = "economia", 
        joinColumns = { @JoinColumn(name = "pregunta",foreignKey = @ForeignKey(name = "ECONOMIA_PREGUNTA_FK")) },         

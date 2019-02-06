@@ -25,12 +25,16 @@ public class FactorEconomicServiceImpl implements FactorEconomicService {
     }
 	
 	@Cacheable("factor_economic_all")
-    public List<FactorEconomic> findall() {
+    public List<FactorEconomic> findAll() {
 		return factorRepository.findAll();
     }
 	
 	public FactorEconomic save(FactorEconomic factor) {
 		return factorRepository.save(factor);
+    }
+	
+	public void deleteById(Long id) {
+		factorRepository.deleteById(id);
     }
 	
 

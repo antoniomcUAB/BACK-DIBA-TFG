@@ -7,6 +7,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import es.in2.dsdibaapi.model.Ambit;
+import es.in2.dsdibaapi.model.Contextualitzacio;
 import es.in2.dsdibaapi.repository.AmbitRepository;
 import es.in2.dsdibaapi.service.AmbitService;
 
@@ -24,6 +25,10 @@ public class AmbitServiceImpl implements AmbitService {
 		return ambitRepository.save(ambit);
     }
 	
+	@Cacheable("ambit")
+    public Ambit findById(Long id) {
+		return ambitRepository.findById(id).get();
+    }
 	
     public List<Ambit> findAll() {
 		return ambitRepository.findAll();

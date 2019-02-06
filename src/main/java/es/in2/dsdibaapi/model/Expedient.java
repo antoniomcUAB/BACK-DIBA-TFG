@@ -40,7 +40,6 @@ public @Data class Expedient implements Serializable {
 	private String codi;
 	private Date dataCreacio;
 	private Date dataValidacio;
-	private String nom;
 	private Long totalFamilia;
 	
 	/*

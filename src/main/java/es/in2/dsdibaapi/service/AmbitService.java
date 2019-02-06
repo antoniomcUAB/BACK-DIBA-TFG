@@ -8,6 +8,7 @@ public interface AmbitService {
 	
     public Ambit save(Ambit ambit);
 	
+    public Ambit findById(Long id);
 	
     public List<Ambit> findAll();
 	

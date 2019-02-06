@@ -3,8 +3,7 @@ package es.in2.dsdibaapi.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.TreeSet;
-import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import javax.transaction.Transactional;
 
@@ -13,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.querydsl.core.types.Predicate;
 
+import es.in2.dsdibaapi.json.AmbitJson;
+import es.in2.dsdibaapi.json.EntornJson;
 import es.in2.dsdibaapi.model.Ambit;
 import es.in2.dsdibaapi.model.Avaluacio;
 import es.in2.dsdibaapi.model.Contextualitzacio;
@@ -24,6 +25,7 @@ import es.in2.dsdibaapi.model.Risc;
 import es.in2.dsdibaapi.model.Valoracio;
 import es.in2.dsdibaapi.model.VersioModel;
 import es.in2.dsdibaapi.repository.DiagnosticRepository;
+import es.in2.dsdibaapi.service.AmbitService;
 import es.in2.dsdibaapi.service.AvaluacioService;
 import es.in2.dsdibaapi.service.DiagnosticService;
 import es.in2.dsdibaapi.service.EstatService;
@@ -60,7 +62,7 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 	private VersioModelService versioModelService;
 	
 	@Autowired
-	private AmbitServiceImpl ambitService;
+	private AmbitService ambitService;
 	
 	@Autowired
 	private PreguntaServiceImpl preguntaService;
@@ -75,18 +77,33 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		
 		List<Ambit> ambits = ambitService.findAll();
 		
-		d.setAmbit(new ArrayList<es.in2.dsdibaapi.json.Ambit> ());
+		d.setAmbit(new ArrayList<AmbitJson> ());
 		
-		es.in2.dsdibaapi.json.Entorn jsonEntorn;
-		es.in2.dsdibaapi.json.Ambit jsonAmbit;
+		EntornJson jsonEntorn;
+		AmbitJson jsonAmbit;
+		
+		List<EntornJson> entornsJson = null;
 		
 		for (Ambit a:ambits) {
+			entornsJson = new ArrayList<EntornJson> ();
 			for (Entorn e:a.getEntorn()) {
-				jsonEntorn = es.in2.dsdibaapi.json.Entorn.builder().descripcio(e.getDescripcio()).id(e.getId()).build();
+				jsonEntorn = es.in2.dsdibaapi.json.EntornJson.builder()
+								.descripcio(e.getDescripcio())
+								.id(e.getId()).build();
 				jsonEntorn.setPregunta(preguntaService.findByDiagnosticEntorn(d.getId(),e.getId()));
+				
+				entornsJson.add(jsonEntorn);
 			}
 			
-			jsonAmbit = es.in2.dsdibaapi.json.Ambit.builder().id(a.getId()).descripcio(a.getDescripcio()).build();
+			jsonAmbit = es.in2.dsdibaapi.json.AmbitJson.builder()
+							.id(a.getId())
+							.entorn(entornsJson)
+							.valAltrisc(a.getValAltrisc())
+							.valRisc(a.getValRisc())
+							.valVulnerabilitat(a.getValVulnerabilitat())
+							.vulnerabilitat(a.getVulnerabilitat())
+							.risc(a.getRisc())
+							.descripcio(a.getDescripcio()).build();
 			jsonAmbit.setContextualitzacio(contextualitzacioService.findByDiagnosticAmbit(d.getId(), a.getId()));
 			
 			d.getAmbit().add(jsonAmbit);
@@ -119,9 +136,11 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 	
 	public Diagnostic avaluar (Long diagnostic) {	
 		
-		Diagnostic diag = diagnosticRepository.findById(diagnostic).get();
+		Diagnostic diag = findById(diagnostic);
 		
-		List<Ambit> ambits = ambitService.findAll();	
+		//List<Ambit> ambits = ambitService.findAll();
+		
+		Ambit ambit = null;
 		
 		Avaluacio avaluacio = null;
 		
@@ -146,7 +165,7 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		
 		Double total = 0d;
 		
-		if (valoracio.getAvaluacio() != null && valoracio.getAvaluacio().size() == 3) {
+		/*if (valoracio.getAvaluacio() != null && valoracio.getAvaluacio().size() == 3) {
 			for (Avaluacio av:valoracio.getAvaluacio()) {
 				av.setRisc(riscService.findByDescription(avaluar (diag,av.getAmbit())));
 				
@@ -164,19 +183,33 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 				}
 			}
 		} else {
-		
-			for (Ambit a:ambits) {
-				
-				if (a.getVulnerabilitat() != null && 
-						(diag.getContextualitzacio()!=null || diag.getPregunta()!=null) ) {
-					avaluacio = Avaluacio.builder()
-								.ambit(a)
-								.valoracio(valoracio)
-								.risc(riscService.findByDescription(avaluar (diag,a))).build();
-					
-					//avaluacioService.save(avaluacio);
-					
-					valoracio.getAvaluacio().add(avaluacio);
+		*/
+			for (AmbitJson a:diag.getAmbit()) {
+				ambit = ambitService.findById(a.getId());
+			/*	if (ambit.getVulnerabilitat() != null && 
+						(a.getContextualitzacio()!=null || a.getEntorn().getPregunta()!=null) ) {*/
+				for (EntornJson e:a.getEntorn()) {
+					if (a.getVulnerabilitat() != null &&
+							StreamSupport.stream(a.getContextualitzacio().spliterator(),false).count() > 0 || 
+							StreamSupport.stream(e.getPregunta().spliterator(),false).count() > 0) {
+						
+						if (valoracio.getAvaluacio() != null && valoracio.getAvaluacio().size() == 3) {
+							for (Avaluacio av:valoracio.getAvaluacio()) {
+								if (av.getAmbit().getId() == a.getId()) {
+									avaluacio =av; 
+									break;
+								}
+							}
+						}
+						else {
+							avaluacio = Avaluacio.builder()
+										.ambit(ambit)
+										.valoracio(valoracio)
+										.risc(riscService.findByDescription(avaluar (diag,a,e))).build();
+							
+							
+							valoracio.getAvaluacio().add(avaluacio);
+						}
 					
 					if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == vulnerabilitat.getId()) ||
 							avaluacio.getRisc().getId() == vulnerabilitat.getId()) {
@@ -191,9 +224,9 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 						total += a.getValAltrisc();
 					}
 				}
-				
+				}
 			}
-		}
+	//	}
 		
 		valoracio.setTotal(total);
 		valoracio.setData(new Date());
@@ -208,7 +241,55 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		return diag;		
 	}
 	
-	public RiscService.Tipus avaluar (Diagnostic diagnostic, Ambit a) {
+	
+	public RiscService.Tipus avaluar (Diagnostic diagnostic,AmbitJson a, EntornJson e) {
+		
+		
+		Double count = 0d;
+		
+		if (e.getPregunta() != null) {
+		
+			Risc vulnerabilitat = riscService.findByDescription(RiscService.Tipus.VULNERABILITAT);
+			Risc risc = riscService.findByDescription(RiscService.Tipus.RISC);	
+			
+			// Avaluacio de Factors de context
+			for (Contextualitzacio c:a.getContextualitzacio()) {
+				if (c.getMesUc()!=null && c.getMesUc()) {
+					count += c.getFactor().getFctots();
+				}
+				else {
+					count += c.getFactor().getFc1m();
+				}
+			}
+			
+			for (Pregunta d:e.getPregunta()) {
+				if (d.getFactor().equals(vulnerabilitat)) {
+					count += d.getSituacioSocial().getVulnerabilitat();
+				}
+				else if (d.getFactor().equals(risc)) {
+					count += d.getSituacioSocial().getRisc();
+				} 
+				else {
+					count += d.getSituacioSocial().getAltRisc();
+				}
+			}
+		
+		}
+		
+		if ( count == 0d) {
+			return RiscService.Tipus.SENSE_VALORACIO;
+		}
+		else if (count < a.getVulnerabilitat()) {
+			return RiscService.Tipus.VULNERABILITAT;
+		}
+		else if (count < a.getRisc()) {
+			return RiscService.Tipus.RISC;
+		}
+		
+		return RiscService.Tipus.ALT_RISC;
+	}
+	
+	/*public RiscService.Tipus avaluar (Diagnostic diagnostic, Ambit a) {
 		
 		// Avaluació dels diagnóstics per àmbit
 		
@@ -265,6 +346,6 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		}
 		
 		return RiscService.Tipus.ALT_RISC;
-	}
+	}*/
 	
 }

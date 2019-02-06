@@ -101,14 +101,29 @@ public class DiagnosticController
   
   
   
-  @RequestMapping(value={"/expedient/{expedient}/diagnostic/"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
+  @RequestMapping(value={"/expedient/{expedient}/avaluar/diagnostic"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
   @ApiOperation(value="Modificació d'un diagnòstic", notes="")
-  public Diagnostic putExpedient(@RequestBody Diagnostic diagnostic,@PathVariable Long expedient)
+  public Diagnostic putDiagnosticAvaluar(@RequestBody Diagnostic diagnostic,@PathVariable Long expedient)
   {
 	  
 	  Expedient e = expedientService.findById(expedient);
 	  
 	  diagnostic.setExpedient(e);
+	  
+	  
+	  diagnostic = this.diagnosticService.save(diagnostic);
+	  return diagnosticService.avaluar(diagnostic.getId());
+  }
+  
+  @RequestMapping(value={"/expedient/{expedient}/diagnostic"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
+  @ApiOperation(value="Modificació d'un diagnòstic", notes="")
+  public Diagnostic putDiagnostic(@RequestBody Diagnostic diagnostic,@PathVariable Long expedient)
+  {
+	  
+	  Expedient e = expedientService.findById(expedient);
+	  
+	  diagnostic.setExpedient(e);
+	  
 	  
     return this.diagnosticService.save(diagnostic);
   }

@@ -66,7 +66,7 @@ public @Data class Diagnostic implements Serializable {
     @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "DIAGNOSTIC_VERSIO_MODEL_FK"))	
     private VersioModel versioModel;
 	
-		
+	/*	
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)	
 	@JoinColumn (name="diagnostic",referencedColumnName="id")
 	@JsonProperty("preguntes")	
@@ -75,10 +75,16 @@ public @Data class Diagnostic implements Serializable {
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, mappedBy = "diagnostic", fetch = FetchType.EAGER)	
 	@Fetch(value = FetchMode.SUBSELECT)
     private List<Contextualitzacio> contextualitzacio;
+	*/
+	@ManyToOne
+    @JoinColumn(name="professional",foreignKey= @ForeignKey(name = "DIAGNOSTIC_PROFESSIONAL_FK"))	
+	//@JsonIgnore
+    private Professional professional;
 	
 	
 	@Transient
-	private List<es.in2.dsdibaapi.json.Ambit> ambit;
+	@JsonIgnoreProperties(value = { "vulnerabilitat", "risc", "valVulnerabilitat", "valRisc", "valAltrisc"})
+	private List<es.in2.dsdibaapi.json.AmbitJson> ambit;
 	
 	
 	@OneToOne (cascade= {CascadeType.MERGE, CascadeType.PERSIST},orphanRemoval = true)

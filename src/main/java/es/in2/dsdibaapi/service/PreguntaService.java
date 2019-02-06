@@ -14,5 +14,6 @@ public interface PreguntaService {
 	
 	public Pregunta save (Pregunta diagnostic, Long expedient) ;
 	
+	public void delete(Long id);
 }
 

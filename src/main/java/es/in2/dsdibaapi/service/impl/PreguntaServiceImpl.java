@@ -12,14 +12,17 @@ import es.in2.dsdibaapi.model.Entorn;
 import es.in2.dsdibaapi.model.FactorEconomic;
 import es.in2.dsdibaapi.model.Pregunta;
 import es.in2.dsdibaapi.model.QPregunta;
+import es.in2.dsdibaapi.model.SituacioSocial;
 import es.in2.dsdibaapi.repository.FactorEconomicRepository;
 import es.in2.dsdibaapi.repository.PreguntaRepository;
 import es.in2.dsdibaapi.service.DiagnosticService;
 import es.in2.dsdibaapi.service.EntornService;
+import es.in2.dsdibaapi.service.FactorEconomicService;
 import es.in2.dsdibaapi.service.FrequenciaService;
 import es.in2.dsdibaapi.service.GravetatService;
 import es.in2.dsdibaapi.service.PreguntaService;
 import es.in2.dsdibaapi.service.RiscService;
+import es.in2.dsdibaapi.service.SituacioSocialService;
 
 @Service
 public class PreguntaServiceImpl implements PreguntaService{
@@ -46,6 +49,12 @@ public class PreguntaServiceImpl implements PreguntaService{
 	private DiagnosticService expedientService;
 	
 	@Autowired
+	private SituacioSocialService situacioSocialService;
+	
+	@Autowired
+	private FactorEconomicService factorEconomicService;
+	
+	@Autowired
 	FactorEconomicRepository factorRepository;
 	
 	
@@ -57,6 +66,11 @@ public class PreguntaServiceImpl implements PreguntaService{
 		return preguntaRepository.existsById(id);
     }
 
+    
+    public void delete(Long id) {
+    	preguntaRepository.deleteById(id);
+    }
+
 	
     public Iterable<Pregunta> findByDiagnosticEntorn(Long diagnostic,Long entorn) {
 		
@@ -64,7 +78,7 @@ public class PreguntaServiceImpl implements PreguntaService{
     	
     	if (entorn != null) {
     		predicate = QPregunta.pregunta.diagnostic.id.eq(diagnostic)
-    				.and(QPregunta.pregunta.entorn.id.eq(entorn));
+    				.and(QPregunta.pregunta.situacioSocial.entorn.id.eq(entorn));
     	} else {
     		predicate = QPregunta.pregunta.diagnostic.id.eq(diagnostic);
     	}
@@ -99,16 +113,19 @@ public class PreguntaServiceImpl implements PreguntaService{
 		
 		if (diag.getVersioModel().getPreguntaEconomica().equals(pregunta.getSituacioSocial().getId())) {
 			avaluacioEconomica (pregunta);
-		} 
+		} else {
+			pregunta.setFactor(riscService.findByDescription(avaluar(pregunta)));
+		}
 		
-		pregunta.setFactor(riscService.findByDescription(avaluar(pregunta)));				
+						
 		
 		return preguntaRepository.save(pregunta);
 	}
 	
 	
 	private RiscService.Tipus avaluar (Pregunta d) {
-		Entorn e = entornService.findById(d.getEntorn().getId());
+		SituacioSocial ss = situacioSocialService.findById(d.getSituacioSocial().getId());
+		Entorn e = entornService.findById(ss.getEntorn().getId());
 		
 		if ( d.getGravetat() == null || d.getFrequencia() == null ||
 				(d.getFrequencia().getDescripcio().equalsIgnoreCase("sense valoració") &&
@@ -194,22 +211,22 @@ public class PreguntaServiceImpl implements PreguntaService{
 			}
 			
 			if (d.getGravetat() == null) {
-				d.setRisc(riscService.findByDescription(RiscService.Tipus.SENSE_VALORACIO));
+				d.setFactor(riscService.findByDescription(RiscService.Tipus.SENSE_VALORACIO));
 			}
 			else if (d.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.BAIXA.toString())) {
-				d.setRisc(riscService.findByDescription(RiscService.Tipus.VULNERABILITAT));
+				d.setFactor(riscService.findByDescription(RiscService.Tipus.VULNERABILITAT));
 			}
 			else if (d.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.MODERADA.toString()) ||
 					(d.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.ALTA.toString()) &&
 							d.getFrequencia().getDescripcio().equalsIgnoreCase(FrequenciaService.Tipus.OCASIONAL.toString()))) {
-				d.setRisc(riscService.findByDescription(RiscService.Tipus.RISC));
+				d.setFactor(riscService.findByDescription(RiscService.Tipus.RISC));
 			}
 			else {
-				d.setRisc(riscService.findByDescription(RiscService.Tipus.ALT_RISC));
+				d.setFactor(riscService.findByDescription(RiscService.Tipus.ALT_RISC));
 			}
 		}
 		else {
-			d.setRisc(riscService.findByDescription(RiscService.Tipus.SENSE_VALORACIO));
+			d.setFactor(riscService.findByDescription(RiscService.Tipus.SENSE_VALORACIO));
 		}
 	}
 }
