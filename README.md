@@ -1,11 +1,10 @@
-# DIPUTACI� DE BARCELONA API
-DIPUTACI� DE BARCELONA API
+# DIPUTACIÓ DE BARCELONA API
+DIPUTACIÓ DE BARCELONA API
 
 # JDK version
 1.8
 
-# Gradle version
-4.7
+# Maven 3
 
 # External dependencies
 lombok 1.18.2
@@ -23,34 +22,39 @@ $ gradle bootRun -Dspring.profiles.active={profile}
 ### Run configuration - profile in Eclipse:
 VM -Dspring.profiles.active={profile}
 
-# Generate jar file
-```sh
-$ gradlew bootJar -Pprofile={profile}
-```
 
 ### Initialize DDBB
 api.db-init=true
 
-Inicializaci�n de test
-add.test=[true/false] 
+### Schema DDBB creation
+spring.datasource.initialization-mode=always
 
 
 # URL REST Services
-http://localhost:<port>/swagger-ui.html
+http://localhost:<port>/context/swagger-ui.html
 
 
 # DESARROLLO
 
-### Iniciar aplicación
-java -jar /usr/dsdiba/ds-diba-api-0.0.1-SNAPSHOT.jar
 
 ### Iniciar Oracle
 
 /etc/init.d/oracle-xe-18c start/stop
 
-### URL servicio modelo
+### Weblogic
 
-http://10.14.1.165:8080/model
+Start: ```sh /home/weblogic/wls/config/domains/dsdiba/bin/startWebLogic.sh ```
+
+Stop: ```sh /home/weblogic/wls/config/domains/dsdiba/bin/stopWebLogic.sh ```
+
+[Admin console](http://dsdiba-api.demo.in2.es/console)
+
+User: weblogic
+Password: in2pass.2019
+
+### Swagger
+
+http://dsdiba-api.demo.in2.es/dsdiba/swagger-ui.html
 
 
 

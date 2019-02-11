@@ -34,6 +34,8 @@ public class QExpedient extends EntityPathBase<Expedient> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
+    public final StringPath observacions = createString("observacions");
+
     public final SetPath<Persona, QPersona> persona = this.<Persona, QPersona>createSet("persona", Persona.class, QPersona.class, PathInits.DIRECT2);
 
     public final QProfessional professional;

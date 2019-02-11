@@ -46,7 +46,7 @@ public class DiagnosticController
   
   @RequestMapping(value={"/diagnostic/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
   @ApiOperation(value="Consulta d'un diagnòstic", notes="")
-  public Diagnostic getExpedient(@PathVariable Long id)
+  public Diagnostic getDiagnostic(@PathVariable Long id)
   {
     try
     {
@@ -62,7 +62,7 @@ public class DiagnosticController
   
   @RequestMapping(value={"/diagnostic/llista/{expedient}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
   @ApiOperation(value="Diagnostic d'un expedient", notes="")
-  public Iterable<Diagnostic> getExpedient(@PathVariable String expedient)
+  public Iterable<Diagnostic> getDiagnostic(@PathVariable String expedient)
   {
     try
     {    	
@@ -79,7 +79,7 @@ public class DiagnosticController
   @ApiOperation(value="Valoració d'un diagnòstic", notes="")
   public Diagnostic getValoracio(@PathVariable Long id)
   {
-    return this.diagnosticService.avaluar(id);
+    return getDiagnostic(this.diagnosticService.avaluar(id).getId());
   }
   
   
@@ -96,7 +96,7 @@ public class DiagnosticController
 	  
 	  e.getDiagnostic().add(diagnostic);
 	  
-    return this.expedientService.save(e).getDiagnostic().get(this.expedientService.save(e).getDiagnostic().size()-1);
+    return getDiagnostic(this.expedientService.save(e).getDiagnostic().get(this.expedientService.save(e).getDiagnostic().size()-1).getId());
   }
   
   
@@ -112,7 +112,7 @@ public class DiagnosticController
 	  
 	  
 	  diagnostic = this.diagnosticService.save(diagnostic);
-	  return diagnosticService.avaluar(diagnostic.getId());
+	  return getDiagnostic(diagnosticService.avaluar(diagnostic.getId()).getId());
   }
   
   @RequestMapping(value={"/expedient/{expedient}/diagnostic"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
@@ -125,6 +125,6 @@ public class DiagnosticController
 	  diagnostic.setExpedient(e);
 	  
 	  
-    return this.diagnosticService.save(diagnostic);
+    return getDiagnostic(this.diagnosticService.save(diagnostic).getId());
   }
 }

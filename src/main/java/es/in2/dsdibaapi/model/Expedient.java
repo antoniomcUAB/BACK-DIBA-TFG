@@ -41,6 +41,7 @@ public @Data class Expedient implements Serializable {
 	private Date dataCreacio;
 	private Date dataValidacio;
 	private Long totalFamilia;
+	private String observacions;
 	
 	/*
 	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)	
@@ -65,8 +66,8 @@ public @Data class Expedient implements Serializable {
 	@Fetch(value = FetchMode.SUBSELECT)
 	@JsonIgnoreProperties(value = { "expedient"} )
 	@JsonProperty("diagnostic")*/
-	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.EAGER)
-	@JoinColumn(name="expedient",referencedColumnName="id")
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="expedient")
     private List<Diagnostic> diagnostic;
 	
 }
