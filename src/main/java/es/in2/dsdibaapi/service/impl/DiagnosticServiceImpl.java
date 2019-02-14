@@ -100,6 +100,7 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 							.entorn(entornsJson)
 							.valAltrisc(a.getValAltrisc())
 							.valRisc(a.getValRisc())
+							.observacions(a.getObservacions())
 							.valVulnerabilitat(a.getValVulnerabilitat())
 							.vulnerabilitat(a.getVulnerabilitat())
 							.risc(a.getRisc())

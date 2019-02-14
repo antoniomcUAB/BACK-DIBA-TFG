@@ -213,7 +213,6 @@ public class DsDibaApiApplicationTests {
 				.estat(estatService.findByDescripcio(ExpedientService.Estat.INCOMPLET.toString()))
 				.professional(professional)
 				.totalFamilia(2l)
-				.nom("Test 1.1")
 				.persona(new HashSet<Persona>() {{
 		            add(persona1);
 		            add(persona2);
@@ -238,7 +237,6 @@ public class DsDibaApiApplicationTests {
 				.estat(estatService.findByDescripcio(ExpedientService.Estat.INCOMPLET.toString()))
 				.professional(professional)
 				.totalFamilia(2l)
-				.nom("Test 1.1")
 				.persona(new HashSet<Persona>() {{
 		            add(persona1);
 		            add(persona2);
@@ -276,7 +274,7 @@ public class DsDibaApiApplicationTests {
 		Gravetat gravetat = gravetatService.findById(gravetatBaixa);
 		
 		
-		p = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		p = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		p=preguntaController.putPregunta(diag.getId(), p);
 		
@@ -300,7 +298,7 @@ public class DsDibaApiApplicationTests {
 		assertTrue(p.getFactor().getDescripcio().equalsIgnoreCase("Alt Risc"));
 		
 		situacioSocial = situacioSocialService.findById(ssA2);
-		p = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		p = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		p=preguntaController.putPregunta(diag.getId(), p);
 		
@@ -376,7 +374,6 @@ public class DsDibaApiApplicationTests {
 				.estat(estatService.findByDescripcio(ExpedientService.Estat.INCOMPLET.toString()))
 				.professional(professional)
 				.totalFamilia(2l)
-				.nom("Test 1.1")
 				.persona(new HashSet<Persona>() {{
 		            add(persona1);
 		            add(persona2);
@@ -408,7 +405,7 @@ public class DsDibaApiApplicationTests {
 		Gravetat gravetat = gravetatService.findById(gravetatBaixa);
 		
 		
-		d = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
@@ -422,7 +419,7 @@ public class DsDibaApiApplicationTests {
 		gravetat = gravetatService.findById(gravetatModerada);
 		frequencia =frequenciaService.findById(freqContinua);
 		
-		d = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
@@ -449,7 +446,7 @@ public class DsDibaApiApplicationTests {
 		gravetat = gravetatService.findById(gravetatModerada);
 		frequencia =frequenciaService.findById(freqOcasional);
 		
-		d = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
@@ -495,7 +492,7 @@ public class DsDibaApiApplicationTests {
 		gravetat = gravetatService.findById(gravetatModerada);
 		frequencia =frequenciaService.findById(freqContinua);
 		
-		d = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
@@ -508,7 +505,7 @@ public class DsDibaApiApplicationTests {
 		situacioSocial = situacioSocialService.findById(ssES1);
 		gravetat = gravetatService.findById(gravetatBaixa);
 		
-		d = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).gravetat(gravetat).unitatFamiliar(true).build();
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
@@ -529,7 +526,7 @@ public class DsDibaApiApplicationTests {
 		situacioSocial = situacioSocialService.findById(ssES1);
 		gravetat = gravetatService.findById(gravetatBaixa);
 		
-		d = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).gravetat(gravetat).unitatFamiliar(true).build();
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
@@ -594,7 +591,6 @@ public class DsDibaApiApplicationTests {
 				.estat(estatService.findByDescripcio(ExpedientService.Estat.INCOMPLET.toString()))		
 				.totalFamilia(2l)
 				.diagnostic(diagnostics)
-				.nom("Test 1.1")
 				.persona(new HashSet<Persona>() {{
 		            add(persona1);
 		            add(persona2);
@@ -630,7 +626,7 @@ public class DsDibaApiApplicationTests {
 		Gravetat gravetat = gravetatService.findById(gravetatBaixa);
 		
 		
-		d = Pregunta.builder().entorn(entorn).situacioSocial(situacioSocial).risc(risc).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		d = Pregunta.builder().situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		
 		
@@ -648,7 +644,7 @@ public class DsDibaApiApplicationTests {
 		gravetat = gravetatService.findById(gravetatModerada);
 		frequencia =frequenciaService.findById(freqContinua);
 		
-		d = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
@@ -675,7 +671,7 @@ public class DsDibaApiApplicationTests {
 		gravetat = gravetatService.findById(gravetatModerada);
 		frequencia =frequenciaService.findById(freqOcasional);
 		
-		d = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
@@ -721,7 +717,7 @@ public class DsDibaApiApplicationTests {
 		gravetat = gravetatService.findById(gravetatModerada);
 		frequencia =frequenciaService.findById(freqContinua);
 		
-		d = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
@@ -734,7 +730,7 @@ public class DsDibaApiApplicationTests {
 		situacioSocial = situacioSocialService.findById(ssES1);
 		gravetat = gravetatService.findById(gravetatModerada);
 		
-		d = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).gravetat(gravetat).unitatFamiliar(true).build();
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
@@ -749,7 +745,7 @@ public class DsDibaApiApplicationTests {
 		situacioSocial = situacioSocialService.findById(ssES1);
 		gravetat = gravetatService.findById(gravetatBaixa);
 		
-		d = Pregunta.builder().entorn(entorn).diagnostic(diag).situacioSocial(situacioSocial).risc(risc).gravetat(gravetat).unitatFamiliar(true).build();
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		

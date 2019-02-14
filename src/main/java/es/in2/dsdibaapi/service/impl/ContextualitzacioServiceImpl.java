@@ -54,6 +54,10 @@ public class ContextualitzacioServiceImpl implements ContextualitzacioService{
 		return saveContext(contextualitzacio);
 	}
 	
+	 public void delete(Long id) {
+		 contextualitzacioRepository.deleteById(id);
+	    }
+	
 	public Contextualitzacio save (Contextualitzacio contextualitzacio) {
 		
 		return saveContext(contextualitzacio);

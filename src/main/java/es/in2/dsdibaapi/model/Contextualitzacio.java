@@ -37,7 +37,7 @@ public @Data class Contextualitzacio implements Serializable {
 	
 	@ManyToOne
     @JoinColumn(name="factor",foreignKey= @ForeignKey(name = "CONTX_FACTOR_FK"))
-	@JsonIgnoreProperties(value = { "fc1m", "fctots", "gravetat"})
+	@JsonIgnoreProperties(value = { "fc1m", "fctots", "ambit"})
     private Factor factor;
 	
 	@ManyToOne

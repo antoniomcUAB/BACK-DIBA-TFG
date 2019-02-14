@@ -8,6 +8,7 @@ public interface ContextualitzacioService {
 	
     public Contextualitzacio findById(Long id) ;
 
+    public void delete(Long id);
 	
     public Iterable<Contextualitzacio> findByDiagnosticAmbit(Long expedient,Long ambit);
 	

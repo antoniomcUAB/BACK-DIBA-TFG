@@ -41,6 +41,7 @@ public @Data class Ambit implements Serializable {
 	private Double valVulnerabilitat;
 	private Double valRisc;
 	private Double valAltrisc;
+	private String observacions;
 	
 	@OneToMany(mappedBy = "ambit")
 	@OrderBy("id ASC")

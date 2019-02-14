@@ -6,7 +6,10 @@ import java.util.List;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import es.in2.dsdibaapi.model.Contextualitzacio;
+import es.in2.dsdibaapi.model.Factor;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,7 +30,7 @@ public @Data class AmbitJson implements Serializable {
 	private Double valVulnerabilitat;
 	private Double valRisc;
 	private Double valAltrisc;
-	
+	private String observacions;
 	
 	private List<EntornJson> entorn;
 	

@@ -7,7 +7,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,7 +17,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -66,7 +64,7 @@ public @Data class Expedient implements Serializable {
 	@Fetch(value = FetchMode.SUBSELECT)
 	@JsonIgnoreProperties(value = { "expedient"} )
 	@JsonProperty("diagnostic")*/
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.MERGE)
 	@JoinColumn(name="expedient")
     private List<Diagnostic> diagnostic;
 	

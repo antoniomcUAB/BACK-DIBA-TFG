@@ -75,9 +75,17 @@ public class DiagnosticController
   } 
   
   
-  @RequestMapping(value={"/diagnostic/valorar/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+  @RequestMapping(value={"/diagnostic/valorar2/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
   @ApiOperation(value="Valoració d'un diagnòstic", notes="")
   public Diagnostic getValoracio(@PathVariable Long id)
+  {
+    return getDiagnostic(this.diagnosticService.avaluar(id).getId());
+  }
+  
+  
+  @RequestMapping(value={"/diagnostic/valoracio/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+  @ApiOperation(value="Valoració d'un diagnòstic", notes="")
+  public Diagnostic getValoracio2(@PathVariable Long id)
   {
     return getDiagnostic(this.diagnosticService.avaluar(id).getId());
   }
