@@ -64,7 +64,7 @@ public @Data class Expedient implements Serializable {
 	@Fetch(value = FetchMode.SUBSELECT)
 	@JsonIgnoreProperties(value = { "expedient"} )
 	@JsonProperty("diagnostic")*/
-	@OneToMany(cascade=CascadeType.MERGE)
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="expedient")
     private List<Diagnostic> diagnostic;
 	

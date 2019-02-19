@@ -126,6 +126,19 @@
 <colAssociation fkAssociation="5BE006BA-FE10-369F-F0AE-6E5717694246" referredColumn="9BCB58F2-DEEB-3D05-E3AC-210B157D4667"/>
 </associations>
 </Column>
+<Column name="observacions" id="5AEE0078-F8A7-968C-35F6-E7520E23897D">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-19 10:29:53 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500</dataTypeSize>
+<ownDataTypeParameters>500,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="2EFAAFB4-A377-3FB4-43BF-3BB541F84380" name="EXPEDIENT_PK">

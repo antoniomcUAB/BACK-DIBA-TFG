@@ -41,9 +41,11 @@ public class ExpedientServiceImpl implements ExpedientService {
 	
 	public Expedient save(Expedient expedient) {
 		
-		for (Diagnostic d:expedient.getDiagnostic()) {
-			if (d.getExpedient() == null) {
-				d.setExpedient(expedient);
+		if (expedient.getDiagnostic() != null) {
+			for (Diagnostic d:expedient.getDiagnostic()) {
+				if (d.getExpedient() == null) {
+					d.setExpedient(expedient);
+				}
 			}
 		}
 		

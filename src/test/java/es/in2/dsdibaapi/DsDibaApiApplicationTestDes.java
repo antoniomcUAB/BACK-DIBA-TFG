@@ -547,7 +547,7 @@ public class DsDibaApiApplicationTestDes {
 		 
 	}	
 	
-	@Test
+	//@Test
 	public void test2Valoracio() {
 		
 		TipusPersona mare = tipusPersonaService.findById(pareMare);
@@ -771,6 +771,23 @@ public class DsDibaApiApplicationTestDes {
 		diagnosticService.avaluar(63028l);
 	}
 	
+	@Test
+	public void newProfessional () {
+		
+		Municipi municipi = municipiService.findById(municipiId);
+		
+		Set<Rol> rols = new HashSet<Rol> ();		
+		
+		rols.add(rolService.findById(rolTecnic));
+		
+		Professional professional = professionalService.save(
+				Professional.builder().nom("Professional11")
+									.cognom1("APE1")
+									.cognom2("APE2")
+									.municipi(municipi)
+									.rol(rols)
+									.build()); 
+	}
 	
 }
 

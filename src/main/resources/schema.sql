@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 4.1.0.881
---   en:        2019-02-05 16:35:08 CET
+--   en:        2019-02-19 11:34:33 CET
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -64,7 +64,8 @@ CREATE TABLE AMBIT
     risc               NUMBER ,
     val_vulnerabilitat NUMBER ,
     val_risc           NUMBER ,
-    val_altrisc        NUMBER
+    val_altrisc        NUMBER ,
+    observacions       VARCHAR2 (500)
   ) ;
 ALTER TABLE AMBIT ADD CONSTRAINT AMBIT_PK PRIMARY KEY ( id ) ;
 
@@ -133,13 +134,13 @@ CREATE TABLE EXPEDIENT
   (
     id             NUMBER NOT NULL ,
     codi           VARCHAR2 (50) NOT NULL ,
-    nom            VARCHAR2 (100) ,
     data_creacio   TIMESTAMP WITH LOCAL TIME ZONE ,
     total_familia  NUMBER ,
     professional   NUMBER ,
     total          NUMBER ,
     data_validacio TIMESTAMP WITH LOCAL TIME ZONE ,
-    estat          NUMBER
+    estat          NUMBER ,
+    observacions   VARCHAR2 (500)
   ) ;
 ALTER TABLE EXPEDIENT ADD CONSTRAINT EXPEDIENT_PK PRIMARY KEY ( id ) ;
 
@@ -198,11 +199,11 @@ CREATE TABLE PERSONA
     id             NUMBER NOT NULL ,
     sexe           VARCHAR2 (10) ,
     data_naixement TIMESTAMP WITH LOCAL TIME ZONE ,
-    tipus_persona  NUMBER NOT NULL ,
+    tipus_persona  NUMBER ,
     referencia     CHAR (1) ,
     data_alta      TIMESTAMP WITH LOCAL TIME ZONE ,
     data_baixa     TIMESTAMP WITH LOCAL TIME ZONE ,
-    expedient      NUMBER NOT NULL
+    expedient      NUMBER
   ) ;
 ALTER TABLE PERSONA ADD CONSTRAINT tipus_persona PRIMARY KEY ( id ) ;
 
