@@ -115,7 +115,7 @@ public class DiagnosticController
 	  diagnostic.setExpedient(e);
 	  
 	  
-	  diagnostic = this.diagnosticService.save(diagnostic);
+	  diagnostic = getDiagnostic(this.diagnosticService.save(diagnostic).getId());
 	  return getDiagnostic(diagnosticService.avaluar(diagnostic).getId());
   }
   

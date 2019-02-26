@@ -2,7 +2,6 @@ package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -42,7 +41,7 @@ public @Data class Avaluacio implements Serializable {
 	
 	
 	@ManyToOne 
-	@JoinColumn(name="valoracio",foreignKey= @ForeignKey(name = "AVALUACIO_VALORACIO_FK"))
+	@JoinColumn(name="valoracio",foreignKey= @ForeignKey(name = "AVALUACIO_VALORACIO_FK"), updatable = false)
 	@JsonIgnore
     private Valoracio valoracio;
 	

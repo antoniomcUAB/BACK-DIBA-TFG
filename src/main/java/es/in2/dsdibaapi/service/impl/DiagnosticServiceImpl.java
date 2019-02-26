@@ -226,15 +226,6 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 					if (a.getAmbit().getVulnerabilitat() != null &&
 							StreamSupport.stream(e.getPregunta().spliterator(),false).count() > 0) {
 						
-						if (valoracio.getAvaluacio() != null) {
-							for (Avaluacio av:valoracio.getAvaluacio()) {
-								if (av.getAmbit().getId() == a.getAmbit().getId()) {
-									avaluacio =av; 
-									avaluacio.setRisc(riscService.findByDescription(avaluar (diag,a,e)));
-									break;
-								}
-							}
-						}
 						
 						if (avaluacio == null) {
 							avaluacio = Avaluacio.builder()
@@ -248,19 +239,42 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 							avaluacio.setRisc(riscService.findByDescription(avaluar (diag,a,e)));
 						}
 					
-					if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == vulnerabilitat.getId()) ||
-							avaluacio.getRisc().getId() == vulnerabilitat.getId()) {
-						total += a.getAmbit().getValVulnerabilitat();
+						if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == vulnerabilitat.getId()) ||
+								(avaluacio.getRiscProfessional() == null && avaluacio.getRisc().getId() == vulnerabilitat.getId())) {
+							total += a.getAmbit().getValVulnerabilitat();
+						} 
+						else if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == risc.getId()) ||
+								(avaluacio.getRiscProfessional() == null && avaluacio.getRisc().getId() == risc.getId())) {
+							total += a.getAmbit().getValRisc();
+						}
+						else if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == altRisc.getId()) ||
+								(avaluacio.getRiscProfessional() == null && avaluacio.getRisc().getId() == altRisc.getId())) {
+							total += a.getAmbit().getValAltrisc();
+						}
 					} 
-					else if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == risc.getId()) ||
-							avaluacio.getRisc().getId() == risc.getId()) {
-						total += a.getAmbit().getValRisc();
+					else if (a.getAmbit().getVulnerabilitat() == null) {
+						
+						if (avaluacio == null) {
+							avaluacio = Avaluacio.builder()
+										.ambit(a)
+										.valoracio(valoracio).build();
+							
+							
+							valoracio.getAvaluacio().add(avaluacio);
+						}
+						
+						if (total == 0) {
+							avaluacio.setRisc(null);
+						}
+						else if (total <= a.getAmbit().getValVulnerabilitat()) {
+							avaluacio.setRisc(vulnerabilitat);
+						}
+						else if (total <= a.getAmbit().getValRisc()) {
+							avaluacio.setRisc(risc);
+						} else {
+							avaluacio.setRisc(altRisc);
+						}
 					}
-					else if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == altRisc.getId()) ||
-							avaluacio.getRisc().getId() == altRisc.getId()) {
-						total += a.getAmbit().getValAltrisc();
-					}
-				}
 				}
 			}
 	//	}
