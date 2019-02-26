@@ -47,6 +47,11 @@ public @Data class Factor implements Serializable {
 	@JsonIgnoreProperties(value = { "entorns", "factors_context", "vulnerabilitat", "risc", "valVulnerabilitat", "valRisc", "valAltrisc"} )
 	//@JsonIgnore
     private Ambit ambit;
+	
+	@ManyToOne
+    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "FACTOR_VERSIO_MODEL_FK"))
+	@JsonIgnore
+    private VersioModel versioModel;
 
 
 }

@@ -82,13 +82,13 @@
 <ownerDesignName>DIBA</ownerDesignName>
 <importedID>9C9B377A-FCC8-112B-89B2-AE5C2352250D</importedID>
 <nullsAllowed>true</nullsAllowed>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="7566CEC6-2B21-FEA4-FBAF-D99A42D565EB" referredColumn="4FE213D5-2108-F51A-6A0F-E7172EA74D46"/>
+<colAssociation fkAssociation="7566CEC6-2B21-FEA4-FBAF-D99A42D565EB" referredColumn="3244C199-01F2-74C2-0A35-E2EDD2FC7059"/>
 </associations>
 </Column>
 </columns>
@@ -107,7 +107,7 @@
 <colUsage columnID="CC7C9BA3-CD7F-6914-25DE-618AA17231CC"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="184F479F-509D-B458-F886-FA9F70DF150A" name="AVALUACIO_AMBIT_FK">
+<ind_PK_UK id="184F479F-509D-B458-F886-FA9F70DF150A" name="AVALUACIO_AMBIT_DIAGNOSTIC_FK">
 <createdBy>danielfi</createdBy>
 <createdTime>2019-02-04 08:41:54 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>

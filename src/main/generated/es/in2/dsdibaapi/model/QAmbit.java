@@ -28,8 +28,6 @@ public class QAmbit extends EntityPathBase<Ambit> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final StringPath observacions = createString("observacions");
-
     public final NumberPath<Double> risc = createNumber("risc", Double.class);
 
     public final NumberPath<Double> valAltrisc = createNumber("valAltrisc", Double.class);

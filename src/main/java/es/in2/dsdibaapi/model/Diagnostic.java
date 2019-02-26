@@ -18,15 +18,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -81,14 +75,19 @@ public @Data class Diagnostic implements Serializable {
 	//@JsonIgnore
     private Professional professional;
 	
-	
+	/*
 	@Transient
 	@JsonIgnoreProperties(value = { "vulnerabilitat", "risc", "valVulnerabilitat", "valRisc", "valAltrisc"})
-	private List<es.in2.dsdibaapi.json.AmbitJson> ambit;
+	private List<es.in2.dsdibaapi.json.AmbitJson> ambit;*/
 	
 	
 	@OneToOne (cascade= {CascadeType.MERGE, CascadeType.PERSIST},orphanRemoval = true)
     @JoinColumn(name="valoracio",foreignKey= @ForeignKey(name = "DIAGNOSTIC_VALORACIO_FK"))	
     private Valoracio valoracio;
+	
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="diagnostic")		
+    private List<AmbitDiagnostic> ambit;
 	
 }

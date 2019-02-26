@@ -1,6 +1,7 @@
 package es.in2.dsdibaapi.controller;
 
 import java.util.Date;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriUtils;
@@ -75,21 +77,15 @@ public class DiagnosticController
   } 
   
   
-  @RequestMapping(value={"/diagnostic/valorar2/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+  @RequestMapping(value={"/diagnostic/valorar/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
   @ApiOperation(value="Valoració d'un diagnòstic", notes="")
   public Diagnostic getValoracio(@PathVariable Long id)
   {
-    return getDiagnostic(this.diagnosticService.avaluar(id).getId());
+	  Diagnostic d = getDiagnostic(id);
+    return getDiagnostic(this.diagnosticService.avaluar(d).getId());
   }
   
-  
-  @RequestMapping(value={"/diagnostic/valoracio/{id}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
-  @ApiOperation(value="Valoració d'un diagnòstic", notes="")
-  public Diagnostic getValoracio2(@PathVariable Long id)
-  {
-    return getDiagnostic(this.diagnosticService.avaluar(id).getId());
-  }
-  
+   
   
   @RequestMapping(value={"/expedient/{expedient}/diagnostic/{versio}"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
   @ApiOperation(value="Nou diagnòstic", notes="")
@@ -120,7 +116,7 @@ public class DiagnosticController
 	  
 	  
 	  diagnostic = this.diagnosticService.save(diagnostic);
-	  return getDiagnostic(diagnosticService.avaluar(diagnostic.getId()).getId());
+	  return getDiagnostic(diagnosticService.avaluar(diagnostic).getId());
   }
   
   @RequestMapping(value={"/expedient/{expedient}/diagnostic"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
@@ -131,6 +127,8 @@ public class DiagnosticController
 	  Expedient e = expedientService.findById(expedient);
 	  
 	  diagnostic.setExpedient(e);
+	  
+	 
 	  
 	  
     return getDiagnostic(this.diagnosticService.save(diagnostic).getId());

@@ -1,16 +1,14 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="7566CEC6-2B21-FEA4-FBAF-D99A42D565EB" containerWithKeyObject="7D9B9EBB-9F5C-88D7-D01F-7F55D3AEA90B" localFKIndex="184F479F-509D-B458-F886-FA9F70DF150A" name="AVALUACIO_AMBIT_DIAGNOSTIC_FK">
-<sourceDDLFile>schema.sql</sourceDDLFile>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="DB30A649-BF12-CE35-B0C4-DAFB900E9BBA" containerWithKeyObject="9047A7F1-CF50-D8A6-24E3-3C0AA97C9E78" localFKIndex="376A5A19-B570-8D50-F92C-D79F8E681946" name="PREGUNTA_AMBIT_DIAGNOSTIC_FK">
 <createdBy>danielfi</createdBy>
-<createdTime>2019-02-04 08:41:54 UTC</createdTime>
+<createdTime>2019-02-25 16:41:09 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
-<importedID>87D36AC5-CFAA-2392-437F-BC4DC640F8D4</importedID>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>BEDC8C0B-5237-F2A8-938E-68E3EBBE89B1</referredTableID>
 <keyObject>D07AEEA0-AB6E-D66E-FE08-5FD6DB67F1D6</keyObject>
 <referredKeyID>D07AEEA0-AB6E-D66E-FE08-5FD6DB67F1D6</referredKeyID>
-<mandatory>false</mandatory>
+<mandatory>true</mandatory>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

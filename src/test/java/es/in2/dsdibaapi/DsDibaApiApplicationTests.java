@@ -8,18 +8,21 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import es.in2.dsdibaapi.controller.DiagnosticController;
 import es.in2.dsdibaapi.controller.PreguntaController;
+import es.in2.dsdibaapi.model.Ambit;
+import es.in2.dsdibaapi.model.AmbitDiagnostic;
 import es.in2.dsdibaapi.model.Contextualitzacio;
 import es.in2.dsdibaapi.model.Diagnostic;
 import es.in2.dsdibaapi.model.Entorn;
 import es.in2.dsdibaapi.model.Expedient;
 import es.in2.dsdibaapi.model.Factor;
-import es.in2.dsdibaapi.model.FactorEconomic;
 import es.in2.dsdibaapi.model.Frequencia;
 import es.in2.dsdibaapi.model.Gravetat;
 import es.in2.dsdibaapi.model.Municipi;
@@ -31,6 +34,7 @@ import es.in2.dsdibaapi.model.Rol;
 import es.in2.dsdibaapi.model.SituacioSocial;
 import es.in2.dsdibaapi.model.TipusPersona;
 import es.in2.dsdibaapi.model.VersioModel;
+import es.in2.dsdibaapi.service.AmbitService;
 import es.in2.dsdibaapi.service.ContextualitzacioService;
 import es.in2.dsdibaapi.service.DiagnosticService;
 import es.in2.dsdibaapi.service.EconomiaService;
@@ -59,6 +63,9 @@ public class DsDibaApiApplicationTests {
 	
 	@Autowired
 	private PreguntaController preguntaController;
+	
+	@Autowired
+	private DiagnosticController diagnosticController;
 	
 	@Autowired
 	private PersonaService personaService;
@@ -109,6 +116,9 @@ public class DsDibaApiApplicationTests {
 	private RolService rolService;
 	
 	@Autowired
+	private AmbitService ambitService;
+	
+	@Autowired
 	private EstatService estatService;
 	
 	@Autowired
@@ -140,7 +150,7 @@ public class DsDibaApiApplicationTests {
 	Long ssH1 = 65346l;
 	Long ssH2 = 65353l;
 	
-	Long ssES1 = 65392l;
+	Long ssES1 = 65432l;
 	
 	Long entornAutonomia = 65323l;
 	Long entornHabitage = 65345l;
@@ -174,6 +184,7 @@ public class DsDibaApiApplicationTests {
 	
 
 	//@Test 
+	/*
 	public void contextLoads() {
 		
 		
@@ -252,9 +263,10 @@ public class DsDibaApiApplicationTests {
 		
 		
 	}
-	
+	*/
 	
 	//@Test
+	/*
 	public void addPreguntas() {
 		
 		VersioModel versio = versioModelService.findById(versioId);
@@ -333,13 +345,14 @@ public class DsDibaApiApplicationTests {
 		Pregunta dEco=preguntaController.putPreguntaEconomia(diag.getId(), factors);
 		
 		
-		Diagnostic newexp=diagnosticService.avaluar(diag.getId());
+		Diagnostic newexp=diagnosticService.avaluar(diag);
 		
 		String dd = "s";
 	}	
-	
+	*/
 	
 	//@Test
+	/*
 	public void test1Valoracio() {
 		
 		TipusPersona mare = tipusPersonaService.findById(pareMare);
@@ -388,8 +401,7 @@ public class DsDibaApiApplicationTests {
 		
 		
 		
-		/*VersioModel versio = versioModelService.findById(versioId);
-		exp =expedientService.findById(63001l);*/
+		
 		entorn = entornService.findById(entornAutonomia);
 	
 		Pregunta d;
@@ -427,7 +439,7 @@ public class DsDibaApiApplicationTests {
 		
 		
 		
-		Diagnostic newexp=diagnosticService.avaluar(diag.getId());
+		Diagnostic newexp=diagnosticService.avaluar(diag);
 		
 		assertTrue (newexp.getValoracio().getTotal() == 5d);
 		
@@ -436,7 +448,7 @@ public class DsDibaApiApplicationTests {
 		
 		contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).membreUnic(true).factor(factor).build());
 	
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticService.avaluar(diag);
 		
 		assertTrue (newexp.getValoracio().getTotal() == 2.1d);
 		
@@ -450,7 +462,7 @@ public class DsDibaApiApplicationTests {
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticService.avaluar(diag);
 		
 		assertTrue (newexp.getValoracio().getTotal() == 2.6d);
 		
@@ -460,7 +472,7 @@ public class DsDibaApiApplicationTests {
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticService.avaluar(diag);
 		
 		assertTrue (newexp.getValoracio().getTotal() == 4.6d);
 		
@@ -482,7 +494,7 @@ public class DsDibaApiApplicationTests {
 		
 		contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).membreUnic(true).factor(factor).build());
 	
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticService.avaluar(diag);
 		
 		assertTrue (newexp.getValoracio().getTotal() == 3.1d);
 		
@@ -496,7 +508,7 @@ public class DsDibaApiApplicationTests {
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticService.avaluar(diag);
 		
 		assertTrue (newexp.getValoracio().getTotal() == 3.1d);
 		
@@ -509,7 +521,7 @@ public class DsDibaApiApplicationTests {
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticService.avaluar(diag);
 		
 		assertTrue (newexp.getValoracio().getTotal() == 5.2d);
 		
@@ -518,7 +530,7 @@ public class DsDibaApiApplicationTests {
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticService.avaluar(diag);
 		
 		assertTrue (newexp.getValoracio().getTotal() == 4.1d);
 		
@@ -530,7 +542,7 @@ public class DsDibaApiApplicationTests {
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticService.avaluar(diag);
 		
 		assertTrue (newexp.getValoracio().getTotal() == 5.2d);
 		
@@ -540,16 +552,19 @@ public class DsDibaApiApplicationTests {
 		
 		ssA1=preguntaController.putPregunta(diag.getId(), ssA1);
 		
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticService.avaluar(diag);
 		
 		assertTrue (newexp.getValoracio().getTotal() == 8.1d);
 		 
 	}	
+	*/
 	
-	//@Test
+	@Test
 	public void test2Valoracio() {
 		
 		TipusPersona mare = tipusPersonaService.findById(pareMare);
+		
+		List<Ambit> ambits = ambitService.findAll();
 		
 		VersioModel versio;
 		
@@ -573,14 +588,50 @@ public class DsDibaApiApplicationTests {
 		versio = versioModelService.findById(versioId);
 		
 		
+		List<AmbitDiagnostic> ambitsDiagnostic = new ArrayList<AmbitDiagnostic> ();
+		
+		for (Ambit a:ambits) {				
+			ambitsDiagnostic.add(AmbitDiagnostic.builder().ambit(a).build());
+		}
 		
 		diag =Diagnostic.builder()
 				.data(new Date())
 				.estat(estatService.findByDescripcio(DiagnosticService.Estat.BORRADOR.toString()))
 				.versioModel(versio)
+				.ambit(ambitsDiagnostic)
 				.observacions("Test 1").build();
 		
 		List<Diagnostic> diagnostics = new ArrayList<Diagnostic> ();
+		
+		diagnostics.add(diag);
+		
+		ambitsDiagnostic = new ArrayList<AmbitDiagnostic> ();
+		
+		for (Ambit a:ambits) {				
+			ambitsDiagnostic.add(AmbitDiagnostic.builder().ambit(a).build());
+		}
+		
+		diag =Diagnostic.builder()
+				.data(new Date())
+				.estat(estatService.findByDescripcio(DiagnosticService.Estat.BORRADOR.toString()))
+				.versioModel(versio)
+				.ambit(ambitsDiagnostic)
+				.observacions("Test 2").build();
+		
+		diagnostics.add(diag);
+		
+		ambitsDiagnostic = new ArrayList<AmbitDiagnostic> ();
+		
+		for (Ambit a:ambits) {				
+			ambitsDiagnostic.add(AmbitDiagnostic.builder().ambit(a).build());
+		}
+		
+		diag =Diagnostic.builder()
+				.data(new Date())
+				.estat(estatService.findByDescripcio(DiagnosticService.Estat.BORRADOR.toString()))
+				.versioModel(versio)
+				.ambit(ambitsDiagnostic)
+				.observacions("Test 3").build();
 		
 		diagnostics.add(diag);
 		
@@ -626,6 +677,7 @@ public class DsDibaApiApplicationTests {
 		Gravetat gravetat = gravetatService.findById(gravetatBaixa);
 		
 		
+		
 		d = Pregunta.builder().situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
 		
 		
@@ -650,9 +702,11 @@ public class DsDibaApiApplicationTests {
 		
 	
 		
+		//diag = diagnosticService.findById(diag.getId());
 		
+		//Diagnostic newexp=diagnosticService.avaluar(diag);
 		
-		Diagnostic newexp=diagnosticService.avaluar(diag.getId());
+		Diagnostic newexp=diagnosticController.getValoracio(diag.getId());
 		
 		assertTrue (newexp.getValoracio().getTotal() == 5d);
 		
@@ -661,7 +715,7 @@ public class DsDibaApiApplicationTests {
 		
 		contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).membreUnic(true).factor(factor).build());
 	
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticController.getValoracio(diag.getId());
 		
 		assertTrue (newexp.getValoracio().getTotal() == 2.1d);
 		
@@ -675,7 +729,7 @@ public class DsDibaApiApplicationTests {
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticController.getValoracio(diag.getId());
 		
 		assertTrue (newexp.getValoracio().getTotal() == 2.6d);
 		
@@ -685,7 +739,7 @@ public class DsDibaApiApplicationTests {
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticController.getValoracio(diag.getId());
 		
 		assertTrue (newexp.getValoracio().getTotal() == 4.6d);
 		
@@ -707,7 +761,7 @@ public class DsDibaApiApplicationTests {
 		
 		contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).membreUnic(true).factor(factor).build());
 	
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticController.getValoracio(diag.getId());
 		
 		assertTrue (newexp.getValoracio().getTotal() == 3.1d);
 		
@@ -721,7 +775,7 @@ public class DsDibaApiApplicationTests {
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticController.getValoracio(diag.getId());
 		
 		assertTrue (newexp.getValoracio().getTotal() == 3.1d);
 		
@@ -734,40 +788,17 @@ public class DsDibaApiApplicationTests {
 		
 		d=preguntaController.putPregunta(diag.getId(), d);
 		
-		newexp=diagnosticService.avaluar(diag.getId());
+		newexp=diagnosticController.getValoracio(diag.getId());
 		
-		assertTrue (newexp.getValoracio().getTotal() == 4.6d);
+		assertTrue (newexp.getValoracio().getTotal() == 5.2d);
 	
 		
 		
-		/*
-		
-		situacioSocial = situacioSocialService.findById(ssES1);
-		gravetat = gravetatService.findById(gravetatBaixa);
-		
-		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).gravetat(gravetat).unitatFamiliar(true).build();
-		
-		d=preguntaController.putPregunta(diag.getId(), d);
-		
-		newexp=diagnosticService.avaluar(diag.getId());
-		
-		assertTrue (newexp.getValoracio().getTotal() == 5.2d);
-		
-		frequencia =frequenciaService.findById(freqContinua);
-		
-		ssA1.setFrequencia(frequencia);
-		
-		ssA1=preguntaController.putPregunta(diag.getId(), ssA1);
-		
-		newexp=diagnosticService.avaluar(diag.getId());
-		
-		assertTrue (newexp.getValoracio().getTotal() == 8.1d);
-		 */
 	}	
 	
 	//@Test
 	public void test3Valoracio() {
-		diagnosticService.avaluar(63028l);
+		//diagnosticService.avaluar(63028l);
 	}
 	
 	

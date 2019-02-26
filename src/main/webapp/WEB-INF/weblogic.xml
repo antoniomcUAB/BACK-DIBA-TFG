@@ -4,6 +4,11 @@
     <container-descriptor>
         <show-archived-real-path-enabled>true</show-archived-real-path-enabled>
     </container-descriptor>
+    <session-descriptor>
+    	<persistent-store-type>memory</persistent-store-type>
+     	<sharing-enabled>true</sharing-enabled>
+		<cookie-name>JDSDIBAID</cookie-name>
+	</session-descriptor>
 </weblogic-web-app>
 <!-- 
 <weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app"

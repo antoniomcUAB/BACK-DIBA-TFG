@@ -17,6 +17,8 @@ public interface ExpedientService {
 	
 	public Expedient save(Expedient expedient) ;
 	
+	public List<Expedient> findByMunicipi(Integer page, Integer size,Long municipi);
+	
 	public Iterable<Expedient> findByMunicipi(Long municipi);
 	
 	public void eval (Expedient e);

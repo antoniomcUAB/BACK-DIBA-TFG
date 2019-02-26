@@ -22,7 +22,7 @@ public class QAvaluacio extends EntityPathBase<Avaluacio> {
 
     public static final QAvaluacio avaluacio = new QAvaluacio("avaluacio");
 
-    public final QAmbit ambit;
+    public final QAmbitDiagnostic ambit;
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
@@ -50,7 +50,7 @@ public class QAvaluacio extends EntityPathBase<Avaluacio> {
 
     public QAvaluacio(Class<? extends Avaluacio> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.ambit = inits.isInitialized("ambit") ? new QAmbit(forProperty("ambit")) : null;
+        this.ambit = inits.isInitialized("ambit") ? new QAmbitDiagnostic(forProperty("ambit"), inits.get("ambit")) : null;
         this.risc = inits.isInitialized("risc") ? new QRisc(forProperty("risc")) : null;
         this.riscProfessional = inits.isInitialized("riscProfessional") ? new QRisc(forProperty("riscProfessional")) : null;
         this.valoracio = inits.isInitialized("valoracio") ? new QValoracio(forProperty("valoracio")) : null;

@@ -9,6 +9,7 @@ import com.querydsl.core.types.Predicate;
 
 import es.in2.dsdibaapi.model.Model;
 import es.in2.dsdibaapi.model.QAmbit;
+import es.in2.dsdibaapi.model.QFactor;
 import es.in2.dsdibaapi.model.QFactorEconomic;
 import es.in2.dsdibaapi.repository.AmbitRepository;
 import es.in2.dsdibaapi.repository.FactorEconomicRepository;
@@ -32,11 +33,12 @@ public class ModelServiceImpl implements ModelService{
 		Predicate predicateFactor = null;
 		
 		
-		predicateAmbit = QAmbit.ambit.entorn.any().situacioSocial.any().versioModel.id.eq(versio);
+		predicateAmbit = QAmbit.ambit.entorn.any().situacioSocial.any().versioModel.id.eq(versio)
+				.or(QAmbit.ambit.factorGravetat.any().versioModel.id.eq(versio));
 		predicateFactor = QFactorEconomic.factorEconomic.versioModel.id.eq(versio);		
 		
 	    Model model = new Model();
-	    model.setAmbits(ambitRepository.findAll(predicateAmbit,new Sort(Sort.Direction.ASC, "descripcio")));
+	    model.setAmbits(ambitRepository.findAll(predicateAmbit,new Sort(Sort.Direction.ASC, "id")));
 	    model.setFactorEconomic(factorEconomicRepository.findAll(predicateFactor));  
 	    
 	    

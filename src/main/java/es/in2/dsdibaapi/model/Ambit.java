@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -12,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -41,11 +44,11 @@ public @Data class Ambit implements Serializable {
 	private Double valVulnerabilitat;
 	private Double valRisc;
 	private Double valAltrisc;
-	private String observacions;
 	
 	@OneToMany(mappedBy = "ambit")
 	@OrderBy("id ASC")
 	@JsonProperty("entorns")
+	@LazyCollection(LazyCollectionOption.FALSE)
     private List<Entorn> entorn;
 	
 	@OneToMany (mappedBy = "ambit")

@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="BEDC8C0B-5237-F2A8-938E-68E3EBBE89B1" name="AMBIT_DIAGNOSTIC">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-25 13:42:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<ordsAlias>table_26</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="3244C199-01F2-74C2-0A35-E2EDD2FC7059">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-25 13:42:47 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ambit" id="D8E100A3-9FEF-11F0-D738-FB25C4581D8D">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-25 13:42:56 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D24A085A-3330-5FA6-45D3-B497C74E09BC" referredColumn="4FE213D5-2108-F51A-6A0F-E7172EA74D46"/>
+</associations>
+</Column>
+<Column name="diagnostic" id="34E4F1D4-3BBF-C199-4752-D951F595D67E">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-25 13:43:01 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="539EF8BC-168F-9625-A859-F098C7C686D9" referredColumn="1BDC2CFA-9BF7-D66F-CA3B-79DEB545E8A7"/>
+</associations>
+</Column>
+<Column name="observacions" id="739BA5A8-9DF3-A148-6F70-AC3867164844">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-25 13:43:24 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D07AEEA0-AB6E-D66E-FE08-5FD6DB67F1D6" name="AMBIT_DIAGNOSTIC_PK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-25 13:48:44 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3244C199-01F2-74C2-0A35-E2EDD2FC7059"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0619448D-EC49-67E8-697A-0F2EC7DB44E7" name="AMBIT_DIAGNOSTIC_AMBIT_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-25 13:42:56 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D8E100A3-9FEF-11F0-D738-FB25C4581D8D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B2569289-6149-E0E9-3726-49074A88DAC6" name="AMBIT_DIAGNOSTIC_DIAGNOSTIC_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-25 13:43:01 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="34E4F1D4-3BBF-C199-4752-D951F595D67E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

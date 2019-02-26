@@ -5,16 +5,19 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.querydsl.core.types.Predicate;
 
+import es.in2.dsdibaapi.model.Ambit;
+import es.in2.dsdibaapi.model.AmbitDiagnostic;
 import es.in2.dsdibaapi.model.Diagnostic;
 import es.in2.dsdibaapi.model.Expedient;
 import es.in2.dsdibaapi.model.QExpedient;
 import es.in2.dsdibaapi.repository.ExpedientRepository;
+import es.in2.dsdibaapi.service.AmbitService;
 import es.in2.dsdibaapi.service.DiagnosticService;
 import es.in2.dsdibaapi.service.EstatService;
 import es.in2.dsdibaapi.service.ExpedientService;
@@ -31,6 +34,9 @@ public class ExpedientServiceImpl implements ExpedientService {
 	@Autowired
 	EstatService estatService;
 	
+	@Autowired
+	AmbitService ambitService;
+	
 	public Expedient findById(Long id) {
 		return expedientRepository.findById(id).get();
     }
@@ -46,6 +52,15 @@ public class ExpedientServiceImpl implements ExpedientService {
 				if (d.getExpedient() == null) {
 					d.setExpedient(expedient);
 				}
+				
+				if (d.getAmbit() == null ||
+						d.getAmbit().isEmpty()) {
+					List<Ambit> ambits = ambitService.findAll();
+					
+					for (Ambit a:ambits) {				
+						d.getAmbit().add(AmbitDiagnostic.builder().ambit(a).build());
+					}
+				}
 			}
 		}
 		
@@ -53,10 +68,19 @@ public class ExpedientServiceImpl implements ExpedientService {
     }
 	
 	@Transactional
+	public List<Expedient> findByMunicipi(Integer page, Integer size,Long municipi) {
+		Predicate predicate = QExpedient.expedient.professional.municipi.id.eq(municipi);
+		
+		return expedientRepository.findAll (predicate,
+				PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, "codi", "dataCreacio"))).getContent();
+	
+    }
+	
+	@Transactional
 	public Iterable<Expedient> findByMunicipi(Long municipi) {
 		Predicate predicate = QExpedient.expedient.professional.municipi.id.eq(municipi);
 		
-		return expedientRepository.findAll(predicate,new Sort(Sort.Direction.ASC, "codi", "dataCreacio"));
+		return expedientRepository.findAll (predicate);
 	
     }
 	

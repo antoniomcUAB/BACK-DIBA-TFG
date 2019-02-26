@@ -1,7 +1,7 @@
 package es.in2.dsdibaapi.service;
 
-import es.in2.dsdibaapi.json.AmbitJson;
 import es.in2.dsdibaapi.json.EntornJson;
+import es.in2.dsdibaapi.model.AmbitDiagnostic;
 import es.in2.dsdibaapi.model.Diagnostic;
 
 public interface DiagnosticService {
@@ -19,8 +19,8 @@ public interface DiagnosticService {
 	
 	public Diagnostic save(Diagnostic expedient);
 	
-	public Diagnostic avaluar (Long expedient);
+	public Diagnostic avaluar (Diagnostic diag);
 	
-	public RiscService.Tipus avaluar (Diagnostic diagnostic,AmbitJson a, EntornJson e);
+	public RiscService.Tipus avaluar (Diagnostic diagnostic,AmbitDiagnostic a, EntornJson e);
 	
 }

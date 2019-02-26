@@ -22,6 +22,8 @@ public class QDiagnostic extends EntityPathBase<Diagnostic> {
 
     public static final QDiagnostic diagnostic = new QDiagnostic("diagnostic");
 
+    public final ListPath<AmbitDiagnostic, QAmbitDiagnostic> ambit = this.<AmbitDiagnostic, QAmbitDiagnostic>createList("ambit", AmbitDiagnostic.class, QAmbitDiagnostic.class, PathInits.DIRECT2);
+
     public final DateTimePath<java.util.Date> data = createDateTime("data", java.util.Date.class);
 
     public final QEstat estat;

@@ -1,18 +1,20 @@
 package es.in2.dsdibaapi.controller;
 
 import java.util.Date;
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import es.in2.dsdibaapi.model.Expedient;
-import es.in2.dsdibaapi.model.Professional;
 import es.in2.dsdibaapi.service.EstatService;
 import es.in2.dsdibaapi.service.ExpedientService;
 import es.in2.dsdibaapi.service.ProfessionalService;
@@ -68,13 +70,15 @@ public class ExpedientController extends BaseController {
 	  
 	  @RequestMapping(value={"/expedient/llista/{municipi}"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
 	  @ApiOperation(value="Consulta d'expedients d'un municipi", notes="")
-	  public Iterable<Expedient> getExpedientMunicipi(@PathVariable Long municipi)
+	  public List<Expedient> getExpedientMunicipi(@RequestParam("page") Optional<Integer> page, 
+			  @RequestParam("size") Optional<Integer> size, @PathVariable Long municipi)
 	  {
 		  
-		  Iterable<Expedient> resultat = null;
+		  List<Expedient> resultat = null;
 	    try
 	    {
-	    	resultat = this.expedientService.findByMunicipi(municipi);
+	    	resultat = this.expedientService.findByMunicipi(page.orElse(0), size.orElse(0), municipi);
+	    	
 	    	
 	    }
 	    catch (NoSuchElementException ex)

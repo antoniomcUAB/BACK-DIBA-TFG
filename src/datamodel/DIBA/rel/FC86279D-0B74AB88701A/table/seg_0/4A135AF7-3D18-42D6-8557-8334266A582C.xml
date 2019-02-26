@@ -111,6 +111,21 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="versio_model" id="06173EAB-C123-B3C1-B13A-57540BD6CF71">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-22 11:29:18 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="31CEA121-6F64-8165-4111-23FCB6EE6C0F" referredColumn="39B098C5-E909-E349-5A9E-21BE62083CE8"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="5F4C6334-BEDA-5048-7E5A-B6591726F0E5" name="FACTOR_PKv2">
@@ -147,6 +162,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="49FE31CC-706B-1789-5730-A3CB04746A35"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="966E150F-5897-203B-1101-98E347AF60D9" name="FACTOR_VERSIO_MODEL_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-22 11:29:18 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="06173EAB-C123-B3C1-B13A-57540BD6CF71"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -119,6 +119,21 @@
 <colAssociation fkAssociation="8F726F4F-2121-4D71-4E62-853A7590F593" referredColumn="9BCB58F2-DEEB-3D05-E3AC-210B157D4667"/>
 </associations>
 </Column>
+<Column name="professional" id="EEB86E81-AE8F-C81D-D9FA-A4951E614E6F">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-19 14:19:32 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E7498D9A-C236-D01C-6764-93BB461DEB4D" referredColumn="A48DB424-D715-A576-D9A4-E4C53C946637"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="790E2FEA-0AED-7A4B-5467-7CDEFD5905C4" name="DIAGNOSTIC_PK">
@@ -177,6 +192,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="C6A478C9-4918-7605-BE10-97BB37855AEA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9BB21596-B1F3-3EB7-93E6-802A32F97EFB" name="DIAGNOSTIC_PROFESSIONAL_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-19 14:19:32 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EEB86E81-AE8F-C81D-D9FA-A4951E614E6F"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

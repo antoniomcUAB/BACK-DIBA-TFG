@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -47,7 +48,7 @@ public @Data class Valoracio implements Serializable {
 	
 	/*@OneToMany (cascade=CascadeType.ALL,mappedBy = "valoracio", orphanRemoval = true, fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)*/
-	@OneToMany (cascade= {CascadeType.ALL}, orphanRemoval = true)
+	@OneToMany (cascade= {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
 	@JoinColumn(name="valoracio",referencedColumnName="id")
 	@JsonIgnoreProperties(value = { "value"})
 	@JsonProperty("evaluacions")

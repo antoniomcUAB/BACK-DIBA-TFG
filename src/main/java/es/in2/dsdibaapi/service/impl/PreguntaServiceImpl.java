@@ -46,7 +46,7 @@ public class PreguntaServiceImpl implements PreguntaService{
 	private FrequenciaService frequenciaService;
 	
 	@Autowired
-	private DiagnosticService expedientService;
+	private DiagnosticService diagnosticService;
 	
 	@Autowired
 	private SituacioSocialService situacioSocialService;
@@ -106,7 +106,7 @@ public class PreguntaServiceImpl implements PreguntaService{
    
 	
 	public Pregunta save (Pregunta pregunta, Long diagnostic) {
-		Diagnostic diag = expedientService.findById(diagnostic);
+		Diagnostic diag = diagnosticService.findById(diagnostic);
 				
 		pregunta.setDiagnostic(diag);
 	//	pregunta.setEntorn(pregunta.getSituacioSocial().getEntorn());

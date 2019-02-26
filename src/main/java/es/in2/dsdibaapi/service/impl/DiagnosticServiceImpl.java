@@ -15,6 +15,7 @@ import com.querydsl.core.types.Predicate;
 import es.in2.dsdibaapi.json.AmbitJson;
 import es.in2.dsdibaapi.json.EntornJson;
 import es.in2.dsdibaapi.model.Ambit;
+import es.in2.dsdibaapi.model.AmbitDiagnostic;
 import es.in2.dsdibaapi.model.Avaluacio;
 import es.in2.dsdibaapi.model.Contextualitzacio;
 import es.in2.dsdibaapi.model.Diagnostic;
@@ -75,39 +76,48 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		
 		Diagnostic d = diagnosticRepository.findById(id).get();
 		
-		List<Ambit> ambits = ambitService.findAll();
 		
-		d.setAmbit(new ArrayList<AmbitJson> ());
 		
-		EntornJson jsonEntorn;
-		AmbitJson jsonAmbit;
+	//	List<Ambit> ambits = ambitService.findAll();
 		
-		List<EntornJson> entornsJson = null;
+		if (d.getAmbit() != null) {
 		
-		for (Ambit a:ambits) {
-			entornsJson = new ArrayList<EntornJson> ();
-			for (Entorn e:a.getEntorn()) {
-				jsonEntorn = es.in2.dsdibaapi.json.EntornJson.builder()
-								.descripcio(e.getDescripcio())
-								.id(e.getId()).build();
-				jsonEntorn.setPregunta(preguntaService.findByDiagnosticEntorn(d.getId(),e.getId()));
+			//d.setAmbit(new ArrayList<AmbitJson> ());
+			
+			
+			
+			EntornJson jsonEntorn;
+			//AmbitJson jsonAmbit;
+			
+			List<EntornJson> entornsJson = null;
+			
+			for (AmbitDiagnostic a:d.getAmbit()) {
+				entornsJson = new ArrayList<EntornJson> ();
+				for (Entorn e:a.getAmbit().getEntorn()) {
+					jsonEntorn = es.in2.dsdibaapi.json.EntornJson.builder()
+									.descripcio(e.getDescripcio())
+									.id(e.getId()).build();
+					jsonEntorn.setPregunta(preguntaService.findByDiagnosticEntorn(d.getId(),e.getId()));
+					
+					entornsJson.add(jsonEntorn);
+				}
 				
-				entornsJson.add(jsonEntorn);
+				/*jsonAmbit = es.in2.dsdibaapi.json.AmbitJson.builder()
+								.id(a.getAmbit().getId())
+								.entorn(entornsJson)
+								.valAltrisc(a.getAmbit().getValAltrisc())
+								.valRisc(a.getAmbit().getValRisc())
+								.observacions(a.getObservacions())
+								.valVulnerabilitat(a.getAmbit().getValVulnerabilitat())
+								.vulnerabilitat(a.getAmbit().getVulnerabilitat())
+								.risc(a.getAmbit().getRisc())
+								.descripcio(a.getAmbit().getDescripcio()).build();
+				jsonAmbit.setContextualitzacio(contextualitzacioService.findByDiagnosticAmbit(d.getId(), a.getAmbit().getId()));
+				*/
+				a.setEntorn(entornsJson);
+				a.setContextualitzacio(contextualitzacioService.findByDiagnosticAmbit(d.getId(), a.getAmbit().getId()));
+				//d.getAmbit().add(jsonAmbit);
 			}
-			
-			jsonAmbit = es.in2.dsdibaapi.json.AmbitJson.builder()
-							.id(a.getId())
-							.entorn(entornsJson)
-							.valAltrisc(a.getValAltrisc())
-							.valRisc(a.getValRisc())
-							.observacions(a.getObservacions())
-							.valVulnerabilitat(a.getValVulnerabilitat())
-							.vulnerabilitat(a.getVulnerabilitat())
-							.risc(a.getRisc())
-							.descripcio(a.getDescripcio()).build();
-			jsonAmbit.setContextualitzacio(contextualitzacioService.findByDiagnosticAmbit(d.getId(), a.getId()));
-			
-			d.getAmbit().add(jsonAmbit);
 		}
 		
 		return d;
@@ -128,18 +138,31 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		diagnostic.setVersioModel(v);
 		diagnostic.setEstat(estatService.findByDescripcio(Estat.BORRADOR.toString()));
 		
-		return diagnosticRepository.save(diagnostic);
+		return save(diagnostic);
     }
 	
 	public Diagnostic save(Diagnostic diagnostic) {
+		
+		if (diagnostic.getAmbit() == null ||
+				diagnostic.getAmbit().isEmpty()) {
+			List<Ambit> ambits = ambitService.findAll();
+			
+			for (Ambit a:ambits) {				
+				diagnostic.getAmbit().add(AmbitDiagnostic.builder().ambit(a).build());
+			}
+		}
+		else {
+			for (AmbitDiagnostic a:diagnostic.getAmbit()) {
+				a.setDiagnostic(diagnostic);
+			}
+		}
+		
 		return diagnosticRepository.save(diagnostic);
     }
 	
-	public Diagnostic avaluar (Long diagnostic) {	
+	public Diagnostic avaluar (Diagnostic diag) {	
 		
-		Diagnostic diag = findById(diagnostic);
 		
-		//List<Ambit> ambits = ambitService.findAll();
 		
 		Ambit ambit = null;
 		
@@ -166,7 +189,7 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		
 		Double total = 0d;
 		
-		/*if (valoracio.getAvaluacio() != null && valoracio.getAvaluacio().size() == 3) {
+		/*if (valoracio.getAvaluacio() != null) {
 			for (Avaluacio av:valoracio.getAvaluacio()) {
 				av.setRisc(riscService.findByDescription(avaluar (diag,av.getAmbit())));
 				
@@ -183,46 +206,59 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 					total += av.getAmbit().getValAltrisc();
 				}
 			}
-		} else {
-		*/
-			for (AmbitJson a:diag.getAmbit()) {
-				ambit = ambitService.findById(a.getId());
-			/*	if (ambit.getVulnerabilitat() != null && 
-						(a.getContextualitzacio()!=null || a.getEntorn().getPregunta()!=null) ) {*/
+		} else {*/
+		
+			for (AmbitDiagnostic a:diag.getAmbit()) {
+				//ambit = ambitService.findById(a.getAmbit().getId());
+				avaluacio = null;
+				
+				if (diag.getValoracio() != null) {
+					for (Avaluacio av:diag.getValoracio().getAvaluacio()) {
+						if (av.getAmbit().getId() == a.getId()) {
+							avaluacio = av;
+							
+							break;
+						}
+					}
+				}
+				
 				for (EntornJson e:a.getEntorn()) {
-					if (a.getVulnerabilitat() != null &&
-							StreamSupport.stream(a.getContextualitzacio().spliterator(),false).count() > 0 || 
+					if (a.getAmbit().getVulnerabilitat() != null &&
 							StreamSupport.stream(e.getPregunta().spliterator(),false).count() > 0) {
 						
-						if (valoracio.getAvaluacio() != null && valoracio.getAvaluacio().size() == 3) {
+						if (valoracio.getAvaluacio() != null) {
 							for (Avaluacio av:valoracio.getAvaluacio()) {
-								if (av.getAmbit().getId() == a.getId()) {
+								if (av.getAmbit().getId() == a.getAmbit().getId()) {
 									avaluacio =av; 
+									avaluacio.setRisc(riscService.findByDescription(avaluar (diag,a,e)));
 									break;
 								}
 							}
 						}
-						else {
+						
+						if (avaluacio == null) {
 							avaluacio = Avaluacio.builder()
-										.ambit(ambit)
+										.ambit(a)
 										.valoracio(valoracio)
 										.risc(riscService.findByDescription(avaluar (diag,a,e))).build();
 							
 							
 							valoracio.getAvaluacio().add(avaluacio);
+						} else {
+							avaluacio.setRisc(riscService.findByDescription(avaluar (diag,a,e)));
 						}
 					
 					if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == vulnerabilitat.getId()) ||
 							avaluacio.getRisc().getId() == vulnerabilitat.getId()) {
-						total += a.getValVulnerabilitat();
+						total += a.getAmbit().getValVulnerabilitat();
 					} 
 					else if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == risc.getId()) ||
 							avaluacio.getRisc().getId() == risc.getId()) {
-						total += a.getValRisc();
+						total += a.getAmbit().getValRisc();
 					}
 					else if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == altRisc.getId()) ||
 							avaluacio.getRisc().getId() == altRisc.getId()) {
-						total += a.getValAltrisc();
+						total += a.getAmbit().getValAltrisc();
 					}
 				}
 				}
@@ -243,7 +279,7 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 	}
 	
 	
-	public RiscService.Tipus avaluar (Diagnostic diagnostic,AmbitJson a, EntornJson e) {
+	public RiscService.Tipus avaluar (Diagnostic diagnostic,AmbitDiagnostic a, EntornJson e) {
 		
 		
 		Double count = 0d;
@@ -280,10 +316,10 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		if ( count == 0d) {
 			return RiscService.Tipus.SENSE_VALORACIO;
 		}
-		else if (count < a.getVulnerabilitat()) {
+		else if (count < a.getAmbit().getVulnerabilitat()) {
 			return RiscService.Tipus.VULNERABILITAT;
 		}
-		else if (count < a.getRisc()) {
+		else if (count < a.getAmbit().getRisc()) {
 			return RiscService.Tipus.RISC;
 		}
 		

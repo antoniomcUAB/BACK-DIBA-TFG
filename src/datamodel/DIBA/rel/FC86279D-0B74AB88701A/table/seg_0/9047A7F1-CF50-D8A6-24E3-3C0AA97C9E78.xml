@@ -138,9 +138,6 @@
 <domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="8BCFBA45-A200-DB8F-84D0-FD99E4265CA7" referredColumn="1AC532A4-4C40-109A-438A-D0C1FBF8F9A4"/>
-</associations>
 </Column>
 <Column name="unitat_familiar" id="98096617-32C0-237A-99C3-16C7B78DDE11">
 <sourceDDLFile>schema.sql</sourceDDLFile>
@@ -173,6 +170,21 @@
 <colAssociation fkAssociation="E52D51A3-0296-04C4-C6F6-398B760E33C2" referredColumn="50955319-BBCD-CAE5-DC06-FAD2AD679ECD"/>
 </associations>
 </Column>
+<Column name="ambit" id="C22DA0BC-3302-6425-6BB5-E5B620D9ACB9">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-25 16:41:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DB30A649-BF12-CE35-B0C4-DAFB900E9BBA" referredColumn="3244C199-01F2-74C2-0A35-E2EDD2FC7059"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="6D9FB3B0-DA32-35E6-1186-4BA28BEC6FD9" name="DIAGNOSTICv1_PK">
@@ -198,17 +210,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="FF92669B-0F27-94E3-CB0C-0D68AEF5E458"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="92418DB2-593E-D3C7-F83D-6F40A8795B07" name="PREGUNTA_ENTORN_FK">
-<createdBy>danielfi</createdBy>
-<createdTime>2019-02-04 08:41:54 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>DIBA</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="2D469A8C-2121-5399-5221-8DF96BDD348F"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="CAD014B8-9D3F-49E0-C533-38856F790E57" name="PREGUNTA_FACTOR_FK">
@@ -275,6 +276,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="AFE57B3A-FCC4-37BF-D033-C5871AA07546"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="376A5A19-B570-8D50-F92C-D79F8E681946" name="PREGUNTA_AMBIT_DIAGNOSTIC_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-25 16:41:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C22DA0BC-3302-6425-6BB5-E5B620D9ACB9"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
