@@ -26,6 +26,8 @@ public class QAvaluacio extends EntityPathBase<Avaluacio> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
+    public final StringPath justificacio = createString("justificacio");
+
     public final QRisc risc;
 
     public final QRisc riscProfessional;

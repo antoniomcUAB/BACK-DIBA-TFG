@@ -9,7 +9,14 @@ public interface GravetatService {
 	public enum Tipus {
 	    BAIXA,
 	    MODERADA, 
-	    ALTA
+	    ALTA,
+	    RISC,
+	    PROTECCIO {
+	        @Override
+	        public String toString() {
+	          return "Protecció";
+	        }
+	      }
 	}
 	
     public Gravetat findById(Long id) ;

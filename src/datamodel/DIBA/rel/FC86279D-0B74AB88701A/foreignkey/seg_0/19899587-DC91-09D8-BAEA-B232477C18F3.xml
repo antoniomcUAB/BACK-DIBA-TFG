@@ -10,7 +10,7 @@
 <referredTableID>2084EE63-B714-198A-F05B-0730F45CF0DB</referredTableID>
 <keyObject>AFBDD24C-6CA1-4BD9-8CE7-7B73B5FEE79C</keyObject>
 <referredKeyID>AFBDD24C-6CA1-4BD9-8CE7-7B73B5FEE79C</referredKeyID>
-<mandatory>true</mandatory>
+<mandatory>false</mandatory>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

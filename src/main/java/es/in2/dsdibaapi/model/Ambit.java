@@ -5,8 +5,11 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
@@ -16,6 +19,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -55,6 +59,11 @@ public @Data class Ambit implements Serializable {
 	@JsonIgnoreProperties(value = { "fc1m", "fctots"})
 	@JsonProperty("factors_context")	
     private List<Factor> factorGravetat;
+	
+	@ManyToOne
+    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "AMBIT_VERSIO_MODEL_FK"))
+	@JsonIgnore
+    private VersioModel versioModel;
 	
 	
 	

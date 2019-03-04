@@ -1,5 +1,6 @@
 package es.in2.dsdibaapi.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -55,7 +56,8 @@ public class ExpedientServiceImpl implements ExpedientService {
 				
 				if (d.getAmbit() == null ||
 						d.getAmbit().isEmpty()) {
-					List<Ambit> ambits = ambitService.findAll();
+					d.setAmbit(new ArrayList<AmbitDiagnostic>());
+					Iterable<Ambit> ambits = ambitService.findAll(d.getVersioModel().getId());
 					
 					for (Ambit a:ambits) {				
 						d.getAmbit().add(AmbitDiagnostic.builder().ambit(a).build());

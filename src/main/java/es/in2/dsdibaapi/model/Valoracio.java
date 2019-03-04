@@ -40,6 +40,8 @@ public @Data class Valoracio implements Serializable {
 	private Double total;
 	private long factors;
 	private Date data;
+	private Boolean confirmat;
+	
 	/*
 	@OneToOne
 	@JoinColumn(name="expedient",foreignKey= @ForeignKey(name = "VALORACIO_EXPEDIENT_FK"))

@@ -22,6 +22,8 @@ public class QValoracio extends EntityPathBase<Valoracio> {
 
     public final ListPath<Avaluacio, QAvaluacio> avaluacio = this.<Avaluacio, QAvaluacio>createList("avaluacio", Avaluacio.class, QAvaluacio.class, PathInits.DIRECT2);
 
+    public final BooleanPath confirmat = createBoolean("confirmat");
+
     public final DateTimePath<java.util.Date> data = createDateTime("data", java.util.Date.class);
 
     public final NumberPath<Long> factors = createNumber("factors", Long.class);

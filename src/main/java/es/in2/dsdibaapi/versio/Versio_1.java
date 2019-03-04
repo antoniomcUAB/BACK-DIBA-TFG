@@ -1,8 +1,5 @@
-package es.in2.dsdibaapi;
+package es.in2.dsdibaapi.versio;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,43 +10,32 @@ import org.springframework.stereotype.Component;
 import es.in2.dsdibaapi.model.Ambit;
 import es.in2.dsdibaapi.model.Criteri;
 import es.in2.dsdibaapi.model.Entorn;
-import es.in2.dsdibaapi.model.Estat;
 import es.in2.dsdibaapi.model.Factor;
 import es.in2.dsdibaapi.model.FactorEconomic;
 import es.in2.dsdibaapi.model.Frequencia;
 import es.in2.dsdibaapi.model.FrequenciaGravetat;
 import es.in2.dsdibaapi.model.Gravetat;
-import es.in2.dsdibaapi.model.Municipi;
 import es.in2.dsdibaapi.model.Risc;
-import es.in2.dsdibaapi.model.Rol;
 import es.in2.dsdibaapi.model.SituacioSocial;
-import es.in2.dsdibaapi.model.TipusPersona;
 import es.in2.dsdibaapi.model.VersioModel;
 import es.in2.dsdibaapi.service.CriteriService;
-import es.in2.dsdibaapi.service.DiagnosticService;
 import es.in2.dsdibaapi.service.EntornService;
-import es.in2.dsdibaapi.service.EstatService;
-import es.in2.dsdibaapi.service.ExpedientService;
 import es.in2.dsdibaapi.service.FactorEconomicService;
 import es.in2.dsdibaapi.service.FactorService;
 import es.in2.dsdibaapi.service.FrequenciaGravetatService;
 import es.in2.dsdibaapi.service.FrequenciaService;
 import es.in2.dsdibaapi.service.GravetatService;
-import es.in2.dsdibaapi.service.MunicipiService;
 import es.in2.dsdibaapi.service.RiscService;
-import es.in2.dsdibaapi.service.RolService;
 import es.in2.dsdibaapi.service.SituacioSocialService;
-import es.in2.dsdibaapi.service.TipusPersonaService;
 import es.in2.dsdibaapi.service.VersioModelService;
 import es.in2.dsdibaapi.service.impl.AmbitServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 
-
-
 @Component
 @Slf4j
-@ConditionalOnProperty(name = "api.db-init", havingValue = "true")
-public class DataBaseInit implements CommandLineRunner {
+@ConditionalOnProperty(name = "api.db-init", havingValue = "v1")
+public class Versio_1 implements CommandLineRunner {
+
 	
 	@Autowired
 	private AmbitServiceImpl ambitService; 
@@ -81,61 +67,42 @@ public class DataBaseInit implements CommandLineRunner {
 	@Autowired
 	private FactorEconomicService factorEconomicService;
 	
-	@Autowired
-	private RolService rolService;
-	
-	@Autowired
-	private MunicipiService municipiService;
-	
 
 	@Autowired
 	private VersioModelService versioModelService;
 	
-	@Autowired
-	private EstatService estatService;
 	
-	@Autowired
-	private TipusPersonaService tipusPersonaService;
-
 	@Override
 	public void run(String... args) throws Exception {
 		
 		VersioModel versio = versioModelService.save(VersioModel.builder()
-											.versio("111AAAA00")
+											.versio("1")
 											.data(new Date()).build());
 		
-		Frequencia ocasionalFrequencia= frequenciaService.save(Frequencia.builder().descripcio("Ocasional").value(1).build());
-		Frequencia frequentFrequencia=frequenciaService.save(Frequencia.builder().descripcio("Freqüent").value(2).build());
-		Frequencia continuaFrequencia=frequenciaService.save(Frequencia.builder().descripcio("Continua").value(3).build());
-		Frequencia puntualFrequencia=frequenciaService.save(Frequencia.builder().descripcio("Puntual").value(0).build());
-		Frequencia senseFrequencia=frequenciaService.save(Frequencia.builder().descripcio("Sense valoració").value(0).build());		
+		Frequencia ocasionalFrequencia= frequenciaService.findByDescription(FrequenciaService.Tipus.OCASIONAL.toString());
+		Frequencia frequentFrequencia=frequenciaService.findByDescription(FrequenciaService.Tipus.FREQUENT.toString());
+		Frequencia continuaFrequencia=frequenciaService.findByDescription(FrequenciaService.Tipus.CONTINUA.toString());
+		Frequencia puntualFrequencia=frequenciaService.findByDescription(FrequenciaService.Tipus.PUNTUAL.toString());
+		Frequencia senseFrequencia=frequenciaService.findByDescription(FrequenciaService.Tipus.SENSE_VALORACIO.toString());		
 		
-		Risc senseRisc = riscService.save(Risc.builder().descripcio("Sense Valoració").value(0).build());
-		Risc vulnerabilitatRisc = riscService.save(Risc.builder().descripcio("Vulnerabilitat").value(1).build());
-		Risc riscRisc = riscService.save(Risc.builder().descripcio("Risc").value(2).build());
-		Risc alttRisc = riscService.save(Risc.builder().descripcio("Alt Risc").value(3).build());
+				
+		Risc vulnerabilitatRisc = riscService.findByDescription(RiscService.Tipus.VULNERABILITAT);
+		Risc riscRisc = riscService.findByDescription(RiscService.Tipus.RISC);
+		Risc alttRisc = riscService.findByDescription(RiscService.Tipus.ALT_RISC);
 		
-		Gravetat baixaGravetat = gravetatService.save(Gravetat.builder().descripcio("Baixa").value(1).build());		
-		Gravetat moderadaGravetat= gravetatService.save(Gravetat.builder().descripcio("Moderada").value(2).build());
-		Gravetat  altaGravetat=gravetatService.save(Gravetat.builder().descripcio("Alta").value(3).build());
-		Gravetat proteccioGravetat=gravetatService.save(Gravetat.builder().descripcio("Protecció").value(0).build());
-		Gravetat riscGravetat=gravetatService.save(Gravetat.builder().descripcio("Risc").value(0).build());
-		
-		estatService.save(Estat.builder().descripcio(DiagnosticService.Estat.BORRADOR.toString()).build());
-		estatService.save(Estat.builder().descripcio(DiagnosticService.Estat.VALIDAT.toString()).build());
-		estatService.save(Estat.builder().descripcio(ExpedientService.Estat.INCOMPLET.toString()).build());
-		estatService.save(Estat.builder().descripcio(ExpedientService.Estat.COMPLET.toString()).build());
-		
-		rolService.save(Rol.builder().descripcio("Gerent").build());
-		rolService.save(Rol.builder().descripcio("Tècnic").build());
-		
-		municipiService.save(Municipi.builder().descripcio("Barcelona").build());
-		municipiService.save(Municipi.builder().descripcio("Tarragona").build());
-		municipiService.save(Municipi.builder().descripcio("LLeida").build());
+		Gravetat baixaGravetat = gravetatService.findByDescription(GravetatService.Tipus.BAIXA.toString());		
+		Gravetat moderadaGravetat= gravetatService.findByDescription(GravetatService.Tipus.MODERADA.toString());
+		Gravetat  altaGravetat=gravetatService.findByDescription(GravetatService.Tipus.ALTA.toString());
+		Gravetat proteccioGravetat=gravetatService.findByDescription(GravetatService.Tipus.PROTECCIO.toString());
+		Gravetat riscGravetat=gravetatService.findByDescription(GravetatService.Tipus.RISC.toString());
 		
 		
 		
-		Ambit ambit = ambitService.save (Ambit.builder().descripcio("Autonomia").vulnerabilitat(4d).risc(7d).valVulnerabilitat(1d).valRisc(2.1d).valAltrisc(5d).build());
+		
+		Ambit ambit = ambitService.save (
+				Ambit.builder().descripcio("Autonomia")
+				.vulnerabilitat(4d).risc(7d).valVulnerabilitat(1d).valRisc(2.1d)
+				.valAltrisc(5d).versioModel(versio).build());
 		
 		Ambit ambitAutonomia = ambit;
 		
@@ -196,7 +163,7 @@ public class DataBaseInit implements CommandLineRunner {
 		criteriService.save(new Criteri ("Crónica, sense possiblitats de millora",puntualFrequencia,alttRisc,frequenciaGravetat));						
 		
 		
-		ambit = ambitService.save(Ambit.builder().descripcio("MATERIAL I INSTRUMENTAL").vulnerabilitat(3d).risc(7d).valVulnerabilitat(0.5d).valRisc(1d).valAltrisc(2.5d).build());
+		ambit = ambitService.save(Ambit.builder().descripcio("MATERIAL I INSTRUMENTAL").versioModel(versio).vulnerabilitat(3d).risc(7d).valVulnerabilitat(0.5d).valRisc(1d).valAltrisc(2.5d).build());
 		
 		Ambit ambitMaterial = ambit;
 				
@@ -346,7 +313,7 @@ public class DataBaseInit implements CommandLineRunner {
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,riscRisc,frequenciaGravetat));	
 											
 											
-		ambit = ambitService.save(Ambit.builder().descripcio("RELACIONAL").vulnerabilitat(3d).risc(7d).valVulnerabilitat(1d).valRisc(2.1d).valAltrisc(5d).build());
+		ambit = ambitService.save(Ambit.builder().versioModel(versio).descripcio("RELACIONAL").vulnerabilitat(3d).risc(7d).valVulnerabilitat(1d).valRisc(2.1d).valAltrisc(5d).build());
 		Ambit ambitRelacional = ambit;
 											
 		Entorn entornEscolar = entornService.save (Entorn.builder().descripcio("Entorn Escolar").ambit(ambit).build());
@@ -415,17 +382,17 @@ public class DataBaseInit implements CommandLineRunner {
 																		,entornEscolar,0.75d,1.5d,3d));		
 																	
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial," S'identifiquen situacions de comentaris despectius provinents d'una sola persona.",baixaGravetat));					
-		criteriService.save(new Criteri ("Fet puntual o en un peròode de méxim un mes",frequentFrequencia,vulnerabilitatRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Fet puntual o en un periode de màxim un mes",frequentFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Es repeteix durant tot un trimestre",continuaFrequencia,riscRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("De forma reiterada i en més d'un trimestre",puntualFrequencia,riscRisc,frequenciaGravetat));		
 																
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"S'identifiquen  situacions d'agressions verbals per part de grup reduét",moderadaGravetat));					
-		criteriService.save(new Criteri ("Fet puntual o en un peròode de méxim un mes",frequentFrequencia,vulnerabilitatRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Fet puntual o en un periode de màxim un mes",frequentFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Es repeteix durant tot un trimestre",continuaFrequencia,riscRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("De forma reiterada i en més d'un trimestre",puntualFrequencia,alttRisc,frequenciaGravetat));	
 																
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Agressions físiques o agressions verbals provinents de gran grup",altaGravetat));					
-		criteriService.save(new Criteri ("Fet puntual o en un peròode de méxim un mes",frequentFrequencia,vulnerabilitatRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Fet puntual o en un periode de màxim un mes",frequentFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Es repeteix durant tot un trimestre",continuaFrequencia,riscRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("De forma reiterada i en més d'un trimestre",puntualFrequencia,alttRisc,frequenciaGravetat));
 											
@@ -894,7 +861,7 @@ public class DataBaseInit implements CommandLineRunner {
 		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
 				.descripcio("Les dificultats en l'àmbit econòmic són contïnuades i sense possiblitat de canvi o millora en el curt termini?").build());
 		
-		ambit = ambitService.save(Ambit.builder().descripcio("Globalitat del cas").build());
+		ambit = ambitService.save(Ambit.builder().versioModel(versio).descripcio("Globalitat del cas").valVulnerabilitat(2.5d).valRisc(5d).build());
 		
 		Entorn entorn = entornService.save (Entorn.builder().descripcio("Globalitat del cas").ambit(ambit).build());
 		
@@ -943,30 +910,9 @@ public class DataBaseInit implements CommandLineRunner {
 				.fc1m(0.1d)
 				.build());
 		
-		// Tipus de persones
-		
-		tipusPersonaService.save(TipusPersona.builder().descripcio("Altres").build());
-		tipusPersonaService.save(TipusPersona.builder().descripcio("Avi/àvia,nét/a").build());
-		tipusPersonaService.save(TipusPersona.builder().descripcio("Espòs/osa,company/a").build());
-		tipusPersonaService.save(TipusPersona.builder().descripcio("Fill/a").build());
-		tipusPersonaService.save(TipusPersona.builder().descripcio("Gendre/nora,sogre/a").build());
-		tipusPersonaService.save(TipusPersona.builder().descripcio("Germà/ana,cunyat/ada").build());
-		tipusPersonaService.save(TipusPersona.builder().descripcio("Nebot/da,cos/ina").build());
-		tipusPersonaService.save(TipusPersona.builder().descripcio("Pare/mare").build());
-		tipusPersonaService.save(TipusPersona.builder().descripcio("Persona principal").build());
-		tipusPersonaService.save(TipusPersona.builder().descripcio("Tiet/a").build());
 		
 	}
 	
-	public static String getEncoding()
-	   {
-	      final byte [] bytes = {'D'};
-	      final InputStream inputStream = new ByteArrayInputStream(bytes);
-	      final InputStreamReader reader = new InputStreamReader(inputStream);
-	      final String encoding = reader.getEncoding();
-	      return encoding;
-	   }
-	
-	
+		
 	
 }

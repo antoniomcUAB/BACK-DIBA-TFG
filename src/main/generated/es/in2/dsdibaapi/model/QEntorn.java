@@ -48,7 +48,7 @@ public class QEntorn extends EntityPathBase<Entorn> {
 
     public QEntorn(Class<? extends Entorn> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.ambit = inits.isInitialized("ambit") ? new QAmbit(forProperty("ambit")) : null;
+        this.ambit = inits.isInitialized("ambit") ? new QAmbit(forProperty("ambit"), inits.get("ambit")) : null;
     }
 
 }

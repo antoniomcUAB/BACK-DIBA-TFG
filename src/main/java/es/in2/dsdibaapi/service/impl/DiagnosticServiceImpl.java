@@ -145,8 +145,8 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		
 		if (diagnostic.getAmbit() == null ||
 				diagnostic.getAmbit().isEmpty()) {
-			List<Ambit> ambits = ambitService.findAll();
-			
+			Iterable<Ambit> ambits = ambitService.findAll(diagnostic.getVersioModel().getId());
+			diagnostic.setAmbit(new ArrayList<AmbitDiagnostic>());
 			for (Ambit a:ambits) {				
 				diagnostic.getAmbit().add(AmbitDiagnostic.builder().ambit(a).build());
 			}
@@ -282,7 +282,10 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		valoracio.setTotal(total);
 		valoracio.setData(new Date());
 		diag.setValoracio(valoracio);
-		diag.setEstat(estatService.findByDescripcio(Estat.VALIDAT.toString()));
+		
+		if (valoracio.getConfirmat()!= null && valoracio.getConfirmat()) {
+			diag.setEstat(estatService.findByDescripcio(Estat.VALIDAT.toString()));
+		} 
 		diag.getExpedient().setDataValidacio(valoracio.getData());
 		//valoracioService.save(valoracio);
 		diag=save (diag);

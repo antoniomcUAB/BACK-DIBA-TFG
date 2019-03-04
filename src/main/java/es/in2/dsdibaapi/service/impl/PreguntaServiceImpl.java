@@ -204,7 +204,7 @@ public class PreguntaServiceImpl implements PreguntaService{
 			
 			if (d.getGravetat() !=null && d.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.ALTA.toString())) {
 				if (dificultats) {
-					d.setFrequencia(frequenciaService.findByDescription(FrequenciaService.Tipus.CONTNUA.toString()));
+					d.setFrequencia(frequenciaService.findByDescription(FrequenciaService.Tipus.CONTINUA.toString()));
 				} else {
 					d.setFrequencia(frequenciaService.findByDescription(FrequenciaService.Tipus.OCASIONAL.toString()));
 				}

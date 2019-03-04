@@ -33,6 +33,7 @@ public @Data class Avaluacio implements Serializable {
 	@Id 
 	@GeneratedValue
 	private long id;
+	private String justificacio;
 	
 	@ManyToOne
     @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "AVALUACIO_ENTORN_FK"))

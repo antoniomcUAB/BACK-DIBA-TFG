@@ -120,6 +120,21 @@
 <ownDataTypeParameters>500,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="versio_model" id="C59B019B-0E17-87E1-2B2C-B5DC2B452055">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-28 12:33:15 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="086D0AC5-1855-6292-CA53-DA0F9554C87F" referredColumn="39B098C5-E909-E349-5A9E-21BE62083CE8"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="D817B127-AF99-1037-C1BE-71755A9DDF80" name="AMBIT_PK">
@@ -134,6 +149,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="4FE213D5-2108-F51A-6A0F-E7172EA74D46"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7C982D80-1CF3-CF23-9CB5-6556FD08F7C1" name="AMBIT_VERSIO_MODEL_FK">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-02-28 12:33:15 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C59B019B-0E17-87E1-2B2C-B5DC2B452055"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

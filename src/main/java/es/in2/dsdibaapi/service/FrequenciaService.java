@@ -7,8 +7,21 @@ import es.in2.dsdibaapi.model.Frequencia;
 public interface FrequenciaService {
 	
 	public enum Tipus {
-	    CONTNUA,
+	    CONTINUA,
 	    OCASIONAL, 
+	    PUNTUAL,
+	    SENSE_VALORACIO {
+	        @Override
+	        public String toString() {
+	          return "Sense Valoració";
+	        }
+	      },
+	    FREQUENT {
+	        @Override
+	        public String toString() {
+	          return "Freqüent";
+	        }
+	      },
 	    ALTA
 	}
 	

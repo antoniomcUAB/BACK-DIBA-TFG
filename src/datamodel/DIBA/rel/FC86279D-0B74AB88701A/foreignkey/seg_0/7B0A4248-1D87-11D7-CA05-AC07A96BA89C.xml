@@ -10,7 +10,7 @@
 <referredTableID>94891600-8795-BAAA-746D-7744D135693C</referredTableID>
 <keyObject>D817B127-AF99-1037-C1BE-71755A9DDF80</keyObject>
 <referredKeyID>D817B127-AF99-1037-C1BE-71755A9DDF80</referredKeyID>
-<mandatory>true</mandatory>
+<mandatory>false</mandatory>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

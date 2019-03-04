@@ -36,8 +36,6 @@ public class QFactor extends EntityPathBase<Factor> {
 
     public final BooleanPath infants = createBoolean("infants");
 
-    public final QVersioModel versioModel;
-
     public QFactor(String variable) {
         this(Factor.class, forVariable(variable), INITS);
     }
@@ -56,9 +54,8 @@ public class QFactor extends EntityPathBase<Factor> {
 
     public QFactor(Class<? extends Factor> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.ambit = inits.isInitialized("ambit") ? new QAmbit(forProperty("ambit")) : null;
+        this.ambit = inits.isInitialized("ambit") ? new QAmbit(forProperty("ambit"), inits.get("ambit")) : null;
         this.gravetat = inits.isInitialized("gravetat") ? new QGravetat(forProperty("gravetat")) : null;
-        this.versioModel = inits.isInitialized("versioModel") ? new QVersioModel(forProperty("versioModel")) : null;
     }
 
 }

@@ -59,7 +59,7 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
-public class DsDibaApiApplicationTests {
+public class DsDibaApiApplicationTests2 {
 	
 	@Autowired
 	private PreguntaController preguntaController;
@@ -144,36 +144,37 @@ public class DsDibaApiApplicationTests {
 	Long freqPuntual = 70587l;
 	Long freqSense = 70588l;
 	
-	Long ssA1 = 70620l;
-	Long ssA2 = 70630l;
+	Long ssA1 = 70924l;
+	Long ssA2 = 70934l;
 	
-	Long ssH1 = 70642l;
-	Long ssH2 = 70649l;
+	Long ssH1 = 70946l;
+	Long ssH2 = 70953l;
 	
-	Long ssES1 = 70728l;
+	Long ssES1 = 71032l;
 	
-	Long entornAutonomia = 70619l;
-	Long entornHabitage = 70641l;
-	Long entornEconomic = 70687l;
-	Long entornEscolar = 70727l;
+	Long entornAutonomia = 70923l;
+	Long entornHabitage = 70945l;
+	Long entornEconomic = 70991l;
+	Long entornEscolar = 71031l;
 	
 	Long rolTecnic = 70603l;
+		
 	
-	Long versioId=70617l; 
+	Long versioId=70921l; //v2
 	
 	
 	Long municipiId = 70604l;
 	
-	Long factor1 = 70867l;
-	Long factor2 = 70868l;
+	Long factor1 = 71168l;
+	Long factor2 = 71169l;
 	
-	Long factor3 = 70878l;
-	Long factor4 = 70879l;
-	Long factor5 = 70880l;
-	Long factor6 = 70881l;
+	Long factor3 = 71179l;
+	Long factor4 = 71180l;
+	Long factor5 = 71181l;
+	Long factor6 = 71182l;
 	
-	Long factorEconomic1 = 70901l;
-	Long factorEconomic2 = 70902l;
+	Long factorEconomic1 = 71202l;
+	Long factorEconomic2 = 71203l;
 	
 	Long pareMare = 70614l;
 	

@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="31CEA121-6F64-8165-4111-23FCB6EE6C0F" containerWithKeyObject="4A135AF7-3D18-42D6-8557-8334266A582C" localFKIndex="966E150F-5897-203B-1101-98E347AF60D9" name="FACTOR_VERSIO_MODEL_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="086D0AC5-1855-6292-CA53-DA0F9554C87F" containerWithKeyObject="94891600-8795-BAAA-746D-7744D135693C" localFKIndex="7C982D80-1CF3-CF23-9CB5-6556FD08F7C1" name="AMBIT_VERSIO_MODEL_FK">
 <createdBy>danielfi</createdBy>
-<createdTime>2019-02-22 11:29:18 UTC</createdTime>
+<createdTime>2019-02-28 12:33:15 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
 <deleteRule>NO ACTION</deleteRule>

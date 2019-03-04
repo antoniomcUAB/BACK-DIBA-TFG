@@ -18,6 +18,8 @@ public class QAmbit extends EntityPathBase<Ambit> {
 
     private static final long serialVersionUID = 2018180788L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QAmbit ambit = new QAmbit("ambit");
 
     public final StringPath descripcio = createString("descripcio");
@@ -36,18 +38,29 @@ public class QAmbit extends EntityPathBase<Ambit> {
 
     public final NumberPath<Double> valVulnerabilitat = createNumber("valVulnerabilitat", Double.class);
 
+    public final QVersioModel versioModel;
+
     public final NumberPath<Double> vulnerabilitat = createNumber("vulnerabilitat", Double.class);
 
     public QAmbit(String variable) {
-        super(Ambit.class, forVariable(variable));
+        this(Ambit.class, forVariable(variable), INITS);
     }
 
     public QAmbit(Path<? extends Ambit> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QAmbit(PathMetadata metadata) {
-        super(Ambit.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QAmbit(PathMetadata metadata, PathInits inits) {
+        this(Ambit.class, metadata, inits);
+    }
+
+    public QAmbit(Class<? extends Ambit> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.versioModel = inits.isInitialized("versioModel") ? new QVersioModel(forProperty("versioModel")) : null;
     }
 
 }

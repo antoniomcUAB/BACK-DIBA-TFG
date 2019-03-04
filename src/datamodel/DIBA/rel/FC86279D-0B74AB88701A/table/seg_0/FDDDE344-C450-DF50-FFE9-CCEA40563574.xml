@@ -124,6 +124,7 @@
 <createdTime>2019-02-19 14:19:32 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <use>0</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <domain>6FCDD0A5-BD1B-5A6E-8184-BF576C2911AC</domain>

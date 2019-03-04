@@ -1,13 +1,13 @@
 package es.in2.dsdibaapi.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import com.querydsl.core.types.Predicate;
+
 import es.in2.dsdibaapi.model.Ambit;
-import es.in2.dsdibaapi.model.Contextualitzacio;
+import es.in2.dsdibaapi.model.QAmbit;
 import es.in2.dsdibaapi.repository.AmbitRepository;
 import es.in2.dsdibaapi.service.AmbitService;
 
@@ -30,8 +30,11 @@ public class AmbitServiceImpl implements AmbitService {
 		return ambitRepository.findById(id).get();
     }
 	
-    public List<Ambit> findAll() {
-		return ambitRepository.findAll();
+    public Iterable<Ambit> findAll(Long versio) {
+    	
+    	Predicate predicate = QAmbit.ambit.versioModel.id.eq(versio);
+    	
+		return ambitRepository.findAll(predicate);
     }
 	
 }

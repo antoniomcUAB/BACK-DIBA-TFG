@@ -48,7 +48,7 @@ public class QAmbitDiagnostic extends EntityPathBase<AmbitDiagnostic> {
 
     public QAmbitDiagnostic(Class<? extends AmbitDiagnostic> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.ambit = inits.isInitialized("ambit") ? new QAmbit(forProperty("ambit")) : null;
+        this.ambit = inits.isInitialized("ambit") ? new QAmbit(forProperty("ambit"), inits.get("ambit")) : null;
         this.diagnostic = inits.isInitialized("diagnostic") ? new QDiagnostic(forProperty("diagnostic"), inits.get("diagnostic")) : null;
     }
 

@@ -169,245 +169,244 @@ public class DsDibaApiApplicationTestDes {
 	
 	
 
-	 
-		@Test
-		public void test2Valoracio() {
-			
-			TipusPersona mare = tipusPersonaService.findById(pareMare);
-			
-			List<Ambit> ambits = ambitService.findAll();
-			
-			VersioModel versio;
-			
-			Persona persona1 = Persona.builder()
-					.tipusPersona(mare)
-					.sexe("h")
-					.dataNaixement(new Date())
-					.dataAlta(new Date ()).build();
-			Persona persona2 = Persona.builder().referencia(true).tipusPersona(mare).dataAlta(new Date ()).sexe("d").dataNaixement(new Date()).build();
-			
-			Set<Rol> rols = new HashSet<Rol> ();		
-			
-			rols.add(rolService.findById(rolTecnic));
-			
-			Municipi municipi = municipiService.findById(municipiId);
-			
-			
-			
-			
-			
-			versio = versioModelService.findById(versioId);
-			
-			
-			List<AmbitDiagnostic> ambitsDiagnostic = new ArrayList<AmbitDiagnostic> ();
-			
-			for (Ambit a:ambits) {				
-				ambitsDiagnostic.add(AmbitDiagnostic.builder().ambit(a).build());
-			}
-			
-			diag =Diagnostic.builder()
-					.data(new Date())
-					.estat(estatService.findByDescripcio(DiagnosticService.Estat.BORRADOR.toString()))
-					.versioModel(versio)
-					.ambit(ambitsDiagnostic)
-					.observacions("Test 1").build();
-			
-			List<Diagnostic> diagnostics = new ArrayList<Diagnostic> ();
-			
-			diagnostics.add(diag);
-			
-			ambitsDiagnostic = new ArrayList<AmbitDiagnostic> ();
-			
-			for (Ambit a:ambits) {				
-				ambitsDiagnostic.add(AmbitDiagnostic.builder().ambit(a).build());
-			}
-			
-			diag =Diagnostic.builder()
-					.data(new Date())
-					.estat(estatService.findByDescripcio(DiagnosticService.Estat.BORRADOR.toString()))
-					.versioModel(versio)
-					.ambit(ambitsDiagnostic)
-					.observacions("Test 2").build();
-			
-			diagnostics.add(diag);
-			
-			ambitsDiagnostic = new ArrayList<AmbitDiagnostic> ();
-			
-			for (Ambit a:ambits) {				
-				ambitsDiagnostic.add(AmbitDiagnostic.builder().ambit(a).build());
-			}
-			
-			diag =Diagnostic.builder()
-					.data(new Date())
-					.estat(estatService.findByDescripcio(DiagnosticService.Estat.BORRADOR.toString()))
-					.versioModel(versio)
-					.ambit(ambitsDiagnostic)
-					.observacions("Test 3").build();
-			
-			diagnostics.add(diag);
-			
-			
-			Expedient expedient = Expedient.builder()
-					.codi("33AAAA999")
-					.dataCreacio(new Date ())
-					.estat(estatService.findByDescripcio(ExpedientService.Estat.INCOMPLET.toString()))		
-					.totalFamilia(2l)
-					.diagnostic(diagnostics)
-					.persona(new HashSet<Persona>() {{
-			            add(persona1);
-			            add(persona2);
-			        }})
-					.build();
-			
-			List<Expedient> expedients = new ArrayList<Expedient> ();
-			
-			expedients.add(expedient);
-			Professional professional = professionalService.save(
-					Professional.builder().nom("Professional11")
-										.cognom1("APE1")
-										.cognom2("APE2")
-										.municipi(municipi)
-										.rol(rols)
-										.expedient(expedients)
-										.build()); 
-			
-			
-			
-			entorn = entornService.findById(entornAutonomia);
-		
-			Pregunta d;
-			
-			SituacioSocial situacioSocial;
-		
-			situacioSocial = situacioSocialService.findById(ssA1);
-			
-			Frequencia frequencia =frequenciaService.findById(freqOcasional);
-			
-			Risc risc = riscService.findById(riscVulnerabilitat);
-			
-			Gravetat gravetat = gravetatService.findById(gravetatBaixa);
-			
-			
-			
-			d = Pregunta.builder().situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
-			
-			
-			
-			
-			String sdafsdggs= "";
-			d=preguntaController.putPregunta(diag.getId(), d);
-			
-			
-			assertTrue(d.getFactor().getDescripcio().equalsIgnoreCase("Vulnerabilitat"));
-			
-			Pregunta ssA1= d;
-			
-			
-			situacioSocial = situacioSocialService.findById(ssA2);
-			gravetat = gravetatService.findById(gravetatModerada);
-			frequencia =frequenciaService.findById(freqContinua);
-			
-			d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
-			
-			d=preguntaController.putPregunta(diag.getId(), d);
-			
-		
-			
-			//diag = diagnosticService.findById(diag.getId());
-			
-			//Diagnostic newexp=diagnosticService.avaluar(diag);
-			
-			Diagnostic newexp=diagnosticController.getValoracio(diag.getId());
-			
-			assertTrue (newexp.getValoracio().getTotal() == 5d);
-			
-			
-			Factor factor = factorService.findById(factor1);
-			
-			contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).membreUnic(true).factor(factor).build());
-		
-			newexp=diagnosticController.getValoracio(diag.getId());
-			
-			assertTrue (newexp.getValoracio().getTotal() == 2.1d);
-			
-			entorn = entornService.findById(entornHabitage);
-			
-			situacioSocial = situacioSocialService.findById(ssH1);
-			gravetat = gravetatService.findById(gravetatModerada);
-			frequencia =frequenciaService.findById(freqOcasional);
-			
-			d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
-			
-			d=preguntaController.putPregunta(diag.getId(), d);
-			
-			newexp=diagnosticController.getValoracio(diag.getId());
-			
-			assertTrue (newexp.getValoracio().getTotal() == 2.6d);
-			
-			frequencia =frequenciaService.findById(freqContinua);
-			
-			d.setFrequencia(frequencia);
-			
-			d=preguntaController.putPregunta(diag.getId(), d);
-			
-			newexp=diagnosticController.getValoracio(diag.getId());
-			
-			assertTrue (newexp.getValoracio().getTotal() == 4.6d);
-			
-			
-			
-			factor = factorService.findById(factor3);
-			
-			contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).membreUnic(true).factor(factor).build());
-			
-			factor = factorService.findById(factor4);
-			
-			contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).membreUnic(true).factor(factor).build());
-			
-			factor = factorService.findById(factor5);
-			
-			contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).mesUc(true).factor(factor).build());
-			
-			factor = factorService.findById(factor6);
-			
-			contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).membreUnic(true).factor(factor).build());
-		
-			newexp=diagnosticController.getValoracio(diag.getId());
-			
-			assertTrue (newexp.getValoracio().getTotal() == 3.1d);
-			
-			
-			
-			 situacioSocial = situacioSocialService.findById(ssH2);
-			gravetat = gravetatService.findById(gravetatModerada);
-			frequencia =frequenciaService.findById(freqContinua);
-			
-			d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
-			
-			d=preguntaController.putPregunta(diag.getId(), d);
-			
-			newexp=diagnosticController.getValoracio(diag.getId());
-			
-			assertTrue (newexp.getValoracio().getTotal() == 3.1d);
-			
-			entorn = entornService.findById(entornEconomic);
-			
-			situacioSocial = situacioSocialService.findById(ssES1);
-			gravetat = gravetatService.findById(gravetatModerada);
-			
-			d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).gravetat(gravetat).unitatFamiliar(true).build();
-			
-			d=preguntaController.putPregunta(diag.getId(), d);
-			
-			newexp=diagnosticController.getValoracio(diag.getId());
-			
-			assertTrue (newexp.getValoracio().getTotal() == 5.2d);
-		
-			
-			
-		}	
-	
 	//@Test
+	public void test2Valoracio() {
+		
+		TipusPersona mare = tipusPersonaService.findById(pareMare);
+		
+		Iterable<Ambit> ambits = ambitService.findAll(versioId);
+		
+		VersioModel versio;
+		
+		Persona persona1 = Persona.builder()
+				.tipusPersona(mare)
+				.sexe("h")
+				.dataNaixement(new Date())
+				.dataAlta(new Date ()).build();
+		Persona persona2 = Persona.builder().referencia(true).tipusPersona(mare).dataAlta(new Date ()).sexe("d").dataNaixement(new Date()).build();
+		
+		Set<Rol> rols = new HashSet<Rol> ();		
+		
+		rols.add(rolService.findById(rolTecnic));
+		
+		Municipi municipi = municipiService.findById(municipiId);
+		
+		
+		
+		
+		
+		versio = versioModelService.findById(versioId);
+		
+		
+		List<AmbitDiagnostic> ambitsDiagnostic = new ArrayList<AmbitDiagnostic> ();
+		
+		for (Ambit a:ambits) {				
+			ambitsDiagnostic.add(AmbitDiagnostic.builder().ambit(a).build());
+		}
+		
+		diag =Diagnostic.builder()
+				.data(new Date())
+				.estat(estatService.findByDescripcio(DiagnosticService.Estat.BORRADOR.toString()))
+				.versioModel(versio)
+				.ambit(ambitsDiagnostic)
+				.observacions("Test 1").build();
+		
+		List<Diagnostic> diagnostics = new ArrayList<Diagnostic> ();
+		
+		diagnostics.add(diag);
+		
+		ambitsDiagnostic = new ArrayList<AmbitDiagnostic> ();
+		
+		for (Ambit a:ambits) {				
+			ambitsDiagnostic.add(AmbitDiagnostic.builder().ambit(a).build());
+		}
+		
+		diag =Diagnostic.builder()
+				.data(new Date())
+				.estat(estatService.findByDescripcio(DiagnosticService.Estat.BORRADOR.toString()))
+				.versioModel(versio)
+				.ambit(ambitsDiagnostic)
+				.observacions("Test 2").build();
+		
+		diagnostics.add(diag);
+		
+		ambitsDiagnostic = new ArrayList<AmbitDiagnostic> ();
+		
+		for (Ambit a:ambits) {				
+			ambitsDiagnostic.add(AmbitDiagnostic.builder().ambit(a).build());
+		}
+		
+		diag =Diagnostic.builder()
+				.data(new Date())
+				.estat(estatService.findByDescripcio(DiagnosticService.Estat.BORRADOR.toString()))
+				.versioModel(versio)
+				.ambit(ambitsDiagnostic)
+				.observacions("Test 3").build();
+		
+		diagnostics.add(diag);
+		
+		
+		Expedient expedient = Expedient.builder()
+				.codi("33AAAA999")
+				.dataCreacio(new Date ())
+				.estat(estatService.findByDescripcio(ExpedientService.Estat.INCOMPLET.toString()))		
+				.totalFamilia(2l)
+				.diagnostic(diagnostics)
+				.persona(new HashSet<Persona>() {{
+		            add(persona1);
+		            add(persona2);
+		        }})
+				.build();
+		
+		List<Expedient> expedients = new ArrayList<Expedient> ();
+		
+		expedients.add(expedient);
+		Professional professional = professionalService.save(
+				Professional.builder().nom("Professional11")
+									.cognom1("APE1")
+									.cognom2("APE2")
+									.municipi(municipi)
+									.rol(rols)
+									.expedient(expedients)
+									.build()); 
+		
+		
+		
+		entorn = entornService.findById(entornAutonomia);
+	
+		Pregunta d;
+		
+		SituacioSocial situacioSocial;
+	
+		situacioSocial = situacioSocialService.findById(ssA1);
+		
+		Frequencia frequencia =frequenciaService.findById(freqOcasional);
+		
+		Risc risc = riscService.findById(riscVulnerabilitat);
+		
+		Gravetat gravetat = gravetatService.findById(gravetatBaixa);
+		
+		
+		
+		d = Pregunta.builder().situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		
+		
+		
+		
+		String sdafsdggs= "";
+		d=preguntaController.putPregunta(diag.getId(), d);
+		
+		
+		assertTrue(d.getFactor().getDescripcio().equalsIgnoreCase("Vulnerabilitat"));
+		
+		Pregunta ssA1= d;
+		
+		
+		situacioSocial = situacioSocialService.findById(ssA2);
+		gravetat = gravetatService.findById(gravetatModerada);
+		frequencia =frequenciaService.findById(freqContinua);
+		
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		
+		d=preguntaController.putPregunta(diag.getId(), d);
+		
+	
+		
+		//diag = diagnosticService.findById(diag.getId());
+		
+		//Diagnostic newexp=diagnosticService.avaluar(diag);
+		
+		Diagnostic newexp=diagnosticController.getValoracio(diag.getId());
+		
+		assertTrue (newexp.getValoracio().getTotal() == 5d);
+		
+		
+		Factor factor = factorService.findById(factor1);
+		
+		contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).membreUnic(true).factor(factor).build());
+	
+		newexp=diagnosticController.getValoracio(diag.getId());
+		
+		assertTrue (newexp.getValoracio().getTotal() == 2.1d);
+		
+		entorn = entornService.findById(entornHabitage);
+		
+		situacioSocial = situacioSocialService.findById(ssH1);
+		gravetat = gravetatService.findById(gravetatModerada);
+		frequencia =frequenciaService.findById(freqOcasional);
+		
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		
+		d=preguntaController.putPregunta(diag.getId(), d);
+		
+		newexp=diagnosticController.getValoracio(diag.getId());
+		
+		assertTrue (newexp.getValoracio().getTotal() == 2.6d);
+		
+		frequencia =frequenciaService.findById(freqContinua);
+		
+		d.setFrequencia(frequencia);
+		
+		d=preguntaController.putPregunta(diag.getId(), d);
+		
+		newexp=diagnosticController.getValoracio(diag.getId());
+		
+		assertTrue (newexp.getValoracio().getTotal() == 4.6d);
+		
+		
+		
+		factor = factorService.findById(factor3);
+		
+		contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).membreUnic(true).factor(factor).build());
+		
+		factor = factorService.findById(factor4);
+		
+		contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).membreUnic(true).factor(factor).build());
+		
+		factor = factorService.findById(factor5);
+		
+		contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).mesUc(true).factor(factor).build());
+		
+		factor = factorService.findById(factor6);
+		
+		contextualitzacioService.save(Contextualitzacio.builder().diagnostic(diag).membreUnic(true).factor(factor).build());
+	
+		newexp=diagnosticController.getValoracio(diag.getId());
+		
+		assertTrue (newexp.getValoracio().getTotal() == 3.1d);
+		
+		
+		
+		 situacioSocial = situacioSocialService.findById(ssH2);
+		gravetat = gravetatService.findById(gravetatModerada);
+		frequencia =frequenciaService.findById(freqContinua);
+		
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).frequencia(frequencia).gravetat(gravetat).unitatFamiliar(true).build();
+		
+		d=preguntaController.putPregunta(diag.getId(), d);
+		
+		newexp=diagnosticController.getValoracio(diag.getId());
+		
+		assertTrue (newexp.getValoracio().getTotal() == 3.1d);
+		
+		entorn = entornService.findById(entornEconomic);
+		
+		situacioSocial = situacioSocialService.findById(ssES1);
+		gravetat = gravetatService.findById(gravetatModerada);
+		
+		d = Pregunta.builder().diagnostic(diag).situacioSocial(situacioSocial).gravetat(gravetat).unitatFamiliar(true).build();
+		
+		d=preguntaController.putPregunta(diag.getId(), d);
+		
+		newexp=diagnosticController.getValoracio(diag.getId());
+		
+		assertTrue (newexp.getValoracio().getTotal() == 5.2d);
+	
+		
+		
+	}	
+	
+	@Test
 	public void newProfessional () {
 		
 		Municipi municipi = municipiService.findById(municipiId);
