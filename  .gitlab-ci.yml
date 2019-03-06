@@ -1,0 +1,20 @@
+stages:
+  - build
+
+
+build-artifacts:des:
+  stage: build
+  image: maven:latest
+  when: manual
+  
+  variables:
+    MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+    MAVEN_CLI_OPTS: "--batch-mode"
+ 
+  script:
+       - "mvn -DskipTests -P des clean package" 
+       
+  artifacts:
+    paths:
+        - /builds/gitlab/in2/ds-diba-backend/target/ds-diba-api-0.0.1-SNAPSHOT.war
+
