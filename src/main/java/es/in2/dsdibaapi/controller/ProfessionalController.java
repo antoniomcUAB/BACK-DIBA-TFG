@@ -22,6 +22,8 @@ public class ProfessionalController extends BaseController{
 	
 	@Autowired
 	private ProfessionalService professionalService;
+	
+	
 		
 	@RequestMapping(value = "/professional/", method = RequestMethod.GET)
 	@ApiOperation(value = "Llista de professionals", notes = "")

@@ -18,7 +18,7 @@ public class QPregunta extends EntityPathBase<Pregunta> {
 
     private static final long serialVersionUID = -1024239433L;
 
-    private static final PathInits INITS = PathInits.DIRECT2;
+    private static final PathInits INITS = new PathInits("*", "situacioSocial.entorn.ambit");
 
     public static final QPregunta pregunta = new QPregunta("pregunta");
 

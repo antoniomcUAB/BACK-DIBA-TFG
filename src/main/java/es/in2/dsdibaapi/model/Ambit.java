@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -56,7 +55,7 @@ public @Data class Ambit implements Serializable {
     private List<Entorn> entorn;
 	
 	@OneToMany (mappedBy = "ambit")
-	@JsonIgnoreProperties(value = { "fc1m", "fctots"})
+	@JsonIgnoreProperties(value = { "fc1m"})
 	@JsonProperty("factors_context")	
     private List<Factor> factorGravetat;
 	

@@ -18,6 +18,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.querydsl.core.annotations.QueryInit;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -53,6 +54,7 @@ public @Data class Pregunta implements Serializable {
 	@ManyToOne
     @JoinColumn(name="situacio_social",foreignKey= @ForeignKey(name = "PREGUNTA_SITUACIO_SOCIAL_FK"))
 	@JsonIgnoreProperties(value = { "definicio", "selectors", "vulnerabilitat", "risc", "altRisc" })
+	@QueryInit("entorn.ambit")
 	private SituacioSocial situacioSocial;
 	
 	/*

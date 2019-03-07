@@ -36,8 +36,8 @@ public class SwaggerConfig   {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("Catalog Cloud")
-				.description("Catalog Cloud API reference for developers")
+		return new ApiInfoBuilder().title("DS-DIBA API")
+				.description("DS-DIBA API reference for developers")
 				.license("Created by IN2")
 				.build();
 	}

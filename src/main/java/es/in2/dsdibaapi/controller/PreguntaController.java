@@ -88,6 +88,13 @@ public class PreguntaController extends BaseController {
 		return preguntaService.save(pregunta,diagnostic);
 	  }
 	
+	@RequestMapping(value = "/diagnostic/{diagnostic}/situacio/{situacio}", method = RequestMethod.DELETE)  
+	@ApiOperation(value = "Donar de baixa les preguntes d'una situacio social determinada", notes = "")
+	  public void deletePreguntes(@PathVariable Long diagnostic, @PathVariable Long situacio) {
+		preguntaService.deleteByDiagnosticSituacioSocial(diagnostic, situacio);
+	  }
+	 
+	
 	@RequestMapping(value = "/pregunta/economia/{diagnostic}", method = RequestMethod.PUT)
 	@ApiOperation(value = "Alta de factors económics", notes = "")
 	  public Pregunta putPreguntaEconomia(@PathVariable Long diagnostic,@RequestBody Set<FactorEconomic> factors) {

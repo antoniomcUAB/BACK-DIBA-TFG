@@ -43,6 +43,16 @@ public class ContextualitzacioServiceImpl implements ContextualitzacioService{
 		
 		return contextualitzacioRepository.findAll(predicate);
     }
+    
+    public void deleteByDiagnosticAmbit(Long diagnostic,Long ambit) {
+		
+		Predicate predicate = QContextualitzacio.contextualitzacio.factor.ambit.id.eq(ambit)
+						.and(QContextualitzacio.contextualitzacio.diagnostic.id.eq(diagnostic));
+		
+		Iterable<Contextualitzacio> llista =contextualitzacioRepository.findAll(predicate);
+		
+		contextualitzacioRepository.deleteAll(llista);
+    }
 	
 	public Contextualitzacio save (Contextualitzacio contextualitzacio, Long diagnostic, Long factor) {
 		Factor f = factorService.findById(factor);

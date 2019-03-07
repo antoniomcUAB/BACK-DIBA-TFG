@@ -1,7 +1,6 @@
 package es.in2.dsdibaapi.controller;
 
 import java.util.Date;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.slf4j.Logger;
@@ -11,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriUtils;
@@ -41,6 +40,8 @@ public class DiagnosticController
   
   @Autowired
 	private EstatService estatService;	
+  
+  
 
   @Autowired
   private VersioModelService versioModelService;
@@ -97,6 +98,7 @@ public class DiagnosticController
 	  diagnostic.setVersioModel(v);
 	  diagnostic.setEstat(estatService.findByDescripcio(Estat.BORRADOR.toString()));
 	  Expedient e = expedientService.findById(expedient);
+	  e.setEstat(estatService.findByDescripcio(ExpedientService.Estat.INCOMPLET.toString()));
 	  
 	  e.getDiagnostic().add(diagnostic);
 	  
@@ -133,4 +135,10 @@ public class DiagnosticController
 	  
     return getDiagnostic(this.diagnosticService.save(diagnostic).getId());
   }
+  
+  @RequestMapping(value = "/diagnostic/{diagnostic}/ambit/{ambit}", method = RequestMethod.DELETE)  
+	@ApiOperation(value = "Donar de baixa les preguntes i factors de context d'un ambit determinat", notes = "")
+	  public void deletePreguntes(@PathVariable Long diagnostic, @PathVariable Long ambit) {
+	  		diagnosticService.deletePreguntasByAmbit(diagnostic,ambit);
+	  }
 }

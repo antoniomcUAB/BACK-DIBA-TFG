@@ -44,7 +44,7 @@ public @Data class Entorn implements Serializable {
 	
 	@ManyToOne
     @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "ENTORN_AMBIT_FK"))
-	@JsonIgnore
+	@JsonIgnore	
     private Ambit ambit;
 	
 	@OneToMany (mappedBy = "entorn")

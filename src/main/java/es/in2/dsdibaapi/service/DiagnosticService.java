@@ -11,11 +11,11 @@ public interface DiagnosticService {
 	    VALIDAT 
 	}
 	
+	public void deletePreguntasByAmbit (Long diagnostic, Long ambit);
+	
 	public Diagnostic findById(Long id);	
 	
 	public Iterable<Diagnostic> findByExpedient(String expedient);
-	
-	public Diagnostic save(Diagnostic expedient, Long versio);
 	
 	public Diagnostic save(Diagnostic expedient);
 	

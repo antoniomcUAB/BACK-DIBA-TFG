@@ -33,7 +33,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public @Data class Professional implements Serializable {
+public @Data class Professional implements Serializable  {
+//implements Serializable, UserDetails  {
 
 	private static final long serialVersionUID = 1L;
 
@@ -42,7 +43,34 @@ public @Data class Professional implements Serializable {
 	private String nom;
 	private String cognom1;
 	private String cognom2;
-		
+	/*private String password;
+	private String username;
+	
+	
+	@Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.rol.stream().map(x-> {return new SimpleGrantedAuthority (x.getDescripcio());}).collect(Collectors.toList());
+    }
+	
+	 @Override
+	    public boolean isAccountNonExpired() {
+	        return true;
+	    }
+	    @Override
+	    public boolean isAccountNonLocked() {
+	        return true;
+	    }
+	    @Override
+	    public boolean isCredentialsNonExpired() {
+	        return true;
+	    }
+	    @Override
+	    public boolean isEnabled() {
+	        return true;
+	    }
+	
+	
+	*/
 	
 	@ManyToMany (fetch = FetchType.EAGER)
   	 @JoinTable(
@@ -61,5 +89,6 @@ public @Data class Professional implements Serializable {
 	@JsonIgnore
     private List<Expedient> expedient;
 
+	
 	
 }

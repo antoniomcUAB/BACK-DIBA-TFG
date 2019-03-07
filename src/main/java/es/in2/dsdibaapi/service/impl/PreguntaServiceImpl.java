@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.querydsl.core.types.Predicate;
 
+import es.in2.dsdibaapi.model.Ambit;
 import es.in2.dsdibaapi.model.Diagnostic;
 import es.in2.dsdibaapi.model.Entorn;
 import es.in2.dsdibaapi.model.FactorEconomic;
@@ -15,6 +16,7 @@ import es.in2.dsdibaapi.model.QPregunta;
 import es.in2.dsdibaapi.model.SituacioSocial;
 import es.in2.dsdibaapi.repository.FactorEconomicRepository;
 import es.in2.dsdibaapi.repository.PreguntaRepository;
+import es.in2.dsdibaapi.service.AmbitService;
 import es.in2.dsdibaapi.service.DiagnosticService;
 import es.in2.dsdibaapi.service.EntornService;
 import es.in2.dsdibaapi.service.FactorEconomicService;
@@ -41,6 +43,9 @@ public class PreguntaServiceImpl implements PreguntaService{
 	
 	@Autowired
 	private GravetatService gravetatService;
+	
+	@Autowired
+	private AmbitService ambitService;
 	
 	@Autowired
 	private FrequenciaService frequenciaService;
@@ -86,6 +91,30 @@ public class PreguntaServiceImpl implements PreguntaService{
 		return preguntaRepository.findAll(predicate);
     }
     
+    public void deleteByDiagnosticAmbit(Long diagnostic,Long ambit) {
+		
+    	Predicate predicate =null;    	
+    	    	
+		predicate = QPregunta.pregunta.diagnostic.id.eq(diagnostic)
+				.and(QPregunta.pregunta.situacioSocial.entorn.ambit.id.eq(ambit));
+		
+		Iterable<Pregunta> llista = preguntaRepository.findAll(predicate);
+		
+		preguntaRepository.deleteAll(llista);
+    }
+    
+    public void deleteByDiagnosticSituacioSocial(Long diagnostic,Long sotiacioSocial) {
+		
+    	Predicate predicate =null;    	
+    	
+		predicate = QPregunta.pregunta.diagnostic.id.eq(diagnostic)
+				.and(QPregunta.pregunta.situacioSocial.id.eq(sotiacioSocial));
+		
+		Iterable<Pregunta> llista = preguntaRepository.findAll(predicate);
+		
+		preguntaRepository.deleteAll(llista);
+    }
+    
     
     
     public Pregunta findByDiagnosticSituacioSocial(Long diagnostic,Long situacioSocial) {
@@ -109,7 +138,7 @@ public class PreguntaServiceImpl implements PreguntaService{
 		Diagnostic diag = diagnosticService.findById(diagnostic);
 				
 		pregunta.setDiagnostic(diag);
-	//	pregunta.setEntorn(pregunta.getSituacioSocial().getEntorn());
+	
 		
 		if (diag.getVersioModel().getPreguntaEconomica().equals(pregunta.getSituacioSocial().getId())) {
 			avaluacioEconomica (pregunta);

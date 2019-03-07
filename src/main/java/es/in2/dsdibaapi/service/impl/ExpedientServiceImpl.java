@@ -43,7 +43,7 @@ public class ExpedientServiceImpl implements ExpedientService {
     }
 	
 	public List<Expedient> findAll() {
-		return expedientRepository.findAll();
+		return expedientRepository.findAll(Sort.by(Sort.Direction.DESC, "dataCreacio"));
     }
 	
 	public Expedient save(Expedient expedient) {
@@ -74,7 +74,7 @@ public class ExpedientServiceImpl implements ExpedientService {
 		Predicate predicate = QExpedient.expedient.professional.municipi.id.eq(municipi);
 		
 		return expedientRepository.findAll (predicate,
-				PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, "codi", "dataCreacio"))).getContent();
+				PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "dataCreacio"))).getContent();
 	
     }
 	
@@ -82,7 +82,7 @@ public class ExpedientServiceImpl implements ExpedientService {
 	public Iterable<Expedient> findByMunicipi(Long municipi) {
 		Predicate predicate = QExpedient.expedient.professional.municipi.id.eq(municipi);
 		
-		return expedientRepository.findAll (predicate);
+		return expedientRepository.findAll (predicate, Sort.by(Sort.Direction.DESC, "dataCreacio"));
 	
     }
 	

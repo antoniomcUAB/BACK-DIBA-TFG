@@ -4,7 +4,7 @@ import es.in2.dsdibaapi.model.Contextualitzacio;
 
 public interface ContextualitzacioService {
 	
-	
+	public void deleteByDiagnosticAmbit(Long diagnostic,Long ambit);
 	
     public Contextualitzacio findById(Long id) ;
 

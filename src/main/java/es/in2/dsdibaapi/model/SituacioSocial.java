@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -37,7 +38,7 @@ public @Data class SituacioSocial implements Serializable {
 	private Double altRisc;
 	
 	
-	@ManyToOne
+	@ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name="entorn",foreignKey= @ForeignKey(name = "SITUACIO_SOCIAL_ENTORN_FK"))
 	@JsonIgnore
     private Entorn entorn;
