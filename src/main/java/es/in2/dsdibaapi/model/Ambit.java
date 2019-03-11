@@ -60,7 +60,7 @@ public @Data class Ambit implements Serializable {
     private List<Factor> factorGravetat;
 	
 	@ManyToOne
-    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "AMBIT_VERSIO_MODEL_FK"))
+    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "AMBIT_VERSIO_MODEL_FK"), updatable=false)
 	@JsonIgnore
     private VersioModel versioModel;
 	

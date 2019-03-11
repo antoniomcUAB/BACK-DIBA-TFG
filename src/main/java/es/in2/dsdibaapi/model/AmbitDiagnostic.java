@@ -37,13 +37,13 @@ public @Data class AmbitDiagnostic implements Serializable {
 	private String observacions;
 		
 	@ManyToOne
-    @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "AMBIT_DIAGNOSTIC_AMBIT_FK"))	
+    @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "AMBIT_DIAGNOSTIC_AMBIT_FK"), updatable=false)	
 	@JsonIgnoreProperties(value = { "vulnerabilitat", "risc", "valVulnerabilitat", "valRisc", "valAltrisc", "entorns", "factors_context"})
     private Ambit ambit;
 	
 	
 	@ManyToOne
-    @JoinColumn(name="diagnostic",foreignKey= @ForeignKey(name = "AMBIT_DIAGNOSTIC_DIAGNOSTIC_FK"))
+    @JoinColumn(name="diagnostic",foreignKey= @ForeignKey(name = "AMBIT_DIAGNOSTIC_DIAGNOSTIC_FK"), updatable=false)
 	@JsonIgnore
     private Diagnostic diagnostic;
 	

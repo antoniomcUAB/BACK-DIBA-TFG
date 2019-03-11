@@ -86,7 +86,7 @@ public @Data class Diagnostic implements Serializable {
     private Valoracio valoracio;
 	
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade= {CascadeType.MERGE, CascadeType.PERSIST},orphanRemoval = true)
 	@JoinColumn(name="diagnostic")		
     private List<AmbitDiagnostic> ambit;
 	

@@ -16,5 +16,5 @@ build-artifacts:des:
        
   artifacts:
     paths:
-        - /builds/gitlab/in2/ds-diba-backend/target/ds-diba-api-0.0.1-SNAPSHOT.war
+        - /builds/gitlab/in2/ds-diba-api/target/ds-diba-api-0.0.1-SNAPSHOT.war
 
