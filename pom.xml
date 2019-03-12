@@ -21,12 +21,7 @@
       <id>spring</id>
       <name>spring</name>
       <url>http://repo.spring.io/plugins-release</url>
-    </repository>
-    <repository>
-      <id>maven_central</id>
-      <name>maven central</name>
-      <url>https://mvnrepository.com/repos/central</url>
-    </repository>
+    </repository>    
   </repositories>
   
   <build>
