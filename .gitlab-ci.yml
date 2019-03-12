@@ -37,7 +37,7 @@ build-docker-image:
   tags:
   - docker
   dependencies:
-  - build-artifacts
+  - build
   before_script:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
   script:
