@@ -426,7 +426,7 @@ public class DsDibaApiApplicationTests2 {
 		//diagnosticService.avaluar(63028l);
 	}
 	
-	
+	/*
 	@Test
 	public void newProfessional () {
 		
@@ -446,6 +446,6 @@ public class DsDibaApiApplicationTests2 {
 									.rol(rols)
 									.build()); 
 	}
-	
+	*/
 }
 
