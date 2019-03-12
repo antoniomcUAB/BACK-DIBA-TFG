@@ -73,11 +73,14 @@
 		            </archive>
 		         </configuration>
 		      </plugin>
+		      
        <plugin>
             <groupId>external.atlassian.jgitflow</groupId>
             <artifactId>jgitflow-maven-plugin</artifactId>
             <version>1.0-m5.1</version>
             <configuration>
+            	<pushReleases>true</pushReleases>
+                    <allowUntracked>true</allowUntracked>
             	<username>danielfi</username>
       			<password>in2pass.2019</password>
                 <flowInitContext>
