@@ -18,7 +18,7 @@ build:
   stage: build
   when: manual
   script:
-    - mvn clean package -DskipTests -Pdes
+    - mvn clean package -DskipTests -Pdes jgitflow:release-start
     
 
 
