@@ -26,6 +26,7 @@ build:
 ## DEV
 deploy:
   stage: deploy
+  when: manual
   image: kinogmt/centos-ssh
   environment:
     name: develop
