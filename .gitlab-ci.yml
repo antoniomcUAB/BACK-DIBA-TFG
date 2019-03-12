@@ -2,10 +2,12 @@ image: maven:latest
 
 stages:
   - build
+  - deploy
 
 variables:
   MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  
 
 cache:
   paths:
@@ -16,4 +18,34 @@ build:
   stage: build
   when: manual
   script:
-    - mvn clean package
+    - mvn clean package -DskipTests -Pdes jgitflow:release-start
+    
+
+
+    
+## DEV
+deploy:
+  stage: deploy
+  when: manual
+  image: kinogmt/centos-ssh
+  environment:
+    name: develop
+    url: http://dsdiba.demo.in2.es
+  only:
+  - master
+  variables:
+    DEPLOYMENT_KEY: $DEPLOYMENT_DEV_KEY
+    DEPLOYMENT_SERVER: $DEPLOYMENT_DEV_SERVER
+    DEPLOYMENT_USER: $DEPLOYMENT_DEV_USER
+    DEPLOYMENT_PATH: $DEPLOYMENT_DEV_PATH
+  dependencies:
+  - build
+  before_script:
+  - mkdir -p ~/.ssh
+  - echo "$DEPLOYMENT_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - eval "$(ssh-agent -s)"
+  - ssh-add ~/.ssh/id_rsa
+  - ssh-keyscan -H $DEPLOYMENT_SERVER >> ~/.ssh/known_hosts
+  script:
+  - scp -r ./target/*.war ${DEPLOYMENT_USER}@${DEPLOYMENT_SERVER}:${DEPLOYMENT_PATH}/

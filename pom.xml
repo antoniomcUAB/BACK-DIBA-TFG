@@ -3,7 +3,7 @@
   <groupId>es.in2</groupId>
   <artifactId>ds-diba-api</artifactId>
   
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -73,11 +73,14 @@
 		            </archive>
 		         </configuration>
 		      </plugin>
+		      
        <plugin>
             <groupId>external.atlassian.jgitflow</groupId>
             <artifactId>jgitflow-maven-plugin</artifactId>
             <version>1.0-m5.1</version>
             <configuration>
+            	<pushReleases>true</pushReleases>
+                    <allowUntracked>true</allowUntracked>
             	<username>danielfi</username>
       			<password>in2pass.2019</password>
                 <flowInitContext>
