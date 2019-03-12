@@ -2,16 +2,12 @@ image: maven:latest
 
 stages:
   - build
-  - build-docker
-  - release
   - deploy
 
 variables:
   MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
-  CONTAINER_TEST_IMAGE: $CI_REGISTRY_IMAGE:$CI_BUILD_REF_NAME
-  CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
-
+  
 
 cache:
   paths:
@@ -24,62 +20,25 @@ build:
   script:
     - mvn clean package -DskipTests -Pdes
     
-build-docker-image:
-  stage: build-docker
-  when: manual
-  image: docker:git
-  only:
-  - tags
-  - master
-  - develop
-  services:
-  - docker:dind
-  tags:
-  - docker
-  dependencies:
-  - build
-  before_script:
-  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-  script:
-  - docker build -t $CONTAINER_TEST_IMAGE .
-  - docker push $CONTAINER_TEST_IMAGE
 
-release-image:
-  stage: release
-  when: manual
-  image: docker:git
-  only:
-  - tags
-  - master
-  services:
-  - docker:dind
-  tags:
-  - docker
-  dependencies:
-  before_script:
-  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-  script:
-  - docker pull $CONTAINER_TEST_IMAGE
-  - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
-  - docker push $CONTAINER_RELEASE_IMAGE
 
     
 ## DEV
 deploy:
   stage: deploy
-  when: manual
   image: kinogmt/centos-ssh
   environment:
     name: develop
     url: http://dsdiba.demo.in2.es
   only:
-  - develop
+  - master
   variables:
     DEPLOYMENT_KEY: $DEPLOYMENT_DEV_KEY
     DEPLOYMENT_SERVER: $DEPLOYMENT_DEV_SERVER
     DEPLOYMENT_USER: $DEPLOYMENT_DEV_USER
     DEPLOYMENT_PATH: $DEPLOYMENT_DEV_PATH
   dependencies:
+  - build
   before_script:
   - mkdir -p ~/.ssh
   - echo "$DEPLOYMENT_KEY" | tr -d '\r' > ~/.ssh/id_rsa
