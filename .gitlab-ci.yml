@@ -16,4 +16,4 @@ build:
   stage: build
   when: manual
   script:
-    - mvn $MAVEN_CLI_OPTS clean package
+    - mvn clean package
