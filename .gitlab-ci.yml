@@ -24,6 +24,7 @@ build:
     
 build-docker-image:
   stage: build-docker
+  when: manual
   image: docker:git
   only:
   - tags
@@ -43,6 +44,7 @@ build-docker-image:
 
 release-image:
   stage: release
+  when: manual
   image: docker:git
   only:
   - tags
