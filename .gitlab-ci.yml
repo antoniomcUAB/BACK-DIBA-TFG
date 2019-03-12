@@ -2,6 +2,8 @@ image: maven:latest
 
 stages:
   - build
+  - build-docker
+  - release
   - deploy
 
 variables:
