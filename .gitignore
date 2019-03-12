@@ -26,3 +26,5 @@
 /.nb-gradle/
 /target/
 /target2/
+/bin/
+/.gitlab-ci.yml
