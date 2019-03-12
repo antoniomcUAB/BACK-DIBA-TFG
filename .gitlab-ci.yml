@@ -2,6 +2,7 @@ image: maven:latest
 
 stages:
   - build
+  - deploy
 
 variables:
   MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
@@ -16,4 +17,31 @@ build:
   stage: build
   when: manual
   script:
-    - mvn clean package -DskipTests
+    - mvn clean package -DskipTests -Pdes
+    
+## DEV
+deploy:dev:
+  stage: deploy
+  image: kinogmt/centos-ssh
+  environment:
+    name: develop
+    url: http://dsdiba.demo.in2.es
+  only:
+  - develop
+  variables:
+    DEPLOYMENT_KEY: $DEPLOYMENT_DEV_KEY
+    DEPLOYMENT_SERVER: $DEPLOYMENT_DEV_SERVER
+    DEPLOYMENT_USER: $DEPLOYMENT_DEV_USER
+    DEPLOYMENT_PATH: $DEPLOYMENT_DEV_PATH
+  dependencies:
+  before_script:
+  - mkdir -p ~/.ssh
+  - echo "$DEPLOYMENT_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - eval "$(ssh-agent -s)"
+  - ssh-add ~/.ssh/id_rsa
+  - ssh-keyscan -H $DEPLOYMENT_SERVER >> ~/.ssh/known_hosts
+  script:
+  - scp -r ./target/* ${DEPLOYMENT_USER}@${DEPLOYMENT_SERVER}:${DEPLOYMENT_PATH}/
+  
+
