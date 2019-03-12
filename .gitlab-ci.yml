@@ -22,6 +22,7 @@ build:
 ## DEV
 deploy:
   stage: deploy
+  when: manual
   image: kinogmt/centos-ssh
   environment:
     name: develop
@@ -42,6 +43,6 @@ deploy:
   - ssh-add ~/.ssh/id_rsa
   - ssh-keyscan -H $DEPLOYMENT_SERVER >> ~/.ssh/known_hosts
   script:
-  - scp -r ./target/* ${DEPLOYMENT_USER}@${DEPLOYMENT_SERVER}:${DEPLOYMENT_PATH}/
+  - scp -r ./target/*.war ${DEPLOYMENT_USER}@${DEPLOYMENT_SERVER}:${DEPLOYMENT_PATH}/
   
 
