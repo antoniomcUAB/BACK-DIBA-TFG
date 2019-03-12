@@ -16,4 +16,4 @@ build:
   stage: build
   when: manual
   script:
-    - mvn clean package
+    - mvn clean package -DskipTests
