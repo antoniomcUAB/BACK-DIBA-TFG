@@ -83,6 +83,7 @@
                     <allowUntracked>true</allowUntracked>
             	<username>danielfi</username>
       			<password>in2pass.2019</password>
+      			<noDeploy>false</noDeploy>
                 <flowInitContext>
 		         <masterBranchName>master</masterBranchName>
 		         <developBranchName>develop</developBranchName>
