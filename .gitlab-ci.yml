@@ -20,14 +20,14 @@ build:
     - mvn clean package -DskipTests -Pdes
     
 ## DEV
-deploy:dev:
+deploy:
   stage: deploy
   image: kinogmt/centos-ssh
   environment:
     name: develop
     url: http://dsdiba.demo.in2.es
   only:
-  - develop
+  - master
   variables:
     DEPLOYMENT_KEY: $DEPLOYMENT_DEV_KEY
     DEPLOYMENT_SERVER: $DEPLOYMENT_DEV_SERVER
