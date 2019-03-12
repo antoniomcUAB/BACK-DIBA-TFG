@@ -15,6 +15,15 @@
   	<maven.compiler.source>1.8</maven.compiler.source>
 	    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
+  
+  <repositories>
+    <repository>
+      <id>spring</id>
+      <name>spring</name>
+      <url>http://repo.spring.io/plugins-release</url>
+    </repository>
+  </repositories>
+  
   <build>
   	<directory>target</directory>
   	<resources>
@@ -160,7 +169,7 @@
   	<dependency>
   		<groupId>com.oracle</groupId>
   		<artifactId>ojdbc6</artifactId>
-  		<version>11.2.0.3.0</version>
+  		<version>11.2.0.3</version>
   		<scope>provided</scope>
   	</dependency>
   	<dependency>
