@@ -17,6 +17,8 @@ cache:
 build:
   stage: build
   when: manual
+  only:
+  - master
   script:
     - mvn clean package -DskipTests -Pdes jgitflow:release-start
     
