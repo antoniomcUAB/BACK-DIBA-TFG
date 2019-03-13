@@ -50,4 +50,4 @@ deploy:
   - ssh-add ~/.ssh/id_rsa
   - ssh-keyscan -H $DEPLOYMENT_SERVER >> ~/.ssh/known_hosts
   script:
-  - ll
+  - ls
