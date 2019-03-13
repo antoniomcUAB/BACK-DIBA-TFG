@@ -20,7 +20,7 @@ build:
   only:
   - master
   script:
-    - mvn clean package -DskipTests -Pdes jgitflow:release-start
+    - mvn clean package -DskipTests -Pdes 
     
 
 
