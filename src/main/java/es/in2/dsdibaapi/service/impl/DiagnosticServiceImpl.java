@@ -144,7 +144,6 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 			
 		}
 		else {
-			//valoracio = valoracioService.save(Valoracio.builder().build());
 			valoracio = Valoracio.builder().build();
 			valoracio.setAvaluacio(new ArrayList<Avaluacio> ());
 		}
@@ -160,7 +159,7 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		
 		
 		for (AmbitDiagnostic a:diag.getAmbit()) {
-			//ambit = ambitService.findById(a.getAmbit().getId());
+			
 			avaluacio = null;
 			
 			if (diag.getValoracio() != null) {
