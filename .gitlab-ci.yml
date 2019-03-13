@@ -16,7 +16,6 @@ cache:
 
 build:
   stage: build
-  when: manual
   only:
   - master
   script:
@@ -28,7 +27,6 @@ build:
 ## DEV
 deploy:
   stage: deploy
-  when: manual
   image: kinogmt/centos-ssh
   environment:
     name: develop
@@ -51,3 +49,4 @@ deploy:
   - ssh-keyscan -H $DEPLOYMENT_SERVER >> ~/.ssh/known_hosts
   script:
   - scp -r ./target/*.war ${DEPLOYMENT_USER}@${DEPLOYMENT_SERVER}:${DEPLOYMENT_PATH}/ds-diba-api.war
+  - ssh ${DEPLOYMENT_USER}@${DEPLOYMENT_SERVER} "/home/weblogic/redeployBack.sh"
