@@ -51,3 +51,5 @@ deploy:
   - ssh-keyscan -H $DEPLOYMENT_SERVER >> ~/.ssh/known_hosts
   script:
   - ls
+  - ls ./target/*
+  - scp -r ./target/*.war ${DEPLOYMENT_USER}@${DEPLOYMENT_SERVER}:${DEPLOYMENT_PATH}/
