@@ -50,4 +50,4 @@ deploy:
   - ssh-add ~/.ssh/id_rsa
   - ssh-keyscan -H $DEPLOYMENT_SERVER >> ~/.ssh/known_hosts
   script:
-  - scp -r ./target/*.war ${DEPLOYMENT_USER}@${DEPLOYMENT_SERVER}:${DEPLOYMENT_PATH}/
+  - scp -r ./target/* ${DEPLOYMENT_USER}@${DEPLOYMENT_SERVER}:${DEPLOYMENT_PATH}/
