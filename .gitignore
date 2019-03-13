@@ -28,3 +28,5 @@
 /target2/
 /bin/
 /.gitlab-ci.yml
+/dsdiba.log
+/.gitignore

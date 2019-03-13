@@ -91,6 +91,19 @@
 <colAssociation fkAssociation="7566CEC6-2B21-FEA4-FBAF-D99A42D565EB" referredColumn="3244C199-01F2-74C2-0A35-E2EDD2FC7059"/>
 </associations>
 </Column>
+<Column name="justificacio" id="8A21C654-26BD-B158-E774-2CDAFF8825E9">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-03-13 14:00:48 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="C59F5977-B4B7-45D2-C868-25398A0B65D1" name="AVALUACIO_PK">
