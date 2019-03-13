@@ -127,56 +127,56 @@ public class DsDibaApiApplicationTests2 {
 	@Autowired
 	private TipusPersonaService tipusPersonaService;
 	
-	Long gravetatBaixa=70593l;
-	Long gravetatModerada=70594l;
-	Long gravetaAlta =70595l;
-	Long gravetaProteccio=70596l;
-	Long gravetaRisc=70597l;
+	Long gravetatBaixa=72059l;
+	Long gravetatModerada=72060l;
+	Long gravetaAlta =72061l;
+	Long gravetaProteccio=72062l;
+	Long gravetaRisc=72063l;
 	
-	Long riscSenseValoracio =70589l;
-	Long riscVulnerabilitat =70590l;
-	Long riscRisc=70591l;
-	Long riscAltRisc=70592l;
+	Long riscSenseValoracio =72055l;
+	Long riscVulnerabilitat =72056l;
+	Long riscRisc=72057l;
+	Long riscAltRisc=72058l;
 	
-	Long freqOcasional =  70584l;
-	Long freqFrequent = 70585l;
-	Long freqContinua = 70586l;
-	Long freqPuntual = 70587l;
-	Long freqSense = 70588l;
+	Long freqOcasional =  72050l;
+	Long freqFrequent = 72051l;
+	Long freqContinua = 72052l;
+	Long freqPuntual = 72053l;
+	Long freqSense = 72054l;
 	
-	Long ssA1 = 70924l;
-	Long ssA2 = 70934l;
+	Long ssA1 = 72390l;
+	Long ssA2 = 72400l;
 	
-	Long ssH1 = 70946l;
-	Long ssH2 = 70953l;
+	Long ssH1 = 72412l;
+	Long ssH2 = 72419l;
 	
-	Long ssES1 = 71032l;
+	Long ssES1 = 72498l;
 	
-	Long entornAutonomia = 70923l;
-	Long entornHabitage = 70945l;
-	Long entornEconomic = 70991l;
-	Long entornEscolar = 71031l;
+	Long entornAutonomia = 72389l;
+	Long entornHabitage = 72411l;
+	Long entornEconomic = 72457l;
+	Long entornEscolar = 72497l;
 	
-	Long rolTecnic = 70603l;
+	Long rolTecnic = 72069l;
 		
 	
-	Long versioId=70921l; //v2
+	Long versioId=72387l; //v2
 	
 	
-	Long municipiId = 70604l;
+	Long municipiId = 72070l;
 	
-	Long factor1 = 71168l;
-	Long factor2 = 71169l;
+	Long factor1 = 72333l;
+	Long factor2 = 72334l;
 	
-	Long factor3 = 71179l;
-	Long factor4 = 71180l;
-	Long factor5 = 71181l;
-	Long factor6 = 71182l;
+	Long factor3 = 72344l;
+	Long factor4 = 72345l;
+	Long factor5 = 72346l;
+	Long factor6 = 72347l;
 	
-	Long factorEconomic1 = 71202l;
-	Long factorEconomic2 = 71203l;
+	Long factorEconomic1 = 72367l;
+	Long factorEconomic2 = 72368l;
 	
-	Long pareMare = 70614l;
+	Long pareMare = 72080l;
 	
 	Diagnostic diag;
 	
@@ -426,7 +426,7 @@ public class DsDibaApiApplicationTests2 {
 		//diagnosticService.avaluar(63028l);
 	}
 	
-	/*
+	
 	@Test
 	public void newProfessional () {
 		
@@ -438,14 +438,12 @@ public class DsDibaApiApplicationTests2 {
 		
 		Professional professional = professionalService.save(
 				Professional.builder().nom("ProfessionalUser")
-									.username("ProfessionalUser")
 									.cognom1("APE1")
 									.cognom2("APE2")
-									.password("123456")
 									.municipi(municipi)
 									.rol(rols)
 									.build()); 
 	}
-	*/
+	
 }
 

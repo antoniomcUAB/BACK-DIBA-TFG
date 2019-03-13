@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -66,6 +67,7 @@ public @Data class Expedient implements Serializable {
 	@JsonProperty("diagnostic")*/
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="expedient")
+	@OrderBy(value = "data DESC")
     private List<Diagnostic> diagnostic;
 	
 }

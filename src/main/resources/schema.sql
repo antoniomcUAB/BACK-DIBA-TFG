@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 4.1.0.881
---   en:        2019-02-28 14:55:55 CET
+--   en:        2019-03-13 15:01:10 CET
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -87,7 +87,8 @@ CREATE TABLE AVALUACIO
     risc_professional NUMBER ,
     risc              NUMBER ,
     valoracio         NUMBER ,
-    ambit             NUMBER
+    ambit             NUMBER ,
+    justificacio      VARCHAR2 (250)
   ) ;
 ALTER TABLE AVALUACIO ADD CONSTRAINT AVALUACIO_PK PRIMARY KEY ( id ) ;
 
@@ -121,7 +122,7 @@ CREATE TABLE DIAGNOSTIC
     valoracio    NUMBER ,
     expedient    NUMBER ,
     estat        NUMBER ,
-    professional NUMBER NOT NULL
+    professional NUMBER
   ) ;
 ALTER TABLE DIAGNOSTIC ADD CONSTRAINT DIAGNOSTIC_PK PRIMARY KEY ( id ) ;
 
@@ -232,7 +233,7 @@ CREATE TABLE PREGUNTA
     entorn          NUMBER ,
     unitat_familiar CHAR (1) ,
     factor          NUMBER ,
-    ambit           NUMBER NOT NULL
+    ambit           NUMBER
   ) ;
 ALTER TABLE PREGUNTA ADD CONSTRAINT DIAGNOSTICv1_PK PRIMARY KEY ( id ) ;
 
