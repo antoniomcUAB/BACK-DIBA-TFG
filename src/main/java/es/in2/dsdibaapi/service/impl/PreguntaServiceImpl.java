@@ -3,11 +3,11 @@ package es.in2.dsdibaapi.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.querydsl.core.types.Predicate;
 
-import es.in2.dsdibaapi.model.Ambit;
 import es.in2.dsdibaapi.model.Diagnostic;
 import es.in2.dsdibaapi.model.Entorn;
 import es.in2.dsdibaapi.model.FactorEconomic;
@@ -16,10 +16,8 @@ import es.in2.dsdibaapi.model.QPregunta;
 import es.in2.dsdibaapi.model.SituacioSocial;
 import es.in2.dsdibaapi.repository.FactorEconomicRepository;
 import es.in2.dsdibaapi.repository.PreguntaRepository;
-import es.in2.dsdibaapi.service.AmbitService;
 import es.in2.dsdibaapi.service.DiagnosticService;
 import es.in2.dsdibaapi.service.EntornService;
-import es.in2.dsdibaapi.service.FactorEconomicService;
 import es.in2.dsdibaapi.service.FrequenciaService;
 import es.in2.dsdibaapi.service.GravetatService;
 import es.in2.dsdibaapi.service.PreguntaService;
@@ -45,9 +43,6 @@ public class PreguntaServiceImpl implements PreguntaService{
 	private GravetatService gravetatService;
 	
 	@Autowired
-	private AmbitService ambitService;
-	
-	@Autowired
 	private FrequenciaService frequenciaService;
 	
 	@Autowired
@@ -55,9 +50,6 @@ public class PreguntaServiceImpl implements PreguntaService{
 	
 	@Autowired
 	private SituacioSocialService situacioSocialService;
-	
-	@Autowired
-	private FactorEconomicService factorEconomicService;
 	
 	@Autowired
 	FactorEconomicRepository factorRepository;
@@ -88,7 +80,7 @@ public class PreguntaServiceImpl implements PreguntaService{
     		predicate = QPregunta.pregunta.diagnostic.id.eq(diagnostic);
     	}
 		
-		return preguntaRepository.findAll(predicate);
+		return preguntaRepository.findAll(predicate, Sort.by(Sort.Direction.ASC, "id"));
     }
     
     public void deleteByDiagnosticAmbit(Long diagnostic,Long ambit) {
