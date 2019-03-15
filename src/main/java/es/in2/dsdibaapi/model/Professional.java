@@ -1,9 +1,11 @@
 package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -19,6 +21,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -33,8 +38,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public @Data class Professional implements Serializable  {
-//implements Serializable, UserDetails  {
+public @Data class Professional implements Serializable, UserDetails  {
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,7 +47,11 @@ public @Data class Professional implements Serializable  {
 	private String nom;
 	private String cognom1;
 	private String cognom2;
-	/*private String password;
+	
+	@JsonIgnore
+	private String password;
+	
+	@JsonIgnore
 	private String username;
 	
 	
@@ -70,7 +78,7 @@ public @Data class Professional implements Serializable  {
 	    }
 	
 	
-	*/
+	
 	
 	@ManyToMany (fetch = FetchType.EAGER)
   	 @JoinTable(

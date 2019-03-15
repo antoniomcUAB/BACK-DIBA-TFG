@@ -34,7 +34,11 @@ public class QProfessional extends EntityPathBase<Professional> {
 
     public final StringPath nom = createString("nom");
 
+    public final StringPath password = createString("password");
+
     public final SetPath<Rol, QRol> rol = this.<Rol, QRol>createSet("rol", Rol.class, QRol.class, PathInits.DIRECT2);
+
+    public final StringPath username = createString("username");
 
     public QProfessional(String variable) {
         this(Professional.class, forVariable(variable), INITS);
