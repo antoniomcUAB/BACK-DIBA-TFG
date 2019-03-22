@@ -28,6 +28,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @Api("Servei Diagnostic")
+//@CrossOrigin({"http://dsdiba.demo.in2.es", "http://localhost:8090", "http://localhost:7001"})
 public class DiagnosticController
   extends BaseController
 {

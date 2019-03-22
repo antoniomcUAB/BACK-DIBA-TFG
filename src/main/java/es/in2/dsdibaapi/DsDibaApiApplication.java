@@ -26,17 +26,20 @@ public class DsDibaApiApplication extends SpringBootServletInitializer implement
 		log.info("DsDibaApi - Welcome");
 		SpringApplication.run(DsDibaApiApplication.class, args);
 	}
-
+	
+	
 	@Override
 	   protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 	      return builder.sources(DsDibaApiApplication.class);
 	   }
 	
+	
 	 @Override
 	    public void addCorsMappings(CorsRegistry registry) {
-	        registry.addMapping("/**").allowedMethods("PUT", "DELETE", "GET");
+	        registry.addMapping("/**").allowedOrigins("http://dsdiba.demo.in2.es", "http://localhost:8090", "http://localhost:7001").allowedMethods("PUT", "DELETE", "GET");
 	    }
 	 
+	
 	 @Override
 	 public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
