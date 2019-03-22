@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -14,8 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import es.in2.dsdibaapi.service.impl.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
@@ -39,6 +38,10 @@ public class ApiSecurity  extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+	   web.ignoring().antMatchers(HttpMethod.OPTIONS);
+	}
 	
 	
 	@Override
@@ -48,10 +51,12 @@ public class ApiSecurity  extends WebSecurityConfigurerAdapter {
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.cors().and()
 			.csrf().disable()
-			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL, "/swagger-ui.html").permitAll()
+			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()			
+			.antMatchers(HttpMethod.OPTIONS, "**").permitAll()
 			.anyRequest().authenticated().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager(),jwtProperties))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager(),jwtProperties))
+				
 			 ;
 			 
 	}
