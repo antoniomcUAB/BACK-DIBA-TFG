@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -42,6 +43,7 @@ public class JWTAuthorizationFilter  extends BasicAuthenticationFilter {
 		try {
 		
 			String header = req.getHeader(jwtProperties.getHEADER_AUTHORIZATION_KEY());
+			
 			if (header == null || !header.startsWith(jwtProperties.getTOKEN_BEARER_PREFIX())) {
 				ObjectMapper objectMapper = new ObjectMapper();
 				
