@@ -47,8 +47,7 @@ public @Data class Avaluacio implements Serializable {
     private Valoracio valoracio;
 	
 	@ManyToOne
-	@JoinColumn(name="risc",foreignKey= @ForeignKey(name = "AVALUACIO_RISC_FK"))
-	@JsonIgnoreProperties(value = { "value"})
+	@JoinColumn(name="risc",foreignKey= @ForeignKey(name = "AVALUACIO_RISC_FK"))	
     private Risc risc;
 	
 	@ManyToOne

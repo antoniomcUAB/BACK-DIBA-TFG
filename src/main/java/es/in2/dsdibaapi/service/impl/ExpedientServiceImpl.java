@@ -1,16 +1,21 @@
 package es.in2.dsdibaapi.service.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.dsl.BooleanExpression;
 
 import es.in2.dsdibaapi.model.Ambit;
 import es.in2.dsdibaapi.model.AmbitDiagnostic;
@@ -42,10 +47,10 @@ public class ExpedientServiceImpl implements ExpedientService {
 		return expedientRepository.findById(id).get();
     }
 	
-	public List<Expedient> findAll() {
+/*	public List<Expedient> findAll() {
 		return expedientRepository.findAll(Sort.by(Sort.Direction.DESC, "dataCreacio"));
     }
-	
+	*/
 	public Expedient save(Expedient expedient) {
 		
 		if (expedient.getDiagnostic() != null) {
@@ -70,11 +75,72 @@ public class ExpedientServiceImpl implements ExpedientService {
     }
 	
 	@Transactional
-	public List<Expedient> findByMunicipi(Integer page, Integer size,Long municipi) {
-		Predicate predicate = QExpedient.expedient.professional.municipi.id.eq(municipi);
+	public Page<Expedient> findByMunicipi(Integer page, Integer size,Long municipi, String codi, String professional, String estat, String sort, String dataCreacio, String dataValidacio) {
+				
+		BooleanExpression where = QExpedient.expedient.professional.municipi.id.eq(municipi);
 		
-		return expedientRepository.findAll (predicate,
-				PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "dataCreacio"))).getContent();
+		Sort s = Sort.by(Sort.Direction.DESC, "dataCreacio");
+		
+		Direction d = Sort.Direction.DESC;
+		
+		if (codi != null && !codi.isEmpty()) {
+			where = where.and(QExpedient.expedient.codi.containsIgnoreCase(codi));
+		}
+		
+		if (professional != null && !professional.isEmpty()) {
+			where = where.and(QExpedient.expedient.professional.nomComplet.containsIgnoreCase(professional.trim().toLowerCase()));
+		}
+		
+		if (estat != null && !estat.isEmpty()) {
+			where = where.and(QExpedient.expedient.estat.descripcio.equalsIgnoreCase(estat));
+		}
+		
+		if (dataCreacio != null && !dataCreacio.isEmpty()) {
+			Date dateIni,dateFin;
+			try {
+				dateIni = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(dataCreacio+" 00:00");
+				dateFin = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(dataCreacio+" 23:59");
+				where = where.and(QExpedient.expedient.dataCreacio.between(dateIni, dateFin));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		if (dataValidacio != null && !dataValidacio.isEmpty()) {
+			Date dateIni,dateFin;
+			try {
+				dateIni = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(dataValidacio+" 00:00");
+				dateFin = new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(dataValidacio+" 23:59");
+				where = where.and(QExpedient.expedient.dataValidacio.between(dateIni, dateFin));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		if (sort != null && !sort.isEmpty() && sort.contains(",")) {
+		
+			if (sort.split(",")[1].equalsIgnoreCase("asc")) {
+				d = Sort.Direction.ASC;
+			} 
+			
+			if (sort.equalsIgnoreCase("professional" )) {
+				s = Sort.by(d, "professional.nom", "professional.cognom1", "professional.cognom2");
+			}
+			else if (sort.equalsIgnoreCase("estat" )) {
+				s = Sort.by(d, "estat.descripcio");
+			}
+			else {
+				s = Sort.by(d, sort.split(",")[0]);
+			}
+			
+		} 
+		
+		return expedientRepository.findAll (where,
+				PageRequest.of(page, size, s));
 	
     }
 	

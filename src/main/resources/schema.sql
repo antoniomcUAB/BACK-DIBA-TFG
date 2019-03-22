@@ -1,5 +1,5 @@
 -- Generado por Oracle SQL Developer Data Modeler 4.1.0.881
---   en:        2019-03-13 15:01:10 CET
+--   en:        2019-03-18 14:31:27 CET
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
@@ -239,11 +239,12 @@ ALTER TABLE PREGUNTA ADD CONSTRAINT DIAGNOSTICv1_PK PRIMARY KEY ( id ) ;
 
 CREATE TABLE PROFESSIONAL
   (
-    id       NUMBER NOT NULL ,
-    nom      VARCHAR2 (100) ,
-    cognom1  VARCHAR2 (100) ,
-    cognom2  VARCHAR2 (100) ,
-    municipi NUMBER NOT NULL
+    id          NUMBER NOT NULL ,
+    nom         VARCHAR2 (100) ,
+    cognom1     VARCHAR2 (100) ,
+    cognom2     VARCHAR2 (100) ,
+    municipi    NUMBER NOT NULL ,
+    nom_complet VARCHAR2 (100)
   ) ;
 ALTER TABLE PROFESSIONAL ADD CONSTRAINT PROFESSIONAL_PK PRIMARY KEY ( id ) ;
 

@@ -7,6 +7,8 @@ import es.in2.dsdibaapi.model.Professional;
 public interface ProfessionalService {
 	
     public Professional findById(Long id) ;
+    
+    public Professional findByUsername(String username) ;
 
 	public Professional save(Professional v);
 	

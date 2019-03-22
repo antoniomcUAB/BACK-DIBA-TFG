@@ -13,7 +13,7 @@ import es.in2.dsdibaapi.model.Rol;
 import es.in2.dsdibaapi.repository.ProfessionalRepository;
 
 @Component
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsService   implements UserDetailsService {
 	
 	@Autowired
 	private ProfessionalRepository professionalRepository;
@@ -22,17 +22,16 @@ public class CustomUserDetailsService implements UserDetailsService {
 	        this.professionalRepository = professionalRepository;
 	    }
 	 
-	  /*  @Override
-	    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-	        return this.professionalRepository.findByUsername(username)
-	            .orElseThrow(() -> new UsernameNotFoundException("Username: " + username + " not found"));
-	    }*/
+	  //  @Override
+	  //  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	   //     return this.professionalRepository.findByUsername(username)
+	    //        .orElseThrow(() -> new UsernameNotFoundException("Username: " + username + " not found"));
+	   // }
 	 
 	 @Override
 	  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-	    /*Here we are using dummy data, you need to load user data from
-	     database or other third party application*/
+	   
 		 Professional user = this.professionalRepository.findByUsername(username)
 		            .orElseThrow(() -> new UsernameNotFoundException("Username: " + username + " not found"));
 

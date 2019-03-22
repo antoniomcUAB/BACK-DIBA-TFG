@@ -15,17 +15,16 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import es.in2.dsdibaapi.service.impl.CustomUserDetailsService;
+
 @Configuration
 @EnableWebSecurity
-public class ApiSecurity extends WebSecurityConfigurerAdapter {
+public class ApiSecurity  extends WebSecurityConfigurerAdapter {
 	
 	private String LOGIN_URL = "/login";
 	
 	@Autowired
 	JWTProperties jwtProperties;
-	
-	/*@Autowired
-	private CustomUserDetailsService userDetailsService;*/
 	
 	private UserDetailsService userDetailsService;
 	
@@ -49,16 +48,16 @@ public class ApiSecurity extends WebSecurityConfigurerAdapter {
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.cors().and()
 			.csrf().disable()
-			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
-			/*.anyRequest().authenticated().and()
+			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL, "/swagger-ui.html").permitAll()
+			.anyRequest().authenticated().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager(),jwtProperties))
-				.addFilter(new JWTAuthorizationFilter(authenticationManager(),jwtProperties))*/;
+				.addFilter(new JWTAuthorizationFilter(authenticationManager(),jwtProperties))
+			 ;
+			 
 	}
 
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// Se define la clase que recupera los usuarios y el algoritmo para procesar las passwords
-		//auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
 		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
 	}
 
