@@ -25,7 +25,7 @@
   </repositories>
   
   <build>
-  	<directory>target</directory>
+  	<directory>${target}</directory>
   	<resources>
 		<resource>
 			<directory>src/main/resources</directory>
@@ -259,6 +259,7 @@
 		    <id>local</id>
 		    <properties>
 		        <activatedProperties>local</activatedProperties>
+		        <target>target2</target>
 		    </properties>
 		    <activation>
 		        <activeByDefault>true</activeByDefault>
@@ -268,6 +269,7 @@
 		    <id>des</id>
 		    <properties>
 		        <activatedProperties>des</activatedProperties>
+		        <target>target</target>
 		    </properties>
 		</profile>
   </profiles>
