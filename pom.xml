@@ -3,7 +3,7 @@
   <groupId>es.in2</groupId>
   <artifactId>ds-diba-api</artifactId>
   
-  <version>0.0.9</version>
+  <version>0.0.10</version>
   <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -25,7 +25,7 @@
   </repositories>
   
   <build>
-  	<directory>target</directory>
+  	<directory>${target}</directory>
   	<resources>
 		<resource>
 			<directory>src/main/resources</directory>
@@ -259,6 +259,7 @@
 		    <id>local</id>
 		    <properties>
 		        <activatedProperties>local</activatedProperties>
+		        <target>target2</target>
 		    </properties>
 		    <activation>
 		        <activeByDefault>true</activeByDefault>
@@ -268,6 +269,7 @@
 		    <id>des</id>
 		    <properties>
 		        <activatedProperties>des</activatedProperties>
+		        <target>target</target>
 		    </properties>
 		</profile>
   </profiles>
