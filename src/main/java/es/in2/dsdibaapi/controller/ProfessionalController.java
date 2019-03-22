@@ -32,6 +32,13 @@ public class ProfessionalController extends BaseController{
 		return professionalService.findAll();
 	  }
 	
+	@RequestMapping(value = "/professional/username/{username}", method = RequestMethod.GET)
+	@ApiOperation(value = "Llista de professionals", notes = "")
+	  public Professional getProfessional(@PathVariable String username) {
+	     
+		return professionalService.findByUsername(username);
+	  }
+	
 	@RequestMapping(value = "/professional/{id}", method = RequestMethod.GET)
 	@ApiOperation(value = "Llista de professionals", notes = "")
 	  public Professional getProfessional(@PathVariable Long id) {

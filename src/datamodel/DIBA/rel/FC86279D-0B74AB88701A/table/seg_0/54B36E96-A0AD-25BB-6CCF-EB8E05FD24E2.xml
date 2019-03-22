@@ -81,6 +81,19 @@
 <colAssociation fkAssociation="4AAAF21A-CEC9-0E4E-6603-8156B037F19B" referredColumn="AAFC029A-2C0B-30FA-6044-676B1A584F2C"/>
 </associations>
 </Column>
+<Column name="nom_complet" id="F7E0E333-E88A-1862-1A25-790491EC46E0">
+<createdBy>danielfi</createdBy>
+<createdTime>2019-03-18 13:29:41 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>DIBA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="040269BC-23DF-CBE3-DDED-0221C7E08037" name="PROFESSIONAL_PK">

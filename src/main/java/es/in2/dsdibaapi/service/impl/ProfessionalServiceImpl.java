@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import es.in2.dsdibaapi.model.Professional;
@@ -33,6 +32,11 @@ public class ProfessionalServiceImpl implements ProfessionalService {
 	@Cacheable("professional")
     public Professional findById(Long id) {
 		return professionalRepository.findById(id).get();
+    }
+	
+	@Cacheable("professional")
+    public Professional findByUsername(String username) {
+		return professionalRepository.findByUsername(username).get();
     }
 	
 

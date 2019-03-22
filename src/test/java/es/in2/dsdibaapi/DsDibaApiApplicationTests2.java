@@ -437,9 +437,9 @@ public class DsDibaApiApplicationTests2 {
 		rols.add(rolService.findById(rolTecnic));
 		
 		Professional professional = professionalService.save(
-				Professional.builder().nom("ProfessionalUser")
-									.cognom1("APE1")
-									.cognom2("APE2")
+				Professional.builder().nom("ProfessionalUser2")
+									.cognom1("APE21")
+									.cognom2("APE22")
 									.municipi(municipi)
 									.rol(rols)
 									.build()); 

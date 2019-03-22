@@ -8,5 +8,5 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import es.in2.dsdibaapi.model.Professional;
 
 public interface ProfessionalRepository extends JpaRepository<Professional, Long>, QuerydslPredicateExecutor<Professional>  {
-	//public Optional<Professional> findByUsername (String username);
+	public Optional<Professional> findByUsername (String username);
 }
