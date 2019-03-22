@@ -48,8 +48,7 @@ public class ApiSecurity  extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		
 		httpSecurity
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			.cors().and()
+			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()			
 			.csrf().disable()
 			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()			
 			.antMatchers(HttpMethod.OPTIONS, "**").permitAll()
