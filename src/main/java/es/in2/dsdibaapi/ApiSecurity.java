@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -31,7 +33,11 @@ public class ApiSecurity  extends WebSecurityConfigurerAdapter {
 		this.userDetailsService = userDetailsService;
 	}
 	
-	
+	@Bean(BeanIds.AUTHENTICATION_MANAGER)
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -50,11 +56,13 @@ public class ApiSecurity  extends WebSecurityConfigurerAdapter {
 		httpSecurity
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()			
 			.csrf().disable()
-			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()			
-			.antMatchers(HttpMethod.OPTIONS, "**").permitAll()
-			.anyRequest().authenticated().and()
-				.addFilter(new JWTAuthenticationFilter(authenticationManager(),jwtProperties))
-				.addFilter(new JWTAuthorizationFilter(authenticationManager(),jwtProperties))
+			.authorizeRequests()
+			.antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
+			.antMatchers(HttpMethod.OPTIONS, LOGIN_URL).permitAll()
+			.anyRequest().authenticated()
+			.and()
+			.addFilter(new JWTAuthenticationFilter(authenticationManager(),jwtProperties))
+			.addFilter(new JWTAuthorizationFilter(authenticationManager(),jwtProperties))
 				
 			 ;
 			 
