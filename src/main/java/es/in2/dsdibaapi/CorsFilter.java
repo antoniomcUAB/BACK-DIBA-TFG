@@ -17,13 +17,13 @@ public class CorsFilter extends OncePerRequestFilter {
 		
 		
 		 
-		 if ("OPTIONS".equals(request.getMethod())) {
+		 if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
 	            response.setStatus(HttpServletResponse.SC_OK);
 	        }
-		 else if (request.getHeader("origin").contentEquals("http://dsdiba.demo.in2.es")
+		 else if (request.getHeader("origin")!=null && (request.getHeader("origin").contentEquals("http://dsdiba.demo.in2.es")
 				 || request.getHeader("origin").contentEquals("http://localhost:7001")
 				 || request.getHeader("origin").contentEquals("http://localhost:8090")
-				 || request.getHeader("origin").contentEquals("http://localhost:4200")) {
+				 || request.getHeader("origin").contentEquals("http://localhost:4200"))) {
 			 
 			 if (request.getHeader("access-control-allow-origin") == null) {
 					response.setHeader("Access-Control-Allow-Origin", request.getHeader("origin"));
