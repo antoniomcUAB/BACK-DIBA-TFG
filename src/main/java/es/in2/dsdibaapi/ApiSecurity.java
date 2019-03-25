@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -61,9 +62,11 @@ public class ApiSecurity  extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.OPTIONS, LOGIN_URL).permitAll()
 			.anyRequest().authenticated()
 			.and()
+			/*.headers().addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin","*"))
+			.and()*/
 			.addFilter(new JWTAuthenticationFilter(authenticationManager(),jwtProperties))
-			.addFilter(new JWTAuthorizationFilter(authenticationManager(),jwtProperties))
-				
+			.addFilter(new JWTAuthorizationFilter(authenticationManager(),jwtProperties))			
+			.addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class)
 			 ;
 			 
 	}
