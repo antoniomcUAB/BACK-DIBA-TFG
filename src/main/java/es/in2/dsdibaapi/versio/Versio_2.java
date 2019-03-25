@@ -134,7 +134,7 @@ public class Versio_2 implements CommandLineRunner {
 		
 		situacioSocial = situacioSocialService.save(
 		new SituacioSocial (versio,"Manca d’autonomia personal a les  activitats instrumentals de la vida diaria (A.2)",
-							"Situació en què la persona no pot desenvolupar les activitats instrumentals de la vida diaria (utilització del transport públic, realització de tasques domèstiques, responsabilitat sobre la medicació, administració de ",
+							"Situació en què la persona no pot desenvolupar les activitats instrumentals de la vida diaria (utilització del transport públic, realització de tasques domèstiques, responsabilitat sobre la medicació, administració de diners, capacitat d’utilitzar el telèfon, entrar i sortir del domicili de forma autònoma, etc.), independentment de la causa que la motiva (malaltia física o psíquica, trastorn mental, deteriorament cognitiu, discapacitat física, psíquica,  intel·lectual o sensorial, etc.)",
 							entornAutonomia,0.75d,3d,6d));
 		
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Necessita atenció/supervisió puntual en algun moment del dia/setmana",

@@ -13,7 +13,7 @@ import es.in2.dsdibaapi.model.Rol;
 import es.in2.dsdibaapi.repository.ProfessionalRepository;
 
 @Component
-public class CustomUserDetailsService   implements UserDetailsService {
+public class CustomUserDetailsService  implements UserDetailsService {
 	
 	@Autowired
 	private ProfessionalRepository professionalRepository;
