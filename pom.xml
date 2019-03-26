@@ -261,7 +261,7 @@
 		    <id>local</id>
 		    <properties>
 		        <activatedProperties>local</activatedProperties>
-		        <target>target2</target>
+		        <target>target</target>
 		    </properties>
 		    <activation>
 		        <activeByDefault>true</activeByDefault>
