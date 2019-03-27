@@ -42,11 +42,11 @@ public class PreguntaEvalFactory {
 			return new ES4PreguntaEval().avaluar(a);
 		}
 		else if (a.getPregunta().getSituacioSocial().getSocial().toUpperCase().contains("ES.5") ||
-				a.getPregunta().getSituacioSocial().getSocial().toUpperCase().contains("F.1")) {
+				a.getPregunta().getSituacioSocial().getSocial().toUpperCase().contains("F.3")) {
 			return new ES5PreguntaEval().avaluar(a);
 		}
-		else if (a.getPregunta().getSituacioSocial().getSocial().toUpperCase().contains("F.3")) {
-			return new F3PreguntaEval().avaluar(a);
+		else if (a.getPregunta().getSituacioSocial().getSocial().toUpperCase().contains("F.1")) {
+			return new F1PreguntaEval().avaluar(a);
 		}
 		else if (a.getPregunta().getSituacioSocial().getSocial().toUpperCase().contains("F.4")) {
 			return new F4PreguntaEval().avaluar(a);

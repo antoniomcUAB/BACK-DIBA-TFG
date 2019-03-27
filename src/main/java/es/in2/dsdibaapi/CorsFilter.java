@@ -21,7 +21,7 @@ public class CorsFilter extends OncePerRequestFilter {
 	            response.setStatus(HttpServletResponse.SC_OK);
 	        }
 		 
-		 //filterChain.doFilter(request, response);
+		// filterChain.doFilter(request, response);
 		 else if (request.getHeader("origin")!=null && (request.getHeader("origin").contentEquals("http://dsdiba.demo.in2.es")
 				 || request.getHeader("origin").contentEquals("http://localhost:7001")
 				 || request.getHeader("origin").contentEquals("http://localhost:8090")

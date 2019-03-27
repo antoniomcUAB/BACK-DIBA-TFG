@@ -8,8 +8,8 @@ public class AutonomiaEval extends AmbitEval {
 	
 	public AutonomiaEval(Pregunta p) {
 		super(p);
-		setVulnerabilitat(4);
-		setRisc(7);
+		setVulnerabilitat(1);
+		setRisc(3);
 		setAltRisc(0);	
 	}	
 

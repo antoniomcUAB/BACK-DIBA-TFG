@@ -21,6 +21,6 @@ public interface DiagnosticService {
 	
 	public Diagnostic avaluar (Diagnostic diag);
 	
-	public RiscService.Tipus avaluar (Diagnostic diagnostic,AmbitDiagnostic a, EntornJson e);
+	public RiscService.Tipus avaluar (AmbitDiagnostic a);
 	
 }
