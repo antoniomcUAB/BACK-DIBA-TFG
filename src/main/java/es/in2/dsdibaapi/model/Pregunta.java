@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="PREGUNTA")
+@Table (name="DIBA_PRE_PREGUNTA")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -35,60 +36,45 @@ public @Data class Pregunta implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue 
+	@Id @GeneratedValue
+	@Column(name = "DIBA_PRE_ID")
 	private Long id;
+	@Column(name = "DIBA_PRE_UNITAT_FAMILIAR")
 	private Boolean unitatFamiliar;	
 	
 	@ManyToOne 
-	@JoinColumn(name="diagnostic", foreignKey= @ForeignKey(name = "PREGUNTA_PREGUNTA_FK"),updatable=false)	
+	@JoinColumn(name="DIBA_PRE_DIAGNOSTIC", foreignKey= @ForeignKey(name = "DIBA_PRE_PREGUNTA_FK_DGC"),updatable=false)	
 	@JsonIgnore	
-    private Diagnostic diagnostic;
-	
-	/*
-	@ManyToOne
-    @JoinColumn(name="entorn",foreignKey= @ForeignKey(name = "PREGUNTA_ENTORN_FK"),updatable=false)
-	@JsonIgnoreProperties(value = { "preguntes"})
-	private Entorn entorn;
-	*/
+	private Diagnostic diagnostic;
 	
 	@ManyToOne
-    @JoinColumn(name="situacio_social",foreignKey= @ForeignKey(name = "PREGUNTA_SITUACIO_SOCIAL_FK"))
+    @JoinColumn(name="DIBA_PRE_SITUACIO_SOCIAL",foreignKey= @ForeignKey(name = "DIBA_PRE_PREGUNTA_FK_SSO"))
 	@JsonIgnoreProperties(value = { "definicio", "selectors", "vulnerabilitat", "risc", "altRisc" })
 	@QueryInit("entorn.ambit")
 	private SituacioSocial situacioSocial;
 	
-	/*
 	@ManyToOne
-    @JoinColumn(name="risc",foreignKey= @ForeignKey(name = "PREGUNTA_RISC_FK"))
-	@JsonIgnore
-	private Risc risc;*/
+    @JoinColumn(name="DIBA_PRE_GRAVETAT",foreignKey= @ForeignKey(name = "DIBA_PRE_PREGUNTA_FK_GRA"))
+	private Gravetat gravetat;
 	
 	@ManyToOne
-    @JoinColumn(name="gravetat",foreignKey= @ForeignKey(name = "PREGUNTA_GRAVETAT_FK"))
-    private Gravetat gravetat;
+    @JoinColumn(name="DIBA_PRE_FREQUENCIA",foreignKey= @ForeignKey(name = "DIBA_PRE_PREGUNTA_FK_FRQ"))	
+	private Frequencia frequencia;
 	
 	@ManyToOne
-    @JoinColumn(name="frequencia",foreignKey= @ForeignKey(name = "PREGUNTA_FREQUENCIA_FK"))	
-    private Frequencia frequencia;
+    @JoinColumn(name="DIBA_PRE_PERSONA",foreignKey= @ForeignKey(name = "DIBA_PRE_PREGUNTA_FK_PER"))	
+	private Persona persona;
 	
 	@ManyToOne
-    @JoinColumn(name="persona",foreignKey= @ForeignKey(name = "PREGUNTA_PERSONA_FK"))	
-    private Persona persona;
-	
-	@ManyToOne
-    @JoinColumn(name="factor",foreignKey= @ForeignKey(name = "PREGUNTA_FACTOR_FK"))		
+    @JoinColumn(name="DIBA_PRE_FACTOR",foreignKey= @ForeignKey(name = "DIBA_PRE_PREGUNTA_FK_FACTOR"))		
 	@JsonIgnoreProperties(value = { "value"})
 	private Risc factor;
 	
-	/*
-	@OneToMany(cascade=CascadeType.ALL, mappedBy = "diagnostic", fetch = FetchType.EAGER)	
-	@Fetch(value = FetchMode.SUBSELECT)
-    private List<Economia> economia;*/
 	@ManyToMany(cascade = { CascadeType.MERGE} )
   	 @JoinTable(
-       name = "economia", 
-       joinColumns = { @JoinColumn(name = "pregunta",foreignKey = @ForeignKey(name = "ECONOMIA_PREGUNTA_FK")) },         
-       inverseJoinColumns = { @JoinColumn(name = "factor",foreignKey = @ForeignKey(name = "ECONOMIA_FACTOR_ECONOMIC_FK")) }
+       name = "DIBA_ECO_ECONOMIA", 
+       joinColumns = { @JoinColumn(name = "DIBA_ECO_PREGUNTA",foreignKey = @ForeignKey(name = "ECONOMIA_PREGUNTA_FK")) },         
+       inverseJoinColumns = { @JoinColumn(name = "DIBA_ECO_FACTOR",foreignKey = @ForeignKey(name = "ECONOMIA_FACTOR_ECONOMIC_FK")) }
    )	
    private Set<FactorEconomic> factorEconomic;
 	

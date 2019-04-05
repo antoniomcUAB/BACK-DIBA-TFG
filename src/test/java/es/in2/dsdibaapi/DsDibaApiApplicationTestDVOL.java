@@ -60,7 +60,7 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
-public class DsDibaApiApplicationTestDes {
+public class DsDibaApiApplicationTestDVOL {
 	
 	@Autowired
 	private PreguntaController preguntaController;
@@ -143,11 +143,11 @@ public class DsDibaApiApplicationTestDes {
 	Long entornEconomic = 19323l;
 	Long entornEscolar = 19347l;
 	
-	Long rolTecnic = 31992l;
+	Long rolTecnic = 20l;
 	
 	Long versioId=19230l;
 	
-	Long municipiId = 31993l;
+	Long municipiId = 21l;
 	
 	Long factor1 = 19503l;
 	Long factor2 = 19504l;
@@ -417,8 +417,11 @@ public class DsDibaApiApplicationTestDes {
 		
 		Professional professional = professionalService.save(
 				Professional.builder().nom("PROFESSIONAL")
-									.cognom1("APE31")
-									.cognom2("APE32")
+									.cognom1("APE1")
+									.cognom2("APE2")
+									.nomComplet("PROFESSIONAL APE1 APE2")
+									.username("PROFESSIONAL")
+									.password("PROFESSIONAL")
 									.municipi(municipi)
 									.rol(rols)
 									.build()); 

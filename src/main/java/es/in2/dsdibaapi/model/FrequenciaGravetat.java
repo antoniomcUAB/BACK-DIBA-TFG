@@ -3,6 +3,7 @@ package es.in2.dsdibaapi.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -24,31 +25,30 @@ import lombok.Data;
 
 @Entity
 @DynamicUpdate
-@Table (name="FREQUENCIA_GRAVETAT")
+@Table (name="DIBA_FRG_FREQUENCIAGRAVETAT")
 @JsonPropertyOrder({ "id", "evidencia", "gravetat","frequencia" })
-/*@AllArgsConstructor
-@NoArgsConstructor
-@Builder*/
 public @Data class FrequenciaGravetat implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
 	@JsonProperty("id")
+	@Column (name="DIBA_FRG_ID")
 	private long id;
 	
 	@JsonProperty("evidencia")
+	@Column (name="DIBA_FRG_EVIDENCIA")
 	private String evidencia;
 	
 	@OneToOne
-	@JoinColumn(name="gravetat",foreignKey= @ForeignKey(name = "FREQ_GRAVETAT_FK"))
+	@JoinColumn(name="DIBA_FRG_GRAVETAT",foreignKey= @ForeignKey(name = "DIBA_FRG_FK_GRA"))
 	@JsonIgnoreProperties(value = { "value"} )
-    private Gravetat gravetat;
+	private Gravetat gravetat;
 	
 	@ManyToOne
-    @JoinColumn(name="situacioSocial",foreignKey= @ForeignKey(name = "FREQ_SITUACIO_SOCIAL_FK"))
+    @JoinColumn(name="DIBA_FRG_SITUACIO_SOCIAL",foreignKey= @ForeignKey(name = "DIBA_FRG_FK_SSO"))
 	@JsonIgnore
-    private SituacioSocial situacioSocial;
+	private SituacioSocial situacioSocial;
 	
 	@OneToMany(mappedBy = "frequenciaGravetat")
 	@JsonProperty("frequencia")

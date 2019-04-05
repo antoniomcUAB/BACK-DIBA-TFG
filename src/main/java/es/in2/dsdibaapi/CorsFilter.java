@@ -21,21 +21,25 @@ public class CorsFilter extends OncePerRequestFilter {
 	            response.setStatus(HttpServletResponse.SC_OK);
 	        }
 		 
-		// filterChain.doFilter(request, response);
-		 else if (request.getHeader("origin")!=null && (request.getHeader("origin").contentEquals("http://dsdiba.demo.in2.es")
+		filterChain.doFilter(request, response);
+		/* else if ((request.getHeader("origin")!=null && (request.getHeader("origin").contentEquals("http://dsdiba.demo.in2.es")
 				 || request.getHeader("origin").contentEquals("http://localhost:7001")
 				 || request.getHeader("origin").contentEquals("http://localhost:8090")
-				 || request.getHeader("origin").contentEquals("http://localhost:4200"))) {
+				 || request.getHeader("origin").contentEquals("http://localhost:4200"))
+				 || request.getRequestURI().contains("swagger")
+				 || request.getRequestURI().contains("/webjars/")
+				 || request.getRequestURI().contains("/v2/")
+				 ) || request.getRequestURI().contains("dsdiba")) {
 			 
 			 if (response.getHeader("access-control-allow-origin") == null) {
-					response.setHeader("Access-Control-Allow-Origin", request.getHeader("origin"));
+					response.setHeader("Access-Control-Allow-Origin", "http://dsdiba.demo.in2.es");
 				}
 			 
 			 filterChain.doFilter(request, response);
 		 }
 		 else { 
 	         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-	        }
+	        }*/
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -27,46 +29,46 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="EXPEDIENT")
+@Table (name="DIBA_EXP_EXPEDIENT")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public @Data class Expedient implements Serializable {
 	
 	
-	@Id @GeneratedValue 
+	@Id @GeneratedValue
+	@Column (name="DIBA_EXP_ID")
 	private long id;
+	@Column (name="DIBA_EXP_CODI")
 	private String codi;
+	@Column (name="DIBA_EXP_DATA_CREACIO")
 	private Date dataCreacio;
+	@Column (name="DIBA_EXP_DATA_VALIDACIO")
 	private Date dataValidacio;
+	@Column (name="DIBA_EXP_TOTAL_FAMILIA")
 	private Long totalFamilia;
+	@Column (name="DIBA_EXP_OBSERVACIONS")
 	private String observacions;
 	
-	/*
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)	
-	@Fetch(value = FetchMode.SUBSELECT)
-	@JsonProperty("persona")*/
+	@Transient
+	private Long diagnosticsValidats;	
+	
 	@OneToMany(cascade= {CascadeType.ALL})
-	@JoinColumn(name="expedient",referencedColumnName="id")
+	@JoinColumn(name="DIBA_PER_EXPEDIENT",referencedColumnName="DIBA_EXP_ID")
 	@JsonProperty("persona")
 	private Set<Persona> persona;
 	
 	@ManyToOne
-    @JoinColumn(name="estat",foreignKey= @ForeignKey(name = "EXPEDIENT_ESTAT_FK"))	
-    private Estat estat;
+    @JoinColumn(name="DIBA_EXP_ESTAT",foreignKey= @ForeignKey(name = "DIBA_EXP_EXPEDIENT_FK_EST"))
+	private Estat estat;
 	
 
 	@ManyToOne
-    @JoinColumn(name="professional",foreignKey= @ForeignKey(name = "EXPEDIENT_PROFESSIONAL_FKv2"))	
-	//@JsonIgnore
-    private Professional professional;
-	
-	/*@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, mappedBy = "expedient", fetch = FetchType.EAGER)	
-	@Fetch(value = FetchMode.SUBSELECT)
-	@JsonIgnoreProperties(value = { "expedient"} )
-	@JsonProperty("diagnostic")*/
+    @JoinColumn(name="DIBA_EXP_PROFESSIONAL",foreignKey= @ForeignKey(name = "DIBA_EXP_EXPEDIENT_FK_PRF"))		
+	private Professional professional;
+		
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="expedient")
+	@JoinColumn(name="DIBA_DGC_EXPEDIENT")
 	@OrderBy(value = "data DESC")
     private List<Diagnostic> diagnostic;
 	

@@ -3,6 +3,7 @@ package es.in2.dsdibaapi.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -23,28 +24,34 @@ import lombok.Data;
 
 @Entity
 @DynamicUpdate
-@Table (name="SITUACIO_SOCIAL")
+@Table (name="DIBA_SSO_SITUACIO_SOCIAL")
 @JsonPropertyOrder({ "id", "social", "definicio","selectors" })
 public @Data class SituacioSocial implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
+	@Column(name = "DIBA_SSO_ID")
 	private Long id;
+	@Column(name = "DIBA_SSO_SOCIAL")
 	private String social;
+	@Column(name = "DIBA_SSO_DEFINICIO")
 	private String definicio;
+	@Column(name = "DIBA_SSO_VULNERABILITAT")
 	private Double vulnerabilitat;
+	@Column(name = "DIBA_SSO_RISC")
 	private Double risc;
+	@Column(name = "DIBA_SSO_ALT_RISC")
 	private Double altRisc;
 	
 	
 	@ManyToOne (fetch = FetchType.EAGER)
-    @JoinColumn(name="entorn",foreignKey= @ForeignKey(name = "SITUACIO_SOCIAL_ENTORN_FK"))
+    @JoinColumn(name="DIBA_SSO_ENTORN",foreignKey= @ForeignKey(name = "DIBA_SSO_FK_ENT"))
 	@JsonIgnore
     private Entorn entorn;
 	
 	@ManyToOne
-    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "SITUACIO_SOCIAL_VERSIO_FK"))
+    @JoinColumn(name="DIBA_SSO_VERSIO_MODEL",foreignKey= @ForeignKey(name = "DIBA_SSO_FK_VSM"))
 	@JsonIgnore
     private VersioModel versioModel;
 	

@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -35,7 +36,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="PROFESSIONAL")
+@Table (name="DIBA_PRF_PROFESSIONAL")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -44,15 +45,21 @@ public @Data class Professional implements Serializable , UserDetails  {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
+	@Column (name="DIBA_PRF_ID")
 	private long id;
+	@Column (name="DIBA_PRF_NOM")
 	private String nom;
+	@Column (name="DIBA_PRF_COGNOM1")
 	private String cognom1;
+	@Column (name="DIBA_PRF_COGNOM2")
 	private String cognom2;
+	@Column (name="DIBA_PRF_NOM_COMPLET")
 	private String nomComplet;
 	
 	@JsonIgnore 
+	@Column (name="DIBA_PRF_PASSWORD")
 	private String password;
-	
+	@Column (name="DIBA_PRF_USERNAME")
 	private String username;
 	
 	
@@ -88,18 +95,18 @@ public @Data class Professional implements Serializable , UserDetails  {
 	
 	@ManyToMany (fetch = FetchType.EAGER)
   	 @JoinTable(
-       name = "professional_rol",  
-       joinColumns = { @JoinColumn(name = "professional",foreignKey = @ForeignKey(name = "PROFESSIONAL_ROL_PRO_FK")) },         
-       inverseJoinColumns = { @JoinColumn(name = "rol",foreignKey = @ForeignKey(name = "PROFESSIONAL_ROL_ROL_FK")) }
+       name = "DIBA_PRR_PROFESSIONAL_ROL",  
+       joinColumns = { @JoinColumn(name = "DIBA_PRR_PROFESSIONAL",foreignKey = @ForeignKey(name = "DIBA_PRR_FK_PRF")) },         
+       inverseJoinColumns = { @JoinColumn(name = "DIBA_PRR_ROL",foreignKey = @ForeignKey(name = "DIBA_PRR_FK_ROL")) }
    )	
    private Set<Rol> rol = new HashSet<>();
 	
 	@ManyToOne
-    @JoinColumn(name="municipi",foreignKey= @ForeignKey(name = "PROFESSIONAL_MUNICIPI_FK"))	
-    private Municipi municipi;
+    @JoinColumn(name="DIBA_PRF_MUNICIPI",foreignKey= @ForeignKey(name = "DIBA_PRF_PROFESSIONAL_FK_MUN"))
+	private Municipi municipi;
 	
 	@OneToMany(cascade=CascadeType.PERSIST,fetch = FetchType.EAGER)
-	@JoinColumn(name="professional",referencedColumnName="id",foreignKey= @ForeignKey(name = "EXPEDIENT_PROFESSIONAL_FKv2"))
+	@JoinColumn(name="DIBA_EXP_PROFESSIONAL",referencedColumnName="DIBA_PRF_ID",foreignKey= @ForeignKey(name = "DIBA_EXP_EXPEDIENT_FK_PRF"))
 	@JsonIgnore
     private List<Expedient> expedient;
 

@@ -3,6 +3,7 @@ package es.in2.dsdibaapi.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -25,27 +26,29 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="AMBIT_DIAGNOSTIC")
+@Table (name="DIBA_AMD_AMBITDIAGNOSTIC")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public @Data class AmbitDiagnostic implements Serializable {
 	
 	
-	@Id @GeneratedValue 
+	@Id @GeneratedValue
+	@Column(name = "DIBA_AMD_ID")
 	private long id;
+	@Column(name = "DIBA_AMD_OBSERVACIONS")
 	private String observacions;
 		
 	@ManyToOne
-    @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "AMBIT_DIAGNOSTIC_AMBIT_FK"), updatable=false)	
+    @JoinColumn(name="DIBA_AMD_AMBIT",foreignKey= @ForeignKey(name = "DIBA_AMD_FK_AMB"), updatable=false)	
 	@JsonIgnoreProperties(value = { "vulnerabilitat", "risc", "valVulnerabilitat", "valRisc", "valAltrisc", "entorns", "factors_context"})
-    private Ambit ambit;
+	private Ambit ambit;
 	
 	
 	@ManyToOne
-    @JoinColumn(name="diagnostic",foreignKey= @ForeignKey(name = "AMBIT_DIAGNOSTIC_DIAGNOSTIC_FK"), updatable=false)
+    @JoinColumn(name="DIBA_AMD_DIAGNOSTIC",foreignKey= @ForeignKey(name = "DIBA_AMD_FK_DGC"), updatable=false)
 	@JsonIgnore
-    private Diagnostic diagnostic;
+	private Diagnostic diagnostic;
 	
 	@Transient
 	private List<EntornJson> entorn;
@@ -53,10 +56,5 @@ public @Data class AmbitDiagnostic implements Serializable {
 	@Transient
 	private Iterable<Contextualitzacio> contextualitzacio;
 	
-	/*
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="ambit")
-    private List<Pregunta> pregunta;
-	*/
 	
 }

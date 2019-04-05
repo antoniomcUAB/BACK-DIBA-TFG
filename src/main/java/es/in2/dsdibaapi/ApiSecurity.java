@@ -15,6 +15,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
+import org.springframework.security.web.authentication.session.NullAuthenticatedSessionStrategy;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -55,18 +56,31 @@ public class ApiSecurity  extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		
 		httpSecurity
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()			
+			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+			.sessionAuthenticationStrategy(new NullAuthenticatedSessionStrategy())
+			.and()			
 			.csrf().disable()
+			.formLogin().disable()
 			.authorizeRequests()
 			.antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
 			.antMatchers(HttpMethod.OPTIONS, LOGIN_URL).permitAll()
-			.anyRequest().authenticated()
+			.antMatchers("/dsdiba/api/swagger-ui.html").permitAll()
+        	.antMatchers("/webjars/**", "/swagger-resources/**", "/v2/**").permitAll()
+			/*.antMatchers(endpointsPrefix + endpointsLogin + "/token").permitAll()
+			.antMatchers(endpointsPrefix + endpointsLogin + "/refresh").permitAll()
+			.antMatchers(endpointsPrefix + endpointsLogin).permitAll()*/
+			.antMatchers(HttpMethod.OPTIONS).permitAll()
 			.and()
-			/*.headers().addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin","*"))
-			.and()*/
+			.authorizeRequests()
+			.and()
 			.addFilter(new JWTAuthenticationFilter(authenticationManager(),jwtProperties))
 			.addFilter(new JWTAuthorizationFilter(authenticationManager(),jwtProperties))			
 			.addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class)
+			/*.anyRequest().authenticated()
+			.and()
+			.addFilter(new JWTAuthenticationFilter(authenticationManager(),jwtProperties))
+			.addFilter(new JWTAuthorizationFilter(authenticationManager(),jwtProperties))			
+			.addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class)*/
 			 ;
 			 
 	}

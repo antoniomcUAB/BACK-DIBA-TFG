@@ -2,6 +2,7 @@ package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="FREQUENCIA")
+@Table (name="DIBA_FRQ_FREQUENCIA")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -24,9 +25,12 @@ public @Data class Frequencia implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue 
+	@Id @GeneratedValue
+	@Column (name="DIBA_FRQ_ID")
 	private long id;
+	@Column (name="DIBA_FRQ_DESCRIPCIO")
 	private String descripcio;
+	@Column (name="DIBA_FRQ_VALUE")
 	private Integer value;
 	
 	

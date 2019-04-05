@@ -2,6 +2,7 @@ package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="TIPUS_PERSONA")
+@Table (name="DIBA_TPE_TIPUSPERSONA")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -25,7 +26,9 @@ public @Data class TipusPersona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
+	@Column(name = "DIBA_TPE_ID")
 	private long id;
+	@Column(name = "DIBA_TPE_DESCRIPCIO")
 	private String descripcio;
 
 	

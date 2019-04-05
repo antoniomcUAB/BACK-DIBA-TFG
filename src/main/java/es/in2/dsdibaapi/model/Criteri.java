@@ -23,7 +23,7 @@ import lombok.Data;
 
 @Entity
 @DynamicUpdate
-@Table (name="CRITERI")
+@Table (name="DIBA_CRI_CRITERI")
 @JsonPropertyOrder({ "id", "evidencia", "frequencia","risc"})
 
 public @Data class Criteri implements Serializable {
@@ -32,25 +32,26 @@ public @Data class Criteri implements Serializable {
 
 	@Id @GeneratedValue 
 	@JsonProperty("id")
+	@Column (name="DIBA_CRI_ID")
 	private long id;
 	
-	@Column (name="evidencia")
+	@Column (name="DIBA_CRI_EVIDENCIA")
 	private String evidencia;	
 	
 	@OneToOne
-	@JoinColumn(name = "frequencia",foreignKey= @ForeignKey(name = "CRITERI_FREQUENCIA_FK"))
+	@JoinColumn(name = "DIBA_CRI_FREQUENCIA",foreignKey= @ForeignKey(name = "DIBA_CRI_CRITERI_FK_FRQ"))
 	@JsonIgnoreProperties(value = { "value"} )
-    private Frequencia frequencia;
+	private Frequencia frequencia;
 	
 	@OneToOne
-	@JoinColumn(name = "risc",foreignKey= @ForeignKey(name = "CRITERI_RISC_FK"))
+	@JoinColumn(name = "DIBA_CRI_RISC",foreignKey= @ForeignKey(name = "DIBA_CRI_CRITERI_FK_RIS"))
 	@JsonIgnoreProperties(value = { "value"} )
-    private Risc risc;
+	private Risc risc;
 	
 	@ManyToOne
-    @JoinColumn(name="frequencia_gravetat",foreignKey= @ForeignKey(name = "CRITERI_FREQUENCIA_GRAVETAT_FK"))
+    @JoinColumn(name="DIBA_CRI_FREQUENCIA_GRAVETAT",foreignKey= @ForeignKey(name = "DIBA_CRI_CRITERI_FK_FRG"))
 	@JsonIgnore
-    private FrequenciaGravetat frequenciaGravetat;
+	private FrequenciaGravetat frequenciaGravetat;
 
 	public Criteri () {
 		

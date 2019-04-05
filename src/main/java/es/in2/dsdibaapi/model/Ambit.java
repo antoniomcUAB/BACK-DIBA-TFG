@@ -3,6 +3,7 @@ package es.in2.dsdibaapi.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="AMBIT")
+@Table (name="DIBA_AMB_AMBIT")
 @JsonPropertyOrder({ "id", "descripcio", "entorns" })
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,12 +41,19 @@ public @Data class Ambit implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
+	@Column(name = "DIBA_AMB_ID")
 	private long id;
+	@Column(name = "DIBA_AMB_DESCRIPCIO")
 	private String descripcio;
+	@Column(name = "DIBA_AMB_VULNERABILITAT")
 	private Double vulnerabilitat;
+	@Column(name = "DIBA_AMB_RISC")
 	private Double risc;
+	@Column(name = "DIBA_AMB_VAL_VULNERABILITAT")
 	private Double valVulnerabilitat;
+	@Column(name = "DIBA_AMB_VAL_RISC")
 	private Double valRisc;
+	@Column(name = "DIBA_AMB_VAL_ALTRISC")
 	private Double valAltrisc;
 	
 	@OneToMany(mappedBy = "ambit")
@@ -60,7 +68,7 @@ public @Data class Ambit implements Serializable {
     private List<Factor> factorGravetat;
 	
 	@ManyToOne
-    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "AMBIT_VERSIO_MODEL_FK"), updatable=false)
+    @JoinColumn(name="DIBA_AMB_VERSIO_MODEL",foreignKey= @ForeignKey(name = "DIBA_AMB_AMBIT_FK_VSM"), updatable=false)
 	@JsonIgnore
     private VersioModel versioModel;
 	

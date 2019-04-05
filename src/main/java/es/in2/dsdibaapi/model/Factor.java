@@ -2,6 +2,7 @@ package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="FACTOR")
+@Table (name="DIBA_FCT_FACTOR")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -31,22 +31,26 @@ public @Data class Factor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
+	@Column (name="DIBA_FCT_ID")
 	private long id;
+	@Column (name="DIBA_FCT_DESCRIPCIO")
 	private String descripcio;
+	@Column (name="DIBA_FCT_FC1M")
 	private Double fc1m;
+	@Column (name="DIBA_FCT_FCTOTS")
 	private Double fctots;
+	@Column (name="DIBA_FCT_INFANTS")
 	@Builder.Default private Boolean infants = false;
 	
 	@ManyToOne
-	@JoinColumn(name="gravetat",foreignKey= @ForeignKey(name = "FACTOR_GRAVETAT_FK"))
+	@JoinColumn(name="DIBA_FCT_GRAVETAT",foreignKey= @ForeignKey(name = "DIBA_FCT_FACTOR_FK_GRA"))
 	@JsonIgnoreProperties(value = { "value"} )
-    private Gravetat gravetat;
+	private Gravetat gravetat;
 		
 	@ManyToOne
-    @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "FACTOR_AMBIT_FK"))	
+    @JoinColumn(name="DIBA_FCT_AMBIT",foreignKey= @ForeignKey(name = "DIBA_FCT_FACTOR_FK_AMB"))	
 	@JsonIgnoreProperties(value = { "entorns", "factors_context", "vulnerabilitat", "risc", "valVulnerabilitat", "valRisc", "valAltrisc"} )
-	//@JsonIgnore
-    private Ambit ambit;
+	private Ambit ambit;
 	
 
 

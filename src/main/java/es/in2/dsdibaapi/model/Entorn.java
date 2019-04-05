@@ -3,6 +3,7 @@ package es.in2.dsdibaapi.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="ENTORN")
+@Table (name="DIBA_ENT_ENTORN")
 @JsonPropertyOrder({ "id", "descripcio", "preguntes" })
 @AllArgsConstructor
 @NoArgsConstructor
@@ -38,14 +38,16 @@ public @Data class Entorn implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
+	@Column (name="DIBA_ENT_ID")
 	private long id;
+	@Column (name="DIBA_ENT_DESCRIPCIO")
 	private String descripcio;
 	
 	
 	@ManyToOne
-    @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "ENTORN_AMBIT_FK"))
+    @JoinColumn(name="DIBA_ENT_AMBIT",foreignKey= @ForeignKey(name = "DIBA_ENT_ENTORN_FK_AMB"))
 	@JsonIgnore	
-    private Ambit ambit;
+	private Ambit ambit;
 	
 	@OneToMany (mappedBy = "entorn")
 	@JsonIgnoreProperties(value = { "vulnerabilitat", "risc", "altRisc"})

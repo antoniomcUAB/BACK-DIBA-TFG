@@ -2,6 +2,7 @@ package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="ROL")
+@Table (name="DIBA_ROL_ROL")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -26,8 +27,9 @@ public @Data class Rol implements Serializable {
 
 	@Id 
 	@GeneratedValue
+	@Column(name = "DIBA_ROL_ID")
 	private long id;
-	
+	@Column(name = "DIBA_ROL_DESCRIPCIO")
 	private String descripcio;
 	
 	
