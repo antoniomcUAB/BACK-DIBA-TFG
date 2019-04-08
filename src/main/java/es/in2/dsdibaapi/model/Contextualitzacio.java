@@ -2,6 +2,7 @@ package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="CONTEXTUALITZACIO")
+@Table (name="DIBA_CTX_CONTEXTUALITZACIO")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -30,24 +31,27 @@ public @Data class Contextualitzacio implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue 
+	@Id @GeneratedValue
+	@Column(name = "DIBA_CTX_ID")
 	private long id;
+	@Column(name = "DIBA_CTX_MEMBRE_UNIC")
 	private Boolean membreUnic;
+	@Column(name = "DIBA_CTX_MES_UC")
 	private Boolean mesUc;
 	
 	@ManyToOne
-    @JoinColumn(name="factor",foreignKey= @ForeignKey(name = "CONTX_FACTOR_FK"))
+    @JoinColumn(name="DIBA_CTX_FACTOR",foreignKey= @ForeignKey(name = "DIBA_CTX_FK_FCT"))
 	@JsonIgnoreProperties(value = { "fc1m", "fctots", "ambit"})
-    private Factor factor;
+	private Factor factor;
 	
 	@ManyToOne
-    @JoinColumn(name="persona",foreignKey= @ForeignKey(name = "CONTX_PERSONA_FK"))	
-    private Persona persona;
+    @JoinColumn(name="DIBA_CTX_PERSONA",foreignKey= @ForeignKey(name = "DIBA_CTX_FK_PER"))
+	private Persona persona;
 	
 	@ManyToOne 
-    @JoinColumn(name="diagnostic",foreignKey= @ForeignKey(name = "CONTX_DIAGNOSTIC_FK"),updatable=false)
+    @JoinColumn(name="DIBA_CTX_DIAGNOSTIC",foreignKey= @ForeignKey(name = "DIBA_CTX_FK_DGC"),updatable=false)
 	@JsonIgnore
-    private Diagnostic diagnostic;
+	private Diagnostic diagnostic;
 	
 
 }

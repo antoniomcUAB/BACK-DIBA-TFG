@@ -143,11 +143,11 @@ public class DsDibaApiApplicationTestDes {
 	Long entornEconomic = 19323l;
 	Long entornEscolar = 19347l;
 	
-	Long rolTecnic = 19250l;
+	Long rolTecnic = 31992l;
 	
 	Long versioId=19230l;
 	
-	Long municipiId = 19251l;
+	Long municipiId = 31993l;
 	
 	Long factor1 = 19503l;
 	Long factor2 = 19504l;
@@ -416,7 +416,7 @@ public class DsDibaApiApplicationTestDes {
 		rols.add(rolService.findById(rolTecnic));
 		
 		Professional professional = professionalService.save(
-				Professional.builder().nom("Professional31")
+				Professional.builder().nom("PROFESSIONAL")
 									.cognom1("APE31")
 									.cognom2("APE32")
 									.municipi(municipi)

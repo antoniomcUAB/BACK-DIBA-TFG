@@ -1,5 +1,6 @@
 package es.in2.dsdibaapi.service.impl;
 
+import static es.in2.dsdibaapi.model.predicate.DiagnosticPredicate.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -139,8 +140,19 @@ public class ExpedientServiceImpl implements ExpedientService {
 			
 		} 
 		
-		return expedientRepository.findAll (where,
+		Page<Expedient> expedients = expedientRepository.findAll (where,
 				PageRequest.of(page, size, s));
+				
+		
+		expedients.forEach(n -> { 
+					if (n.getDiagnostic()!=null 
+										&& !n.getDiagnostic().isEmpty()) {
+											n.setDiagnosticsValidats(diagnosticsValidats(n.getDiagnostic())); 
+										}
+							});
+		
+		
+		return expedients;
 	
     }
 	

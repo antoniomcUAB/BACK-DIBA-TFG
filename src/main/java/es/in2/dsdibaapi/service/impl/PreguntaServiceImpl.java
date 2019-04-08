@@ -23,6 +23,7 @@ import es.in2.dsdibaapi.service.GravetatService;
 import es.in2.dsdibaapi.service.PreguntaService;
 import es.in2.dsdibaapi.service.RiscService;
 import es.in2.dsdibaapi.service.SituacioSocialService;
+import es.in2.dsdibaapi.valoracio.ambit.AmbitEvalFactory;
 
 @Service
 public class PreguntaServiceImpl implements PreguntaService{
@@ -148,25 +149,40 @@ public class PreguntaServiceImpl implements PreguntaService{
 		SituacioSocial ss = situacioSocialService.findById(d.getSituacioSocial().getId());
 		Entorn e = entornService.findById(ss.getEntorn().getId());
 		
+		return AmbitEvalFactory.getEval(d, e.getAmbit());
+		
+		/*
+		Integer vul = 2;
+		Integer risc = 4;
+		Integer altRisc = 15;
+		
+		if (e.getAmbit().getDescripcio().toUpperCase().contains("AUTONOMIA")) {
+			vul = 1;
+			risc = 3;
+			altRisc = 9;
+		}
+		
 		if ( d.getGravetat() == null || d.getFrequencia() == null ||
 				(d.getFrequencia().getDescripcio().equalsIgnoreCase("sense valoració") &&
 						d.getGravetat().getDescripcio().equalsIgnoreCase("alta"))) {
 			return RiscService.Tipus.ALT_RISC;
 		}
 		else if (d.getFrequencia().getDescripcio().equalsIgnoreCase("sense valoració")) {
-			if(d.getGravetat().getDescripcio().equalsIgnoreCase("moderada")) {
+			if(d.getGravetat().getDescripcio().equalsIgnoreCase("baixa")) {
+				return RiscService.Tipus.VULNERABILITAT;
+			} else if(d.getGravetat().getDescripcio().equalsIgnoreCase("moderada")) {
 				return RiscService.Tipus.RISC;
 			} else {
-				return RiscService.Tipus.VULNERABILITAT;
+				return RiscService.Tipus.ALT_RISC;
 			}
 		}
-		else if(e.getAmbit().getDescripcio().contains("MATERIAL") &&
+		else if(e.getAmbit().getDescripcio().toUpperCase().contains("MATERIAL") &&
 				d.getGravetat().getDescripcio().equalsIgnoreCase("moderada") &&
 				d.getFrequencia().getDescripcio().equalsIgnoreCase("continua") &&
 				!d.getSituacioSocial().getSocial().contains("H.1")) {
 			return RiscService.Tipus.RISC;
 		}
-		else if(e.getAmbit().getDescripcio().contains("MATERIAL")  &&
+		else if(e.getAmbit().getDescripcio().toUpperCase().contains("MATERIAL")  &&
 				d.getGravetat().getDescripcio().equalsIgnoreCase("alta") &&
 				d.getFrequencia().getDescripcio().equalsIgnoreCase("ocasional") &&
 				!d.getSituacioSocial().getSocial().contains("H.1")) {
@@ -174,15 +190,15 @@ public class PreguntaServiceImpl implements PreguntaService{
 		}
 		else {
 			int res = d.getGravetat().getValue()*d.getFrequencia().getValue();
-			if (res <= 1) {
+			if (res <= vul) {
 				return RiscService.Tipus.VULNERABILITAT;
 			}
-			else if (res <= 3) {
+			else if (res <= risc) {
 				return RiscService.Tipus.RISC;
 			}			
 		}	
 		
-		return RiscService.Tipus.ALT_RISC;
+		return RiscService.Tipus.ALT_RISC;*/
 	}
 
 	private void avaluacioEconomica (Pregunta d) {

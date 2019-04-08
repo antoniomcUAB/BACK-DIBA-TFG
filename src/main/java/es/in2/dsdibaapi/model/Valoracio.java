@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="VALORACIO")
+@Table (name="DIBA_VAL_VALORACIO")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -35,23 +36,19 @@ public @Data class Valoracio implements Serializable {
 
 	@Id 
 	@GeneratedValue
+	@Column(name = "DIBA_VAL_ID")
 	private long id;
-	
+	@Column(name = "DIBA_VAL_TOTAL")
 	private Double total;
+	@Column(name = "DIBA_VAL_FACTORS")
 	private long factors;
+	@Column(name = "DIBA_VAL_DATA")
 	private Date data;
+	@Column(name = "DIBA_VAL_CONFIRMAT")
 	private Boolean confirmat;
 	
-	/*
-	@OneToOne
-	@JoinColumn(name="expedient",foreignKey= @ForeignKey(name = "VALORACIO_EXPEDIENT_FK"))
-	@JsonIgnore
-    private Expedient expedient;*/
-	
-	/*@OneToMany (cascade=CascadeType.ALL,mappedBy = "valoracio", orphanRemoval = true, fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)*/
 	@OneToMany (cascade= {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
-	@JoinColumn(name="valoracio",referencedColumnName="id")
+	@JoinColumn(name="DIBA_AVL_VALORACIO",referencedColumnName="DIBA_VAL_ID")
 	@JsonIgnoreProperties(value = { "value"})
 	@JsonProperty("evaluacions")
     private List<Avaluacio> avaluacio;

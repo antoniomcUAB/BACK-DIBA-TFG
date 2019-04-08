@@ -2,6 +2,7 @@ package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="FACTOR_ECONOMIC")
+@Table (name="DIBA_FAE_FACTORECONOMIC")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -30,19 +31,15 @@ public @Data class FactorEconomic implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
+	@Column (name="DIBA_FAE_ID")
 	private long id;
+	@Column (name="DIBA_FAE_DESCRIPCIO")
 	private String descripcio;
 	
 
 	@ManyToOne
-    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "FACTOR_ECONOMIC_VERSIO_FK"),updatable=false)
+    @JoinColumn(name="DIBA_FAE_VERSIO_MODEL",foreignKey= @ForeignKey(name = "DIBA_FAE_FACTORECONOMIC_FK_VSM"),updatable=false)
 	@JsonIgnore
-    private VersioModel versioModel;
+	private VersioModel versioModel;
 	
-	/*
-
-	public FactorEconomic (VersioModel versioModel,String descripcio) {
-		this.descripcio=descripcio;
-		this.versioModel=versioModel;
-	}*/
 }

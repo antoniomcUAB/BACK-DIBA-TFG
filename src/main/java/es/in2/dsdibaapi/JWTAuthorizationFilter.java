@@ -44,7 +44,12 @@ public class JWTAuthorizationFilter  extends BasicAuthenticationFilter {
 		
 			String header = req.getHeader(jwtProperties.getHEADER_AUTHORIZATION_KEY());
 			
-			if (header == null || !header.startsWith(jwtProperties.getTOKEN_BEARER_PREFIX())) {
+			if (req.getRequestURI().contains("swagger")
+					|| req.getRequestURI().contains("/webjars/")
+					 || req.getRequestURI().contains("/v2/")) {
+				chain.doFilter(req, res);
+			}			
+			else if (header == null || !header.startsWith(jwtProperties.getTOKEN_BEARER_PREFIX())) {
 				ObjectMapper objectMapper = new ObjectMapper();
 				
 				res.setStatus(HttpStatus.UNAUTHORIZED.value());

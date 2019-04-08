@@ -2,6 +2,7 @@ package es.in2.dsdibaapi.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="AVALUACIO")
+@Table (name="DIBA_AVL_AVALUACIO")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -32,26 +33,28 @@ public @Data class Avaluacio implements Serializable {
 
 	@Id 
 	@GeneratedValue
+	@Column(name = "DIBA_AVL_ID")
 	private long id;
+	@Column(name = "DIBA_AVL_JUSTIFICACIO")
 	private String justificacio;
 	
 	@ManyToOne
-    @JoinColumn(name="ambit",foreignKey= @ForeignKey(name = "AVALUACIO_ENTORN_FK"))
+    @JoinColumn(name="DIBA_AVL_AMBIT",foreignKey= @ForeignKey(name = "DIBA_AVL_AVALUACIO_FK_AMD"))
 	@JsonIgnoreProperties(value = { "diagnostic", "entorn", "contextualitzacio"})
-    private AmbitDiagnostic ambit;
+	private AmbitDiagnostic ambit;
 	
 	
 	@ManyToOne 
-	@JoinColumn(name="valoracio",foreignKey= @ForeignKey(name = "AVALUACIO_VALORACIO_FK"), updatable = false)
+	@JoinColumn(name="DIBA_AVL_VALORACIO",foreignKey= @ForeignKey(name = "DIBA_AVL_AVALUACIO_FK_VAL"), updatable = false)
 	@JsonIgnore
-    private Valoracio valoracio;
+	private Valoracio valoracio;
 	
 	@ManyToOne
-	@JoinColumn(name="risc",foreignKey= @ForeignKey(name = "AVALUACIO_RISC_FK"))	
+	@JoinColumn(name="DIBA_AVL_RISC",foreignKey= @ForeignKey(name = "DIBA_AVL_AVALUACIO_FK_RIS"))	
     private Risc risc;
 	
 	@ManyToOne
-	@JoinColumn(name="riscProfessional",foreignKey= @ForeignKey(name = "AVALUACIO_RISC_PROF_FK"))
+	@JoinColumn(name="DIBA_AVL_RISC_PROFESSIONAL",foreignKey= @ForeignKey(name = "DIBA_AVL_AVALUACIO_FK_RIS_PROF"))
     private Risc riscProfessional;
 	
 	

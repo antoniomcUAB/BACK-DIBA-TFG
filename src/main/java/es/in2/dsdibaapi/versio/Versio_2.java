@@ -97,7 +97,8 @@ public class Versio_2 implements CommandLineRunner {
 		Gravetat riscGravetat=gravetatService.findByDescription(GravetatService.Tipus.RISC.toString());
 		
 		
-		Ambit ambit = ambitService.save (Ambit.builder().versioModel(versio).versioModel(versio).descripcio("Autonomia").vulnerabilitat(4d).risc(7d).valVulnerabilitat(1d).valRisc(2.1d).valAltrisc(5d).build());
+		Ambit ambit = ambitService.save (Ambit.builder().versioModel(versio)
+				.versioModel(versio).descripcio("Autonomia").vulnerabilitat(4d).risc(7d).valVulnerabilitat(1d).valRisc(2.1d).valAltrisc(5d).build());
 		
 		Ambit ambitAutonomia = ambit;
 		
@@ -184,7 +185,7 @@ public class Versio_2 implements CommandLineRunner {
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Existeix risc en la integritat física de les persones que hi habiten ",altaGravetat));
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,altRisc,frequenciaGravetat));
 			
-		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Habitatge insegur (H.3)","	",entornHabitatge,0.2d,0.4d,0.6d));
+		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Habitatge insegur (H.3)","Situacions que es corresponen a la categoria ETHOS d'habitatge insegur i es defineix per unitats familiars que  degut a la seva situació poden perdre el dret d’ús de l’habitatge on han fixat el seu domicili habitual (processos de desnonament o situacions d'ocupació il·legal). ",entornHabitatge,0.2d,0.4d,0.6d));
 			
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"situació impagament prévia a l'inici del procés judicial. Ocupacié il·legall",baixaGravetat));
 		criteriService.save(new Criteri ("situació puntual i capcitat de resolucié",ocasionalFrequencia,vulnerabilitatRisc,frequenciaGravetat));

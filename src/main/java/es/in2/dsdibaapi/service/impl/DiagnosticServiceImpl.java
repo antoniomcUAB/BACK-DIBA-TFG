@@ -3,7 +3,6 @@ package es.in2.dsdibaapi.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.StreamSupport;
 
 import javax.transaction.Transactional;
 
@@ -128,14 +127,9 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		return diagnosticRepository.save(diagnostic);
     }
 	
-	public Diagnostic avaluar (Diagnostic diag) {	
+	public Diagnostic avaluar (Diagnostic diag) {			
 		
-		
-		
-		Ambit ambit = null;
-		
-		Avaluacio avaluacio = null;
-		
+		Avaluacio avaluacio = null;	
 		
 		Valoracio valoracio = null;
 		
@@ -146,8 +140,7 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		else {
 			valoracio = Valoracio.builder().build();
 			valoracio.setAvaluacio(new ArrayList<Avaluacio> ());
-		}
-		
+		}		
 		
 		
 		Risc vulnerabilitat = riscService.findByDescription(RiscService.Tipus.VULNERABILITAT);
@@ -156,10 +149,7 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 		
 		Double total = 0d;
 		
-		
-		
-		for (AmbitDiagnostic a:diag.getAmbit()) {
-			
+		for (AmbitDiagnostic a:diag.getAmbit()) {			
 			avaluacio = null;
 			
 			if (diag.getValoracio() != null) {
@@ -172,63 +162,63 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 				}
 			}
 			
-			for (EntornJson e:a.getEntorn()) {
-				if (a.getAmbit().getVulnerabilitat() != null &&
-						StreamSupport.stream(e.getPregunta().spliterator(),false).count() > 0) {
-					
-					
-					if (avaluacio == null) {
-						avaluacio = Avaluacio.builder()
-									.ambit(a)
-									.valoracio(valoracio)
-									.risc(riscService.findByDescription(avaluar (diag,a,e))).build();
-						
-						
-						valoracio.getAvaluacio().add(avaluacio);
-					} else {
-						avaluacio.setRisc(riscService.findByDescription(avaluar (diag,a,e)));
-					}
 				
-					if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == vulnerabilitat.getId()) ||
-							(avaluacio.getRiscProfessional() == null && avaluacio.getRisc().getId() == vulnerabilitat.getId())) {
-						total += a.getAmbit().getValVulnerabilitat();
-					} 
-					else if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == risc.getId()) ||
-							(avaluacio.getRiscProfessional() == null && avaluacio.getRisc().getId() == risc.getId())) {
-						total += a.getAmbit().getValRisc();
-					}
-					else if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == altRisc.getId()) ||
-							(avaluacio.getRiscProfessional() == null && avaluacio.getRisc().getId() == altRisc.getId())) {
-						total += a.getAmbit().getValAltrisc();
-					}
+			if (a.getAmbit().getVulnerabilitat() != null) { 
+					
+				
+				if (avaluacio == null) {
+					avaluacio = Avaluacio.builder()
+								.ambit(a)
+								.valoracio(valoracio)
+								.risc(riscService.findByDescription(avaluar (a))).build();
+					
+					
+					valoracio.getAvaluacio().add(avaluacio);
+				} else {
+					avaluacio.setRisc(riscService.findByDescription(avaluar (a)));
+				}
+			
+				if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == vulnerabilitat.getId()) ||
+						(avaluacio.getRiscProfessional() == null && avaluacio.getRisc().getId() == vulnerabilitat.getId())) {
+					total += a.getAmbit().getValVulnerabilitat();
 				} 
-				else if (a.getAmbit().getVulnerabilitat() == null) {
+				else if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == risc.getId()) ||
+						(avaluacio.getRiscProfessional() == null && avaluacio.getRisc().getId() == risc.getId())) {
+					total += a.getAmbit().getValRisc();
+				}
+				else if ((avaluacio.getRiscProfessional() != null && avaluacio.getRiscProfessional().getId() == altRisc.getId()) ||
+						(avaluacio.getRiscProfessional() == null && avaluacio.getRisc().getId() == altRisc.getId())) {
+					total += a.getAmbit().getValAltrisc();
+				}
+			} 
+			// Globalitat del cas
+			else if (a.getAmbit().getVulnerabilitat() == null) {
+				
+				if (avaluacio == null) {
+					avaluacio = Avaluacio.builder()
+								.ambit(a)
+								.valoracio(valoracio).build();
 					
-					if (avaluacio == null) {
-						avaluacio = Avaluacio.builder()
-									.ambit(a)
-									.valoracio(valoracio).build();
-						
-						
-						valoracio.getAvaluacio().add(avaluacio);
-					}
 					
-					if (total == 0) {
-						avaluacio.setRisc(null);
-					}
-					else if (total <= a.getAmbit().getValVulnerabilitat()) {
-						avaluacio.setRisc(vulnerabilitat);
-					}
-					else if (total <= a.getAmbit().getValRisc()) {
-						avaluacio.setRisc(risc);
-					} else {
-						avaluacio.setRisc(altRisc);
-					}
+					valoracio.getAvaluacio().add(avaluacio);
+				}
+				
+				if (total == 0) {
+					avaluacio.setRisc(null);
+				}
+				else if (total <= a.getAmbit().getValVulnerabilitat()) {
+					avaluacio.setRisc(vulnerabilitat);
+				}
+				else if (total < a.getAmbit().getValRisc()) {
+					avaluacio.setRisc(risc);
+				} else {
+					avaluacio.setRisc(altRisc);
 				}
 			}
+			
 		}
-
 		
+	
 		valoracio.setTotal(total);
 		valoracio.setData(new Date());
 		diag.setValoracio(valoracio);
@@ -246,38 +236,41 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 	}
 	
 	
-	public RiscService.Tipus avaluar (Diagnostic diagnostic,AmbitDiagnostic a, EntornJson e) {
+	public RiscService.Tipus avaluar (AmbitDiagnostic a) {
 		
 		
 		Double count = 0d;
 		
-		if (e.getPregunta() != null) {
+		for (EntornJson e:a.getEntorn()) {
 		
-			Risc vulnerabilitat = riscService.findByDescription(RiscService.Tipus.VULNERABILITAT);
-			Risc risc = riscService.findByDescription(RiscService.Tipus.RISC);	
+			if (e.getPregunta() != null) {
 			
-			// Avaluacio de Factors de context
-			for (Contextualitzacio c:a.getContextualitzacio()) {
-				if (c.getMesUc()!=null && c.getMesUc()) {
-					count += c.getFactor().getFctots();
+				Risc vulnerabilitat = riscService.findByDescription(RiscService.Tipus.VULNERABILITAT);
+				Risc risc = riscService.findByDescription(RiscService.Tipus.RISC);			
+				
+				for (Pregunta d:e.getPregunta()) {
+					if (d.getFactor().equals(vulnerabilitat)) {
+						count += d.getSituacioSocial().getVulnerabilitat();
+					}
+					else if (d.getFactor().equals(risc)) {
+						count += d.getSituacioSocial().getRisc();
+					} 
+					else {
+						count += d.getSituacioSocial().getAltRisc();
+					}
 				}
-				else {
-					count += c.getFactor().getFc1m();
-				}
-			}
 			
-			for (Pregunta d:e.getPregunta()) {
-				if (d.getFactor().equals(vulnerabilitat)) {
-					count += d.getSituacioSocial().getVulnerabilitat();
-				}
-				else if (d.getFactor().equals(risc)) {
-					count += d.getSituacioSocial().getRisc();
-				} 
-				else {
-					count += d.getSituacioSocial().getAltRisc();
-				}
 			}
+		}
 		
+		// Avaluacio de Factors de context
+		for (Contextualitzacio c:a.getContextualitzacio()) {
+			if (c.getMesUc()!=null && c.getMesUc()) {
+				count += c.getFactor().getFctots();
+			}
+			else {
+				count += c.getFactor().getFc1m();
+			}
 		}
 		
 		if ( count == 0d) {

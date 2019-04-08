@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,12 +15,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,7 +27,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @DynamicUpdate
-@Table (name="DIAGNOSTIC")
+@Table (name="DIBA_DGC_DIAGNOSTIC")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -38,56 +36,38 @@ public @Data class Diagnostic implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue 
-	private long id;	
+	@Column (name="DIBA_DGC_ID")
+	private long id;
+	@Column (name="DIBA_DGC_DATA")
 	private Date data;
+	@Column (name="DIBA_DGC_OBSERVACIONS")
 	private String observacions;
 	
-	
-	
-	/*@ManyToOne
-    @JoinColumn(name="expedient",foreignKey= @ForeignKey(name = "DIAGNOSTIC_EXPEDIENT_FK"))	
-	@JsonIgnoreProperties(value = { "diagnostic", "professional", "persona"} )*/
+		
 	@ManyToOne
-    @JoinColumn(name="expedient",foreignKey= @ForeignKey(name = "DIAGNOSTIC_EXPEDIENT_FK"))	
+    @JoinColumn(name="DIBA_DGC_EXPEDIENT", foreignKey= @ForeignKey(name = "DIBA_DGC_DIAGNOSTIC_FK_EXP"))	
 	@JsonIgnore
-    private Expedient expedient;
+	private Expedient expedient;
 	
 	@ManyToOne
-    @JoinColumn(name="estat",foreignKey= @ForeignKey(name = "DIAGNOSTIC_ESTAT_FK"))	
-    private Estat estat;
+    @JoinColumn(name="DIBA_DGC_ESTAT",foreignKey= @ForeignKey(name = "DIBA_DGC_DIAGNOSTIC_FK_EST"))
+	private Estat estat;
 	
 	@ManyToOne
-    @JoinColumn(name="versioModel",foreignKey= @ForeignKey(name = "DIAGNOSTIC_VERSIO_MODEL_FK"))	
-    private VersioModel versioModel;
+    @JoinColumn(name="DIBA_DGC_VERSIO_MODEL",foreignKey= @ForeignKey(name = "DIBA_DGC_DIAGNOSTIC_FK_VSM"))
+	private VersioModel versioModel;
 	
-	/*	
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)	
-	@JoinColumn (name="diagnostic",referencedColumnName="id")
-	@JsonProperty("preguntes")	
-    private List<Pregunta> pregunta;
-	
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true, mappedBy = "diagnostic", fetch = FetchType.EAGER)	
-	@Fetch(value = FetchMode.SUBSELECT)
-    private List<Contextualitzacio> contextualitzacio;
-	*/
 	@ManyToOne
-    @JoinColumn(name="professional",foreignKey= @ForeignKey(name = "DIAGNOSTIC_PROFESSIONAL_FK"))	
-	//@JsonIgnore
-    private Professional professional;
+    @JoinColumn(name="DIBA_DGC_PROFESSIONAL",foreignKey= @ForeignKey(name = "DIBA_DGC_DIAGNOSTIC_FK_PRF"))	
+	private Professional professional;
 	
-	/*
-	@Transient
-	@JsonIgnoreProperties(value = { "vulnerabilitat", "risc", "valVulnerabilitat", "valRisc", "valAltrisc"})
-	private List<es.in2.dsdibaapi.json.AmbitJson> ambit;*/
-	
-	
+		
 	@OneToOne (cascade= {CascadeType.MERGE, CascadeType.PERSIST},orphanRemoval = true)
-    @JoinColumn(name="valoracio",foreignKey= @ForeignKey(name = "DIAGNOSTIC_VALORACIO_FK"))	
-    private Valoracio valoracio;
-	
+    @JoinColumn(name="DIBA_DGC_VALORACIO",foreignKey= @ForeignKey(name = "DIBA_DGC_DIAGNOSTIC_FK_VAL"))	
+	private Valoracio valoracio;	
 	
 	@OneToMany(cascade= {CascadeType.MERGE, CascadeType.PERSIST},orphanRemoval = true)
-	@JoinColumn(name="diagnostic")		
+	@JoinColumn(name="DIBA_AMD_DIAGNOSTIC")
     private List<AmbitDiagnostic> ambit;
 	
 }
