@@ -19,11 +19,10 @@ build:
   only:
   - master
   script:
-    - mvn clean package -DskipTests -Pdes 
-    
-artifacts:
-  paths:
-    - target/
+    - mvn clean package -DskipTests -Pdes    
+  artifacts:
+    paths:
+      - target/
 
 
     
