@@ -34,5 +34,4 @@ public @Data class Frequencia implements Serializable {
 	private Integer value;
 	
 	
-	
 }

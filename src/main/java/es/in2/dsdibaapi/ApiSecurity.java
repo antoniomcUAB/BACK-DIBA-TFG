@@ -58,10 +58,10 @@ public class ApiSecurity  extends WebSecurityConfigurerAdapter {
 		httpSecurity
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.sessionAuthenticationStrategy(new NullAuthenticatedSessionStrategy())
-			.and()			
+			.and()	
 			.csrf().disable()
 			.formLogin().disable()
-			.authorizeRequests()
+			.authorizeRequests()			
 			.antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
 			.antMatchers(HttpMethod.OPTIONS, LOGIN_URL).permitAll()
 			.antMatchers("/dsdiba/api/swagger-ui.html").permitAll()

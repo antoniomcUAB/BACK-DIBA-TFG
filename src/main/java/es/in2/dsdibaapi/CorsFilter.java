@@ -16,13 +16,25 @@ public class CorsFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		
 		
+		/*
+		
+		if (response.getHeader("access-control-allow-origin") == null) {
+			response.setHeader("Access-Control-Allow-Origin", "http://su0353.corpo.ad.diba.es:8030");
+		} else {
+			response.setHeader("Access-Control-Allow-Origin", response.getHeader("access-control-allow-origin") );
+		}*/
+		
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		
 		 
 		 if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
 	            response.setStatus(HttpServletResponse.SC_OK);
 	        }
 		 
 		filterChain.doFilter(request, response);
-		/* else if ((request.getHeader("origin")!=null && (request.getHeader("origin").contentEquals("http://dsdiba.demo.in2.es")
+		 /*else if ((request.getHeader("origin")!=null && 
+				 (request.getHeader("origin").contentEquals("http://dsdiba.demo.in2.es") ||
+				  request.getHeader("origin").contentEquals("http://dsdiba.demo.in2.es") 
 				 || request.getHeader("origin").contentEquals("http://localhost:7001")
 				 || request.getHeader("origin").contentEquals("http://localhost:8090")
 				 || request.getHeader("origin").contentEquals("http://localhost:4200"))
