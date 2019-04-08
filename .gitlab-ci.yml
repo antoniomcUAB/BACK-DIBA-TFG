@@ -21,6 +21,9 @@ build:
   script:
     - mvn clean package -DskipTests -Pdes 
     
+artifacts:
+  paths:
+    - target/
 
 
     
