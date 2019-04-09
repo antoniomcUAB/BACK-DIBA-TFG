@@ -14,6 +14,8 @@ import es.in2.dsdibaapi.service.AmbitService;
 @Service
 public class AmbitServiceImpl implements AmbitService {
 	
+	
+	
 	@Autowired
 	AmbitServiceImpl() {}
 	

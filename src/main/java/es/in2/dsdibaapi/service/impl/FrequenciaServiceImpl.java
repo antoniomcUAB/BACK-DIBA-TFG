@@ -16,6 +16,7 @@ import es.in2.dsdibaapi.service.FrequenciaService;
 @Service
 public class FrequenciaServiceImpl implements FrequenciaService {
 	
+	
 	@Autowired
 	FrequenciaServiceImpl() {}
 	

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -45,6 +46,7 @@ public @Data class Factor implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="DIBA_FCT_GRAVETAT",foreignKey= @ForeignKey(name = "DIBA_FCT_FACTOR_FK_GRA"))
 	@JsonIgnoreProperties(value = { "value"} )
+	@OrderBy("id ASC")
 	private Gravetat gravetat;
 		
 	@ManyToOne

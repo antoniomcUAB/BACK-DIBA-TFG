@@ -9,7 +9,6 @@ import com.querydsl.core.types.Predicate;
 
 import es.in2.dsdibaapi.model.Model;
 import es.in2.dsdibaapi.model.QAmbit;
-import es.in2.dsdibaapi.model.QFactor;
 import es.in2.dsdibaapi.model.QFactorEconomic;
 import es.in2.dsdibaapi.repository.AmbitRepository;
 import es.in2.dsdibaapi.repository.FactorEconomicRepository;

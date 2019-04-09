@@ -64,7 +64,8 @@ public @Data class Ambit implements Serializable {
 	
 	@OneToMany (mappedBy = "ambit")
 	@JsonIgnoreProperties(value = { "fc1m"})
-	@JsonProperty("factors_context")	
+	@JsonProperty("factors_context")
+	@OrderBy("id ASC")
     private List<Factor> factorGravetat;
 	
 	@ManyToOne

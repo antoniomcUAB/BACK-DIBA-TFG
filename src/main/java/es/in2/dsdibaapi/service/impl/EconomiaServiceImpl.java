@@ -14,6 +14,8 @@ import es.in2.dsdibaapi.service.EconomiaService;
 @Service
 public class EconomiaServiceImpl implements EconomiaService	{
 	
+	
+	
 	@Autowired
 	EconomiaServiceImpl() {}
 	

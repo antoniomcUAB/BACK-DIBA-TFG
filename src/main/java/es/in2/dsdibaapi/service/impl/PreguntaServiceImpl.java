@@ -28,6 +28,8 @@ import es.in2.dsdibaapi.valoracio.ambit.AmbitEvalFactory;
 @Service
 public class PreguntaServiceImpl implements PreguntaService{
 	
+	
+	
 	@Autowired
 	PreguntaServiceImpl() {}
 	

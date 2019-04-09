@@ -11,6 +11,8 @@ import es.in2.dsdibaapi.service.SituacioSocialService;
 @Service
 public class SituacioSocialServiceImpl implements SituacioSocialService{
 	
+	
+	
 	@Autowired
 	SituacioSocialServiceImpl() {}
 	
