@@ -1,12 +1,15 @@
 package es.in2.dsdibaapi.service.impl;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import com.querydsl.core.types.Predicate;
+
 import es.in2.dsdibaapi.model.FactorEconomic;
+import es.in2.dsdibaapi.model.QFactorEconomic;
 import es.in2.dsdibaapi.repository.FactorEconomicRepository;
 import es.in2.dsdibaapi.service.FactorEconomicService;
 
@@ -25,7 +28,17 @@ public class FactorEconomicServiceImpl implements FactorEconomicService {
     }
 	
 	@Cacheable("factor_economic_all")
-    public List<FactorEconomic> findAll() {
+    public Iterable<FactorEconomic> findAll(Optional<Long> versio) {
+		if (versio.isPresent()) {
+			
+			Predicate predicate = null;
+			
+			predicate = QFactorEconomic.factorEconomic.versioModel.id.eq(versio.get());
+			
+			return factorRepository.findAll(predicate);
+
+		}
+		
 		return factorRepository.findAll();
     }
 	

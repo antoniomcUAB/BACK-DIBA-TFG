@@ -7,7 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
+import javax.persistence.GeneratedValue;import javax.persistence.GenerationType; import javax.persistence.SequenceGenerator;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -36,7 +36,7 @@ public @Data class Pregunta implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue
+	@Id @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "DSDIBA.HIBERNATE_SEQUENCE")
 	@Column(name = "DIBA_PRE_ID")
 	private Long id;
 	@Column(name = "DIBA_PRE_UNITAT_FAMILIAR")
@@ -48,7 +48,7 @@ public @Data class Pregunta implements Serializable {
 	private Diagnostic diagnostic;
 	
 	@ManyToOne
-    @JoinColumn(name="DIBA_PRE_SITUACIO_SOCIAL",foreignKey= @ForeignKey(name = "DIBA_PRE_PREGUNTA_FK_SSO"))
+    @JoinColumn(name="DIBA_PRE_SITUACIO_SOCIAL",foreignKey= @ForeignKey(name = "DIBA_PRE_PREGUNTA_FK_SSO"),updatable=false)
 	@JsonIgnoreProperties(value = { "definicio", "selectors", "vulnerabilitat", "risc", "altRisc" })
 	@QueryInit("entorn.ambit")
 	private SituacioSocial situacioSocial;

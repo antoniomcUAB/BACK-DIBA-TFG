@@ -23,7 +23,7 @@ public class QVersioModel extends EntityPathBase<VersioModel> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final NumberPath<Long> preguntaEconomica = createNumber("preguntaEconomica", Long.class);
+    public final StringPath preguntaEconomica = createString("preguntaEconomica");
 
     public final StringPath versio = createString("versio");
 

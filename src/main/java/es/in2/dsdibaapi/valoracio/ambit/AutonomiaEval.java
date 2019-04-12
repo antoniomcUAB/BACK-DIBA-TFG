@@ -2,7 +2,7 @@ package es.in2.dsdibaapi.valoracio.ambit;
 
 import es.in2.dsdibaapi.model.Pregunta;
 import es.in2.dsdibaapi.service.RiscService;
-import es.in2.dsdibaapi.valoracio.pregunta.PreguntaEvalFactory;
+import es.in2.dsdibaapi.valoracio.factory.PreguntaEvalFactory;
 
 public class AutonomiaEval extends AmbitEval {
 	

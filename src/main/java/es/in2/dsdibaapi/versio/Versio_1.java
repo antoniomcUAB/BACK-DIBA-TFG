@@ -244,6 +244,9 @@ public class Versio_1 implements CommandLineRunner {
 
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Sense ingressos (E.1)","Unitats familiars que no tenen ingressos o que no els acrediten de forma estable o regular. Es proposa Comptabilitzar en aquesta categoria aquelles unitats familiars on séhan identificat més de 6 étems dels qüestionari."
 												,entornEconomic,1d,2d,3d));
+		
+		
+		
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Disposen de xarxa o recursos que proporcionen  suport econémic. No han déafrontar pagament de l'habitatge habitual",moderadaGravetat));
 		criteriService.save(new Criteri ("De forma puntual/sobrevinguda i amb capacitat de canvi",frequentFrequencia,riscRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("De forma continua/Crónica",puntualFrequencia,alttRisc,frequenciaGravetat));	
@@ -255,7 +258,7 @@ public class Versio_1 implements CommandLineRunner {
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Ingressos insuficients (E.2)","Unitats familiars que malgrat tenir uns ingressos tenen dificultats per cobrir determinades necessitats  dels seus integrants."
 												,entornEconomic,1d,2d,3d));
 		
-		versio.setPreguntaEconomica(situacioSocial.getId());
+		versio.setPreguntaEconomica(situacioSocial.getId().toString());
 		versioModelService.save(versio);
 								
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"3-4 étems del qüestionari privacié econémica i amb xarxa/recursos de suport econémic",baixaGravetat));	

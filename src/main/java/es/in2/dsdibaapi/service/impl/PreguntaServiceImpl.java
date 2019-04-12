@@ -1,6 +1,9 @@
 package es.in2.dsdibaapi.service.impl;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -14,10 +17,10 @@ import es.in2.dsdibaapi.model.FactorEconomic;
 import es.in2.dsdibaapi.model.Pregunta;
 import es.in2.dsdibaapi.model.QPregunta;
 import es.in2.dsdibaapi.model.SituacioSocial;
-import es.in2.dsdibaapi.repository.FactorEconomicRepository;
 import es.in2.dsdibaapi.repository.PreguntaRepository;
 import es.in2.dsdibaapi.service.DiagnosticService;
 import es.in2.dsdibaapi.service.EntornService;
+import es.in2.dsdibaapi.service.FactorEconomicService;
 import es.in2.dsdibaapi.service.FrequenciaService;
 import es.in2.dsdibaapi.service.GravetatService;
 import es.in2.dsdibaapi.service.PreguntaService;
@@ -55,7 +58,7 @@ public class PreguntaServiceImpl implements PreguntaService{
 	private SituacioSocialService situacioSocialService;
 	
 	@Autowired
-	FactorEconomicRepository factorRepository;
+	FactorEconomicService factorService;
 	
 	
     public Pregunta findById(Long id) {
@@ -135,7 +138,7 @@ public class PreguntaServiceImpl implements PreguntaService{
 		pregunta.setDiagnostic(diag);
 	
 		
-		if (diag.getVersioModel().getPreguntaEconomica().equals(pregunta.getSituacioSocial().getId())) {
+		if (diag.getVersioModel().getPreguntaEconomica().contains(pregunta.getSituacioSocial().getId().toString())) {
 			avaluacioEconomica (pregunta);
 		} else {
 			pregunta.setFactor(riscService.findByDescription(avaluar(pregunta)));
@@ -151,122 +154,163 @@ public class PreguntaServiceImpl implements PreguntaService{
 		SituacioSocial ss = situacioSocialService.findById(d.getSituacioSocial().getId());
 		Entorn e = entornService.findById(ss.getEntorn().getId());
 		
-		return AmbitEvalFactory.getEval(d, e.getAmbit());
-		
-		/*
-		Integer vul = 2;
-		Integer risc = 4;
-		Integer altRisc = 15;
-		
-		if (e.getAmbit().getDescripcio().toUpperCase().contains("AUTONOMIA")) {
-			vul = 1;
-			risc = 3;
-			altRisc = 9;
-		}
-		
-		if ( d.getGravetat() == null || d.getFrequencia() == null ||
-				(d.getFrequencia().getDescripcio().equalsIgnoreCase("sense valoració") &&
-						d.getGravetat().getDescripcio().equalsIgnoreCase("alta"))) {
-			return RiscService.Tipus.ALT_RISC;
-		}
-		else if (d.getFrequencia().getDescripcio().equalsIgnoreCase("sense valoració")) {
-			if(d.getGravetat().getDescripcio().equalsIgnoreCase("baixa")) {
-				return RiscService.Tipus.VULNERABILITAT;
-			} else if(d.getGravetat().getDescripcio().equalsIgnoreCase("moderada")) {
-				return RiscService.Tipus.RISC;
-			} else {
-				return RiscService.Tipus.ALT_RISC;
-			}
-		}
-		else if(e.getAmbit().getDescripcio().toUpperCase().contains("MATERIAL") &&
-				d.getGravetat().getDescripcio().equalsIgnoreCase("moderada") &&
-				d.getFrequencia().getDescripcio().equalsIgnoreCase("continua") &&
-				!d.getSituacioSocial().getSocial().contains("H.1")) {
-			return RiscService.Tipus.RISC;
-		}
-		else if(e.getAmbit().getDescripcio().toUpperCase().contains("MATERIAL")  &&
-				d.getGravetat().getDescripcio().equalsIgnoreCase("alta") &&
-				d.getFrequencia().getDescripcio().equalsIgnoreCase("ocasional") &&
-				!d.getSituacioSocial().getSocial().contains("H.1")) {
-			return RiscService.Tipus.VULNERABILITAT;
-		}
-		else {
-			int res = d.getGravetat().getValue()*d.getFrequencia().getValue();
-			if (res <= vul) {
-				return RiscService.Tipus.VULNERABILITAT;
-			}
-			else if (res <= risc) {
-				return RiscService.Tipus.RISC;
-			}			
-		}	
-		
-		return RiscService.Tipus.ALT_RISC;*/
+		return AmbitEvalFactory.getEval(d, e.getAmbit());		
 	}
 
-	private void avaluacioEconomica (Pregunta d) {
+	private void avaluacioEconomica (Pregunta p) {
+			
+		if (p.getSituacioSocial().getSocial().toLowerCase().contains("e1")) {
+			evalE1 (p);
+		} else {
+			evalE2 (p);
+		}
 		
-		if (d.getFactorEconomic() != null && d.getFactorEconomic().size() != 0) {
-			
-			List<FactorEconomic> factors = factorRepository.findAll();
-					
-			Integer n = d.getFactorEconomic().size();
-			
-			Boolean xarxaFamiliar = false;
-			Boolean dificultats = false;
-			
-			for (FactorEconomic f:d.getFactorEconomic()) {
-				if (f.getId() == factors.get(factors.size()-1).getId()) {
-					n--;
-					dificultats = true;
-				}
-				else if (f.getId() == factors.get(factors.size()-2).getId()) {
-					n--;
-					xarxaFamiliar = true;
-				}
-			}
+	}
+	
+	private void evalE1 (Pregunta p) {
+		Iterable<FactorEconomic> factors = factorService.findAll(Optional.ofNullable(p.getDiagnostic().getVersioModel().getId()));
 				
-			if (n < 3) {
-				d.setGravetat(null);
-			} 
-			else if (n < 5) {
-				if (xarxaFamiliar) {
-					d.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.BAIXA.toString()));
-				} else {
-					d.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.MODERADA.toString()));
-				}
-			} 
-			else if (n < 7 && xarxaFamiliar) {			
-				d.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.MODERADA.toString()));
+		FactorEconomic f1= StreamSupport.stream(factors.spliterator(), false).findFirst().get();
+		
+		FactorEconomic fFamiliar= StreamSupport.stream(factors.spliterator(), false)
+				.filter( f -> f.getDescripcio().toLowerCase().contains("Existeix una xarxa familiar".toLowerCase()))
+				.findFirst().get();
+		
+		FactorEconomic fDificultats= StreamSupport.stream(factors.spliterator(), false)
+				.filter( f -> f.getDescripcio().toLowerCase().contains("Les dificultats en".toLowerCase()))
+				.findFirst().get();
+		
+		Integer n = p.getFactorEconomic().size();
+		
+		Boolean xarxaFamiliar = false;
+		Boolean dificultats = false;
+		Boolean pagaHipoteca = false;
+		
+		for (FactorEconomic f:p.getFactorEconomic()) {
+			if (f.getId() == f1.getId()) {
+				n--;
+				pagaHipoteca = true;
+			}
+			else if (f.getId() == fDificultats.getId()) {
+				n--;
+				dificultats = true;
+			}
+			else if (f.getId() == fFamiliar.getId()) {
+				n--;
+				xarxaFamiliar = true;
+			}
+		}
+			
+		if (xarxaFamiliar && pagaHipoteca) {			
+			p.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.MODERADA.toString()));
+			
+			if (dificultats) {
+				p.setFrequencia(frequenciaService.findByDescription(FrequenciaService.Tipus.CONTINUA.toString()));
 			} else {
-				d.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.ALTA.toString()));			
-			} 
+				p.setFrequencia(frequenciaService.findByDescription(FrequenciaService.Tipus.OCASIONAL.toString()));
+			}
 			
-			if (d.getGravetat() !=null && d.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.ALTA.toString())) {
-				if (dificultats) {
-					d.setFrequencia(frequenciaService.findByDescription(FrequenciaService.Tipus.CONTINUA.toString()));
-				} else {
-					d.setFrequencia(frequenciaService.findByDescription(FrequenciaService.Tipus.OCASIONAL.toString()));
+		} else {
+			p.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.ALTA.toString()));			
+		} 
+		
+		if (p.getGravetat() !=null && p.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.ALTA.toString())) {
+			if (dificultats) {
+				p.setFrequencia(frequenciaService.findByDescription(FrequenciaService.Tipus.CONTINUA.toString()));
+			} else {
+				p.setFrequencia(frequenciaService.findByDescription(FrequenciaService.Tipus.OCASIONAL.toString()));
+			}
+		}
+		
+		if (p.getGravetat() == null) {
+			p.setFactor(riscService.findByDescription(RiscService.Tipus.SENSE_VALORACIO));
+		}
+		else if (p.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.MODERADA.toString()) &&
+						p.getFrequencia().getDescripcio().equalsIgnoreCase(FrequenciaService.Tipus.OCASIONAL.toString())) {
+			p.setFactor(riscService.findByDescription(RiscService.Tipus.RISC));
+		}						
+		else {
+			p.setFactor(riscService.findByDescription(RiscService.Tipus.ALT_RISC));
+		}
+		
+	}
+	
+	private void evalE2 (Pregunta p) {		
+		
+		
+			if (p.getFactorEconomic() != null && p.getFactorEconomic().size() != 0) {			
+				
+				Iterable<FactorEconomic> factors = factorService.findAll(Optional.ofNullable(p.getDiagnostic().getVersioModel().getId()));
+				
+				
+				
+				FactorEconomic fFamiliar= StreamSupport.stream(factors.spliterator(), false)
+						.filter( f -> f.getDescripcio().toLowerCase().contains("Existeix una xarxa familiar".toLowerCase()))
+						.findFirst().get();
+				
+				FactorEconomic fDificultats= StreamSupport.stream(factors.spliterator(), false)
+						.filter( f -> f.getDescripcio().toLowerCase().contains("Les dificultats en".toLowerCase()))
+						.findFirst().get();
+				
+				Integer n = p.getFactorEconomic().size();
+				
+				Boolean xarxaFamiliar = false;
+				Boolean dificultats = false;
+				
+				for (FactorEconomic f:p.getFactorEconomic()) {
+					if (f.getId() == fDificultats.getId()) {
+						n--;
+						dificultats = true;
+					}
+					else if (f.getId() == fFamiliar.getId()) {
+						n--;
+						xarxaFamiliar = true;
+					}
 				}
-			}
-			
-			if (d.getGravetat() == null) {
-				d.setFactor(riscService.findByDescription(RiscService.Tipus.SENSE_VALORACIO));
-			}
-			else if (d.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.BAIXA.toString())) {
-				d.setFactor(riscService.findByDescription(RiscService.Tipus.VULNERABILITAT));
-			}
-			else if (d.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.MODERADA.toString()) ||
-					(d.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.ALTA.toString()) &&
-							d.getFrequencia().getDescripcio().equalsIgnoreCase(FrequenciaService.Tipus.OCASIONAL.toString()))) {
-				d.setFactor(riscService.findByDescription(RiscService.Tipus.RISC));
+					
+				if (n < 3) {
+					p.setGravetat(null);
+				} 
+				else if (n < 5) {
+					if (xarxaFamiliar) {
+						p.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.BAIXA.toString()));
+					} else {
+						p.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.MODERADA.toString()));
+					}
+				} 
+				else if (n < 7 && xarxaFamiliar) {			
+					p.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.MODERADA.toString()));
+				} else {
+					p.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.ALTA.toString()));			
+				} 
+				
+				if (p.getGravetat() !=null && p.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.ALTA.toString())) {
+					if (dificultats) {
+						p.setFrequencia(frequenciaService.findByDescription(FrequenciaService.Tipus.CONTINUA.toString()));
+					} else {
+						p.setFrequencia(frequenciaService.findByDescription(FrequenciaService.Tipus.OCASIONAL.toString()));
+					}
+				}
+				
+				if (p.getGravetat() == null) {
+					p.setFactor(riscService.findByDescription(RiscService.Tipus.SENSE_VALORACIO));
+				}
+				else if (p.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.BAIXA.toString())) {
+					p.setFactor(riscService.findByDescription(RiscService.Tipus.VULNERABILITAT));
+				}
+				else if (p.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.MODERADA.toString()) ||
+						(p.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.ALTA.toString()) &&
+								p.getFrequencia().getDescripcio().equalsIgnoreCase(FrequenciaService.Tipus.OCASIONAL.toString()))) {
+					p.setFactor(riscService.findByDescription(RiscService.Tipus.RISC));
+				}
+				else {
+					p.setFactor(riscService.findByDescription(RiscService.Tipus.ALT_RISC));
+				}
 			}
 			else {
-				d.setFactor(riscService.findByDescription(RiscService.Tipus.ALT_RISC));
+				p.setFactor(riscService.findByDescription(RiscService.Tipus.SENSE_VALORACIO));
 			}
-		}
-		else {
-			d.setFactor(riscService.findByDescription(RiscService.Tipus.SENSE_VALORACIO));
-		}
+				
 	}
 }
 

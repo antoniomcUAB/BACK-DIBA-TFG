@@ -1,25 +1,32 @@
-package es.in2.dsdibaapi.valoracio.pregunta;
+package es.in2.dsdibaapi.valoracio.factory.pregunta;
 
 import es.in2.dsdibaapi.service.RiscService;
 import es.in2.dsdibaapi.service.RiscService.Tipus;
 import es.in2.dsdibaapi.valoracio.ambit.AmbitEval;
 
-public class L2PreguntaEval extends PreguntaEval {
+public class E3PreguntaEval extends PreguntaEval {
 
 	@Override
 	public Tipus avaluar(AmbitEval a) {
-		if ( a.getPregunta().getGravetat() == null || a.getPregunta().getFrequencia() == null ||
-				(a.getPregunta().getFrequencia().getDescripcio().equalsIgnoreCase("sense valoració") &&
-						a.getPregunta().getGravetat().getDescripcio().equalsIgnoreCase("alta"))) {
+		if ( a.getPregunta().getGravetat() == null || a.getPregunta().getFrequencia() == null) {
 			return RiscService.Tipus.ALT_RISC;
 		}
+		else if ( a.getPregunta().getFrequencia().getDescripcio().equalsIgnoreCase("freqüent") 
+				&& a.getPregunta().getGravetat().getDescripcio().equalsIgnoreCase("moderada")) {
+			return RiscService.Tipus.VULNERABILITAT;
+		}	
+		else if (a.getPregunta().getFrequencia().getDescripcio().equalsIgnoreCase("ocasional") 
+			&& a.getPregunta().getGravetat().getDescripcio().equalsIgnoreCase("alta")) {
+				return RiscService.Tipus.RISC;
+			
+		}	
 		else if (a.getPregunta().getFrequencia().getDescripcio().equalsIgnoreCase("sense valoració")) {
-			if(a.getPregunta().getGravetat().getDescripcio().equalsIgnoreCase("baixa")) {
-				return RiscService.Tipus.VULNERABILITAT;
+			if(a.getPregunta().getGravetat().getDescripcio().equalsIgnoreCase("alta")) {
+				return RiscService.Tipus.ALT_RISC;
 			} else if(a.getPregunta().getGravetat().getDescripcio().equalsIgnoreCase("moderada")) {
 				return RiscService.Tipus.RISC;
 			} else {
-				return RiscService.Tipus.ALT_RISC;
+				return RiscService.Tipus.VULNERABILITAT;
 			}
 		}		
 		else {

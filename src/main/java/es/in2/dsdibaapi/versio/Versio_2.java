@@ -244,6 +244,7 @@ public class Versio_2 implements CommandLineRunner {
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Sense ingressos estables (E.1)",
 		"Situació d'una unitat familiar o ed conivència que no té ingressos,o que no els acredita, o que no els té de forma estable o regular. Es comptabilitzaran en aquesta categoria aquelles unitats familiars on s’han identificat 7 o més ítems de l'inventari de carència material"
 							,entornEconomic,1d,2d,3d));
+		versio.setPreguntaEconomica(situacioSocial.getId()+"$$");
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Disposen de xarxa o recursos que proporcionen  suport econémic. No han d'afrontar pagament de l'habitatge habitual",moderadaGravetat));
 		criteriService.save(new Criteri ("De forma puntual/sobrevinguda i amb capacitat de canvi",ocasionalFrequencia,riscRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("De forma continua/Crónica",continuaFrequencia,altRisc,frequenciaGravetat));	
@@ -256,7 +257,7 @@ public class Versio_2 implements CommandLineRunner {
 		"Situació d'una unitat familiar o de convivència que malgrat tenir uns ingressos estables o regulars té dificultats per cobrir determinades necessitats dels seus integrants. Es comptabilitzaran en aquesta categoria aquelles unitats familiars o de conviència on s'han identificat de 3 a 6 ítems de l'inventari de carència material."
 							,entornEconomic,1d,2d,3d));
 		
-		versio.setPreguntaEconomica(situacioSocial.getId());
+		versio.setPreguntaEconomica(versio.getPreguntaEconomica()+situacioSocial.getId());
 		versioModelService.save(versio);
 			
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"3-4 ítems del qüestionari privació econòmica i amb xarxa informal /recursos de suport econòmic",baixaGravetat));	

@@ -1,7 +1,23 @@
-package es.in2.dsdibaapi.valoracio.pregunta;
+package es.in2.dsdibaapi.valoracio.factory;
 
 import es.in2.dsdibaapi.service.RiscService;
 import es.in2.dsdibaapi.valoracio.ambit.AmbitEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.E3PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.ES4PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.ES5PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.F1PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.F4PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.F5PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.F6PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.F7PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.GenericaPreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.H2PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.H3PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.H4PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.L2PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.S1PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.S3PreguntaEval;
+import es.in2.dsdibaapi.valoracio.factory.pregunta.S5PreguntaEval;
 
 public class PreguntaEvalFactory {
 	

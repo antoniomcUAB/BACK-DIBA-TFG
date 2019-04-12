@@ -51,5 +51,7 @@ public class VersioModelController extends BaseController {
 		
 		return versioModelService.findCurrent();
 	  }
+	
+	
 
 }

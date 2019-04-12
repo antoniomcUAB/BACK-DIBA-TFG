@@ -103,7 +103,19 @@
   	<dependency>
   		<groupId>org.springframework.boot</groupId>
   		<artifactId>spring-boot-starter-data-jpa</artifactId>
+  		<!-- <exclusions>
+        <exclusion>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+         </exclusion>
+     </exclusions>  -->
   	</dependency>
+  	<!-- 
+  	<dependency>
+	    <groupId>com.zaxxer</groupId>
+	    <artifactId>HikariCP</artifactId>
+	    <version>3.2.0</version>
+	</dependency> -->
   	
   	<dependency>
   		<groupId>org.springframework.boot</groupId>
@@ -232,6 +244,8 @@
   		<artifactId>lombok</artifactId>
   		<version>1.18.4</version>
   	</dependency>
+  	
+  	
   	
      <dependency>
          <groupId>org.springframework.boot</groupId>

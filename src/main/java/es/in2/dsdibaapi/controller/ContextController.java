@@ -37,18 +37,6 @@ public class ContextController extends BaseController {
 				          HttpStatus.NOT_FOUND,getErrorNotFound(this.getClass(),id), ex);
 			}
 	  }
-/*
-	
-	@RequestMapping(value = "/context/{expedient}/{ambit}", method = RequestMethod.GET)
-	@ApiOperation(value = "Factors de context per entorn", notes = "")
-	  public Iterable<Contextualitzacio> getContext(@PathVariable Long expedient,@PathVariable Long ambit) {
-		try {
-			return contextualitzacioService.findByExpedientAmbit(expedient, ambit);
-		} catch (NoSuchElementException ex) {
-			throw new ResponseStatusException(
-			          HttpStatus.NOT_FOUND,getErrorNotFound(this.getClass(),expedient), ex);
-		}
-	  }*/
 	
 	
 	@RequestMapping(value = "/context/{expedient}/{factor}", method = RequestMethod.PUT)

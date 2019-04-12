@@ -1,8 +1,9 @@
 package es.in2.dsdibaapi.controller;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,11 +22,11 @@ public class FactorEconomicController extends BaseController {
 	@Autowired
 	private FactorEconomicService factorEconomicService;
 		
-	@RequestMapping(value = "/economic/", method = RequestMethod.GET)
+	@RequestMapping(value = "/economic/{versio}", method = RequestMethod.GET)
 	@ApiOperation(value = "Llista de factors econòmics", notes = "")
-	  public List<FactorEconomic> getFactorEconomic() {
-	     
-		return factorEconomicService.findAll();
+	  public Iterable<FactorEconomic> getFactorEconomic(@PathVariable(required=false) Optional<Long> versio) {
+		
+		return factorEconomicService.findAll(versio);
 	  }
 	
 	
