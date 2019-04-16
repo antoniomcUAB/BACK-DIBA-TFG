@@ -19,7 +19,7 @@ public @Data class EntornJson implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "HIBERNATE_SEQUENCE") 
+	@Id @GeneratedValue //(strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "HIBERNATE_SEQUENCE") 
 	private long id;
 	private String descripcio;
 	

@@ -25,7 +25,7 @@ public @Data class Gravetat implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue  (strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "DSDIBA.HIBERNATE_SEQUENCE")
+	@Id @GeneratedValue  //(strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "HIBERNATE_SEQUENCE")
 	@Column(name = "DIBA_GRA_ID")
 	private long id;
 	@Column(name = "DIBA_GRA_DESCRIPCIO")

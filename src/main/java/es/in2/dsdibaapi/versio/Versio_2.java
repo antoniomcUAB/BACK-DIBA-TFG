@@ -239,12 +239,12 @@ public class Versio_2 implements CommandLineRunner {
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,altRisc,frequenciaGravetat));
 		
 		
-		Entorn entornEconomic = entornService.save (Entorn.builder().descripcio("Entorn Económic").ambit(ambit).build());
+		Entorn entornEconomic = entornService.save (Entorn.builder().descripcio("Entorn Econòmic").ambit(ambit).build());
 		
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Sense ingressos estables (E.1)",
 		"Situació d'una unitat familiar o ed conivència que no té ingressos,o que no els acredita, o que no els té de forma estable o regular. Es comptabilitzaran en aquesta categoria aquelles unitats familiars on s’han identificat 7 o més ítems de l'inventari de carència material"
 							,entornEconomic,1d,2d,3d));
-		versio.setPreguntaEconomica(situacioSocial.getId()+"$$");
+		versio.setPreguntaEconomica(situacioSocial.getId()+VersioModel.PEC_SEPARADOR);
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Disposen de xarxa o recursos que proporcionen  suport econémic. No han d'afrontar pagament de l'habitatge habitual",moderadaGravetat));
 		criteriService.save(new Criteri ("De forma puntual/sobrevinguda i amb capacitat de canvi",ocasionalFrequencia,riscRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("De forma continua/Crónica",continuaFrequencia,altRisc,frequenciaGravetat));	

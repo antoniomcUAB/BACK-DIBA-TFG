@@ -33,7 +33,7 @@ import lombok.NoArgsConstructor;
 public @Data class AmbitDiagnostic implements Serializable {
 	
 	
-	@Id @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "DSDIBA.HIBERNATE_SEQUENCE")
+	@Id @GeneratedValue //(strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "HIBERNATE_SEQUENCE")
 	@Column(name = "DIBA_AMD_ID")
 	private long id;
 	@Column(name = "DIBA_AMD_OBSERVACIONS")

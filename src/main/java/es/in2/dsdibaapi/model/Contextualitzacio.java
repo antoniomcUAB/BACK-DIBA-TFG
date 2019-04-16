@@ -31,7 +31,7 @@ public @Data class Contextualitzacio implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "DSDIBA.HIBERNATE_SEQUENCE")
+	@Id @GeneratedValue //(strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "HIBERNATE_SEQUENCE")
 	@Column(name = "DIBA_CTX_ID")
 	private long id;
 	@Column(name = "DIBA_CTX_MEMBRE_UNIC")

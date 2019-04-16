@@ -44,7 +44,7 @@ public @Data class Professional implements Serializable , UserDetails  {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue  (strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "DSDIBA.HIBERNATE_SEQUENCE") 
+	@Id @GeneratedValue  //(strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "HIBERNATE_SEQUENCE") 
 	@Column (name="DIBA_PRF_ID")
 	private long id;
 	@Column (name="DIBA_PRF_NOM")

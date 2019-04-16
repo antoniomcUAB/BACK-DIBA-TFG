@@ -2,7 +2,7 @@ package es.in2.dsdibaapi.service.impl;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -165,6 +165,21 @@ public class PreguntaServiceImpl implements PreguntaService{
 			evalE2 (p);
 		}
 		
+		
+		if (!p.getDiagnostic().getVersioModel().getLlistaPE().isEmpty()) {
+		
+			
+			List<Long> ecoLong = p.getDiagnostic().getVersioModel().getLlistaPE().stream()
+	                .map(Long::valueOf)
+	                .collect(Collectors.toList());
+	    	
+			Predicate predicate = QPregunta.pregunta.situacioSocial.id.in(ecoLong);
+	    	
+			Iterable<Pregunta> prEco = preguntaRepository.findAll(predicate);
+			
+			preguntaRepository.deleteAll(prEco);
+		}
+		
 	}
 	
 	private void evalE1 (Pregunta p) {
@@ -292,7 +307,7 @@ public class PreguntaServiceImpl implements PreguntaService{
 					}
 				}
 				
-				if (p.getGravetat() == null) {
+				if (p.getGravetat() == null && p.getDiagnostic().getVersioModel().getVersio().equalsIgnoreCase("v1")) {
 					p.setFactor(riscService.findByDescription(RiscService.Tipus.SENSE_VALORACIO));
 				}
 				else if (p.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.BAIXA.toString())) {

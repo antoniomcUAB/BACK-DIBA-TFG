@@ -36,7 +36,7 @@ public @Data class VersioModel implements Serializable {
 	public static final String PEC_SEPARADOR = "_";
 
 	@Id 
-	@GeneratedValue  (strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "DSDIBA.HIBERNATE_SEQUENCE")
+	@GeneratedValue  //(strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "HIBERNATE_SEQUENCE")
 	@Column(name = "DIBA_VSM_ID")
 	private long id;
 	@Column(name = "DIBA_VSM_VERSIO")
@@ -51,7 +51,11 @@ public @Data class VersioModel implements Serializable {
 	private List<String> llistaPE;
 	
 	public List<String> getLlistaPE () {
-		return Arrays.asList(preguntaEconomica.split(PEC_SEPARADOR));
+		if (preguntaEconomica != null) {
+			return Arrays.asList(preguntaEconomica.split(PEC_SEPARADOR));
+		}
+		
+		return null;
 	}
 
 }

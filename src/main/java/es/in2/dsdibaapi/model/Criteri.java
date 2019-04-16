@@ -30,7 +30,7 @@ public @Data class Criteri implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "DSDIBA.HIBERNATE_SEQUENCE") 
+	@Id @GeneratedValue //(strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "HIBERNATE_SEQUENCE") 
 	@JsonProperty("id")
 	@Column (name="DIBA_CRI_ID")
 	private long id;

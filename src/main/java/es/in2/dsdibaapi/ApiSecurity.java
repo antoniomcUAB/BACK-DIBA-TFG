@@ -64,6 +64,8 @@ public class ApiSecurity  extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()			
 			.antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
 			.antMatchers(HttpMethod.OPTIONS, LOGIN_URL).permitAll()
+			.antMatchers(HttpMethod.POST, "/redirect").permitAll()
+			.antMatchers(HttpMethod.OPTIONS, "/redirect").permitAll()
 			.antMatchers("/dsdiba/api/swagger-ui.html").permitAll()
         	.antMatchers("/webjars/**", "/swagger-resources/**", "/v2/**").permitAll()
 			/*.antMatchers(endpointsPrefix + endpointsLogin + "/token").permitAll()

@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -32,7 +33,7 @@ public @Data class Avaluacio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id 
-	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "DSDIBA.HIBERNATE_SEQUENCE")
+	@GeneratedValue //(strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "HIBERNATE_SEQUENCE")
 	@Column(name = "DIBA_AVL_ID")
 	private long id;
 	@Column(name = "DIBA_AVL_JUSTIFICACIO")
@@ -40,7 +41,7 @@ public @Data class Avaluacio implements Serializable {
 	
 	@ManyToOne
     @JoinColumn(name="DIBA_AVL_AMBIT",foreignKey= @ForeignKey(name = "DIBA_AVL_AVALUACIO_FK_AMD"))
-	@JsonIgnoreProperties(value = { "diagnostic", "entorn", "contextualitzacio"})
+	@JsonIgnoreProperties(value = { "diagnostic", "entorn", "contextualitzacio"})	
 	private AmbitDiagnostic ambit;
 	
 	

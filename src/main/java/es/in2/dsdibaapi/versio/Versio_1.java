@@ -240,7 +240,7 @@ public class Versio_1 implements CommandLineRunner {
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,alttRisc,frequenciaGravetat));
 
 		
-		Entorn entornEconomic = entornService.save (Entorn.builder().descripcio("Entorn Económic").ambit(ambit).build());
+		Entorn entornEconomic = entornService.save (Entorn.builder().descripcio("Entorn Econòmic").ambit(ambit).build());
 
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Sense ingressos (E.1)","Unitats familiars que no tenen ingressos o que no els acrediten de forma estable o regular. Es proposa Comptabilitzar en aquesta categoria aquelles unitats familiars on séhan identificat més de 6 étems dels qüestionari."
 												,entornEconomic,1d,2d,3d));

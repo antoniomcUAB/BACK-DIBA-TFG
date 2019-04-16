@@ -69,6 +69,8 @@ public class DiagnosticServiceImpl implements DiagnosticService{
 	@Transactional
 	public Diagnostic findById(Long id) {
 		
+		
+		
 		Diagnostic d = diagnosticRepository.findById(id).get();
 		
 		

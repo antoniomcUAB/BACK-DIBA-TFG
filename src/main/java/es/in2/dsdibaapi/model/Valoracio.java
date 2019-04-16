@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -35,7 +36,7 @@ public @Data class Valoracio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id 
-	@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "DSDIBA.HIBERNATE_SEQUENCE")
+	@GeneratedValue //(strategy = GenerationType.SEQUENCE, generator = "HIBERNATE_SEQUENCE")	@SequenceGenerator(name="HIBERNATE_SEQUENCE", sequenceName = "HIBERNATE_SEQUENCE")
 	@Column(name = "DIBA_VAL_ID")
 	private long id;
 	@Column(name = "DIBA_VAL_TOTAL")
@@ -51,6 +52,7 @@ public @Data class Valoracio implements Serializable {
 	@JoinColumn(name="DIBA_AVL_VALORACIO",referencedColumnName="DIBA_VAL_ID")
 	@JsonIgnoreProperties(value = { "value"})
 	@JsonProperty("evaluacions")
+	@OrderBy(value = "ID")
     private List<Avaluacio> avaluacio;
 	
 
