@@ -51,8 +51,7 @@ public @Data class Valoracio implements Serializable {
 	@OneToMany (cascade= {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
 	@JoinColumn(name="DIBA_AVL_VALORACIO",referencedColumnName="DIBA_VAL_ID")
 	@JsonIgnoreProperties(value = { "value"})
-	@JsonProperty("evaluacions")
-	@OrderBy(value = "ID")
+	@JsonProperty("evaluacions")	
     private List<Avaluacio> avaluacio;
 	
 

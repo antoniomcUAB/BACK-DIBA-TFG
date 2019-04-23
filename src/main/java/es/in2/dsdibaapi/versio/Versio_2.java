@@ -106,22 +106,22 @@ public class Versio_2 implements CommandLineRunner {
 		
 		
 		
-		SituacioSocial situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Manca d'autonomia personal a les  activitats bàsiques de la vida diaria  (A.1)",
-																	"Situació en qué la persona no pot desenvolupar les activitats bàsiques de la vida diaria (alimentació, higiene, seguiment médic i farmacològic, mobilitat personal, descans, etc.), independentment de la causa que la motiva: malaltia física o psíquica, trastorn mental, deteriorament cognitiu, discapacitat física, psíquica,  intel·lectual o sensorial, etc.",entornAutonomia, 1d,4d,7d));
+		SituacioSocial situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Manca d'autonomia personal a les  activitats bàsiques de la vida diària  (A.1)",
+																	"Situació en qué la persona no pot desenvolupar les activitats bàsiques de la vida diària (alimentació, higiene, seguiment médic i farmacològic, mobilitat personal, descans, etc.), independentment de la causa que la motiva: malaltia física o psíquica, trastorn mental, deteriorament cognitiu, discapacitat física, psíquica,  intel·lectual o sensorial, etc.",entornAutonomia, 1d,4d,7d));
 		
 		
 		
 		
 		FrequenciaGravetat frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Necessita suport/atenció/supervisió en algun moment puntual de la setmana/dia",baixaGravetat));
 		
-		criteriService.save(new Criteri ("Pérdua sobtada per causes sobrevingudes i possiblitats de millora",ocasionalFrequencia,vulnerabilitatRisc,frequenciaGravetat));
-		criteriService.save(new Criteri ("Crónica, sense possiblitats de millora",continuaFrequencia,riscRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Pèrdua sobtada per causes sobrevingudes i possibilitats de millora",ocasionalFrequencia,vulnerabilitatRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Crònica, sense possibilitats de millora",continuaFrequencia,riscRisc,frequenciaGravetat));
 		
 		
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Necessita suport/atenció/supervisió per les activitats de la vida diéria",moderadaGravetat)); 
 		
-		criteriService.save(new Criteri ("Pérdua sobtada per causes sobrevingudes i possiblitats de millora",ocasionalFrequencia,riscRisc,frequenciaGravetat));
-		criteriService.save(new Criteri ("Crónica, sense possiblitats de millora",continuaFrequencia,altRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Pèrdua sobtada per causes sobrevingudes i possibilitats de millora",ocasionalFrequencia,riscRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Crònica, sense possibilitats de millora",continuaFrequencia,altRisc,frequenciaGravetat));
 		
 		
 		frequenciaGravetat = frequenciaGravetatService.save(
@@ -129,34 +129,34 @@ public class Versio_2 implements CommandLineRunner {
 						"Necessita atenció/supervisió continua les 24h",
 						altaGravetat)); 
 		
-		criteriService.save(new Criteri ("Pérdua sobtada per causes sobrevingudes i possiblitats de millora",ocasionalFrequencia,riscRisc,frequenciaGravetat));
-		criteriService.save(new Criteri ("Crónica, sense possiblitats de millora",continuaFrequencia,altRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Pèrdua sobtada per causes sobrevingudes i possibilitats de millora",ocasionalFrequencia,riscRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Crònica, sense possibilitats de millora",continuaFrequencia,altRisc,frequenciaGravetat));
 		
 		
 		situacioSocial = situacioSocialService.save(
-		new SituacioSocial (versio,"Manca d’autonomia personal a les  activitats instrumentals de la vida diaria (A.2)",
-							"Situació en què la persona no pot desenvolupar les activitats instrumentals de la vida diaria (utilització del transport públic, realització de tasques domèstiques, responsabilitat sobre la medicació, administració de diners, capacitat d’utilitzar el telèfon, entrar i sortir del domicili de forma autònoma, etc.), independentment de la causa que la motiva (malaltia física o psíquica, trastorn mental, deteriorament cognitiu, discapacitat física, psíquica,  intel·lectual o sensorial, etc.)",
+		new SituacioSocial (versio,"Manca d’autonomia personal a les  activitats instrumentals de la vida diària (A.2)",
+							"Situació en què la persona no pot desenvolupar les activitats instrumentals de la vida diària (utilització del transport públic, realització de tasques domèstiques, responsabilitat sobre la medicació, administració de diners, capacitat d’utilitzar el telèfon, entrar i sortir del domicili de forma autònoma, etc.), independentment de la causa que la motiva (malaltia física o psíquica, trastorn mental, deteriorament cognitiu, discapacitat física, psíquica,  intel·lectual o sensorial, etc.)",
 							entornAutonomia,0.75d,3d,6d));
 		
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Necessita atenció/supervisió puntual en algun moment del dia/setmana",
 		baixaGravetat)); 
 		
-		criteriService.save(new Criteri ("Pérdua sobtada per causes sobrevingudes i possiblitats de millora",ocasionalFrequencia,vulnerabilitatRisc,frequenciaGravetat));
-		criteriService.save(new Criteri ("Crónica, sense possiblitats de millora",continuaFrequencia,riscRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Pèrdua sobtada per causes sobrevingudes i possibilitats de millora",ocasionalFrequencia,vulnerabilitatRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Crònica, sense possibilitats de millora",continuaFrequencia,riscRisc,frequenciaGravetat));
 		
 		
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Necessita suport/atenció/supervisió per les activitats de la vida diéria",moderadaGravetat));
 		
 		
-		criteriService.save(new Criteri ("Pérdua sobtada per causes sobrevingudes i possiblitats de millora",ocasionalFrequencia,riscRisc,frequenciaGravetat));
-		criteriService.save(new Criteri ("Crónica, sense possiblitats de millora",continuaFrequencia,altRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Pèrdua sobtada per causes sobrevingudes i possibilitats de millora",ocasionalFrequencia,riscRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Crònica, sense possibilitats de millora",continuaFrequencia,altRisc,frequenciaGravetat));
 		
 		
 		
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Necessita atenció/supervisió continua les 24h",altaGravetat));		
 		
-		criteriService.save(new Criteri ("Pérdua sobtada per causes sobrevingudes i possiblitats de millora",ocasionalFrequencia,riscRisc,frequenciaGravetat));
-		criteriService.save(new Criteri ("Crónica, sense possiblitats de millora",continuaFrequencia,altRisc,frequenciaGravetat));						
+		criteriService.save(new Criteri ("Pèrdua sobtada per causes sobrevingudes i possibilitats de millora",ocasionalFrequencia,riscRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Crònica, sense possibilitats de millora",continuaFrequencia,altRisc,frequenciaGravetat));						
 		
 		
 		ambit = ambitService.save(Ambit.builder().versioModel(versio).versioModel(versio).descripcio("MATERIAL I INSTRUMENTAL").vulnerabilitat(3d).risc(7d).valVulnerabilitat(0.5d).valRisc(1d).valAltrisc(2.5d).build());
@@ -166,20 +166,20 @@ public class Versio_2 implements CommandLineRunner {
 		Entorn entornHabitatge = entornService.save (Entorn.builder().descripcio("Entorn habitatge").ambit(ambit).build());
 			
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Manca d'habitatge estable (H.1)",
-		"Situacions de manca d'un habitatge estable on fixar la residència. Inclou persones en situacions de _\"sense sostre\" o \"sense habitatge\" de les categories ETHOS i inclou les següents: Persona sense sostre, transeünt i/o vivint al carrer, persona allotjada temporalment en centres sociosantaris, penitienciaris, d'estrangeria o vinculats als serveis socials, i persones vivint en cases de familiars o amics, persones vivint en llocs no destinats a aquest efecte o que no es consideren habitatge)."
+		"Situacions de manca d'un habitatge estable on fixar la residència. Inclou persones en situacions de _\"sense sostre\" o \"sense habitatge\" de les categories ETHOS i inclou les següents: Persona sense sostre, transeünt i/o vivint al carrer, persona allotjada temporalment en centres sociosantaris, penitenciaris, d'estrangeria o vinculats als serveis socials, i persones vivint en cases de familiars o amics, persones vivint en llocs no destinats a aquest efecte o que no es consideren habitatge)."
 									,entornHabitatge,1d,2d,7d));
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Xarxa de suport o habitage temporal permet donar resposta a la situació",moderadaGravetat));
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Xarxa de suport o habitatge temporal permet donar resposta a la situació",moderadaGravetat));
 		criteriService.save(new Criteri ("Sobrevinguda",ocasionalFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Més d'un cop a l'any",frequentFrequencia,riscRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Sense sostre",continuaFrequencia,altRisc,frequenciaGravetat));
 			
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Sense xarxa de suport ni possiblitat d'activar recurs d'habitage. Amb xarxa de suport o habitatge temporal d'urgéncia i preséncia de menors o dependents a cérrec",altaGravetat));
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Sense xarxa de suport ni possibilitat d'activar recurs d'habitatge. Amb xarxa de suport o habitatge temporal d'urgéncia i presència de menors o dependents a càrrec",altaGravetat));
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,altRisc,frequenciaGravetat));
 			
-		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Habitatge deficient (H.2)","Situacions que es corresponen a la categoria ETHOS habitatge inadequat i inclou domicili que no reuneix les condicions adequades d'habitabilitat o les necesséries per garantir l'autonémia i qualitat de vida de les persones que hi habiten. Inclou infrahabitatge (caravana i barraquisme). Inclou les situacions relacionades amb manca d'higiene/neteja greus."
+		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Habitatge deficient (H.2)","Situacions que es corresponen a la categoria ETHOS habitatge inadequat i inclou domicili que no reuneix les condicions adequades d'habitabilitat o les necessàries per garantir l'autonomia i qualitat de vida de les persones que hi habiten. Inclou infrahabitatge (caravana i barraquisme). Inclou les situacions relacionades amb manca d'higiene/neteja greus."
 							,entornHabitatge,0.2d,0.4d,4d));
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Sense risc en  la integritat física de les persones que hi habiten.",moderadaGravetat));
-		criteriService.save(new Criteri ("Situacions excepcionals i restaruables",puntualFrequencia,vulnerabilitatRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Situacions excepcionals i restaurables",puntualFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Situacions estructurals ",continuaFrequencia,riscRisc,frequenciaGravetat));
 			
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Existeix risc en la integritat física de les persones que hi habiten ",altaGravetat));
@@ -187,14 +187,14 @@ public class Versio_2 implements CommandLineRunner {
 			
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Habitatge insegur (H.3)","Situacions que es corresponen a la categoria ETHOS d'habitatge insegur i es defineix per unitats familiars que  degut a la seva situació poden perdre el dret d’ús de l’habitatge on han fixat el seu domicili habitual (processos de desnonament o situacions d'ocupació il·legal). ",entornHabitatge,0.2d,0.4d,0.6d));
 			
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"situació impagament prévia a l'inici del procés judicial. Ocupacié il·legall",baixaGravetat));
-		criteriService.save(new Criteri ("situació puntual i capcitat de resolucié",ocasionalFrequencia,vulnerabilitatRisc,frequenciaGravetat));
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"situació impagament prèvia a l'inici del procés judicial. Ocupació il·legal",baixaGravetat));
+		criteriService.save(new Criteri ("situació puntual i capacitat de resolució",ocasionalFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Inferior 3 mesos consecutius",frequentFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Més de 3 mesos. Endeutament creixent",continuaFrequencia,riscRisc,frequenciaGravetat));
 			
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Procés judicial iniciat",moderadaGravetat));
-		criteriService.save(new Criteri ("Capacitat mediacié. Moratéria",ocasionalFrequencia,riscRisc,frequenciaGravetat));
-		criteriService.save(new Criteri ("En procés judicial sense capacitat mediacié. 	Moratòria",frequentFrequencia,riscRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("Capacitat mediació. Moratòria",ocasionalFrequencia,riscRisc,frequenciaGravetat));
+		criteriService.save(new Criteri ("En procés judicial sense capacitat mediació. 	Moratòria",frequentFrequencia,riscRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("En subhasta",continuaFrequencia,altRisc,frequenciaGravetat));
 			
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Sentència amb ordre de llançament",altaGravetat));
@@ -202,7 +202,7 @@ public class Versio_2 implements CommandLineRunner {
 			
 			
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Habitatge massificat (H.4)",
-		"Situació que es troba a la categoria ETHOS d'habitatge inadequat i es defineix per una relació inadequada entre el nombre de persones que conviuen en un domicili i la superfície de l'habitatge, que difculta o no permet satisfer les activitats de la vida diària de forma satisfactòria."
+		"Situació que es troba a la categoria ETHOS d'habitatge inadequat i es defineix per una relació inadequada entre el nombre de persones que conviuen en un domicili i la superfície de l'habitatge, que dificulta o no permet satisfer les activitats de la vida diària de forma satisfactòria."
 									,entornHabitatge,0.2d,0.4d,0.6d));
 			
 			
@@ -216,13 +216,13 @@ public class Versio_2 implements CommandLineRunner {
 		criteriService.save(new Criteri ("Fa més de 3 mesos",continuaFrequencia,riscRisc,frequenciaGravetat));
 			
 			
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Diverses families amb menors o dependents compartint espais. Situacions de relloguers sense contracte.",altaGravetat));
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Diverses famílies amb menors o dependents compartint espais. Situacions de relloguers sense contracte.",altaGravetat));
 		criteriService.save(new Criteri ("Des de fa menys de 3 mesos i de manera no repetida en el temps",ocasionalFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Fa més de 3 mesos",continuaFrequencia,altRisc,frequenciaGravetat));
 			
 			
-		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Risc de pérdua o manca serveis/subministraments (H.5)",
-		"Situació de risc de perdua o manca de subministraments (gas, aigua, electricitat), manca de parament bàsic o estris domèstics imprescindibles per satisfer les necessitats bàsiques de la unitat familiar. Inclou els risc de perdua per connexió il·legal."
+		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Risc de Pèrdua o manca serveis/subministraments (H.5)",
+		"Situació de risc de pèrdua o manca de subministraments (gas, aigua, electricitat), manca de parament bàsic o estris domèstics imprescindibles per satisfer les necessitats bàsiques de la unitat familiar. Inclou els risc de pèrdua per connexió il·legal."
 								,entornHabitatge,0.2d,0.4d,0.6d));
 			
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Avís de tall. Manca de subministrament i és possible el restabliment",baixaGravetat));
@@ -242,19 +242,19 @@ public class Versio_2 implements CommandLineRunner {
 		Entorn entornEconomic = entornService.save (Entorn.builder().descripcio("Entorn Econòmic").ambit(ambit).build());
 		
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Sense ingressos estables (E.1)",
-		"Situació d'una unitat familiar o ed conivència que no té ingressos,o que no els acredita, o que no els té de forma estable o regular. Es comptabilitzaran en aquesta categoria aquelles unitats familiars on s’han identificat 7 o més ítems de l'inventari de carència material"
+		"Situació d'una unitat familiar o de convivència que no té ingressos,o que no els acredita, o que no els té de forma estable o regular. Es comptabilitzaran en aquesta categoria aquelles unitats familiars on s’han identificat 7 o més ítems de l'inventari de carència material"
 							,entornEconomic,1d,2d,3d));
 		versio.setPreguntaEconomica(situacioSocial.getId()+VersioModel.PEC_SEPARADOR);
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Disposen de xarxa o recursos que proporcionen  suport econémic. No han d'afrontar pagament de l'habitatge habitual",moderadaGravetat));
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Disposen de xarxa o recursos que proporcionen  suport econòmic. No han d'afrontar pagament de l'habitatge habitual",moderadaGravetat));
 		criteriService.save(new Criteri ("De forma puntual/sobrevinguda i amb capacitat de canvi",ocasionalFrequencia,riscRisc,frequenciaGravetat));
-		criteriService.save(new Criteri ("De forma continua/Crónica",continuaFrequencia,altRisc,frequenciaGravetat));	
+		criteriService.save(new Criteri ("De forma continua/Crònica",continuaFrequencia,altRisc,frequenciaGravetat));	
 		
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"No disposen de xarxa o recursos de suport econémic",altaGravetat));	
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"No disposen de xarxa o recursos de suport econòmic",altaGravetat));	
 				
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,altRisc,frequenciaGravetat));	
 		
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Ingressos insuficients (E.2)",
-		"Situació d'una unitat familiar o de convivència que malgrat tenir uns ingressos estables o regulars té dificultats per cobrir determinades necessitats dels seus integrants. Es comptabilitzaran en aquesta categoria aquelles unitats familiars o de conviència on s'han identificat de 3 a 6 ítems de l'inventari de carència material."
+		"Situació d'una unitat familiar o de convivència que malgrat tenir uns ingressos estables o regulars té dificultats per cobrir determinades necessitats dels seus integrants. Es comptabilitzaran en aquesta categoria aquelles unitats familiars o de convivència on s'han identificat de 3 a 6 ítems de l'inventari de carència material."
 							,entornEconomic,1d,2d,3d));
 		
 		versio.setPreguntaEconomica(versio.getPreguntaEconomica()+situacioSocial.getId());
@@ -275,9 +275,9 @@ public class Versio_2 implements CommandLineRunner {
 		
 		
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Administració deficient dels ingressos (E.3)",
-		"Situació d'una unitat familiar o de conviència que presenta dificultats per administrar el pressupost  i/o no prioritzar la cobertura de les necessitats bàsiques."
+		"Situació d'una unitat familiar o de convivència que presenta dificultats per administrar el pressupost  i/o no prioritzar la cobertura de les necessitats bàsiques."
 								,entornEconomic,0.2d,0.4d,0.6d));
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Presenta difcultats per a fer front a despeses extres inesperades però cobreix les despeses bàsiques.",baixaGravetat));
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Presenta dificultats per a fer front a despeses extres inesperades però cobreix les despeses bàsiques.",baixaGravetat));
 		criteriService.save(new Criteri ("Situacions concretes  i capacitat de canvi",frequentFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("De forma continua",continuaFrequencia,riscRisc,frequenciaGravetat));	
 		
@@ -295,20 +295,20 @@ public class Versio_2 implements CommandLineRunner {
 		"Situació d'una persona que té dificultats per trobar una ocupació estable perquè desconeix els mecanismes per accedir al mercat laboral i no disposa de la formació i qualificació suficient per trobar una ocupació estable. En conseqüència, entra i surt del mercat laboral, realitza treballs que no donen continuïtat a la seva progressió professional o resta llargues temporades a l'atur.  Addicionalment, la persona pot tenir dificultats personals o legals que dificulten l'accés al mercat de treball o el manteniment d'una  feina. "
 							,entornLaboral,0.5d,1d,1.5d));		
 												
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Voluntat de treballar però dificultat en l'accés al mercat de treball. Situacions sobrevingudes (salut, situació legal en trémit, etc..)",baixaGravetat));		
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Voluntat de treballar però dificultat en l'accés al mercat de treball. Situacions sobrevingudes (salut, situació legal en tràmit, etc..)",baixaGravetat));		
 		criteriService.save(new Criteri ("Ha treballat en el darrer any",ocasionalFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Ha treballat 6 mesos dels darrers 3 anys",frequentFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Atur de llarga durada/ fa més de 3 anys que no treballa",continuaFrequencia,riscRisc,frequenciaGravetat));			
 											
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Les dificultats en el manteniment de les carregues familiars i la cura agreujen la situació ",altaGravetat));		
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Les dificultats en el manteniment de les carregues familiars i la cura agreugen la situació ",altaGravetat));		
 		criteriService.save(new Criteri ("Ha treballat en el darrer any",ocasionalFrequencia,riscRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Ha treballat 6 mesos dels darrers 3 anys",frequentFrequencia,riscRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Atur de llarga durada/ fa més de 3 anys que no treballa",continuaFrequencia,altRisc,frequenciaGravetat));	
 											
-		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Manca de competéncies professionals transversals  (L.2)","La persona desconeix o no té les competéncies professionals necesséries per accedir al mercat laboral i mantenir una feina. En conseqééncia, entra i surt del mercat laboral per motius que tenen a veure amb l'actitud i la responsabilitat cap a la feina (inpuntualitat, manca de respecte als companys/es de feina o superior jerérquic, imatge personal no adaptada als requeriments de la feina, manca d'anticipacié de problemétiques, etc)."
+		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Manca de competències professionals transversals  (L.2)","La persona desconeix o no té les competències professionals necessàries per accedir al mercat laboral i mantenir una feina. En conseqüència, entra i surt del mercat laboral per motius que tenen a veure amb l'actitud i la responsabilitat cap a la feina (inpuntualitat, manca de respecte als companys/es de feina o superior jeràrquic, imatge personal no adaptada als requeriments de la feina, manca d'anticipació de problemàtiques, etc)."
 							,entornLaboral,0.5d,1d,1d));		
 												
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Consciéncia de canvi i voluntat de millora",baixaGravetat));				
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Consciència de canvi i voluntat de millora",baixaGravetat));				
 													
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,vulnerabilitatRisc,frequenciaGravetat));								
 											
@@ -330,7 +330,7 @@ public class Versio_2 implements CommandLineRunner {
 													
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,vulnerabilitatRisc,frequenciaGravetat));			
 											
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Encara no existeix intervencié conjunta per part dels diferents serveis, possiblitats de canvi i millora de la situació.",moderadaGravetat));				
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Encara no existeix intervencié conjunta per part dels diferents serveis, possibilitats de canvi i millora de la situació.",moderadaGravetat));				
 													
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,riscRisc,frequenciaGravetat));
 											
@@ -338,7 +338,7 @@ public class Versio_2 implements CommandLineRunner {
 													
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,altRisc,frequenciaGravetat));		
 											
-		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Manca de competéncies relacionals a l'escola (ES.2)",
+		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Manca de competències relacionals a l'escola (ES.2)",
 		"Situació d'un infant o adolescent en edat d'escolarització obligatòria que no s'adapta al sistema educatiu i que presenta conductes disruptives al centre, amb els adults i/o amb els seus iguals."
 								,entornEscolar,0.75d,1.5d,3d));		
 												
@@ -346,7 +346,7 @@ public class Versio_2 implements CommandLineRunner {
 													
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,vulnerabilitatRisc,frequenciaGravetat));			
 											
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Encara no existeix intervencié conjunta per part dels diferents serveis, possiblitats de canvi i millora de la situació.",moderadaGravetat));				
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Encara no existeix intervencié conjunta per part dels diferents serveis, possibilitats de canvi i millora de la situació.",moderadaGravetat));				
 													
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,riscRisc,frequenciaGravetat));
 											
@@ -376,7 +376,7 @@ public class Versio_2 implements CommandLineRunner {
 													
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,vulnerabilitatRisc,frequenciaGravetat));	
 											
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Encara no existeix intervencié conjunta per part dels diferents serveis, possiblitats de canvi i millora de la situació.",moderadaGravetat));		
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Encara no existeix intervencié conjunta per part dels diferents serveis, possibilitats de canvi i millora de la situació.",moderadaGravetat));		
 		criteriService.save(new Criteri ("De 2 a 5 vegades al mes",ocasionalFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Més de 5 vegades al mes",frequentFrequencia,riscRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("No assiteix més de 5 dies consecutius",continuaFrequencia,riscRisc,frequenciaGravetat));			
@@ -412,7 +412,7 @@ public class Versio_2 implements CommandLineRunner {
 		"Situacions en les quals les necessitats bàsiques (físiques, socials, psicològiques) d'una persona vulnerable del nucli familiar (menor, depenent, gent gran , etc.) no són ateses, de manera temporal o permanent, per cap dels membres del grup on conviu. Implica l'omissió d'un deure o responsabilitat de cura envers les persones vulnerables del nucli familiar. "
 								,entornFamiliar,1000d,1.5d,1000d));		
 						
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Sense perill fésic i l'alumnatafectacié a nivell pséquic/emocional no interfereix en les competéncies bàsiques de la persona (autocura, comunicacié, autonomia i iniciativa)",moderadaGravetat));					
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Sense perill fésic i l'alumnatafectacié a nivell pséquic/emocional no interfereix en les competències bàsiques de la persona (autocura, comunicacié, autonomia i iniciativa)",moderadaGravetat));					
 		
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,riscRisc,frequenciaGravetat));
 		
@@ -488,7 +488,7 @@ public class Versio_2 implements CommandLineRunner {
 													
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,vulnerabilitatRisc,frequenciaGravetat));				
 											
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"La situació afecta a un adult amb mancances però amb capcitat de donar resposta a la situació mitjanéant el suport necessari. La situació afecta a un/a menor major de 16 anys, sense que afecti greument a la seva integritat piscològica i amb possiblitat de canvis i millora.",moderadaGravetat));		
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"La situació afecta a un adult amb mancances però amb capacitat de donar resposta a la situació mitjanéant el suport necessari. La situació afecta a un/a menor major de 16 anys, sense que afecti greument a la seva integritat piscològica i amb possibilitat de canvis i millora.",moderadaGravetat));		
 											
 		criteriService.save(new Criteri ("Menys de 2 mesos",ocasionalFrequencia,vulnerabilitatRisc,frequenciaGravetat));
 		criteriService.save(new Criteri ("Entre 2 i 6 mesos",frequentFrequencia,vulnerabilitatRisc,frequenciaGravetat));					
@@ -547,7 +547,7 @@ public class Versio_2 implements CommandLineRunner {
 													
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,riscRisc,frequenciaGravetat));			
 											
-		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Preséncia de menors o dependents al domicili. Greus afectacions per la integritat física de les persones. Indécis de malatia mental no diagnosticada ni en tractament",altaGravetat));		
+		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"presència de menors o dependents al domicili. Greus afectacions per la integritat física de les persones. Indécis de malatia mental no diagnosticada ni en tractament",altaGravetat));		
 													
 		criteriService.save(new Criteri ("Sense valoració",senseFrequencia,altRisc,frequenciaGravetat));						
 											
@@ -600,8 +600,8 @@ public class Versio_2 implements CommandLineRunner {
 									
 		frequenciaGravetat = frequenciaGravetatService.save(new FrequenciaGravetat(situacioSocial,"Sense valoració",altaGravetat));		
 									
-		criteriService.save(new Criteri ("Capacitat de resolucié / legalitzacié",senseFrequencia,riscRisc,frequenciaGravetat));					
-		criteriService.save(new Criteri ("Incapacitat de resolucié ",senseFrequencia,altRisc,frequenciaGravetat));		
+		criteriService.save(new Criteri ("Capacitat de resolució / legalitzacié",senseFrequencia,riscRisc,frequenciaGravetat));					
+		criteriService.save(new Criteri ("Incapacitat de resolució ",senseFrequencia,altRisc,frequenciaGravetat));		
 											
 		situacioSocial = situacioSocialService.save(new SituacioSocial (versio,"Activitats marginals (S.5)",
 		"Situació d'una persona que realitza un treball no legalitzat i/o activitats marginals (prostitució, venda ambulant il·legal, recollida de ferralla, altres).",entornSocial,0.2d,0.5d,1.5d));		
@@ -896,7 +896,7 @@ public class Versio_2 implements CommandLineRunner {
 		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
 		.descripcio("Existeix una xarxa familiar/relacional disposada a oferir suport econòmic?").build());
 		factorEconomicService.save(FactorEconomic.builder().versioModel(versio)
-		.descripcio("Les dificultats en l'àmbit econòmic són contïnuades i sense possiblitat de canvi o millora en el curt termini?").build());
+		.descripcio("Les dificultats en l'àmbit econòmic són contïnuades i sense possibilitat de canvi o millora en el curt termini?").build());
 		
 		ambit = ambitService.save(Ambit.builder().versioModel(versio).descripcio("Globalitat del cas").valVulnerabilitat(2.5d).valRisc(5d).build());
 		

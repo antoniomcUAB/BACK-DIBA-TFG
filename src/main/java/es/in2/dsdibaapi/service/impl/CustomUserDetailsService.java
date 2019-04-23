@@ -34,8 +34,7 @@ public class CustomUserDetailsService  implements UserDetailsService {
 	 @Override
 	  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		// jdbcTemplate.execute("SET ROLE ALL");
-	   
+			   
 		 Professional user = this.professionalRepository.findByUsername(username)
 		            .orElseThrow(() -> new UsernameNotFoundException("Username: " + username + " not found"));
 

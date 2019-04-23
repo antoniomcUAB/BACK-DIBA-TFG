@@ -20,6 +20,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import es.in2.dsdibaapi.service.MunicipiService;
+import es.in2.dsdibaapi.service.ProfessionalService;
+import es.in2.dsdibaapi.service.RolService;
+
 @Configuration
 @EnableWebSecurity
 public class ApiSecurity  extends WebSecurityConfigurerAdapter {
@@ -29,7 +33,17 @@ public class ApiSecurity  extends WebSecurityConfigurerAdapter {
 	@Autowired
 	JWTProperties jwtProperties;
 	
+	
 	private UserDetailsService userDetailsService;
+	
+	@Autowired
+	private ProfessionalService professionalService;
+	
+	@Autowired
+	private MunicipiService municipiService;
+	
+	@Autowired
+	private RolService rolService;
 	
 	public ApiSecurity(UserDetailsService userDetailsService) {
 		this.userDetailsService = userDetailsService;
@@ -68,22 +82,13 @@ public class ApiSecurity  extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.OPTIONS, "/redirect").permitAll()
 			.antMatchers("/dsdiba/api/swagger-ui.html").permitAll()
         	.antMatchers("/webjars/**", "/swagger-resources/**", "/v2/**").permitAll()
-			/*.antMatchers(endpointsPrefix + endpointsLogin + "/token").permitAll()
-			.antMatchers(endpointsPrefix + endpointsLogin + "/refresh").permitAll()
-			.antMatchers(endpointsPrefix + endpointsLogin).permitAll()*/
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
 			.and()
 			.authorizeRequests()
 			.and()
-			.addFilter(new JWTAuthenticationFilter(authenticationManager(),jwtProperties))
+			.addFilter(new JWTAuthenticationFilter(authenticationManager(),jwtProperties,professionalService,municipiService,rolService))
 			.addFilter(new JWTAuthorizationFilter(authenticationManager(),jwtProperties))			
-			.addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class)
-			/*.anyRequest().authenticated()
-			.and()
-			.addFilter(new JWTAuthenticationFilter(authenticationManager(),jwtProperties))
-			.addFilter(new JWTAuthorizationFilter(authenticationManager(),jwtProperties))			
-			.addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class)*/
-			 ;
+			.addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class) ;
 			 
 	}
 

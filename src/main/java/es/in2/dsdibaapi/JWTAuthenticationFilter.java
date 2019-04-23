@@ -1,28 +1,49 @@
 package es.in2.dsdibaapi;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import es.in2.dsdibaapi.json.UserJson;
+import es.in2.dsdibaapi.model.Municipi;
+import es.in2.dsdibaapi.model.Professional;
+import es.in2.dsdibaapi.model.Rol;
+import es.in2.dsdibaapi.model.xml.ValidacioUsuari;
+import es.in2.dsdibaapi.service.MunicipiService;
+import es.in2.dsdibaapi.service.ProfessionalService;
+import es.in2.dsdibaapi.service.RolService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -32,26 +53,113 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	
 	private AuthenticationManager authenticationManager;
 	
+	private ProfessionalService professionalService;
 	
-	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTProperties jwtProperties) {
+	private MunicipiService municipiService;
+	
+	private RolService rolService;
+	
+	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTProperties jwtProperties, 
+							ProfessionalService professionalService, MunicipiService municipiService,
+							RolService rolService) {
 		this.authenticationManager = authenticationManager;
 		this.jwtProperties = jwtProperties;
+		this.professionalService = professionalService;
+		this.municipiService = municipiService;
+		this.rolService = rolService;
 	}
 
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
-			throws AuthenticationException {
+			 {
 		try {
 			UserJson credenciales = new ObjectMapper().readValue(request.getInputStream(), UserJson.class);
 			
-			Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-					credenciales.getUsername(), credenciales.getPassword(), new ArrayList<>()));
+		/*	RestTemplate restTemplate = new RestTemplate();
 			
-			return auth;
+			HttpHeaders headers = new HttpHeaders();
+		      headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+		      HttpEntity <String> entity = new HttpEntity<String>(headers);	      
+		      
+		      UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(jwtProperties.getVUS_URL())		    	
+		    		  .queryParam(jwtProperties.getVUS_WS_USUARI_KEY(), credenciales.getUsername())
+		    		  .queryParam(jwtProperties.getVUS_WS_CLAU_KEY(), credenciales.getPassword())
+		    		  .queryParam(jwtProperties.getVUS_CLAU_KEY(), jwtProperties.getVUS_CLAU_VALUE())
+		    		  .queryParam(jwtProperties.getVUS_USUARI_KEY(), jwtProperties.getVUS_USUARI_VALUE());
+			
+			  
+		      String resp = restTemplate.exchange(builder.build().toUri(), HttpMethod.GET, entity, String.class).getBody();
+			
+			JAXBContext jaxbContext;*/
+			
+			ValidacioUsuari validacio = null;
+		/*	
+			try {
+				jaxbContext = JAXBContext.newInstance(ValidacioUsuari.class);
+				Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+		        validacio = (ValidacioUsuari) unmarshaller.unmarshal(new ByteArrayInputStream(resp.getBytes()));
+			} catch (JAXBException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
+			
+		//	if (validacio != null && validacio.getResposta().getCodi_resposta().equals("0")) {
+				
+				Authentication auth = null;
+				
+				try {
+				
+					auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+							credenciales.getUsername(), credenciales.getPassword(), new ArrayList<>()));
+				} catch (AuthenticationException e) {
+					Set<Rol> rols = new HashSet<Rol> ();		
+					
+					rols.add(rolService.findById(73639l));
+					
+					Municipi municipi = municipiService.findById(73640l);
+					
+					
+					professionalService.save(Professional.builder()
+							.nomComplet(validacio.getNom())
+							.username(credenciales.getUsername())
+							.password(credenciales.getPassword())
+							.rol(rols)
+							.municipi(municipi)
+							.build());
+					
+					auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+							credenciales.getUsername(), credenciales.getPassword(), new ArrayList<>()));
+				}
+				
+			
+				
+				return auth;
+		/*	} else {
+			
+				ObjectMapper objectMapper = new ObjectMapper();
+				
+				response.setStatus(HttpStatus.UNAUTHORIZED.value());
+		        Map<String, Object> data = new HashMap<>();
+		        data.put(
+		          "timestamp", 
+		          Calendar.getInstance().getTime());
+		        data.put(
+		          "message", 
+		          "Usuari/password incorrecte");
+		        data.put(
+		  	          "exception", 
+		  	        validacio.getResposta().getText_resposta());
+		 
+		        response.getOutputStream()
+		          .println(objectMapper.writeValueAsString(data));
+			}*/
+	        
 		} 
 		catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+		
+		//return null;
 	}
 
 	@Override

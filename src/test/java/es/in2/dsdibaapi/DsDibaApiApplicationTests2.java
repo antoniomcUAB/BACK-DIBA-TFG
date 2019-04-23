@@ -163,7 +163,9 @@ public class DsDibaApiApplicationTests2 {
 	Long versioId=72387l; //v2
 	
 	
-	Long municipiId = 73640l;
+	Long barcelonaId = 73640l;
+	Long lleidaId = 73641l;
+	Long tarragonaId = 73642l;
 	
 	Long factor1 = 72333l;
 	Long factor2 = 72334l;
@@ -204,7 +206,7 @@ public class DsDibaApiApplicationTests2 {
 		
 		rols.add(rolService.findById(rolTecnic));
 		
-		Municipi municipi = municipiService.findById(municipiId);
+		Municipi municipi = municipiService.findById(barcelonaId);
 		
 		
 		
@@ -430,19 +432,86 @@ public class DsDibaApiApplicationTests2 {
 	@Test
 	public void newProfessional () {
 		
-		Municipi municipi = municipiService.findById(municipiId);
+Municipi municipi = municipiService.findById(barcelonaId);
 		
 		Set<Rol> rols = new HashSet<Rol> ();		
 		
 		rols.add(rolService.findById(rolTecnic));
 		
-		Professional professional = professionalService.save(
+	/*	Professional professional = professionalService.save(
 				Professional.builder().nom("PROFESSIONAL")
-									.cognom1("APE21")
-									.cognom2("APE22")
+									.cognom1("APE31")
+									.cognom2("APE32")
+									.nomComplet("PROFESSIONAL APE31 APE32")
 									.municipi(municipi)
+									.username("PROFESSIONAL")
+									.password("PROFESSIONAL")
 									.rol(rols)
-									.build()); 
+									.build());*/
+		
+		
+		Professional professional = professionalService.save(
+				Professional.builder().nom("PROFESSIONAL2")
+									.cognom1("APE31")
+									.cognom2("APE32")
+									.nomComplet("PROFESSIONAL2 APE31 APE32")
+									.municipi(municipi)
+									.username("PROFESSIONAL")
+									.password("PROFESSIONAL")
+									.rol(rols)
+									.build());
+		
+		municipi = municipiService.findById(lleidaId);
+		
+		professional = professionalService.save(
+				Professional.builder().nom("PROFESSIONAL3")
+									.cognom1("APE31")
+									.cognom2("APE32")
+									.nomComplet("PROFESSIONAL3 APE31 APE32")
+									.municipi(municipi)
+									.username("PROFESSIONAL")
+									.password("PROFESSIONAL")
+									.rol(rols)
+									.build());
+		
+
+		
+		professional = professionalService.save(
+				Professional.builder().nom("PROFESSIONAL4")
+									.cognom1("APE31")
+									.cognom2("APE32")
+									.nomComplet("PROFESSIONAL4 APE31 APE32")
+									.municipi(municipi)
+									.username("PROFESSIONAL")
+									.password("PROFESSIONAL")
+									.rol(rols)
+									.build());
+		
+		municipi = municipiService.findById(tarragonaId);
+		
+		professional = professionalService.save(
+				Professional.builder().nom("PROFESSIONAL5")
+									.cognom1("APE31")
+									.cognom2("APE32")
+									.nomComplet("PROFESSIONAL5 APE31 APE32")
+									.municipi(municipi)
+									.username("PROFESSIONAL")
+									.password("PROFESSIONAL")
+									.rol(rols)
+									.build());
+		
+
+		
+		professional = professionalService.save(
+				Professional.builder().nom("PROFESSIONAL6")
+									.cognom1("APE31")
+									.cognom2("APE32")
+									.nomComplet("PROFESSIONAL6 APE31 APE32")
+									.municipi(municipi)
+									.username("PROFESSIONAL")
+									.password("PROFESSIONAL")
+									.rol(rols)
+									.build());
 	}
 	
 }

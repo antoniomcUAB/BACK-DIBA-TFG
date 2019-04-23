@@ -435,8 +435,8 @@ public class DsDibaApiApplicationTestDes {
 									.cognom2("APE32")
 									.nomComplet("PROFESSIONAL2 APE31 APE32")
 									.municipi(municipi)
-									.username("PROFESSIONAL")
-									.password("PROFESSIONAL")
+									.username("PROFESSIONAL2")
+									.password("PROFESSIONAL2")
 									.rol(rols)
 									.build());
 		
@@ -448,8 +448,8 @@ public class DsDibaApiApplicationTestDes {
 									.cognom2("APE32")
 									.nomComplet("PROFESSIONAL3 APE31 APE32")
 									.municipi(municipi)
-									.username("PROFESSIONAL")
-									.password("PROFESSIONAL")
+									.username("PROFESSIONAL3")
+									.password("PROFESSIONAL3")
 									.rol(rols)
 									.build());
 		
@@ -461,8 +461,8 @@ public class DsDibaApiApplicationTestDes {
 									.cognom2("APE32")
 									.nomComplet("PROFESSIONAL4 APE31 APE32")
 									.municipi(municipi)
-									.username("PROFESSIONAL")
-									.password("PROFESSIONAL")
+									.username("PROFESSIONAL4")
+									.password("PROFESSIONAL4")
 									.rol(rols)
 									.build());
 		
@@ -474,8 +474,8 @@ public class DsDibaApiApplicationTestDes {
 									.cognom2("APE32")
 									.nomComplet("PROFESSIONAL5 APE31 APE32")
 									.municipi(municipi)
-									.username("PROFESSIONAL")
-									.password("PROFESSIONAL")
+									.username("PROFESSIONAL5")
+									.password("PROFESSIONAL5")
 									.rol(rols)
 									.build());
 		
@@ -487,8 +487,8 @@ public class DsDibaApiApplicationTestDes {
 									.cognom2("APE32")
 									.nomComplet("PROFESSIONAL6 APE31 APE32")
 									.municipi(municipi)
-									.username("PROFESSIONAL")
-									.password("PROFESSIONAL")
+									.username("PROFESSIONAL6")
+									.password("PROFESSIONAL6")
 									.rol(rols)
 									.build());
 		
