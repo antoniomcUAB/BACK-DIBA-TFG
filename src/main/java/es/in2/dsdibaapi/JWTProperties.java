@@ -29,19 +29,22 @@ public @Data class JWTProperties {
 	@Value( "${vus.clau.key}" )
 	private String VUS_CLAU_KEY;
 	
-	@Value( "${vus.clau.value}" )
-	private String VUS_CLAU_VALUE;
-	
 	@Value( "${vus.usuari.key}" )
 	private String VUS_USUARI_KEY;
 	
-	@Value( "${vus.usuari.value}" )
-	private String VUS_USUARI_VALUE;
+	@Value( "${vus.ws.clau.value}" )
+	private String VUS_WS_CLAU_VALUE;	
+	
+	@Value( "${vus.ws.usuari.value}" )
+	private String VUS_WS_USUARI_VALUE;
 	
 	@Value( "${vus.ws.clau.key}" )
 	private String VUS_WS_CLAU_KEY;
 	
 	@Value( "${vus.ws.usuari.key}" )
 	private String VUS_WS_USUARI_KEY;
+	
+	@Value( "${vus.aplicacio}" )
+	private String VUS_APLICACIO;
 	
 }

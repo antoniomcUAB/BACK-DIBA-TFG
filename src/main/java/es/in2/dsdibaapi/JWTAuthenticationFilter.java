@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.servlet.FilterChain;
@@ -29,7 +30,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -41,6 +41,7 @@ import es.in2.dsdibaapi.model.Municipi;
 import es.in2.dsdibaapi.model.Professional;
 import es.in2.dsdibaapi.model.Rol;
 import es.in2.dsdibaapi.model.xml.ValidacioUsuari;
+import es.in2.dsdibaapi.model.xml.ValidacioUsuariEns;
 import es.in2.dsdibaapi.service.MunicipiService;
 import es.in2.dsdibaapi.service.ProfessionalService;
 import es.in2.dsdibaapi.service.RolService;
@@ -82,18 +83,18 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		      HttpEntity <String> entity = new HttpEntity<String>(headers);	      
 		      
 		      UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(jwtProperties.getVUS_URL())		    	
-		    		  .queryParam(jwtProperties.getVUS_WS_USUARI_KEY(), credenciales.getUsername())
-		    		  .queryParam(jwtProperties.getVUS_WS_CLAU_KEY(), credenciales.getPassword())
-		    		  .queryParam(jwtProperties.getVUS_CLAU_KEY(), jwtProperties.getVUS_CLAU_VALUE())
-		    		  .queryParam(jwtProperties.getVUS_USUARI_KEY(), jwtProperties.getVUS_USUARI_VALUE());
+		    		  .queryParam(jwtProperties.getVUS_USUARI_KEY(), credenciales.getUsername())
+		    		  .queryParam(jwtProperties.getVUS_CLAU_KEY(), credenciales.getPassword())
+		    		  .queryParam(jwtProperties.getVUS_WS_CLAU_KEY(), jwtProperties.getVUS_WS_CLAU_VALUE())
+		    		  .queryParam(jwtProperties.getVUS_WS_USUARI_KEY(), jwtProperties.getVUS_WS_USUARI_VALUE());
 			
 			  
 		      String resp = restTemplate.exchange(builder.build().toUri(), HttpMethod.GET, entity, String.class).getBody();
 			
-			JAXBContext jaxbContext;*/
+			JAXBContext jaxbContext;
 			
 			ValidacioUsuari validacio = null;
-		/*	
+			
 			try {
 				jaxbContext = JAXBContext.newInstance(ValidacioUsuari.class);
 				Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
@@ -101,10 +102,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			
-		//	if (validacio != null && validacio.getResposta().getCodi_resposta().equals("0")) {
-				
+			if (validacio != null && validacio.getResposta().getCodi_resposta().equals("0")) {
+				*/
 				Authentication auth = null;
 				
 				try {
@@ -116,11 +117,24 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 					
 					rols.add(rolService.findById(73639l));
 					
+			/*		Optional<ValidacioUsuariEns> usuari = validacio.getResposta().getUsuari_vus().getEns()
+						.stream()
+						.filter(ens -> ens.getAplicacio().stream()
+													.filter(a -> jwtProperties.getVUS_APLICACIO().equalsIgnoreCase(a.getCodi()))
+													.findFirst().isPresent())
+						.findFirst();
+					
+					if (usuari.isPresent()) {
+						rols.add(rolService.findById(Long.valueOf(usuari.get().getAplicacio().stream().findFirst().get().getPerfil().getCodi())));
+					}*/
+					
+					
+					
 					Municipi municipi = municipiService.findById(73640l);
 					
 					
 					professionalService.save(Professional.builder()
-							.nomComplet(validacio.getNom())
+							.nomComplet(credenciales.getUsername())//.nomComplet(validacio.getNom())
 							.username(credenciales.getUsername())
 							.password(credenciales.getPassword())
 							.rol(rols)
@@ -134,7 +148,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			
 				
 				return auth;
-		/*	} else {
+	/*		} else {
 			
 				ObjectMapper objectMapper = new ObjectMapper();
 				
@@ -152,14 +166,16 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		 
 		        response.getOutputStream()
 		          .println(objectMapper.writeValueAsString(data));
-			}*/
-	        
+		        
+		        return null;
+			}
+	        */
 		} 
 		catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 		
-		//return null;
+		
 	}
 
 	@Override

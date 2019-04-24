@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;import javax.persistence.GenerationType; import javax.persistence.SequenceGenerator;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -31,6 +31,8 @@ public @Data class Rol implements Serializable {
 	private long id;
 	@Column(name = "DIBA_ROL_DESCRIPCIO")
 	private String descripcio;
+	@Column(name = "DIBA_ROL_CODI")
+	private Long codi;
 	
 	
 

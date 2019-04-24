@@ -78,7 +78,7 @@ public class DsDibaInit implements CommandLineRunner {
 		estatService.save(Estat.builder().descripcio(ExpedientService.Estat.COMPLET.toString()).build());
 		
 		rolService.save(Rol.builder().descripcio("Gerent").build());
-		rolService.save(Rol.builder().descripcio("Tècnic").build());
+		rolService.save(Rol.builder().descripcio("Tècnic").codi(6121645l).build());
 		
 		municipiService.save(Municipi.builder().descripcio("Barcelona").build());
 		municipiService.save(Municipi.builder().descripcio("Tarragona").build());

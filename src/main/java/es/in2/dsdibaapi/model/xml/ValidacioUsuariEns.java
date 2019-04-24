@@ -11,15 +11,15 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import lombok.Data;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public @Data class ValidacioUsuariVus  implements Serializable {
+public @Data class ValidacioUsuariEns  implements Serializable {
 	
-	@XmlElement(name = "usuari")
-	private String usuari;
+	@XmlElement(name = "codi")
+	private String codi;
 	
-	@XmlElement(name = "nom")
-	private String nom;
+	@XmlElement(name = "descr")
+	private String descr;
 	
-	@XmlElementWrapper(name="lens")
-    @XmlElement(name="ens")
-    private List<ValidacioUsuariEns> ens;
+	@XmlElementWrapper(name="laplicacions")
+    @XmlElement(name="aplicacio")
+    private List<ValidacioUsuariAplicacio> aplicacio;
 }
