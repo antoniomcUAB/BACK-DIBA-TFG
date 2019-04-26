@@ -24,6 +24,10 @@ public class RolServiceImpl implements RolService{
 		return rolRepository.findById(id).get();
     }
 	
+	public Rol findByCodi(Long codi) {
+		return rolRepository.findByCodi(codi);
+    }
+	
 
 	public Rol save(Rol v) {
 		return rolRepository.save(v);

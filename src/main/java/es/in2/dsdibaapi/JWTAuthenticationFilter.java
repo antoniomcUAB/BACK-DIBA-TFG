@@ -47,7 +47,9 @@ import es.in2.dsdibaapi.service.ProfessionalService;
 import es.in2.dsdibaapi.service.RolService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter  {
 	
 	JWTProperties jwtProperties;
@@ -59,6 +61,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	private MunicipiService municipiService;
 	
 	private RolService rolService;
+	
 	
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTProperties jwtProperties, 
 							ProfessionalService professionalService, MunicipiService municipiService,
@@ -76,7 +79,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		try {
 			UserJson credenciales = new ObjectMapper().readValue(request.getInputStream(), UserJson.class);
 			
-		/*	RestTemplate restTemplate = new RestTemplate();
+			log.error("TEST LOGIN");
+			
+			RestTemplate restTemplate = new RestTemplate();
 			
 			HttpHeaders headers = new HttpHeaders();
 		      headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -105,7 +110,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			}
 			
 			if (validacio != null && validacio.getResposta().getCodi_resposta().equals("0")) {
-				*/
+				
 				Authentication auth = null;
 				
 				try {
@@ -115,26 +120,28 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				} catch (AuthenticationException e) {
 					Set<Rol> rols = new HashSet<Rol> ();		
 					
-					rols.add(rolService.findById(73639l));
+				//	rols.add(rolService.findById(73639l));
 					
-			/*		Optional<ValidacioUsuariEns> usuari = validacio.getResposta().getUsuari_vus().getEns()
+					Optional<ValidacioUsuariEns> usuari = validacio.getResposta().getUsuari_vus().getEns()
 						.stream()
 						.filter(ens -> ens.getAplicacio().stream()
-													.filter(a -> jwtProperties.getVUS_APLICACIO().equalsIgnoreCase(a.getCodi()))
-													.findFirst().isPresent())
-						.findFirst();
+								.filter(a -> jwtProperties.getVUS_APLICACIO().equalsIgnoreCase(a.getCodi())).findFirst().isPresent()).findFirst();
 					
 					if (usuari.isPresent()) {
-						rols.add(rolService.findById(Long.valueOf(usuari.get().getAplicacio().stream().findFirst().get().getPerfil().getCodi())));
-					}*/
+						rols.add(rolService.findByCodi(Long.valueOf(usuari.get().getAplicacio().stream()
+								.filter(a -> jwtProperties.getVUS_APLICACIO().equalsIgnoreCase(a.getCodi()))
+								.findFirst().get().getPerfil().getCodi())));
+					}
 					
 					
 					
-					Municipi municipi = municipiService.findById(73640l);
+					
+					
+					Municipi municipi = municipiService.findById(34902l);
 					
 					
 					professionalService.save(Professional.builder()
-							.nomComplet(credenciales.getUsername())//.nomComplet(validacio.getNom())
+							.nomComplet(validacio.getNom())
 							.username(credenciales.getUsername())
 							.password(credenciales.getPassword())
 							.rol(rols)
@@ -148,7 +155,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			
 				
 				return auth;
-	/*		} else {
+			} else {
 			
 				ObjectMapper objectMapper = new ObjectMapper();
 				
@@ -169,7 +176,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		        
 		        return null;
 			}
-	        */
+	        
 		} 
 		catch (IOException e) {
 			throw new RuntimeException(e);

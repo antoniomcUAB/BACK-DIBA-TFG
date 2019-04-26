@@ -42,7 +42,7 @@ public class PreguntaController extends BaseController {
 	@RequestMapping(value = "/pregunta/{id}", method = RequestMethod.DELETE)
 	@ApiOperation(value = "Esborrar una pregunta", notes = "")
 	  public void deletePregunta(@PathVariable Long id) {		
-	     preguntaService.delete(id);
+	     preguntaService.delete(id); 
 	  }
 	
 	@RequestMapping(value = "/pregunta/{id}", method = RequestMethod.GET)
