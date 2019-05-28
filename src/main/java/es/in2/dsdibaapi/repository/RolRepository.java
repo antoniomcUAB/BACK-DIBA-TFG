@@ -7,4 +7,6 @@ import es.in2.dsdibaapi.model.Rol;
 
 public interface RolRepository extends JpaRepository<Rol, Long> , QuerydslPredicateExecutor<Rol>{
 	public Rol findByCodi (Long codi);
+
+	public Rol findByDescripcioEquals(String descripcio);
 }

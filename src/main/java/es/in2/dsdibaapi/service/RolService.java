@@ -9,6 +9,7 @@ public interface RolService {
 	public Rol save(Rol v);
 	
 	public Rol findByCodi(Long codi);
-	
+
+	public Rol findByName(String rolName);
 
 }

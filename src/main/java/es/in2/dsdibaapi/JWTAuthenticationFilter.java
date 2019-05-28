@@ -61,6 +61,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	private MunicipiService municipiService;
 	
 	private RolService rolService;
+
+	public String DEFAULT_MUNICIPI = "Barcelona";
+	public String DEFAULT_ROL = "Tècnic";
 	
 	
 	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTProperties jwtProperties, 
@@ -74,13 +77,17 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	}
 
 	@Override
-	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
-			 {
+	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			UserJson credenciales = new ObjectMapper().readValue(request.getInputStream(), UserJson.class);
-			
-			log.error("TEST LOGIN");
-			
+
+			/*Permitimos inicio de session local para el usuario professional*/
+			if(		jwtProperties.getVUS_AUTHENTICATION_DISABLED()  &&
+					credenciales.getUsername().toUpperCase().equals("PROFESSIONAL".toUpperCase())){
+
+				return getLocalAuthentication(credenciales);
+			}
+
 			RestTemplate restTemplate = new RestTemplate();
 			
 			HttpHeaders headers = new HttpHeaders();
@@ -105,7 +112,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 		        validacio = (ValidacioUsuari) unmarshaller.unmarshal(new ByteArrayInputStream(resp.getBytes()));
 			} catch (JAXBException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -185,6 +191,43 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		
 	}
 
+
+    public Authentication getLocalAuthentication(UserJson credenciales)
+    {
+
+		ValidacioUsuari validacio = null;
+		Authentication auth;
+
+		try {
+
+			auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+					credenciales.getUsername(), credenciales.getPassword(), new ArrayList<>()));
+		} catch (AuthenticationException e) {
+
+			Set<Rol> rols = new HashSet<Rol> ();
+
+			Rol rol = rolService.findByName(DEFAULT_ROL);
+			rols.add(rol);
+			Municipi municipi = municipiService.findByName(DEFAULT_MUNICIPI);
+
+
+
+			professionalService.save(Professional.builder()
+					.nomComplet(validacio.getNom())
+					.username(credenciales.getUsername())
+					.password(credenciales.getPassword())
+					.rol(rols)
+					.municipi(municipi)
+					.build());
+
+			auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+					credenciales.getUsername(), credenciales.getPassword(), new ArrayList<>()));
+		}
+
+		return auth;
+
+    }
+
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication auth) throws IOException, ServletException {
@@ -193,8 +236,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				.setSubject(((User)auth.getPrincipal()).getUsername())
 				.setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getTOKEN_EXPIRATION_TIME()))
 				.signWith(SignatureAlgorithm.HS512, jwtProperties.getJWT_KEY()).compact();
+
+
 		response.addHeader(jwtProperties.getHEADER_AUTHORIZATION_KEY(), jwtProperties.getTOKEN_BEARER_PREFIX() + " " + token);
-		response.getWriter().write(jwtProperties.getHEADER_AUTHORIZATION_KEY()+":"+ jwtProperties.getTOKEN_BEARER_PREFIX() + " " + token);
+//		response.getWriter().write(jwtProperties.getHEADER_AUTHORIZATION_KEY()+":"+ jwtProperties.getTOKEN_BEARER_PREFIX() + " " + token);
+		response.getWriter().write(jwtProperties.getDIBA_FRONT_AUTH_URL() +"?tokenId="+ jwtProperties.getTOKEN_BEARER_PREFIX() + " " + token);
 	}
 	
 	@Override

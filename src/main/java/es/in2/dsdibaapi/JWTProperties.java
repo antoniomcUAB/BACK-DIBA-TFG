@@ -46,5 +46,11 @@ public @Data class JWTProperties {
 	
 	@Value( "${vus.aplicacio}" )
 	private String VUS_APLICACIO;
-	
+
+	@Value( "${vus.authentication.disabled}" )
+	private Boolean VUS_AUTHENTICATION_DISABLED;
+
+	@Value( "${diba.front.auth.url}" )
+	private String DIBA_FRONT_AUTH_URL;
+
 }

@@ -2,7 +2,6 @@ package es.in2.dsdibaapi.controller;
 
 import java.util.NoSuchElementException;
 import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,12 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
 import es.in2.dsdibaapi.model.Diagnostic;
 import es.in2.dsdibaapi.model.FactorEconomic;
 import es.in2.dsdibaapi.model.Pregunta;
 import es.in2.dsdibaapi.model.SituacioSocial;
-import es.in2.dsdibaapi.model.VersioModel;
 import es.in2.dsdibaapi.service.DiagnosticService;
 import es.in2.dsdibaapi.service.PreguntaService;
 import es.in2.dsdibaapi.service.SituacioSocialService;
@@ -88,23 +85,27 @@ public class PreguntaController extends BaseController {
 	  public Pregunta putPreguntaEconomia(@PathVariable Long diagnostic,@RequestBody Set<FactorEconomic> factors) {
 		
 		Diagnostic diag = diagnosticService.findById(diagnostic);
-		
-		if (diag.getVersioModel().getLlistaPE().size() > 1) {
-		
-			Long numFactors = factors.stream().filter(
-					p -> !p.getDescripcio().toLowerCase().contains("Existeix una xarxa familia".toLowerCase())
-					 || !p.getDescripcio().toLowerCase().contains("Les dificultats en".toLowerCase())).count();
+
+		if (diag.getVersioModel().getLlistaPE().size() > 1) { //lista de preguntas.
+
+			Long numFactors = factors.stream()
+					.filter(p -> !p.getDescripcio().toUpperCase().contains("xarxa familiar".toUpperCase()))
+					.filter(p -> !p.getDescripcio().toUpperCase().contains("Les dificultats en".toUpperCase()))
+					.count();
 			
-			if (numFactors > 6) {
-				return addPreguntaEconomica(diag,
-						Long.valueOf(diag.getVersioModel().getLlistaPE().get(0)),factors);
+			if (numFactors >= 7) {
+				return addPreguntaEconomica(  diag
+											, Long.valueOf(diag.getVersioModel().getLlistaPE().get(0))  // E1
+											,factors);
 			} else {
-				return addPreguntaEconomica(diag,
-						Long.valueOf(diag.getVersioModel().getLlistaPE().get(1)),factors);
+				return addPreguntaEconomica(  diag
+											, Long.valueOf(diag.getVersioModel().getLlistaPE().get(1)) // E2
+											, factors);
 			}
 		} else {
-			return addPreguntaEconomica(diag,
-					Long.valueOf(diag.getVersioModel().getPreguntaEconomica()),factors);
+			return addPreguntaEconomica(  diag
+										, Long.valueOf(diag.getVersioModel().getPreguntaEconomica())
+										, factors);
 		}
 		
 	  }
@@ -115,9 +116,13 @@ public class PreguntaController extends BaseController {
 				diagnostic.getId(),pregunta);
 		
 		SituacioSocial situacioSocial = situacioSocialService.findById(pregunta);
-		
+
 		if (p == null) {
-			p = preguntaService.save(Pregunta.builder().factorEconomic(factors).situacioSocial(situacioSocial).unitatFamiliar(false).build(),diagnostic.getId());
+			p = preguntaService.save(Pregunta.builder()
+					.factorEconomic(factors)
+					.situacioSocial(situacioSocial)
+					.unitatFamiliar(false)
+					.build() , diagnostic.getId());
 		}
 		else {
 			p.setFactorEconomic(factors);

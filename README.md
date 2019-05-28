@@ -6,6 +6,14 @@ DIPUTACIÓ DE BARCELONA API
 
 # Maven 3
 
+# Db query process 
+Orden para lanzar las querys iniciales
+* 1: tables 
+* 2: contrains
+* 3: secuences 
+* 4: sinonimos 
+* 5: grans / permisos 
+
 # External dependencies
 lombok 1.18.2
 
@@ -57,6 +65,8 @@ http://localhost:<port>/context/swagger-ui.html
 ### Weblogic
 
 Start: ```sh /home/weblogic/wls/config/domains/dsdiba/bin/startWebLogic.sh ```
+
+Start: ```sh /home/weblogic/wls/config/domains/dsdiba/bin/startNodeServer.sh ```
 
 Stop: ```sh /home/weblogic/wls/config/domains/dsdiba/bin/stopWebLogic.sh ```
 

@@ -23,7 +23,8 @@ public class MunicipiServiceImpl implements MunicipiService{
     public Municipi findById(Long id) {
 		return municipiRepository.findById(id).get();
     }
-	
+
+    public Municipi findByName(String municipiName){return municipiRepository.findByDescripcioEquals(municipiName);}
 
 	public Municipi save(Municipi v) {
 		return municipiRepository.save(v);

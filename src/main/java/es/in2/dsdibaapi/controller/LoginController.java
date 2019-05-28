@@ -9,7 +9,7 @@ import javax.validation.Valid;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -27,6 +27,7 @@ import es.in2.dsdibaapi.json.UserJson;
 import es.in2.dsdibaapi.model.xml.ValidacioUsuari;
 
 @RestController
+@Slf4j
 public class LoginController {
 	
 	@Autowired
@@ -34,30 +35,27 @@ public class LoginController {
 	
 	@Autowired
 	RestTemplate restTemplate;
-	
+
 	@PostMapping("/login")
     public Authentication authenticateUser(@Valid @RequestBody UserJson loginRequest) throws IOException {
 
 		Authentication auth = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 				loginRequest.getUsername(), loginRequest.getPassword(), new ArrayList<>()));
-		
+
 		HttpHeaders headers = new HttpHeaders();
-	      headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-	      HttpEntity <String> entity = new HttpEntity<String>(headers);
-		
+		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+		HttpEntity <String> entity = new HttpEntity<String>(headers);
+
 		String response = restTemplate.exchange("https://iasprd.diba.cat:7778/servweb/validacio_usuari_vus?ws_usuari=dsdiba&ws_clau=dsver2019&usuari_vus=OPS$FERNANDEZID&clau_vus=fernandezid2019", HttpMethod.GET, entity, String.class).getBody();
-		
+
 		JAXBContext jaxbContext;
 		try {
 			jaxbContext = JAXBContext.newInstance(ValidacioUsuari.class);
 			Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-	        ValidacioUsuari validacio = (ValidacioUsuari) unmarshaller.unmarshal(new ByteArrayInputStream(response.getBytes()));
+			ValidacioUsuari validacio = (ValidacioUsuari) unmarshaller.unmarshal(new ByteArrayInputStream(response.getBytes()));
 		} catch (JAXBException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
-		
 		return auth;
-    }
+	}
 }

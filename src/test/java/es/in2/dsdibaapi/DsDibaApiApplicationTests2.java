@@ -157,15 +157,15 @@ public class DsDibaApiApplicationTests2 {
 	Long entornEconomic = 72457l;
 	Long entornEscolar = 72497l;
 	
-	Long rolTecnic = 73639l;
+	Long rolTecnic = 119L;
 		
 	
 	Long versioId=72387l; //v2
 	
 	
-	Long barcelonaId = 73640l;
-	Long lleidaId = 73641l;
-	Long tarragonaId = 73642l;
+	Long barcelonaId = 120L;
+	Long lleidaId = 122L;
+	Long tarragonaId = 121L;
 	
 	Long factor1 = 72333l;
 	Long factor2 = 72334l;
@@ -428,7 +428,15 @@ public class DsDibaApiApplicationTests2 {
 		//diagnosticService.avaluar(63028l);
 	}
 	
-	
+	/*
+	* TODO: Ejecutar este metodo para crear el profesional en su version inicial....
+	*  Recordar cambiar el id del rol en esta clase y añadir al que se encuentra en mi db tabla DIBA_ROL_ROL el id del tecnico.
+	* - Algunos datos del profesional como el rol y la region estan harcodeado en estos servicios, es necesario repasar bien esto.
+	* Cambiarlo en la costante rolTecnic...
+	*
+	* Cambiar tambien la constante municipio y poner el identificador encontrado en municipio barcelona en la db DIBA_MUN_MUNICIPI
+	* Cambiar las tres variables de municipio con los de la base de datos.
+	* */
 	@Test
 	public void newProfessional () {
 		

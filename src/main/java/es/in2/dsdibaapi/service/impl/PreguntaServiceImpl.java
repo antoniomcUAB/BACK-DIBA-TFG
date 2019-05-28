@@ -137,7 +137,7 @@ public class PreguntaServiceImpl implements PreguntaService{
 				
 		pregunta.setDiagnostic(diag);
 	
-		
+		//Si la pregunta es una de las dos disponibles en Economica se lanza evaluacion economica
 		if (diag.getVersioModel().getPreguntaEconomica().contains(pregunta.getSituacioSocial().getId().toString())) {
 			avaluacioEconomica (pregunta);
 		} else {
@@ -296,7 +296,7 @@ public class PreguntaServiceImpl implements PreguntaService{
 				else if (n < 7 && xarxaFamiliar) {			
 					p.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.MODERADA.toString()));
 				} else {
-					p.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.ALTA.toString()));			
+					p.setGravetat(gravetatService.findByDescription(GravetatService.Tipus.ALTA.toString()));
 				} 
 				
 				if (p.getGravetat() !=null && p.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.ALTA.toString())) {
@@ -307,10 +307,10 @@ public class PreguntaServiceImpl implements PreguntaService{
 					}
 				}
 				
-				if (p.getGravetat() == null && p.getDiagnostic().getVersioModel().getVersio().equalsIgnoreCase("v1")) {
+				if (p.getGravetat() == null) {
 					p.setFactor(riscService.findByDescription(RiscService.Tipus.SENSE_VALORACIO));
 				}
-				else if (p.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.BAIXA.toString())) {
+				else if (p.getGravetat().getDescripcio() != null && p.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.BAIXA.toString())) {
 					p.setFactor(riscService.findByDescription(RiscService.Tipus.VULNERABILITAT));
 				}
 				else if (p.getGravetat().getDescripcio().equalsIgnoreCase(GravetatService.Tipus.MODERADA.toString()) ||

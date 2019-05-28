@@ -18,7 +18,7 @@ public class RolServiceImpl implements RolService{
 	
 	@Autowired
 	RolRepository rolRepository;
-	
+
 	@Cacheable("rol")
     public Rol findById(Long id) {
 		return rolRepository.findById(id).get();
@@ -27,7 +27,8 @@ public class RolServiceImpl implements RolService{
 	public Rol findByCodi(Long codi) {
 		return rolRepository.findByCodi(codi);
     }
-	
+
+    public Rol findByName (String descripcio) { return rolRepository.findByDescripcioEquals(descripcio); }
 
 	public Rol save(Rol v) {
 		return rolRepository.save(v);
